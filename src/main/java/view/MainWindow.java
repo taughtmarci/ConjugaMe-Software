@@ -1,6 +1,7 @@
 package view;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import database.LocalDB;
 
 import javax.swing.*;
 
@@ -18,6 +19,11 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        // Connect to DB
+        LocalDB database = new LocalDB("jdbc:sqlite:local.db");
+        database.selectStatement("test");
+
+        // Dark theme
         try {
             UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (UnsupportedLookAndFeelException e) {
