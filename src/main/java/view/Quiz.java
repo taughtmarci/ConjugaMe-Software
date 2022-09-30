@@ -14,22 +14,13 @@ public class Quiz extends JPanel {
     }
 
     private void initComponents() {
+        String[] labels = {"Yo", "Tu", "Usted", "Nosotros", "Vosotros", "Ustedes"};
         ArrayList<JLabel> label = new ArrayList<JLabel>() {{
-            add(new JLabel("Yo"));
-            add(new JLabel("Tu"));
-            add(new JLabel("Usted"));
-            add(new JLabel("Nosotros"));
-            add(new JLabel("Vosotros"));
-            add(new JLabel("Ustedes"));
+            for (String s : labels) add(new JLabel(s));
         }};
 
         ArrayList<JTextField> input = new ArrayList<JTextField>() {{
-            add(new JTextField(20));
-            add(new JTextField(20));
-            add(new JTextField(20));
-            add(new JTextField(20));
-            add(new JTextField(20));
-            add(new JTextField(20));
+            for (int i = 0; i < 6; i++) add(new JTextField(20));
         }};
 
         JButton sendResultsButton = new JButton("Send");
