@@ -20,7 +20,7 @@ public class MainWindow extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Connect to DB
-        LocalDB database = new LocalDB("jdbc:sqlite:local.db");
+        LocalDB database = new LocalDB("src/main/resources/local.db");
         database.selectStatement("test");
 
         // Dark theme

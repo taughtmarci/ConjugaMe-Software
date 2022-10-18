@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Form.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Pronoun.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/QuizComponents.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/VerbGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/local.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.db-journal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/LocalDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/LocalDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/StartQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StartQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/local.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +32,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -50,6 +56,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Marci/Desktop/ELTE/ConjugaMe/ConjugaMe&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
@@ -58,6 +65,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Marci\Desktop\ELTE\ConjugaMe\ConjugaMe\src\main\resources" />
+      <recent name="C:\Users\Marci\Desktop\ELTE\ConjugaMe\ConjugaMe\src\main\java\view" />
       <recent name="C:\Users\Marci\Desktop\ELTE\ConjugaMe\ConjugaMe\src\main\java\database" />
     </key>
   </component>
@@ -91,5 +100,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

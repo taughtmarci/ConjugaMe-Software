@@ -10,7 +10,7 @@ public class LocalDB {
     ResultSet resultSet;
 
     public LocalDB(String location) {
-        this.location = location;
+        this.location = "jdbc:sqlite:" + location;
         connect();
     }
 
@@ -31,7 +31,7 @@ public class LocalDB {
             // DEBUG
             query = "SELECT * FROM " + table;
             resultSet = statement.executeQuery(query);
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 String text = resultSet.getString("name");
                 System.out.println(text);
             }
