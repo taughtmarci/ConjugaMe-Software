@@ -13,7 +13,7 @@ public class MainWindow extends JFrame {
     }
 
     private void initComponents() {
-        setTitle("ConjugaMe!");
+        setTitle("Conj\u00FAgaMe!");
         setSize(640, 640);
         setResizable(false);
         setLocationRelativeTo(null);
