@@ -7,9 +7,8 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 
 public class StartQuiz extends JPanel {
     private MainWindow main;
@@ -39,7 +38,8 @@ public class StartQuiz extends JPanel {
         // pronouns checkboxes
         pronounCheckBoxes = new ArrayList<JCheckBox>();
         for (Pronoun p : Pronoun.values()) {
-            pronounCheckBoxes.add(new JCheckBox(p.toString(), true));
+            boolean defaultFlag = ((p.toString() == "Vos") || (p.toString() == "Vosotros")) ? false : true;
+            pronounCheckBoxes.add(new JCheckBox(p.toString(), defaultFlag));
             pronounPanel.add(pronounCheckBoxes.get(pronounCheckBoxes.size() - 1), "wrap");
         }
 
@@ -56,7 +56,7 @@ public class StartQuiz extends JPanel {
         formPanel.add(formTitle, "wrap");
 
         // verb forms checkboxes
-        formCheckBoxes = new ArrayList<JCheckBox>();
+        formCheckBoxes = new ArrayList<>();
         for (Form f: Form.values()) {
             formCheckBoxes.add(new JCheckBox(f.toString()));
             formPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
@@ -92,28 +92,25 @@ public class StartQuiz extends JPanel {
         // new quiz button
         JButton newQuizButton = new JButton("\u00DAj kv\u00EDz ind\u00EDt\u00E1sa");
         add(newQuizButton, "span");
-        newQuizButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                for (JCheckBox cb : pronounCheckBoxes) {
-                    if (cb.isSelected()) {
-                        components.addPronoun(cb.getText());
-                    }
+        newQuizButton.addActionListener(e -> {
+            for (JCheckBox cb : pronounCheckBoxes) {
+                if (cb.isSelected()) {
+                    components.addPronoun(cb.getText());
                 }
-
-                for (JCheckBox cb : formCheckBoxes) {
-                    if (cb.isSelected()) {
-                        components.addForm(cb.getText());
-                    }
-                }
-
-                // TODO: kétoldalú érme
-                components.setNumberOfVerbs((int) verbNumberChooser.getValue());
-
-                setVisible(false);
-                current = new Quiz(components);
-                main.switchPanels(current);
             }
+
+            for (JCheckBox cb : formCheckBoxes) {
+                if (cb.isSelected()) {
+                    components.addForm(cb.getText());
+                }
+            }
+
+            // TODO: kétoldalú érme
+            components.setNumberOfVerbs((int) verbNumberChooser.getValue());
+
+            setVisible(false);
+            current = new Quiz(components);
+            main.switchPanels(current);
         });
     }
 

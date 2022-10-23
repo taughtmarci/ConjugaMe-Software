@@ -18,6 +18,9 @@ public class Quiz extends JPanel {
     }
 
     private void initComponents() {
+        JLabel currentVerbLabel = new JLabel("verb placeholder");
+        add(currentVerbLabel, "wrap");
+
         ArrayList<JLabel> label = new ArrayList<JLabel>() {{
             for (Pronoun p : components.getSelectedPronouns()) add(new JLabel(p.toString()));
         }};

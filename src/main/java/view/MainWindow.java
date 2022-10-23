@@ -2,6 +2,7 @@ package view;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import database.LocalDB;
+import database.OnlineDB;
 
 import javax.swing.*;
 
@@ -19,9 +20,13 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        // Connect to DB
-        LocalDB database = new LocalDB("src/main/resources/local.db");
-        database.selectStatement("test");
+        // Connect to local DB
+        LocalDB localDB = new LocalDB("src/main/resources/local.db");
+        localDB.selectStatement("test");
+
+        // Connect to online DB
+        OnlineDB onlineDB = new OnlineDB("conjugame.cxpxjtc5b29j.eu-central-1.rds.amazonaws.com", "3306");
+        onlineDB.selectStatement("Test");
 
         // Dark theme
         try {
