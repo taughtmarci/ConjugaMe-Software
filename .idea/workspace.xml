@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="set up online database connection">
-      <change afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/database/Online.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/DialogOption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/DialogType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/Dialog.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add dialog handler class&#10;Database classes refactor with abstraction">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/VerbCollection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Verb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/LocalDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Local.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/OnlineDB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Local.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Local.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Online.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Online.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Quiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/StartQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StartQuiz.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +52,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,16 +75,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marci/Desktop/ELTE/ConjugaMe/ConjugaMe&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "last_opened_file_path": "C:/Users/Marci/Desktop/ELTE/ConjugaMe/ConjugaMe",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Marci\Desktop\ELTE\ConjugaMe\ConjugaMe\src\main\resources" />
@@ -131,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666519862073</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add dialog handler class&#10;Database classes refactor with abstraction">
+      <created>1666731117993</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666731117993</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,7 +157,8 @@
     <MESSAGE value="Database set up&#10;Add Pronoun, Form enums and VerbGroup class for model&#10;Extend StartQuiz parameters start with pronouns checkboxes" />
     <MESSAGE value="Finished basics of Quiz component" />
     <MESSAGE value="set up online database connection" />
-    <option name="LAST_COMMIT_MESSAGE" value="set up online database connection" />
+    <MESSAGE value="Add dialog handler class&#10;Database classes refactor with abstraction" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add dialog handler class&#10;Database classes refactor with abstraction" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ConjugaMe$ConjugaMe.ic" NAME="ConjugaMe Coverage Results" MODIFIED="1666204856249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

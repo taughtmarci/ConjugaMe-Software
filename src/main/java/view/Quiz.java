@@ -1,25 +1,30 @@
 package view;
 
+import controller.VerbCollection;
 import model.Pronoun;
 import model.QuizComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Quiz extends JPanel {
+    VerbCollection collection;
     QuizComponents components;
 
-    public Quiz(QuizComponents components) {
-        this.components = components;
+    public Quiz(VerbCollection collection) {
+        this.collection = collection;
+        this.components = collection.getComponents();
         setLayout(new MigLayout("al center center"));
         initComponents();
         setVisible(true);
     }
 
     private void initComponents() {
-        JLabel currentVerbLabel = new JLabel("verb placeholder");
-        add(currentVerbLabel, "wrap");
+        JLabel currentVerbLabel = new JLabel(collection.getVerb(0).getInfinitivo());
+        currentVerbLabel.setFont(new Font("Verdana", Font.PLAIN, 24));
+        add(currentVerbLabel, "span, align center");
 
         ArrayList<JLabel> label = new ArrayList<JLabel>() {{
             for (Pronoun p : components.getSelectedPronouns()) add(new JLabel(p.toString()));

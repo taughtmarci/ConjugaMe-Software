@@ -1,5 +1,6 @@
 package view;
 
+import controller.VerbCollection;
 import model.Form;
 import model.Pronoun;
 import model.QuizComponents;
@@ -107,9 +108,10 @@ public class StartQuiz extends JPanel {
 
             // TODO: kétoldalú érme
             components.setNumberOfVerbs((int) verbNumberChooser.getValue());
+            VerbCollection vc = new VerbCollection(main, components);
 
             setVisible(false);
-            current = new Quiz(components);
+            current = new Quiz(vc);
             main.switchPanels(current);
         });
     }

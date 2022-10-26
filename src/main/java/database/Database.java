@@ -1,21 +1,22 @@
 package database;
 
 import model.DialogType;
+import model.QuizComponents;
 import view.MainWindow;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 abstract class Database {
-
     public boolean onlineFlag;
-    protected String location;
-    protected Connection connection;
-
-    public boolean connected = false;
     protected String username;
     protected String password;
 
-    protected String query;
+    protected String location;
+    protected Connection connection;
+    public boolean connected = false;
+
+    protected static String query;
     protected ResultSet resultSet;
 
     public Database(boolean onlineFlag, String location) {
@@ -42,17 +43,24 @@ abstract class Database {
         }
     }
 
-    public void testDatabase(String table, String column) {
-        try (Statement statement = connection.createStatement()) {
-            query = "SELECT * FROM " + table;
-            resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                String text = resultSet.getString(column);
-                System.out.println(text);
+    public ArrayList<String> singleQueryStatement(String table, String column, boolean randomFlag, int limit) {
+        ArrayList<String> result = new ArrayList<>();
+
+        if (connected) {
+            try (Statement statement = connection.createStatement()) {
+                query = "select " + column + " from " + table + (randomFlag ? " order by rand()" : "")
+                        + (limit > 0 ? " limit " + limit : "") + ";";
+                resultSet = statement.executeQuery(query);
+
+                while (resultSet.next())
+                    result.add(resultSet.getString(column));
+            } catch (SQLException e) {
+                MainWindow.dialog.showDialog("Adatbázis lekérdezési hiba", "Sikertelen lekérdezés a"
+                        + (onlineFlag ? "z online " : " ") + " adatbázisból.\n" + e.toString(), DialogType.ERROR);
+                connected = false;
             }
-        } catch (SQLException e) {
-            MainWindow.dialog.showDialog("Test error", "Test on" + (onlineFlag ? " online " : " ")
-                    + " database has failed.\n" + e.toString(), DialogType.ERROR);
         }
+        return result;
     }
+
 }
