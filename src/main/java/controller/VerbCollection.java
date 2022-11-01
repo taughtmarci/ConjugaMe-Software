@@ -1,7 +1,7 @@
 package controller;
 
-import model.QuizComponents;
 import model.Verb;
+import model.VerbBasic;
 import view.MainWindow;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class VerbCollection {
     private MainWindow main;
     private QuizComponents components;
-    private ArrayList<Verb> verb = new ArrayList<>();
+    private ArrayList<Verb> verbs = new ArrayList<>();
 
     public VerbCollection(MainWindow main, QuizComponents components) {
         this.main = main;
@@ -18,9 +18,14 @@ public class VerbCollection {
     }
 
     public void loadVerbs() {
-        ArrayList<String> verbHolder = main.online.singleQueryStatement("Verbos", "verb", true, components.getNumberOfVerbs());
-        for (String str : verbHolder)
-            verb.add(new Verb(str));
+        loadEssentials();
+    }
+
+    public void loadEssentials() {
+        ArrayList<VerbBasic> verbHolder = main.online.essentialQuery("Verbo",
+                components.hasGerundio(), components.hasParticipio(), components.getNumberOfVerbs(), true);
+        for (VerbBasic verb : verbHolder)
+            verbs.add(new Verb(verb));
     }
 
     public MainWindow getMain() {
@@ -32,10 +37,10 @@ public class VerbCollection {
     }
 
     public Verb getVerb(int index) {
-        return verb.get(index);
+        return verbs.get(index);
     }
 
     public ArrayList<Verb> getVerbList() {
-        return verb;
+        return verbs;
     }
 }

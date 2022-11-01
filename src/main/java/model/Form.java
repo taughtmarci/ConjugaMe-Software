@@ -1,8 +1,8 @@
 package model;
 
 public enum Form {
-    ParticipioPresento ("Participio Presento"),
-    ParticipioPreterito ("Participio Pret\u00E9rito"),
+    Gerundio ("Gerundio"),
+    Participio ("Participio"),
     IndicativoPresento ("Indicativo Presento"),
     IndicativoPreterito ("Indicativo Pret\u00E9rito"),
     IndicativoImperfecto ("Indicativo Imperfecto"),

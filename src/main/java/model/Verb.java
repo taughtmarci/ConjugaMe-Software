@@ -3,11 +3,9 @@ package model;
 import java.util.ArrayList;
 
 public class Verb {
-    public String infinitivo;
+    public VerbBasic basic;
     public ArrayList<String> definition;
 
-    public String gerundio;
-    public String participio;
     public Verb pronominal;
 
     public ArrayList<String> indicativoPresente;
@@ -23,16 +21,16 @@ public class Verb {
     public ArrayList<String> imperativoAfirmativo;
     public ArrayList<String> imperativoNegativo;
 
-    public Verb(String infinitivo) {
-        this.infinitivo = infinitivo;
+    public Verb(VerbBasic basic) {
+        this.basic = basic;
     }
 
-    public String getInfinitivo() {
-        return infinitivo;
+    public VerbBasic getBasic() {
+        return basic;
     }
 
-    public void setInfinitivo(String infinitivo) {
-        this.infinitivo = infinitivo;
+    public void setBasic(VerbBasic basic) {
+        this.basic = basic;
     }
 
     public ArrayList<String> getDefinition() {
@@ -41,22 +39,6 @@ public class Verb {
 
     public void setDefinition(ArrayList<String> definition) {
         this.definition = definition;
-    }
-
-    public String getGerundio() {
-        return gerundio;
-    }
-
-    public void setGerundio(String gerundio) {
-        this.gerundio = gerundio;
-    }
-
-    public String getParticipio() {
-        return participio;
-    }
-
-    public void setParticipio(String participio) {
-        this.participio = participio;
     }
 
     public Verb getPronominal() {

@@ -3,7 +3,7 @@ package view;
 import controller.VerbCollection;
 import model.Form;
 import model.Pronoun;
-import model.QuizComponents;
+import controller.QuizComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 
 public class StartQuiz extends JPanel {
-    private MainWindow main;
+    private final MainWindow main;
     private Quiz current;
     private QuizComponents components;
 
@@ -39,7 +39,7 @@ public class StartQuiz extends JPanel {
         // pronouns checkboxes
         pronounCheckBoxes = new ArrayList<JCheckBox>();
         for (Pronoun p : Pronoun.values()) {
-            boolean defaultFlag = ((p.toString() == "Vos") || (p.toString() == "Vosotros")) ? false : true;
+            boolean defaultFlag = (p.toString() != "Vos") && (p.toString() != "Vosotros");
             pronounCheckBoxes.add(new JCheckBox(p.toString(), defaultFlag));
             pronounPanel.add(pronounCheckBoxes.get(pronounCheckBoxes.size() - 1), "wrap");
         }
@@ -59,7 +59,8 @@ public class StartQuiz extends JPanel {
         // verb forms checkboxes
         formCheckBoxes = new ArrayList<>();
         for (Form f: Form.values()) {
-            formCheckBoxes.add(new JCheckBox(f.toString()));
+            boolean defaultFlag = (f.toString() == "Indicativo Presento");
+            formCheckBoxes.add(new JCheckBox(f.toString(), defaultFlag));
             formPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
         }
 
@@ -86,6 +87,14 @@ public class StartQuiz extends JPanel {
 
     private void initComponents() {
         components = new QuizComponents();
+
+        // set up error label
+        JLabel errorLabel = new JLabel("");
+        errorLabel.setFont(new Font("Verdana", Font.BOLD, 12));
+        errorLabel.setForeground(Color.RED);
+        add(errorLabel, "span");
+
+        // add panels
         add(initPronounPanel());
         add(initFormPanel());
         add(initLastPanel(), "wrap");
@@ -93,26 +102,43 @@ public class StartQuiz extends JPanel {
         // new quiz button
         JButton newQuizButton = new JButton("\u00DAj kv\u00EDz ind\u00EDt\u00E1sa");
         add(newQuizButton, "span");
+
         newQuizButton.addActionListener(e -> {
-            for (JCheckBox cb : pronounCheckBoxes) {
-                if (cb.isSelected()) {
-                    components.addPronoun(cb.getText());
-                }
-            }
+
+            for (JCheckBox cb : pronounCheckBoxes)
+                if (cb.isSelected()) components.addPronoun(cb.getText());
 
             for (JCheckBox cb : formCheckBoxes) {
                 if (cb.isSelected()) {
+                    if (cb.getText() == "Gerundio") components.setGerundioFlag(true);
+                    if (cb.getText() == "Participio") components.setParticipioFlag(true);
                     components.addForm(cb.getText());
                 }
             }
 
+            String error = "";
             // TODO: kétoldalú érme
             components.setNumberOfVerbs((int) verbNumberChooser.getValue());
-            VerbCollection vc = new VerbCollection(main, components);
+            //components.printStats();
+            if (!components.hasGerundio() && !components.hasParticipio()) {
+                if (components.getSelectedForms().size() < 1) {
+                    error = "Legal\u00E1bb egy igeid\u0151/m\u00F3d kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";}
+                else if (components.getSelectedPronouns().size() < 1)
+                    error = "Legal\u00E1bb egy n\u00E9vm\u00E1s kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
+                else if (components.getNumberOfVerbs() < 5 || components.getNumberOfVerbs() > 500)
+                    error = "Az ig\u00E9k sz\u00E1ma 5 és 500 k\u00F6z\u00F6tt kell, hogy legyen!";
+            }
 
-            setVisible(false);
-            current = new Quiz(vc);
-            main.switchPanels(current);
+            if (error.equals("")) {
+                VerbCollection vc = new VerbCollection(main, components);
+                setVisible(false);
+                current = new Quiz(vc);
+                main.switchPanels(current);
+            } else {
+                errorLabel.setText(error);
+                this.components = new QuizComponents();
+                this.updateUI();
+            }
         });
     }
 

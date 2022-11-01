@@ -44,9 +44,9 @@ public class MainWindow extends JFrame {
     }
 
     public void switchPanels(JPanel panel) {
+        add(panel);
         repaint();
         revalidate();
-        add(panel);
     }
 
 }

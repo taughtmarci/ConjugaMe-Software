@@ -1,7 +1,7 @@
 package database;
 
 import model.DialogType;
-import model.QuizComponents;
+import model.VerbBasic;
 import view.MainWindow;
 
 import java.sql.*;
@@ -43,17 +43,21 @@ abstract class Database {
         }
     }
 
-    public ArrayList<String> singleQueryStatement(String table, String column, boolean randomFlag, int limit) {
-        ArrayList<String> result = new ArrayList<>();
-
+    public ArrayList<VerbBasic> essentialQuery(String table, boolean gerundioFlag, boolean participioFlag, int limit, boolean randomFlag)  {
+        ArrayList<VerbBasic> result = new ArrayList<>();
         if (connected) {
             try (Statement statement = connection.createStatement()) {
-                query = "select " + column + " from " + table + (randomFlag ? " order by rand()" : "")
+                query = "select Infinitivo, " + (gerundioFlag ? "Gerundio, " : "'', ") + (participioFlag ? "Participio " : "'' ");
+                query += " from " + table + (randomFlag ? " order by rand()" : "")
                         + (limit > 0 ? " limit " + limit : "") + ";";
                 resultSet = statement.executeQuery(query);
 
-                while (resultSet.next())
-                    result.add(resultSet.getString(column));
+                while (resultSet.next()) {
+                    VerbBasic temp = new VerbBasic(resultSet.getString("Infinitivo"));
+                    if (gerundioFlag) temp.setGerundio(resultSet.getString("Gerundio"));
+                    if (participioFlag) temp.setParticipio(resultSet.getString("Participio"));
+                    result.add(temp);
+                }
             } catch (SQLException e) {
                 MainWindow.dialog.showDialog("Adatbázis lekérdezési hiba", "Sikertelen lekérdezés a"
                         + (onlineFlag ? "z online " : " ") + " adatbázisból.\n" + e.toString(), DialogType.ERROR);

@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add dialog handler class&#10;Database classes refactor with abstraction">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/VerbCollection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Verb.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Create Verb and VerbCollection classes&#10;Create singleQueryStatement db function&#10;View Verbs on Quiz panel">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/VerbBasic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbCollection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Local.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Local.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Online.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Online.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Form.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Form.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/QuizComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/QuizComponents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Verb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Verb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Quiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/StartQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StartQuiz.java" afterDir="false" />
@@ -60,6 +61,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/model/Verb.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -75,16 +79,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "last_opened_file_path": "C:/Users/Marci/Desktop/ELTE/ConjugaMe/ConjugaMe",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marci/Desktop/ELTE/ConjugaMe/ConjugaMe&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Marci\Desktop\ELTE\ConjugaMe\ConjugaMe\src\main\resources" />
@@ -138,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666731117993</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Create Verb and VerbCollection classes&#10;Create singleQueryStatement db function&#10;View Verbs on Quiz panel">
+      <created>1666781864459</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1666781864459</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,7 +169,8 @@
     <MESSAGE value="Finished basics of Quiz component" />
     <MESSAGE value="set up online database connection" />
     <MESSAGE value="Add dialog handler class&#10;Database classes refactor with abstraction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add dialog handler class&#10;Database classes refactor with abstraction" />
+    <MESSAGE value="Create Verb and VerbCollection classes&#10;Create singleQueryStatement db function&#10;View Verbs on Quiz panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Verb and VerbCollection classes&#10;Create singleQueryStatement db function&#10;View Verbs on Quiz panel" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ConjugaMe$ConjugaMe.ic" NAME="ConjugaMe Coverage Results" MODIFIED="1666204856249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
