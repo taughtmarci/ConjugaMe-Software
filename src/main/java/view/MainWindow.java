@@ -43,8 +43,9 @@ public class MainWindow extends JFrame {
         MainWindow mw = new MainWindow();
     }
 
-    public void switchPanels(JPanel panel) {
-        add(panel);
+    public void switchPanels(JPanel prev, JPanel next) {
+        remove(prev);
+        add(next);
         repaint();
         revalidate();
     }

@@ -1,5 +1,6 @@
 package controller;
 
+import model.Form;
 import model.Verb;
 import model.VerbBasic;
 import view.MainWindow;
@@ -18,14 +19,32 @@ public class VerbCollection {
     }
 
     public void loadVerbs() {
-        loadEssentials();
+        // TODO CSINÁLD MEG NORMÁLISAN A PARTICIPIOKAT
+        if (components.hasOtherThanParticipio()) {
+            verbs = loadComplexVerbs();
+            for (Verb verb : verbs) {
+                verb.printVerb();
+            }
+        }
+        else {
+            verbs = loadEssentials();
+        }
     }
 
-    public void loadEssentials() {
-        ArrayList<VerbBasic> verbHolder = main.online.essentialQuery("Verbo",
-                components.hasGerundio(), components.hasParticipio(), components.getNumberOfVerbs(), true);
-        for (VerbBasic verb : verbHolder)
-            verbs.add(new Verb(verb));
+    private ArrayList<Verb> loadEssentials() {
+        ArrayList<VerbBasic> verbBasicHolder = main.online.essentialQuery(components.hasGerundio(),
+                components.hasPasado(), components.getNumberOfVerbs(), true);
+
+        ArrayList<Verb> verbHolder = new ArrayList<>();
+        for (VerbBasic verbBasic : verbBasicHolder)
+            verbHolder.add(new Verb(verbBasic));
+
+        return verbHolder;
+    }
+
+    private ArrayList<Verb> loadComplexVerbs() {
+        return main.online.complexQuery(components.hasGerundio(), components.hasPasado(),
+                components.getSelectedFormsWithoutParticipio(), components.getNumberOfVerbs(), true);
     }
 
     public MainWindow getMain() {

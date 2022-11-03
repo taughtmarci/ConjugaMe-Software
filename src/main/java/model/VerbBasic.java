@@ -2,39 +2,39 @@ package model;
 
 public class VerbBasic {
     public String infitivo;
-    public String gerundio;
-    public String participio;
+    public String presente;
+    public String pasado;
 
-    boolean hasGerundio;
-    boolean hasParticipio;
+    boolean hasPresente;
+    boolean hasPasado;
 
     public VerbBasic(String infitivo) {
         this.infitivo = infitivo;
-        this.hasGerundio = false;
-        this.hasParticipio = false;
+        this.hasPresente = false;
+        this.hasPasado = false;
     }
 
-    public VerbBasic(String infinitivo, String second, boolean hasGerundio) {
+    public VerbBasic(String infinitivo, String second, boolean hasPresente) {
         this.infitivo = infinitivo;
-        this.hasGerundio = hasGerundio;
+        this.hasPresente = hasPresente;
 
-        if (hasGerundio) {
-            this.gerundio = second;
-            this.hasParticipio = false;
+        if (hasPresente) {
+            this.presente = second;
+            this.hasPasado = false;
         }
         else {
-            this.participio = second;
-            this.hasParticipio = true;
+            this.pasado = second;
+            this.hasPasado = true;
         }
     }
 
-    public VerbBasic(String infitivo, String gerundio, String participio) {
+    public VerbBasic(String infitivo, String presente, String pasado) {
         this.infitivo = infitivo;
-        this.gerundio = gerundio;
-        this.participio = participio;
+        this.presente = presente;
+        this.pasado = pasado;
 
-        this.hasGerundio = true;
-        this.hasParticipio = true;
+        this.hasPresente = true;
+        this.hasPasado = true;
     }
 
     public String getInfitivo() {
@@ -45,19 +45,19 @@ public class VerbBasic {
         this.infitivo = infitivo;
     }
 
-    public String getGerundio() {
-        return gerundio;
+    public String getPresente() {
+        return presente;
     }
 
-    public void setGerundio(String gerundio) {
-        this.gerundio = gerundio;
+    public void setPresente(String presente) {
+        this.presente = presente;
     }
 
-    public String getParticipio() {
-        return participio;
+    public String getPasado() {
+        return pasado;
     }
 
-    public void setParticipio(String participio) {
-        this.participio = participio;
+    public void setPasado(String pasado) {
+        this.pasado = pasado;
     }
 }

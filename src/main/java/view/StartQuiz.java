@@ -33,8 +33,8 @@ public class StartQuiz extends JPanel {
         pronounPanel.setLayout(new MigLayout("al center center"));
 
         // pronouns title
-        JLabel pronounTitle = new JLabel("Szem\u00E9ly(ek):");
-        pronounPanel.add(pronounTitle, "wrap");
+        JLabel pronounTitle = new JLabel("Szem\u00E9ly(ek)");
+        pronounPanel.add(pronounTitle, "align center, wrap");
 
         // pronouns checkboxes
         pronounCheckBoxes = new ArrayList<JCheckBox>();
@@ -49,22 +49,57 @@ public class StartQuiz extends JPanel {
     }
 
     private JPanel initFormPanel() {
+        // main form panel
         JPanel formPanel = new JPanel();
-        formPanel.setLayout(new MigLayout("al center center"));
+        formPanel.setLayout(new MigLayout("", "[center]", "[top]"));
 
-        // verb forms title
         JLabel formTitle = new JLabel("Igeid\u0151(k) \u00E9s m\u00F3d(ok):");
-        formPanel.add(formTitle, "wrap");
+        formPanel.add(formTitle, "align center, span");
+
+        // participio panel and title
+        JPanel participioPanel = new JPanel();
+        participioPanel.setLayout(new MigLayout());
+        JLabel participioTitle = new JLabel("Participio");
+        participioPanel.add(participioTitle, "wrap");
+
+        // indicativo panel and title
+        JPanel indicativoPanel = new JPanel();
+        indicativoPanel.setLayout(new MigLayout());
+        JLabel indicativoTitle = new JLabel("Indicativo");
+        indicativoPanel.add(indicativoTitle, "wrap");
+
+        // imperativo panel and title
+        JPanel imperativoPanel = new JPanel();
+        imperativoPanel.setLayout(new MigLayout());
+        JLabel imperativoTitle = new JLabel("Imperativo");
+        imperativoPanel.add(imperativoTitle, "wrap");
+
+        // subjuntivo panel and title
+        JPanel subjuntivoPanel = new JPanel();
+        subjuntivoPanel.setLayout(new MigLayout());
+        JLabel subjuntivoTitle = new JLabel("Subjuntivo");
+        subjuntivoPanel.add(subjuntivoTitle, "wrap");
 
         // verb forms checkboxes
         formCheckBoxes = new ArrayList<>();
-        for (Form f: Form.values()) {
-            boolean defaultFlag = (f.toString() == "Indicativo Presento");
-            formCheckBoxes.add(new JCheckBox(f.toString(), defaultFlag));
-            formPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
+        for (Form f : Form.values()) {
+            formCheckBoxes.add(new JCheckBox(f.toString()));
+            if (f == Form.ParticipioPresente || f == Form.ParticipioPasado)
+                participioPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
+            else if (f == Form.ImperativoAffirmativo || f == Form.ImperativoNegativo)
+                imperativoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
+            else if (f == Form.SubjuntivoPresento || f == Form.SubjuntivoImperfecto || f == Form.SubjuntivoFuturo)
+                subjuntivoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
+            else indicativoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
         }
 
+        // border, add panels to formPanel
+        formPanel.add(participioPanel, "align left, cell 0 1");
+        formPanel.add(indicativoPanel, "align left, cell 0 2");
+        formPanel.add(imperativoPanel, "align left, cell 1 1");
+        formPanel.add(subjuntivoPanel, "align left, cell 1 2");
         formPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+
         return formPanel;
     }
 
@@ -101,39 +136,34 @@ public class StartQuiz extends JPanel {
 
         // new quiz button
         JButton newQuizButton = new JButton("\u00DAj kv\u00EDz ind\u00EDt\u00E1sa");
-        add(newQuizButton, "span");
+        add(newQuizButton, "span, align center");
 
         newQuizButton.addActionListener(e -> {
-
             for (JCheckBox cb : pronounCheckBoxes)
                 if (cb.isSelected()) components.addPronoun(cb.getText());
 
             for (JCheckBox cb : formCheckBoxes) {
-                if (cb.isSelected()) {
-                    if (cb.getText() == "Gerundio") components.setGerundioFlag(true);
-                    if (cb.getText() == "Participio") components.setParticipioFlag(true);
-                    components.addForm(cb.getText());
-                }
+                if (cb.isSelected()) components.addForm(cb.getText());
             }
 
-            String error = "";
             // TODO: kétoldalú érme
             components.setNumberOfVerbs((int) verbNumberChooser.getValue());
-            //components.printStats();
-            if (!components.hasGerundio() && !components.hasParticipio()) {
-                if (components.getSelectedForms().size() < 1) {
-                    error = "Legal\u00E1bb egy igeid\u0151/m\u00F3d kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";}
-                else if (components.getSelectedPronouns().size() < 1)
+
+            // error handling
+            components.printStats();
+            String error = "";
+            if (components.hasOtherThanParticipio()) {
+                if (components.getSelectedPronouns().size() < 1)
                     error = "Legal\u00E1bb egy n\u00E9vm\u00E1s kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
-                else if (components.getNumberOfVerbs() < 5 || components.getNumberOfVerbs() > 500)
-                    error = "Az ig\u00E9k sz\u00E1ma 5 és 500 k\u00F6z\u00F6tt kell, hogy legyen!";
             }
+            else if (components.getSelectedForms().size() < 1)
+                error = "Legal\u00E1bb egy igeid\u0151/m\u00F3d kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
 
             if (error.equals("")) {
                 VerbCollection vc = new VerbCollection(main, components);
                 setVisible(false);
                 current = new Quiz(vc);
-                main.switchPanels(current);
+                main.switchPanels(this, current);
             } else {
                 errorLabel.setText(error);
                 this.components = new QuizComponents();

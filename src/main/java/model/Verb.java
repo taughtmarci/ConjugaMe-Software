@@ -2,19 +2,20 @@ package model;
 
 import java.util.ArrayList;
 
+// TODO: MAKE NAMING CONVENTION
 public class Verb {
     public VerbBasic basic;
     public ArrayList<String> definition;
 
     public Verb pronominal;
 
-    public ArrayList<String> indicativoPresente;
-    public ArrayList<String> indicativoImperfecto;
+    public ArrayList<String> indicativoPresento;
     public ArrayList<String> indicativoPreterito;
+    public ArrayList<String> indicativoImperfecto;
     public ArrayList<String> indicativoFuturo;
     public ArrayList<String> indicativoCondicional;
 
-    public ArrayList<String> subjuntivoPresente;
+    public ArrayList<String> subjuntivoPresento;
     public ArrayList<String> subjuntivoImperfecto;
     public ArrayList<String> subjuntivoFuturo;
 
@@ -23,6 +24,30 @@ public class Verb {
 
     public Verb(VerbBasic basic) {
         this.basic = basic;
+    }
+
+    public void printVerb() {
+        System.out.println(getBasic().getInfitivo() + ":\n" +
+                "Participio presento: " + getBasic().getPresente() +
+                "Participio pasado: " + getBasic().getPasado());
+
+        // TODO normálisan pls xd
+        for (String presento : this.indicativoPresento) {
+            System.out.println(presento);
+        }
+    }
+
+    public void setForm(Form form, ArrayList<String> content) {
+        switch (form) {
+            case IndicativoPresento -> this.indicativoPresento = content;
+            case IndicativoPreterito -> this.indicativoPreterito = content;
+            case IndicativoImperfecto -> this.indicativoImperfecto = content;
+            case IndicativoFuturo -> this.indicativoFuturo = content;
+            case IndicativoCondicional -> this.indicativoCondicional = content;
+            case SubjuntivoPresento -> this.subjuntivoPresento = content;
+            case SubjuntivoImperfecto -> this.subjuntivoImperfecto = content;
+            case SubjuntivoFuturo -> this.subjuntivoFuturo = content;
+        }
     }
 
     public VerbBasic getBasic() {
@@ -49,12 +74,12 @@ public class Verb {
         this.pronominal = pronominal;
     }
 
-    public ArrayList<String> getIndicativoPresente() {
-        return indicativoPresente;
+    public ArrayList<String> getIndicativoPresento() {
+        return indicativoPresento;
     }
 
-    public void setIndicativoPresente(ArrayList<String> indicativoPresente) {
-        this.indicativoPresente = indicativoPresente;
+    public void setIndicativoPresento(ArrayList<String> indicativoPresente) {
+        this.indicativoPresento = indicativoPresente;
     }
 
     public ArrayList<String> getIndicativoImperfecto() {
@@ -89,12 +114,12 @@ public class Verb {
         this.indicativoCondicional = indicativoCondicional;
     }
 
-    public ArrayList<String> getSubjuntivoPresente() {
-        return subjuntivoPresente;
+    public ArrayList<String> getSubjuntivoPresento() {
+        return subjuntivoPresento;
     }
 
-    public void setSubjuntivoPresente(ArrayList<String> subjuntivoPresente) {
-        this.subjuntivoPresente = subjuntivoPresente;
+    public void setSubjuntivoPresento(ArrayList<String> subjuntivoPresente) {
+        this.subjuntivoPresento = subjuntivoPresente;
     }
 
     public ArrayList<String> getSubjuntivoImperfecto() {

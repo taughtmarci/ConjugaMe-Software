@@ -4,10 +4,10 @@ public enum Pronoun {
     Yo ("Yo"),
     Tu ("T\u00FA"),
     Vos ("Vos"),
-    Usted ("Usted"),
+    Usted ("Ella/\u00E9l"),
     Nosotros ("Nosotros"),
     Vosotros ("Vosotros"),
-    Ustedes ("Ustedes");
+    Ustedes ("Ellas/ellos");
 
     private final String name;
     private Pronoun(String s) {

@@ -1,22 +1,23 @@
 package model;
 
 public enum Form {
-    Gerundio ("Gerundio"),
-    Participio ("Participio"),
+    ParticipioPresente("Participio Presente"),
+    ParticipioPasado("Participio Pasado"),
     IndicativoPresento ("Indicativo Presento"),
     IndicativoPreterito ("Indicativo Pret\u00E9rito"),
     IndicativoImperfecto ("Indicativo Imperfecto"),
     IndicativoCondicional ("Indicativo Condicional"),
     IndicativoFuturo ("Indicativo Futuro"),
+    ImperativoAffirmativo ("Imperativo Affirmativo"),
+    ImperativoNegativo ("Imperativo Negativo"),
     SubjuntivoPresento ("Subjuntivo Presento"),
     SubjuntivoImperfecto ("Subjuntivo Imperfecto"),
-    SubjuntivoFuturo ("Subjuntivo Futuro"),
-    ImperativoAffirmativo ("Imperativo Affirmativo"),
-    ImperativoNegativo ("Imperativo Negativo");
+    SubjuntivoFuturo ("Subjuntivo Futuro");
 
     private final String name;
-    private Form(String s) {
-        name = s;
+
+    private Form(String n) {
+        this.name = n;
     }
     public boolean equalsName(String otherName) {
         return name.equals(otherName);
@@ -29,4 +30,5 @@ public enum Form {
         for (Form f : Form.values()) if (f.name.equalsIgnoreCase(name)) return f;
         return null;
     }
+
 }
