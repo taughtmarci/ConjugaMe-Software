@@ -179,6 +179,7 @@ public class StartQuiz extends JPanel {
                 this.updateUI();
             }
         });
+        main.getRootPane().setDefaultButton(newQuizButton);
     }
 
 }

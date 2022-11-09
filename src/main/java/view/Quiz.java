@@ -1,14 +1,17 @@
 package view;
 
 import controller.VerbCollection;
-import model.Form;
 import model.Pronoun;
 import controller.QuizComponents;
 import model.Verb;
 import net.miginfocom.swing.MigLayout;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Quiz extends JPanel {
@@ -21,10 +24,17 @@ public class Quiz extends JPanel {
     private JLabel currentFormLabel;
     private JButton sendResultsButton;
 
-    private JLabel gerundioLabel;
-    private JTextField gerundioInput;
-    private JLabel participioLabel;
-    private JTextField participioInput;
+    private JLabel presentoLabel;
+    private JTextField presentoInput;
+    private JLabel pasadoLabel;
+    private JTextField pasadoInput;
+    private int inputNumber;
+
+    ArrayList<JLabel> label = new ArrayList<>();
+    ArrayList<JTextField> input = new ArrayList<>();
+
+    private BufferedImage checkImg = null;
+    private BufferedImage crossImg = null;
 
     public Quiz(VerbCollection collection) {
         this.collection = collection;
@@ -35,6 +45,9 @@ public class Quiz extends JPanel {
         this.sendResultsButton = new JButton("K\u00FCld\u00E9s");
 
         setLayout(new MigLayout("al center center"));
+        inputNumber = components.getSelectedPronouns().size();
+        if (components.isParticipioPresentoSelected()) inputNumber++;
+        if (components.isParticipioPasadoSelected()) inputNumber++;
         initComponents();
         setVisible(true);
 
@@ -55,6 +68,14 @@ public class Quiz extends JPanel {
     }
 
     private void initComponents() {
+        // images
+        try {
+            checkImg = ImageIO.read(new File("check.png"));
+            crossImg = ImageIO.read(new File("cross.png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         // end quiz button
         JButton endQuizButton = new JButton("Kv\u00EDz befejez\u00E9se");
         add(endQuizButton, "span, align right");
@@ -66,28 +87,37 @@ public class Quiz extends JPanel {
         currentVerbLabel.setFont(new Font("Verdana", Font.BOLD, 24));
         currentFormLabel.setFont(new Font("Verdana", Font.BOLD, 12));
 
-        // gerundio, participio labels & textfield
+        // presento, pasado labels & textfield
         if (components.isParticipioPresentoSelected()) {
-            gerundioLabel = new JLabel("Participio presento");
-            gerundioInput = new JTextField(20);
+            presentoLabel = new JLabel("Participio presento");
+            presentoInput = new JTextField(20);
         }
 
         if (components.isParticipioPasadoSelected()) {
-            participioLabel = new JLabel("Participio pasado");
-            participioInput = new JTextField(20);
+            pasadoLabel = new JLabel("Participio pasado");
+            pasadoInput = new JTextField(20);
         }
+
+        // check / cross label
+        ArrayList<JLabel> markLabel = new ArrayList<>();
+        for (int i = 0; i < inputNumber; i++)
+            markLabel.add(new JLabel());
 
         // adding elements to the panel
         add(currentVerbLabel, "span, align center");
 
         if (components.isParticipioPresentoSelected()) {
-            add(gerundioLabel, "align right");
-            add(gerundioInput, "wrap");
+            add(presentoLabel, "align right");
+            add(presentoInput);
+            add(markLabel.get(markLabel.size() - 1), "wrap");
         }
 
         if (components.isParticipioPasadoSelected()) {
-            add(participioLabel, "align right");
-            add(participioInput, "wrap");
+            add(pasadoLabel, "align right");
+            add(pasadoInput);
+            if (components.isParticipioPresentoSelected())
+                add(markLabel.get(markLabel.size() - 2), "wrap");
+            else add(markLabel.get(markLabel.size() - 1), "wrap");
         }
 
         // other labels
@@ -105,16 +135,31 @@ public class Quiz extends JPanel {
 
             for (int i = 0; i < label.size(); i++) {
                 add(label.get(i), "align right");
-                add(input.get(i), "wrap");
+                add(input.get(i));
+                add(markLabel.get(i), "wrap");
             }
         }
 
         // send results button
         add(sendResultsButton, "span, align right");
         sendResultsButton.addActionListener(e -> {
+            if (components.isParticipioPresentoSelected()) {
+                int tempSize = markLabel.size() - 1;
+                if (presentoInput.getText().equals(currentVerb.getBasic().getPresento())) {
+                    markLabel.get(tempSize).setIcon(new ImageIcon(checkImg));
+                } else markLabel.get(tempSize).setIcon(new ImageIcon(crossImg));
+            }
+            if (components.isParticipioPasadoSelected()) {
+                int tempSize = markLabel.size() - 1;
+                if (components.isParticipioPresentoSelected()) tempSize--;
+                if (pasadoInput.getText().equals(currentVerb.getBasic().getPasado())) {
+                    markLabel.get(tempSize).setIcon(new ImageIcon(checkImg));
+                } else markLabel.get(tempSize).setIcon(new ImageIcon(crossImg));
+            }
+
             iteration++;
-            System.out.println(iteration);
             nextRound();
         });
+        collection.getMain().getRootPane().setDefaultButton(sendResultsButton);
     }
 }
