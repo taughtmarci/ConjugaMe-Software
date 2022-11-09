@@ -27,13 +27,15 @@ public class Verb {
     }
 
     public void printVerb() {
-        System.out.println(getBasic().getInfitivo() + ":\n" +
-                "Participio presento: " + getBasic().getPresente() +
-                "Participio pasado: " + getBasic().getPasado());
+        System.out.println(getBasic().getInfinitivo() + ":\n" +
+                "Participio presento: " + (getBasic().getPresento() != null ? getBasic().getPresento() : "-") + "\n" +
+                "Participio pasado: " + (getBasic().getPasado() != null ? getBasic().getPasado() : "-") + "\n");
 
-        // TODO normálisan pls xd
-        for (String presento : this.indicativoPresento) {
-            System.out.println(presento);
+        // TODO make it work normal
+        if (this.indicativoPresento != null) {
+            for (String presento : this.indicativoPresento) {
+                System.out.println(presento);
+            }
         }
     }
 

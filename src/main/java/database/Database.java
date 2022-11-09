@@ -1,10 +1,12 @@
 package database;
 
+import controller.QuizComponents;
 import model.*;
 import view.MainWindow;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Map;
 
 abstract class Database {
     public boolean onlineFlag;
@@ -14,9 +16,6 @@ abstract class Database {
     protected String location;
     protected Connection connection;
     public boolean connected = false;
-
-    protected static String query;
-    protected ResultSet resultSet;
 
     private final String mainTable = "Verbo";
 
@@ -44,6 +43,71 @@ abstract class Database {
         }
     }
 
+    public ArrayList<Verb> processQuery(String query, QuizComponents components) {
+        ArrayList<Verb> result = new ArrayList<>();
+        if (connected) {
+            try (Statement statement = connection.createStatement()) {
+                ResultSet resultSet = statement.executeQuery(query);
+
+                while (resultSet.next()) {
+                    VerbBasic tempBasic = new VerbBasic(resultSet.getString("Verbo.Infinitivo"));
+                    if (components.isParticipioPresentoSelected()) tempBasic.setPresento(resultSet.getString("Presento"));
+                    if (components.isParticipioPasadoSelected()) tempBasic.setPasado(resultSet.getString("Pasado"));
+
+                    Verb temp = new Verb(tempBasic);
+                    ArrayList<String> tempContent = new ArrayList<>();
+                    for (Form f : components.getSelectedForms()) {
+                        int index = resultSet.findColumn("ID " + f.toString()) + 2;
+                        for (int i = 0; i < 7; i++) tempContent.add(resultSet.getString(index + i));
+                        temp.setForm(f, tempContent);
+                    }
+
+                    result.add(temp);
+                }
+            } catch (SQLException e) {
+                MainWindow.dialog.showDialog("Adatbázis lekérdezési hiba", "Sikertelen lekérdezés a"
+                        + (onlineFlag ? "z online " : " ") + " adatbázisból.\n" + e.toString(), DialogType.ERROR);
+                connected = false;
+            }
+        }
+        return result;
+    }
+
+    public String buildQuery(QuizComponents components) {
+        StringBuilder queryBuilder = new StringBuilder();
+
+        // select part
+        queryBuilder.append("SELECT Verbo.Infinitivo, ");
+        if (components.isParticipioPresentoSelected())
+            queryBuilder.append("Verbo.Presento, ");
+        if (components.isParticipioPasadoSelected())
+            queryBuilder.append("Verbo.Pasado, ");
+        for (Form f : components.getSelectedForms())
+            queryBuilder.append("`").append(f.toString()).append("`.*, ");
+        queryBuilder.append("''\n");
+
+        // from part
+        queryBuilder.append("FROM ");
+        if (!components.onlyParticipio()) {
+            for (int i = 0; i < components.getSelectedForms().size(); i++)
+                queryBuilder.append("(");
+
+            queryBuilder.append("Verbo ");
+            for (Form f : components.getSelectedForms()) {
+                queryBuilder.append("INNER JOIN `").append(f.toString()).append("` on Verbo.ID = ");
+                queryBuilder.append("`").append(f.toString()).append("`.VerbID)\n");
+            }
+        }
+        else queryBuilder.append("Verbo\n");
+        //remaining parts
+        queryBuilder.append("ORDER BY rand()\nlimit ").append(components.getNumberOfVerbs()).append(";");
+
+        // debug
+        System.out.println(queryBuilder.toString());
+        return queryBuilder.toString();
+    }
+
+    /*
     public ArrayList<VerbBasic> essentialQuery(boolean gerundioFlag, boolean participioFlag, int limit, boolean randomFlag)  {
         ArrayList<VerbBasic> result = new ArrayList<>();
         if (connected) {
@@ -68,7 +132,8 @@ abstract class Database {
         }
         return result;
     }
-
+*/
+    /*
     public ArrayList<Verb> complexQuery(boolean gerundioFlag, boolean participioFlag,
                                         ArrayList<Form> forms, int limit, boolean randomFlag)  {
         ArrayList<Verb> result = new ArrayList<>();
@@ -117,5 +182,5 @@ abstract class Database {
         }
         return result;
     }
-
+     */
 }

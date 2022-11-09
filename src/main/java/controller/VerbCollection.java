@@ -1,10 +1,11 @@
 package controller;
 
-import model.Form;
 import model.Verb;
 import model.VerbBasic;
 import view.MainWindow;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class VerbCollection {
@@ -15,36 +16,8 @@ public class VerbCollection {
     public VerbCollection(MainWindow main, QuizComponents components) {
         this.main = main;
         this.components = components;
-        loadVerbs();
-    }
-
-    public void loadVerbs() {
-        // TODO CSINÁLD MEG NORMÁLISAN A PARTICIPIOKAT
-        if (components.hasOtherThanParticipio()) {
-            verbs = loadComplexVerbs();
-            for (Verb verb : verbs) {
-                verb.printVerb();
-            }
-        }
-        else {
-            verbs = loadEssentials();
-        }
-    }
-
-    private ArrayList<Verb> loadEssentials() {
-        ArrayList<VerbBasic> verbBasicHolder = main.online.essentialQuery(components.hasGerundio(),
-                components.hasPasado(), components.getNumberOfVerbs(), true);
-
-        ArrayList<Verb> verbHolder = new ArrayList<>();
-        for (VerbBasic verbBasic : verbBasicHolder)
-            verbHolder.add(new Verb(verbBasic));
-
-        return verbHolder;
-    }
-
-    private ArrayList<Verb> loadComplexVerbs() {
-        return main.online.complexQuery(components.hasGerundio(), components.hasPasado(),
-                components.getSelectedFormsWithoutParticipio(), components.getNumberOfVerbs(), true);
+        verbs = main.online.processQuery(main.online.buildQuery(components), components);
+        printVerbList();
     }
 
     public MainWindow getMain() {
@@ -61,5 +34,10 @@ public class VerbCollection {
 
     public ArrayList<Verb> getVerbList() {
         return verbs;
+    }
+
+    public void printVerbList() {
+        for (Verb v : verbs)
+            v.printVerb();
     }
 }

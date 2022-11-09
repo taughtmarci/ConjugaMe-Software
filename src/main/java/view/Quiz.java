@@ -44,18 +44,12 @@ public class Quiz extends JPanel {
 
     private void nextRound() {
         currentVerb = collection.getVerb(iteration);
-        currentVerbLabel.setText(currentVerb.getBasic().getInfitivo());
+        currentVerbLabel.setText(currentVerb.getBasic().getInfinitivo());
 
-        // TODO: ezt okosabban
-        currentFormLabel.setText(components.getSelectedForms().get((int)
-                (Math.random() * components.getSelectedForms().size())).toString());
-
-        if (components.hasOtherThanParticipio()) {
-            while (currentFormLabel.getText() == "Participio Presente" ||
-                    currentFormLabel.getText() == "Participio Pasado") {
-                currentFormLabel.setText(components.getSelectedForms().get((int)
-                        (Math.random() * components.getSelectedForms().size())).toString());
-            }
+        if (!components.onlyParticipio()) {
+            // TODO: ezt okosabban
+            currentFormLabel.setText(components.getSelectedForms().get((int)
+                    (Math.random() * components.getSelectedForms().size())).toString());
         }
         this.updateUI();
     }
@@ -73,31 +67,31 @@ public class Quiz extends JPanel {
         currentFormLabel.setFont(new Font("Verdana", Font.BOLD, 12));
 
         // gerundio, participio labels & textfield
-        if (components.hasGerundio()) {
-            gerundioLabel = new JLabel("Gerundio");
+        if (components.isParticipioPresentoSelected()) {
+            gerundioLabel = new JLabel("Participio presento");
             gerundioInput = new JTextField(20);
         }
 
-        if (components.hasPasado()) {
-            participioLabel = new JLabel("Participio");
+        if (components.isParticipioPasadoSelected()) {
+            participioLabel = new JLabel("Participio pasado");
             participioInput = new JTextField(20);
         }
 
         // adding elements to the panel
         add(currentVerbLabel, "span, align center");
 
-        if (components.getSelectedForms().contains(Form.ParticipioPresente)) {
+        if (components.isParticipioPresentoSelected()) {
             add(gerundioLabel, "align right");
             add(gerundioInput, "wrap");
         }
 
-        if (components.getSelectedForms().contains(Form.ParticipioPasado)) {
+        if (components.isParticipioPasadoSelected()) {
             add(participioLabel, "align right");
             add(participioInput, "wrap");
         }
 
         // other labels
-        if (components.hasOtherThanParticipio()) {
+        if (!components.onlyParticipio()) {
             ArrayList<JLabel> label = new ArrayList<JLabel>() {{
                 for (Pronoun p : components.getSelectedPronouns()) add(new JLabel(p.toString()));
             }};
@@ -116,7 +110,7 @@ public class Quiz extends JPanel {
         }
 
         // send results button
-        add(sendResultsButton, "span 2, align center");
+        add(sendResultsButton, "span, align right");
         sendResultsButton.addActionListener(e -> {
             iteration++;
             System.out.println(iteration);

@@ -1,56 +1,35 @@
 package model;
 
 public class VerbBasic {
-    public String infitivo;
-    public String presente;
+    public String infinitivo;
+    public String presento;
     public String pasado;
 
-    boolean hasPresente;
-    boolean hasPasado;
 
-    public VerbBasic(String infitivo) {
-        this.infitivo = infitivo;
-        this.hasPresente = false;
-        this.hasPasado = false;
+    public VerbBasic(String infinitivo) {
+        this.infinitivo = infinitivo;
     }
 
-    public VerbBasic(String infinitivo, String second, boolean hasPresente) {
-        this.infitivo = infinitivo;
-        this.hasPresente = hasPresente;
-
-        if (hasPresente) {
-            this.presente = second;
-            this.hasPasado = false;
-        }
-        else {
-            this.pasado = second;
-            this.hasPasado = true;
-        }
-    }
-
-    public VerbBasic(String infitivo, String presente, String pasado) {
-        this.infitivo = infitivo;
-        this.presente = presente;
+    public VerbBasic(String infinitivo, String presento, String pasado) {
+        this.infinitivo = infinitivo;
+        this.presento = presento;
         this.pasado = pasado;
-
-        this.hasPresente = true;
-        this.hasPasado = true;
     }
 
-    public String getInfitivo() {
-        return infitivo;
+    public String getInfinitivo() {
+        return infinitivo;
     }
 
-    public void setInfitivo(String infitivo) {
-        this.infitivo = infitivo;
+    public void setInfinitivo(String infinitivo) {
+        this.infinitivo = infinitivo;
     }
 
-    public String getPresente() {
-        return presente;
+    public String getPresento() {
+        return presento;
     }
 
-    public void setPresente(String presente) {
-        this.presente = presente;
+    public void setPresento(String presento) {
+        this.presento = presento;
     }
 
     public String getPasado() {

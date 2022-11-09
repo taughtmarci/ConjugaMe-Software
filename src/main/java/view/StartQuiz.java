@@ -82,11 +82,15 @@ public class StartQuiz extends JPanel {
 
         // verb forms checkboxes
         formCheckBoxes = new ArrayList<>();
+
+        formCheckBoxes.add(new JCheckBox("Participio Presento"));
+        formCheckBoxes.add(new JCheckBox("Participio Pasado"));
+        participioPanel.add(formCheckBoxes.get(0), "wrap");
+        participioPanel.add(formCheckBoxes.get(1), "wrap");
+
         for (Form f : Form.values()) {
             formCheckBoxes.add(new JCheckBox(f.toString()));
-            if (f == Form.ParticipioPresente || f == Form.ParticipioPasado)
-                participioPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
-            else if (f == Form.ImperativoAffirmativo || f == Form.ImperativoNegativo)
+            if (f == Form.ImperativoAffirmativo || f == Form.ImperativoNegativo)
                 imperativoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
             else if (f == Form.SubjuntivoPresento || f == Form.SubjuntivoImperfecto || f == Form.SubjuntivoFuturo)
                 subjuntivoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
@@ -143,21 +147,26 @@ public class StartQuiz extends JPanel {
                 if (cb.isSelected()) components.addPronoun(cb.getText());
 
             for (JCheckBox cb : formCheckBoxes) {
-                if (cb.isSelected()) components.addForm(cb.getText());
+                if (cb.isSelected()) {
+                    switch (cb.getText()) {
+                        case "Participio Presento" -> components.setParticipioPresentoSelected(true);
+                        case "Participio Pasado" -> components.setParticipioPasadoSelected(true);
+                        default -> components.addForm(cb.getText());
+                    }
+                }
             }
 
             // TODO: kétoldalú érme
             components.setNumberOfVerbs((int) verbNumberChooser.getValue());
 
             // error handling
-            components.printStats();
+            // components.printStats();
             String error = "";
-            if (components.hasOtherThanParticipio()) {
-                if (components.getSelectedPronouns().size() < 1)
-                    error = "Legal\u00E1bb egy n\u00E9vm\u00E1s kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
-            }
-            else if (components.getSelectedForms().size() < 1)
+            if (!components.isParticipioPasadoSelected() && !components.isParticipioPresentoSelected()
+                    && components.getSelectedForms().size() == 0)
                 error = "Legal\u00E1bb egy igeid\u0151/m\u00F3d kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
+            else if (components.getSelectedForms().size() > 0 && components.getSelectedPronouns().size() == 0)
+                error = "Legal\u00E1bb egy n\u00E9vm\u00E1s kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
 
             if (error.equals("")) {
                 VerbCollection vc = new VerbCollection(main, components);

@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Verb class refactor&#10;Create VerbBasic class&#10;Error handling in StartQuiz">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="broo... :(">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/QuizComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/QuizComponents.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbCollection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Form.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Form.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Pronoun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Pronoun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Verb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Verb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/VerbBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/VerbBasic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Quiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/StartQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/StartQuiz.java" afterDir="false" />
     </list>
@@ -157,7 +155,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667302367329</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="broo... :(">
+      <created>1667511872975</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667511872975</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,7 +184,8 @@
     <MESSAGE value="Add dialog handler class&#10;Database classes refactor with abstraction" />
     <MESSAGE value="Create Verb and VerbCollection classes&#10;Create singleQueryStatement db function&#10;View Verbs on Quiz panel" />
     <MESSAGE value="Verb class refactor&#10;Create VerbBasic class&#10;Error handling in StartQuiz" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verb class refactor&#10;Create VerbBasic class&#10;Error handling in StartQuiz" />
+    <MESSAGE value="broo... :(" />
+    <option name="LAST_COMMIT_MESSAGE" value="broo... :(" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ConjugaMe$ConjugaMe.ic" NAME="ConjugaMe Coverage Results" MODIFIED="1667316358022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

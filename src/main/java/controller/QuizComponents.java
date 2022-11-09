@@ -12,35 +12,34 @@ public class QuizComponents {
     private ArrayList<Pronoun> selectedPronouns = new ArrayList<Pronoun>();
     private ArrayList<Form> selectedForms = new ArrayList<Form>();
 
+    private boolean participioPresentoSelected;
+    private boolean participioPasadoSelected;
+
     public void printStats() {
         System.out.println("Pronouns: " + getSelectedPronouns().toString() + "\n"
                 + "Forms: " + getSelectedForms().toString() + "\n"
                 + "Number of verbs: " + getNumberOfVerbs() + "\n"
-                + "Has other than participio: " + hasOtherThanParticipio());
+                + "Has other than participio: " + onlyParticipio());
     }
 
-    public boolean hasGerundio() {
-        return getSelectedForms().contains(Form.ParticipioPresente);
+    public boolean onlyParticipio() {
+        return (participioPresentoSelected || participioPasadoSelected) && selectedForms.size() == 0;
     }
 
-    public boolean hasPasado() {
-        return getSelectedForms().contains(Form.ParticipioPasado);
+    public boolean isParticipioPresentoSelected() {
+        return participioPresentoSelected;
     }
 
-    public boolean hasOtherThanParticipio() {
-        boolean result = false;
+    public void setParticipioPresentoSelected(boolean participioPresentoSelected) {
+        this.participioPresentoSelected = participioPresentoSelected;
+    }
 
-        if (this.hasGerundio() && this.hasPasado()) {
-            if (this.getSelectedForms().size() > 2) result = true;
-        }
-        else if (this.hasGerundio() || this.hasPasado()) {
-            if (this.getSelectedForms().size() > 1) result = true;
-        }
-        else if (this.getSelectedForms().size() > 0) {
-            result = true;
-        }
+    public boolean isParticipioPasadoSelected() {
+        return participioPasadoSelected;
+    }
 
-        return result;
+    public void setParticipioPasadoSelected(boolean participioPasadoSelected) {
+        this.participioPasadoSelected = participioPasadoSelected;
     }
 
     public ArrayList<Pronoun> getSelectedPronouns() {
@@ -48,13 +47,6 @@ public class QuizComponents {
     }
 
     public ArrayList<Form> getSelectedForms() {
-        return selectedForms;
-    }
-
-    public ArrayList<Form> getSelectedFormsWithoutParticipio() {
-        ArrayList<Form> selectedForms = this.getSelectedForms();
-        if (this.hasGerundio()) selectedForms.remove(Form.ParticipioPresente);
-        if (this.hasPasado()) selectedForms.remove(Form.ParticipioPasado);
         return selectedForms;
     }
 
