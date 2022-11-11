@@ -50,7 +50,7 @@ abstract class Database {
                 ResultSet resultSet = statement.executeQuery(query);
 
                 while (resultSet.next()) {
-                    VerbBasic tempBasic = new VerbBasic(resultSet.getString("Verbo.Infinitivo"));
+                    VerbBasic tempBasic = new VerbBasic(resultSet.getString("Infinitivo"));
                     if (components.isParticipioPresentoSelected()) tempBasic.setPresento(resultSet.getString("Presento"));
                     if (components.isParticipioPasadoSelected()) tempBasic.setPasado(resultSet.getString("Pasado"));
 
@@ -65,8 +65,8 @@ abstract class Database {
                     result.add(temp);
                 }
             } catch (SQLException e) {
-                MainWindow.dialog.showDialog("Adatbázis lekérdezési hiba", "Sikertelen lekérdezés a"
-                        + (onlineFlag ? "z online " : " ") + " adatbázisból.\n" + e.toString(), DialogType.ERROR);
+                MainWindow.dialog.showDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s a"
+                        + (onlineFlag ? "z online " : " ") + " adatb\u00E1zisb\u00F3l.\n" + e.toString(), DialogType.ERROR);
                 connected = false;
             }
         }
@@ -100,7 +100,7 @@ abstract class Database {
         }
         else queryBuilder.append("Verbo\n");
         //remaining parts
-        queryBuilder.append("ORDER BY rand()\nlimit ").append(components.getNumberOfVerbs()).append(";");
+        queryBuilder.append("ORDER BY random()\nlimit ").append(components.getNumberOfVerbs()).append(";");
 
         // debug
         System.out.println(queryBuilder.toString());

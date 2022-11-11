@@ -16,7 +16,7 @@ public class VerbCollection {
     public VerbCollection(MainWindow main, QuizComponents components) {
         this.main = main;
         this.components = components;
-        verbs = main.online.processQuery(main.online.buildQuery(components), components);
+        verbs = main.local.processQuery(main.local.buildQuery(components), components);
         printVerbList();
     }
 
