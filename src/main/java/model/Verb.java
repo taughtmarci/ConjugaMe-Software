@@ -19,7 +19,7 @@ public class Verb {
     public ArrayList<String> subjuntivoImperfecto;
     public ArrayList<String> subjuntivoFuturo;
 
-    public ArrayList<String> imperativoAfirmativo;
+    public ArrayList<String> imperativoAffirmativo;
     public ArrayList<String> imperativoNegativo;
 
     public Verb(VerbBasic basic) {
@@ -49,6 +49,44 @@ public class Verb {
             case SubjuntivoPresento -> this.subjuntivoPresento = content;
             case SubjuntivoImperfecto -> this.subjuntivoImperfecto = content;
             case SubjuntivoFuturo -> this.subjuntivoFuturo = content;
+            case ImperativoAffirmativo -> this.imperativoAffirmativo = content;
+            case ImperativoNegativo -> this.imperativoNegativo = content;
+        }
+    }
+
+    public ArrayList<String> getForm(String form) {
+        switch (form) {
+            case "Indicativo Presento" -> {
+                return this.indicativoPresento;
+            }
+            case "Indicativo Pretérito" -> {
+                return this.indicativoPreterito;
+            }
+            case "Indicativo Imperfecto" -> {
+                return this.indicativoImperfecto;
+            }
+            case "Indicativo Futuro" -> {
+                return this.indicativoFuturo;
+            }
+            case "Indicativo Condicional" -> {
+                return this.indicativoCondicional;
+            }
+            case "Subjuntivo Presento" -> {
+                return this.subjuntivoPresento;
+            }
+            case "Subjuntivo Imperfecto" -> {
+                return this.subjuntivoImperfecto;
+            }
+            case "Subjuntivo Futuro" -> {
+                return this.subjuntivoFuturo;
+            }
+            case "Imperativo Affirmativo" -> {
+                return this.imperativoAffirmativo;
+            }
+            case "Imperativo Negativo" -> {
+                return this.imperativoNegativo;
+            }
+            default -> {return null;}
         }
     }
 
@@ -140,12 +178,12 @@ public class Verb {
         this.subjuntivoFuturo = subjuntivoFuturo;
     }
 
-    public ArrayList<String> getImperativoAfirmativo() {
-        return imperativoAfirmativo;
+    public ArrayList<String> getImperativoAffirmativo() {
+        return imperativoAffirmativo;
     }
 
-    public void setImperativoAfirmativo(ArrayList<String> imperativoAfirmativo) {
-        this.imperativoAfirmativo = imperativoAfirmativo;
+    public void setImperativoAffirmativo(ArrayList<String> imperativoAffirmativo) {
+        this.imperativoAffirmativo = imperativoAffirmativo;
     }
 
     public ArrayList<String> getImperativoNegativo() {

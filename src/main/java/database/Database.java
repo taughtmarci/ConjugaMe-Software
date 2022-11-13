@@ -18,6 +18,7 @@ abstract class Database {
     public boolean connected = false;
 
     private final String mainTable = "Verbo";
+    protected String randomKeyword;
 
     public Database(boolean onlineFlag, String location) {
         this.onlineFlag = onlineFlag;
@@ -37,8 +38,8 @@ abstract class Database {
             else connection = DriverManager.getConnection(location);
             connected = true;
         } catch (SQLException e) {
-            MainWindow.dialog.showDialog("Kapcsolódási hiba", "Kapcsolódás a" + (onlineFlag ? "z online " : " ")
-                    + "hálozathoz, sikertelen.\n" + e.toString(), DialogType.WARNING);
+            MainWindow.dialog.showDialog("Kapcsol\u00F3d\u00E1si hiba", "Kapcsol\u00F3d\u00E1s a" + (onlineFlag ? "z online " : " ")
+                    + "h\u00E1lozathoz, sikertelen.\n" + e.toString(), DialogType.WARNING);
             connected = false;
         }
     }
@@ -58,7 +59,10 @@ abstract class Database {
                     ArrayList<String> tempContent = new ArrayList<>();
                     for (Form f : components.getSelectedForms()) {
                         int index = resultSet.findColumn("ID " + f.toString()) + 2;
-                        for (int i = 0; i < 7; i++) tempContent.add(resultSet.getString(index + i));
+                        for (int i = 0; i < 7; i++) {
+                            if (components.getPronounIndices().contains(index + i))
+                                tempContent.add(resultSet.getString(index + i));
+                        }
                         temp.setForm(f, tempContent);
                     }
 
@@ -100,87 +104,10 @@ abstract class Database {
         }
         else queryBuilder.append("Verbo\n");
         //remaining parts
-        queryBuilder.append("ORDER BY random()\nlimit ").append(components.getNumberOfVerbs()).append(";");
+        queryBuilder.append("ORDER BY ").append(randomKeyword).append("\nlimit ").append(components.getNumberOfVerbs()).append(";");
 
         // debug
         System.out.println(queryBuilder.toString());
         return queryBuilder.toString();
     }
-
-    /*
-    public ArrayList<VerbBasic> essentialQuery(boolean gerundioFlag, boolean participioFlag, int limit, boolean randomFlag)  {
-        ArrayList<VerbBasic> result = new ArrayList<>();
-        if (connected) {
-            try (Statement statement = connection.createStatement()) {
-                query = "select Infinitivo, " + (gerundioFlag ? "Gerundio, " : "'', ") + (participioFlag ? "Participio " : "'' ");
-                query += " from " + mainTable + (randomFlag ? " order by rand()" : "")
-                        + (limit > 0 ? " limit " + limit : "") + ";";
-
-                resultSet = statement.executeQuery(query);
-
-                while (resultSet.next()) {
-                    VerbBasic temp = new VerbBasic(resultSet.getString("Infinitivo"));
-                    if (gerundioFlag) temp.setPresente(resultSet.getString("Gerundio"));
-                    if (participioFlag) temp.setPasado(resultSet.getString("Participio"));
-                    result.add(temp);
-                }
-            } catch (SQLException e) {
-                MainWindow.dialog.showDialog("Adatbázis lekérdezési hiba", "Sikertelen lekérdezés a"
-                        + (onlineFlag ? "z online " : " ") + " adatbázisból.\n" + e.toString(), DialogType.ERROR);
-                connected = false;
-            }
-        }
-        return result;
-    }
-*/
-    /*
-    public ArrayList<Verb> complexQuery(boolean gerundioFlag, boolean participioFlag,
-                                        ArrayList<Form> forms, int limit, boolean randomFlag)  {
-        ArrayList<Verb> result = new ArrayList<>();
-        if (connected) {
-            try (Statement statement = connection.createStatement()) {
-                StringBuilder queryBuilder = new StringBuilder();
-                queryBuilder.append("select Verbo.Infinitivo, ").append(gerundioFlag ? "Verbo.Gerundio, " : "'', ")
-                        .append(participioFlag ? "Verbo.Participio, " : "',' ");
-
-                StringBuilder formBuilder = new StringBuilder();
-                for (Form f : forms) {
-                    queryBuilder.append("`").append(f.toString()).append("`").append(".*, ");
-                    formBuilder.append(" inner join `").append(f.toString()).append("`").append(" on Verbo.ID = ")
-                            .append("`").append(f.toString()).append("`").append(".VerbID)");
-                }
-                queryBuilder.append("'' from ");
-                for (int i = 0; i < forms.size(); i++) queryBuilder.append("(");
-                queryBuilder.append(mainTable).append(formBuilder);
-                queryBuilder.append(randomFlag ? " order by rand()" : "").append(limit > 0 ? " limit " + limit : "");
-
-                query = queryBuilder.toString() + ";";
-                System.out.println(query);
-                resultSet = statement.executeQuery(query);
-
-                while (resultSet.next()) {
-                    VerbBasic tempBasic = new VerbBasic(resultSet.getString("Verbo.Infinitivo"));
-                    if (gerundioFlag) tempBasic.setPresente(resultSet.getString("Gerundio"));
-                    if (participioFlag) tempBasic.setPasado(resultSet.getString("Participio"));
-
-                    Verb temp = new Verb(tempBasic);
-                    ArrayList<String> tempContent = new ArrayList<>();
-                    for (Form f : forms) {
-                        int index = resultSet.findColumn("ID " + f.toString()) + 2;
-                        System.out.println(index);
-                        for (int i = 0; i < 7; i++) tempContent.add(resultSet.getString(index + i));
-                        temp.setForm(f, tempContent);
-                    }
-
-                    result.add(temp);
-                }
-            } catch (SQLException e) {
-                MainWindow.dialog.showDialog("Adatbázis lekérdezési hiba", "Sikertelen lekérdezés a"
-                        + (onlineFlag ? "z online " : " ") + " adatbázisból.\n" + e.toString(), DialogType.ERROR);
-                connected = false;
-            }
-        }
-        return result;
-    }
-     */
 }

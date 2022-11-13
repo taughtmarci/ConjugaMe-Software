@@ -30,18 +30,19 @@ public class Quiz extends JPanel {
     private JTextField pasadoInput;
     private int inputNumber;
 
-    ArrayList<JLabel> label = new ArrayList<>();
-    ArrayList<JTextField> input = new ArrayList<>();
+    ArrayList<JLabel> labels = new ArrayList<>();
+    ArrayList<JTextField> inputs = new ArrayList<>();
 
     private BufferedImage checkImg = null;
     private BufferedImage crossImg = null;
+    private BufferedImage blankImg = null;
 
     public Quiz(VerbCollection collection) {
         this.collection = collection;
         this.components = collection.getComponents();
 
-        this.currentVerbLabel = new JLabel();
-        this.currentFormLabel = new JLabel();
+        this.currentVerbLabel = new JLabel("");
+        this.currentFormLabel = new JLabel("");
         this.sendResultsButton = new JButton("K\u00FCld\u00E9s");
 
         setLayout(new MigLayout("al center center"));
@@ -72,6 +73,7 @@ public class Quiz extends JPanel {
         try {
             checkImg = ImageIO.read(new File("check.png"));
             crossImg = ImageIO.read(new File("cross.png"));
+            blankImg = ImageIO.read(new File("blank.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -100,8 +102,10 @@ public class Quiz extends JPanel {
 
         // check / cross label
         ArrayList<JLabel> markLabel = new ArrayList<>();
-        for (int i = 0; i < inputNumber; i++)
+        for (int i = 0; i < inputNumber; i++) {
             markLabel.add(new JLabel());
+            markLabel.get(i).setIcon(new ImageIcon(blankImg));
+        }
 
         // adding elements to the panel
         add(currentVerbLabel, "span, align center");
@@ -122,20 +126,20 @@ public class Quiz extends JPanel {
 
         // other labels
         if (!components.onlyParticipio()) {
-            ArrayList<JLabel> label = new ArrayList<JLabel>() {{
+            labels = new ArrayList<JLabel>() {{
                 for (Pronoun p : components.getSelectedPronouns()) add(new JLabel(p.toString()));
             }};
 
             // other textfields
-            ArrayList<JTextField> input = new ArrayList<JTextField>() {{
-                for (int i = 0; i < label.size(); i++) add(new JTextField(20));
+            inputs = new ArrayList<JTextField>() {{
+                for (int i = 0; i < labels.size(); i++) add(new JTextField(20));
             }};
 
             add(currentFormLabel, "span, align center");
 
-            for (int i = 0; i < label.size(); i++) {
-                add(label.get(i), "align right");
-                add(input.get(i));
+            for (int i = 0; i < labels.size(); i++) {
+                add(labels.get(i), "align right");
+                add(inputs.get(i));
                 add(markLabel.get(i), "wrap");
             }
         }
@@ -145,16 +149,24 @@ public class Quiz extends JPanel {
         sendResultsButton.addActionListener(e -> {
             if (components.isParticipioPresentoSelected()) {
                 int tempSize = markLabel.size() - 1;
-                if (presentoInput.getText().equals(currentVerb.getBasic().getPresento())) {
+                if (presentoInput.getText().trim().equals(currentVerb.getBasic().getPresento())) {
                     markLabel.get(tempSize).setIcon(new ImageIcon(checkImg));
                 } else markLabel.get(tempSize).setIcon(new ImageIcon(crossImg));
             }
             if (components.isParticipioPasadoSelected()) {
                 int tempSize = markLabel.size() - 1;
                 if (components.isParticipioPresentoSelected()) tempSize--;
-                if (pasadoInput.getText().equals(currentVerb.getBasic().getPasado())) {
+                if (pasadoInput.getText().trim().equals(currentVerb.getBasic().getPasado())) {
                     markLabel.get(tempSize).setIcon(new ImageIcon(checkImg));
                 } else markLabel.get(tempSize).setIcon(new ImageIcon(crossImg));
+            }
+
+            for (int i = 0; i < inputs.size(); i++) {
+                String currentInput = inputs.get(i).getText().trim();
+                String currentSolution = currentVerb.getForm(currentFormLabel.getText()).get(i);
+                if (currentInput.equals(currentSolution)) {
+                    markLabel.get(i).setIcon(new ImageIcon(checkImg));
+                } else markLabel.get(i).setIcon(new ImageIcon(crossImg));
             }
 
             iteration++;

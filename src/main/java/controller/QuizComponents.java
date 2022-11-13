@@ -22,6 +22,22 @@ public class QuizComponents {
                 + "Has other than participio: " + onlyParticipio());
     }
 
+    public ArrayList<Integer> getPronounIndices() {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (Pronoun p : selectedPronouns) {
+            switch (p) {
+                case Yo -> result.add(0);
+                case Tu -> result.add(1);
+                case Vos -> result.add(2);
+                case Usted -> result.add(3);
+                case Nosotros -> result.add(4);
+                case Vosotros -> result.add(5);
+                case Ustedes -> result.add(6);
+            }
+        }
+        return result;
+    }
+
     public boolean onlyParticipio() {
         return (participioPresentoSelected || participioPasadoSelected) && selectedForms.size() == 0;
     }
