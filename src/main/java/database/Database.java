@@ -6,6 +6,7 @@ import view.MainWindow;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 abstract class Database {
@@ -56,21 +57,23 @@ abstract class Database {
                     if (components.isParticipioPasadoSelected()) tempBasic.setPasado(resultSet.getString("Pasado"));
 
                     Verb temp = new Verb(tempBasic);
-                    ArrayList<String> tempContent = new ArrayList<>();
+                    HashMap<Pronoun, String> tempContent = new HashMap<>();
+                    ResultSetMetaData metaData = resultSet.getMetaData();
+
                     for (Form f : components.getSelectedForms()) {
                         int index = resultSet.findColumn("ID " + f.toString()) + 2;
                         for (int i = 0; i < 7; i++) {
-                            if (components.getPronounIndices().contains(index + i))
-                                tempContent.add(resultSet.getString(index + i));
+                            Pronoun columnName = Pronoun.fromString(metaData.getColumnName(index + i));
+                            tempContent.put(columnName, resultSet.getString(index + i));
                         }
-                        temp.setForm(f, tempContent);
+                        temp.appendVerbForm(f, tempContent);
                     }
 
                     result.add(temp);
                 }
             } catch (SQLException e) {
-                MainWindow.dialog.showDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s a"
-                        + (onlineFlag ? "z online " : " ") + " adatb\u00E1zisb\u00F3l.\n" + e.toString(), DialogType.ERROR);
+                MainWindow.dialog.showDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
+                        + (onlineFlag ? " online " : " ") + "adatb\u00E1zisb\u00F3l.\n" + e.toString(), DialogType.ERROR);
                 connected = false;
             }
         }

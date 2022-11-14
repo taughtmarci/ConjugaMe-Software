@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 // TODO: MAKE NAMING CONVENTION
 public class Verb {
@@ -9,21 +10,11 @@ public class Verb {
 
     public Verb pronominal;
 
-    public ArrayList<String> indicativoPresento;
-    public ArrayList<String> indicativoPreterito;
-    public ArrayList<String> indicativoImperfecto;
-    public ArrayList<String> indicativoFuturo;
-    public ArrayList<String> indicativoCondicional;
-
-    public ArrayList<String> subjuntivoPresento;
-    public ArrayList<String> subjuntivoImperfecto;
-    public ArrayList<String> subjuntivoFuturo;
-
-    public ArrayList<String> imperativoAffirmativo;
-    public ArrayList<String> imperativoNegativo;
+    public HashMap<Form, HashMap<Pronoun, String>> forms;
 
     public Verb(VerbBasic basic) {
         this.basic = basic;
+        this.forms = new HashMap<>();
     }
 
     public void printVerb() {
@@ -31,63 +22,21 @@ public class Verb {
                 "Participio presento: " + (getBasic().getPresento() != null ? getBasic().getPresento() : "-") + "\n" +
                 "Participio pasado: " + (getBasic().getPasado() != null ? getBasic().getPasado() : "-") + "\n");
 
-        // TODO make it work normal
-        if (this.indicativoPresento != null) {
-            for (String presento : this.indicativoPresento) {
-                System.out.println(presento);
-            }
+        for (Form f : forms.keySet()) {
+            System.out.println(f.toString() + ":");
+            for (Pronoun p : forms.get(f).keySet())
+                System.out.println(p.toString() + ": " + forms.get(f).get(p));
         }
     }
 
-    public void setForm(Form form, ArrayList<String> content) {
-        switch (form) {
-            case IndicativoPresento -> this.indicativoPresento = content;
-            case IndicativoPreterito -> this.indicativoPreterito = content;
-            case IndicativoImperfecto -> this.indicativoImperfecto = content;
-            case IndicativoFuturo -> this.indicativoFuturo = content;
-            case IndicativoCondicional -> this.indicativoCondicional = content;
-            case SubjuntivoPresento -> this.subjuntivoPresento = content;
-            case SubjuntivoImperfecto -> this.subjuntivoImperfecto = content;
-            case SubjuntivoFuturo -> this.subjuntivoFuturo = content;
-            case ImperativoAffirmativo -> this.imperativoAffirmativo = content;
-            case ImperativoNegativo -> this.imperativoNegativo = content;
-        }
+    public void appendVerbForm(Form form, HashMap<Pronoun, String> content) {
+        forms.put(form, content);
     }
 
-    public ArrayList<String> getForm(String form) {
-        switch (form) {
-            case "Indicativo Presento" -> {
-                return this.indicativoPresento;
-            }
-            case "Indicativo Pretérito" -> {
-                return this.indicativoPreterito;
-            }
-            case "Indicativo Imperfecto" -> {
-                return this.indicativoImperfecto;
-            }
-            case "Indicativo Futuro" -> {
-                return this.indicativoFuturo;
-            }
-            case "Indicativo Condicional" -> {
-                return this.indicativoCondicional;
-            }
-            case "Subjuntivo Presento" -> {
-                return this.subjuntivoPresento;
-            }
-            case "Subjuntivo Imperfecto" -> {
-                return this.subjuntivoImperfecto;
-            }
-            case "Subjuntivo Futuro" -> {
-                return this.subjuntivoFuturo;
-            }
-            case "Imperativo Affirmativo" -> {
-                return this.imperativoAffirmativo;
-            }
-            case "Imperativo Negativo" -> {
-                return this.imperativoNegativo;
-            }
-            default -> {return null;}
-        }
+    public String getSolution(Form form, Pronoun pronoun) {
+        if (forms.containsKey(form))
+            return forms.get(form).get(pronoun);
+        else return null;
     }
 
     public VerbBasic getBasic() {
@@ -114,83 +63,4 @@ public class Verb {
         this.pronominal = pronominal;
     }
 
-    public ArrayList<String> getIndicativoPresento() {
-        return indicativoPresento;
-    }
-
-    public void setIndicativoPresento(ArrayList<String> indicativoPresente) {
-        this.indicativoPresento = indicativoPresente;
-    }
-
-    public ArrayList<String> getIndicativoImperfecto() {
-        return indicativoImperfecto;
-    }
-
-    public void setIndicativoImperfecto(ArrayList<String> indicativoImperfecto) {
-        this.indicativoImperfecto = indicativoImperfecto;
-    }
-
-    public ArrayList<String> getIndicativoPreterito() {
-        return indicativoPreterito;
-    }
-
-    public void setIndicativoPreterito(ArrayList<String> indicativoPreterito) {
-        this.indicativoPreterito = indicativoPreterito;
-    }
-
-    public ArrayList<String> getIndicativoFuturo() {
-        return indicativoFuturo;
-    }
-
-    public void setIndicativoFuturo(ArrayList<String> indicativoFuturo) {
-        this.indicativoFuturo = indicativoFuturo;
-    }
-
-    public ArrayList<String> getIndicativoCondicional() {
-        return indicativoCondicional;
-    }
-
-    public void setIndicativoCondicional(ArrayList<String> indicativoCondicional) {
-        this.indicativoCondicional = indicativoCondicional;
-    }
-
-    public ArrayList<String> getSubjuntivoPresento() {
-        return subjuntivoPresento;
-    }
-
-    public void setSubjuntivoPresento(ArrayList<String> subjuntivoPresente) {
-        this.subjuntivoPresento = subjuntivoPresente;
-    }
-
-    public ArrayList<String> getSubjuntivoImperfecto() {
-        return subjuntivoImperfecto;
-    }
-
-    public void setSubjuntivoImperfecto(ArrayList<String> subjuntivoImperfecto) {
-        this.subjuntivoImperfecto = subjuntivoImperfecto;
-    }
-
-    public ArrayList<String> getSubjuntivoFuturo() {
-        return subjuntivoFuturo;
-    }
-
-    public void setSubjuntivoFuturo(ArrayList<String> subjuntivoFuturo) {
-        this.subjuntivoFuturo = subjuntivoFuturo;
-    }
-
-    public ArrayList<String> getImperativoAffirmativo() {
-        return imperativoAffirmativo;
-    }
-
-    public void setImperativoAffirmativo(ArrayList<String> imperativoAffirmativo) {
-        this.imperativoAffirmativo = imperativoAffirmativo;
-    }
-
-    public ArrayList<String> getImperativoNegativo() {
-        return imperativoNegativo;
-    }
-
-    public void setImperativoNegativo(ArrayList<String> imperativoNegativo) {
-        this.imperativoNegativo = imperativoNegativo;
-    }
 }

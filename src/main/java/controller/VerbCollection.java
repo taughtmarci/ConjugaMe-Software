@@ -9,14 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class VerbCollection {
-    private MainWindow main;
-    private QuizComponents components;
-    private ArrayList<Verb> verbs = new ArrayList<>();
+    private final MainWindow main;
+    private final QuizComponents components;
+    private final ArrayList<Verb> verbs;
 
     public VerbCollection(MainWindow main, QuizComponents components) {
         this.main = main;
         this.components = components;
-        verbs = main.online.processQuery(main.online.buildQuery(components), components);
+        verbs = main.local.processQuery(main.local.buildQuery(components), components);
     }
 
     public MainWindow getMain() {
