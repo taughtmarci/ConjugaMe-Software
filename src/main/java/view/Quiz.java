@@ -47,29 +47,17 @@ public class Quiz extends JPanel {
         currentVerb = collection.getVerb(iteration);
         currentVerbLabel.setText(currentVerb.getBasic().getInfinitivo());
 
-
         if (!components.onlyParticipio()) {
             // TODO: ezt okosabban
             currentForm = components.getSelectedForms().get((int)
                     (Math.random() * components.getSelectedForms().size()));
             currentFormLabel.setText(currentForm.toString());
         }
+
         this.updateUI();
     }
 
-    private void initComponents() {
-        // end quiz button
-        JButton endQuizButton = new JButton("Kv\u00EDz befejez\u00E9se");
-        add(endQuizButton, "span, align right");
-        endQuizButton.addActionListener(e -> {
-            collection.getMain().switchPanels(this, new StartQuiz(collection.getMain()));
-        });
-
-        // set up current verb and form labels
-        currentVerbLabel.setFont(new Font("Verdana", Font.BOLD, 24));
-        currentFormLabel.setFont(new Font("Verdana", Font.BOLD, 12));
-        add(currentVerbLabel, "span, align center");
-
+    private void addSections() {
         if (components.isParticipioPresentoSelected()) {
             sections.add(new Section("Participio presento", currentVerb.getBasic().getPresento(), resultImage));
             add(sections.get(sections.size() - 1), "wrap");
@@ -89,6 +77,21 @@ public class Quiz extends JPanel {
                 add(sections.get(sections.size() - 1), "wrap");
             }
         }
+
+    }
+
+    private void initComponents() {
+        // end quiz button
+        JButton endQuizButton = new JButton("Kv\u00EDz befejez\u00E9se");
+        add(endQuizButton, "span, align right");
+        endQuizButton.addActionListener(e -> {
+            collection.getMain().switchPanels(this, new StartQuiz(collection.getMain()));
+        });
+
+        // set up current verb and form labels
+        currentVerbLabel.setFont(new Font("Verdana", Font.BOLD, 24));
+        currentFormLabel.setFont(new Font("Verdana", Font.BOLD, 12));
+        add(currentVerbLabel, "span, align center");
 
         // send results button
         add(sendResultsButton, "span, align right");

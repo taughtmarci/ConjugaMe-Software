@@ -15,7 +15,7 @@ public class ResultImage {
         try {
             checkImg = ImageIO.read(new File("check.png"));
             crossImg = ImageIO.read(new File("cross.png"));
-            blankImg = ImageIO.read(new File("cross.png"));
+            blankImg = ImageIO.read(new File("blank.png"));
         } catch (IOException e) {
             // TODO dialog
             throw new RuntimeException(e);
@@ -36,7 +36,7 @@ public class ResultImage {
 
     public JLabel checkImage() {
         JLabel temp = new JLabel();
-        temp.setIcon(new ImageIcon(checkImg));
+        temp.setIcon(new ImageIcon(blankImg));
         return temp;
     }
 }
