@@ -22,21 +22,15 @@ public class ResultImage {
         }
     }
 
-    public JLabel blankImage() {
-        JLabel temp = new JLabel();
-        temp.setIcon(new ImageIcon(blankImg));
-        return temp;
+    public ImageIcon blankImage() {
+        return new ImageIcon(blankImg);
     }
 
-    public JLabel crossImage() {
-        JLabel temp = new JLabel();
-        temp.setIcon(new ImageIcon(crossImg));
-        return temp;
+    public ImageIcon crossImage() {
+        return new ImageIcon(crossImg);
     }
 
-    public JLabel checkImage() {
-        JLabel temp = new JLabel();
-        temp.setIcon(new ImageIcon(blankImg));
-        return temp;
+    public ImageIcon checkImage() {
+        return new ImageIcon(checkImg);
     }
 }
