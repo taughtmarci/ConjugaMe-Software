@@ -1,6 +1,5 @@
 package view;
 
-import model.DialogOption;
 import model.DialogType;
 
 import javax.swing.*;
@@ -8,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Dialog extends JFrame implements ActionListener {
+
+    private Runnable noCommand;
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -21,7 +22,7 @@ public class Dialog extends JFrame implements ActionListener {
         dialog.setVisible(true);
     }
 
-    public void showDialog(String title, String message, DialogType type) {
+    public int setPaneType(DialogType type) {
         int paneType = switch (type) {
             case PLAIN -> -1;
             case ERROR -> 0;
@@ -29,14 +30,20 @@ public class Dialog extends JFrame implements ActionListener {
             case WARNING -> 2;
             case QUESTION -> 3;
         };
-        /*
-        int paneOption = switch (option) {
-            case DEFAULT -> -1;
-            case YESNO -> 0;
-            case YESNOCANCEL -> 1;
-            case OKCANCEL -> 2;
-        };
-        */
+        return paneType;
+    }
+
+    public void showDialog(String title, String message, DialogType type) {
+        int paneType = setPaneType(type);
         JOptionPane.showMessageDialog(this, message, title, paneType);
+    }
+
+    public void showYesNoDialog(String title, String message, DialogType type, Runnable yesCommand, Runnable noCommand) {
+        int paneType = setPaneType(type);
+        int result = JOptionPane.showConfirmDialog(this, message, title, JOptionPane.YES_NO_OPTION, paneType);
+
+        if (result == JOptionPane.YES_OPTION)
+            yesCommand.run();
+        else noCommand.run();
     }
 }

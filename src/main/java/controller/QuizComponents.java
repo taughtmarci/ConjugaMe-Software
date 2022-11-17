@@ -58,6 +58,18 @@ public class QuizComponents {
         this.participioPasadoSelected = participioPasadoSelected;
     }
 
+    public int getTotalNumberOfVerbs() {
+        int result = 0;
+
+        if (!onlyParticipio())
+            result = numberOfVerbs * getSelectedPronouns().size();
+
+        if (participioPresentoSelected) result += numberOfVerbs;
+        if (participioPasadoSelected) result += numberOfVerbs;
+
+        return result;
+    }
+
     public ArrayList<Pronoun> getSelectedPronouns() {
         return selectedPronouns;
     }

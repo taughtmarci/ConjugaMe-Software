@@ -1,5 +1,7 @@
 package database;
 
+import controller.DialogCommands.DoNothingCommand;
+import controller.DialogCommands.ExitCommand;
 import controller.QuizComponents;
 import model.*;
 import view.MainWindow;
@@ -7,7 +9,6 @@ import view.MainWindow;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 abstract class Database {
     public boolean onlineFlag;
@@ -35,12 +36,15 @@ abstract class Database {
 
     public void connect() {
         try {
+            // TODO polírozni :D
             if (onlineFlag) connection = DriverManager.getConnection(location, username, password);
             else connection = DriverManager.getConnection(location);
             connected = true;
         } catch (SQLException e) {
-            MainWindow.dialog.showDialog("Kapcsol\u00F3d\u00E1si hiba", "Kapcsol\u00F3d\u00E1s a" + (onlineFlag ? "z online " : " ")
-                    + "h\u00E1lozathoz, sikertelen.\n" + e.toString(), DialogType.WARNING);
+            String errorMessage = "Kapcsol\u00F3d\u00E1s az online adatb\u00E1zishoz sikertelen.\n" +
+                    "Szeretn\u00E9d elind\u00EDtani az alkalmaz\u00E1st offline m\u00F3dban?\n";
+            String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
+            MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.WARNING, new DoNothingCommand(), new ExitCommand());
             connected = false;
         }
     }

@@ -1,12 +1,10 @@
 package view;
 
+import controller.QuizResults;
 import controller.Section;
 import controller.VerbCollection;
-import model.Form;
-import model.Pronoun;
+import model.*;
 import controller.QuizComponents;
-import model.ResultImage;
-import model.Verb;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -36,6 +34,10 @@ public class Quiz extends JPanel {
     private Section presentoSection;
     private Section pasadoSection;
 
+    private boolean pressedNext;
+    private ArrayList<Verb> incorrectVerbs;
+    private EndQuiz current;
+
     public Quiz(VerbCollection collection) {
         this.collection = collection;
         this.components = collection.getComponents();
@@ -43,6 +45,9 @@ public class Quiz extends JPanel {
         this.currentVerbLabel = new JLabel("");
         this.currentFormLabel = new JLabel("");
         this.sendResultsButton = new JButton("K\u00FCld\u00E9s");
+
+        this.pressedNext = false;
+        this.incorrectVerbs = new ArrayList<>();
 
         setLayout(new MigLayout("al center center"));
         initComponents();
@@ -55,30 +60,36 @@ public class Quiz extends JPanel {
     }
 
     private void nextRound() {
-        currentVerb = collection.getVerb(iteration);
-        currentVerbLabel.setText(currentVerb.getBasic().getInfinitivo());
-
-        if (!components.onlyParticipio()) {
-            // TODO: ezt okosabban
-            currentForm = components.getSelectedForms().get((int)
-                    (Math.random() * components.getSelectedForms().size()));
-            currentFormLabel.setText(currentForm.toString());
-
-            int i = 0;
-            for (Pronoun p : components.getSelectedPronouns()) {
-                String currentSolution = currentVerb.getSolution(currentForm, p);
-                sections.get(i).setSolution(currentSolution);
-                i++;
-            }
+        if (iteration == components.getNumberOfVerbs() - 1) {
+            finishQuiz();
         }
+        else {
+            currentVerb = collection.getVerb(iteration);
+            currentVerbLabel.setText(currentVerb.getBasic().getInfinitivo());
 
-        if (components.isParticipioPresentoSelected())
-            presentoSection.setSolution(currentVerb.getBasic().getPresento());
+            if (!components.onlyParticipio()) {
+                // TODO: ezt okosabban
+                currentForm = components.getSelectedForms().get((int)
+                        (Math.random() * components.getSelectedForms().size()));
+                currentFormLabel.setText(currentForm.toString());
 
-        if (components.isParticipioPasadoSelected())
-            pasadoSection.setSolution(currentVerb.getBasic().getPasado());
+                int i = 0;
+                for (Pronoun p : components.getSelectedPronouns()) {
+                    String currentSolution = currentVerb.getSolution(currentForm, p);
+                    sections.get(i).setSolution(currentSolution);
+                    i++;
+                }
+            }
 
-        this.updateUI();
+            if (components.isParticipioPresentoSelected())
+                presentoSection.setSolution(currentVerb.getBasic().getPresento());
+
+            if (components.isParticipioPasadoSelected())
+                pasadoSection.setSolution(currentVerb.getBasic().getPasado());
+
+            this.updateUI();
+            collection.getMain().getRootPane().setDefaultButton(sendResultsButton);
+        }
     }
 
     private void initComponents() {
@@ -90,7 +101,8 @@ public class Quiz extends JPanel {
         JButton endQuizButton = new JButton("Kv\u00EDz befejez\u00E9se");
         add(endQuizButton, "align right, wrap");
         endQuizButton.addActionListener(e -> {
-            collection.getMain().switchPanels(this, new StartQuiz(collection.getMain()));
+            finishQuiz();
+            //collection.getMain().switchPanels(this, new StartQuiz(collection.getMain()));
         });
 
         // set up current verb and form labels
@@ -100,12 +112,12 @@ public class Quiz extends JPanel {
 
         // add sections panel
         if (components.isParticipioPresentoSelected()) {
-            presentoSection = new Section("Participio presento", resultImage);
+            presentoSection = new Section("Participio presento", resultImage, true);
             add(presentoSection, "span, align center");
         }
 
         if (components.isParticipioPasadoSelected()) {
-            pasadoSection = new Section("Participio pasado", resultImage);
+            pasadoSection = new Section("Participio pasado", resultImage, !components.isParticipioPresentoSelected());
             add(pasadoSection, "span, align center");
         }
 
@@ -118,40 +130,70 @@ public class Quiz extends JPanel {
             }
         }
 
+        if (!components.isParticipioPresentoSelected() && !components.isParticipioPasadoSelected())
+            sections.get(0).setFirst(true);
+
         // out of label
         outOfLabel = new JLabel(Integer.toString(iteration + 1) + "/" + components.getNumberOfVerbs());
         add(outOfLabel, "align left");
-
-        // send results button
         add(sendResultsButton, "align right");
+
         sendResultsButton.addActionListener(e -> {
-            if (components.isParticipioPresentoSelected())
-                if (presentoSection.evaluate()) score++;
-
-            if (components.isParticipioPasadoSelected())
-                if (pasadoSection.evaluate()) score++;
-
-            for (Section section : sections)
-                if (section.evaluate()) score++;
-
-            // update score and iteration
-            iteration++;
-            scoreLabel.setText((Integer.toString(score) + " pont"));
-            outOfLabel.setText(Integer.toString(iteration + 1) + "/" + components.getNumberOfVerbs());
-
-            this.updateUI();
-            Timer cooldown = new Timer(2000, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    refreshAllSections();
-                    nextRound();
+            if (sendResultsButton.getText().equals("K\u00FCld\u00E9s")) {
+                // evaluate sections
+                if (components.isParticipioPresentoSelected()) {
+                    if (presentoSection.evaluate()) score++;
+                    else incorrectVerbs.add(currentVerb);
                 }
-            });
 
-            cooldown.setRepeats(false);
-            cooldown.start();
+                if (components.isParticipioPasadoSelected()) {
+                    if (pasadoSection.evaluate()) score++;
+                    else incorrectVerbs.add(currentVerb);
+                }
+
+                for (Section section : sections) {
+                    if (section.evaluate()) score++;
+                    else incorrectVerbs.add(currentVerb);
+                }
+
+                // update score and iteration
+                iteration++;
+                scoreLabel.setText((Integer.toString(score) + " pont"));
+                outOfLabel.setText(Integer.toString(iteration + 1) + "/" + components.getNumberOfVerbs());
+
+                // button swap
+                sendResultsButton.setText("Tov\u00E1bb");
+
+                Timer cooldown = new Timer(2000, new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent event) {
+                        if (!pressedNext) {
+                            refreshAllSections();
+                            nextRound();
+                            System.out.println("debug");
+                        }
+                        pressedNext = false;
+                        // button swap
+                        sendResultsButton.setText("K\u00FCld\u00E9s");
+                    }
+                });
+
+                cooldown.setRepeats(false);
+                cooldown.start();
+            }
+            else if (sendResultsButton.getText().equals("Tov\u00E1bb")) {
+                pressedNext = true;
+                refreshAllSections();
+                nextRound();
+
+                // button swap
+                sendResultsButton.setText("K\u00FCld\u00E9s");
+            }
+
+            //this.revalidate();
+            //this.repaint();
+            this.updateUI();
         });
-        collection.getMain().getRootPane().setDefaultButton(sendResultsButton);
     }
 
     private void refreshAllSections() {
@@ -163,5 +205,12 @@ public class Quiz extends JPanel {
 
         for (Section section: sections)
             section.refreshSection();
+    }
+
+    private void finishQuiz() {
+        QuizResults results = new QuizResults(score, incorrectVerbs);
+        setVisible(false);
+        current = new EndQuiz(results, collection);
+        collection.getMain().switchPanels(this, current);
     }
 }

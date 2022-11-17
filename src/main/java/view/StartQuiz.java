@@ -33,7 +33,7 @@ public class StartQuiz extends JPanel {
         pronounPanel.setLayout(new MigLayout("al center center"));
 
         // pronouns title
-        JLabel pronounTitle = new JLabel("Szem\u00E9ly(ek)");
+        JLabel pronounTitle = new JLabel("Szem\u00E9ly(ek):");
         pronounPanel.add(pronounTitle, "align center, wrap");
 
         // pronouns checkboxes

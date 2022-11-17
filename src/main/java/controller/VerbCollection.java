@@ -7,6 +7,7 @@ import view.MainWindow;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class VerbCollection {
     private final MainWindow main;
@@ -16,7 +17,7 @@ public class VerbCollection {
     public VerbCollection(MainWindow main, QuizComponents components) {
         this.main = main;
         this.components = components;
-        verbs = main.local.processQuery(main.local.buildQuery(components), components);
+        verbs = main.online.processQuery(main.online.buildQuery(components), components);
     }
 
     public MainWindow getMain() {
@@ -38,5 +39,9 @@ public class VerbCollection {
     public void printVerbList() {
         for (Verb v : verbs)
             v.printVerb();
+    }
+
+    public void randomizeVerbList() {
+        Collections.shuffle(verbs);
     }
 }

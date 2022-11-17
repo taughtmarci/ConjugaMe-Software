@@ -16,10 +16,30 @@ public class Section extends JPanel {
     public JTextField input;
     public JLabel checkLabel = new JLabel();
 
+    private boolean isFirst = false;
+
+    public boolean isFirst() {
+        return isFirst;
+    }
+
+    public void setFirst(boolean first) {
+        isFirst = first;
+    }
+
     public Section(String pronoun, ResultImage resultImage) {
         this.pronoun = pronoun;
         this.solution = "undefined";
         this.resultImage = resultImage;
+
+        setLayout(new MigLayout("al center center"));
+        initComponents();
+    }
+
+    public Section(String pronoun, ResultImage resultImage, boolean isFirst) {
+        this.pronoun = pronoun;
+        this.solution = "undefined";
+        this.resultImage = resultImage;
+        this.isFirst = isFirst;
 
         setLayout(new MigLayout("al center center"));
         initComponents();
@@ -44,6 +64,8 @@ public class Section extends JPanel {
         add(pronounLabel, "width 100!, align right");
         add(input, "align center");
         add(checkLabel, "align left, wrap");
+
+        if (isFirst) input.requestFocusInWindow();
     }
 
     public String getSolution() {
@@ -72,5 +94,7 @@ public class Section extends JPanel {
         checkLabel.setIcon(resultImage.blankImage());
         input.setBorder(new LineBorder(Color.GRAY));
         input.setText("");
+
+        if (isFirst) input.requestFocusInWindow();
     }
 }
