@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Dashboard extends JPanel {
-    private final int BUTTON_NUMBER = 3;
+    private final int BUTTON_NUMBER = 6;
     private final MainWindow main;
 
     private JLabel logo;
@@ -24,10 +24,6 @@ public class Dashboard extends JPanel {
     private ArrayList<ImageIcon> normalIcons;
     private ArrayList<ImageIcon> hoverIcons;
     private ArrayList<ImageIcon> clickedIcons;
-
-    private JLabel newNormalQuizLabel;
-
-    private JLabel newTimedQuizLabel;
 
     public Dashboard(MainWindow main) {
         this.main = main;
@@ -53,9 +49,16 @@ public class Dashboard extends JPanel {
         initComponents();
     }
 
+    private void initComponents() {
+        logo = new JLabel();
+        logo.setIcon(logoIcon);
+        add(logo, "align center, span");
+
+        initButtonPanel();
+    }
+
     private ImageIcon loadIcon(int buttonNumber, IconVariation variation) throws IOException {
         String pathTemp = buttonNumber + variation.toString();
-        System.out.println("img/buttons/button_0" + pathTemp + ".png");
         BufferedImage imageTemp = ImageIO.read(new File("img/buttons/button_0" + pathTemp + ".png"));
         return new ImageIcon(imageTemp);
     }
@@ -83,18 +86,19 @@ public class Dashboard extends JPanel {
                 public void mouseExited(MouseEvent e) {
                     buttons.get(il).setIcon(normalIcons.get(il));
                 }
+
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    switch (il) {
+                        case 5 -> System.exit(0);
+                        default -> System.out.println("it works!");
+                    }
+                }
             });
-            buttonPanel.add(buttons.get(i));
+            String constraint = ((i + 1) % 3 == 0) ? "wrap" : "";
+            buttonPanel.add(buttons.get(i), constraint);
         }
 
         this.add(buttonPanel);
-    }
-
-    private void initComponents() {
-        logo = new JLabel();
-        logo.setIcon(logoIcon);
-        add(logo, "span");
-
-        initButtonPanel();
     }
 }
