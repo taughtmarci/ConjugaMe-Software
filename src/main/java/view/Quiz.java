@@ -134,7 +134,7 @@ public class Quiz extends JPanel {
             sections.get(0).setFirst(true);
 
         // out of label
-        outOfLabel = new JLabel(Integer.toString(iteration + 1) + "/" + components.getNumberOfVerbs());
+        outOfLabel = new JLabel(iteration + 1 + "/" + components.getNumberOfVerbs());
         add(outOfLabel, "align left");
         add(sendResultsButton, "align right");
 
@@ -164,18 +164,15 @@ public class Quiz extends JPanel {
                 // button swap
                 sendResultsButton.setText("Tov\u00E1bb");
 
-                Timer cooldown = new Timer(2000, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent event) {
-                        if (!pressedNext) {
-                            refreshAllSections();
-                            nextRound();
-                            System.out.println("debug");
-                        }
-                        pressedNext = false;
-                        // button swap
-                        sendResultsButton.setText("K\u00FCld\u00E9s");
+                Timer cooldown = new Timer(3000, event -> {
+                    if (!pressedNext) {
+                        refreshAllSections();
+                        nextRound();
+                        System.out.println("debug");
                     }
+                    pressedNext = false;
+                    // button swap
+                    sendResultsButton.setText("K\u00FCld\u00E9s");
                 });
 
                 cooldown.setRepeats(false);
@@ -190,8 +187,6 @@ public class Quiz extends JPanel {
                 sendResultsButton.setText("K\u00FCld\u00E9s");
             }
 
-            //this.revalidate();
-            //this.repaint();
             this.updateUI();
         });
     }

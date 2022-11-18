@@ -4,6 +4,8 @@ import controller.DialogCommands.DoNothingCommand;
 import controller.DialogCommands.ExitCommand;
 import controller.QuizComponents;
 import model.*;
+import org.sqlite.SQLiteConfig;
+import org.sqlite.SQLiteOpenMode;
 import view.MainWindow;
 
 import java.sql.*;
@@ -35,18 +37,30 @@ abstract class Database {
     }
 
     public void connect() {
-        try {
-            // TODO polírozni :D
-            if (onlineFlag) connection = DriverManager.getConnection(location, username, password);
-            else connection = DriverManager.getConnection(location);
-            connected = true;
-        } catch (SQLException e) {
-            String errorMessage = "Kapcsol\u00F3d\u00E1s az online adatb\u00E1zishoz sikertelen.\n" +
-                    "Szeretn\u00E9d elind\u00EDtani az alkalmaz\u00E1st offline m\u00F3dban?\n";
-            String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
-            MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.WARNING, new DoNothingCommand(), new ExitCommand());
-            connected = false;
+        if (onlineFlag) {
+            try {
+                connection = DriverManager.getConnection(location, username, password);
+            } catch (SQLException e) {
+                String errorMessage = "Kapcsol\u00F3d\u00E1s az online adatb\u00E1zishoz sikertelen.\n" +
+                        "Szeretn\u00E9d elind\u00EDtani az alkalmaz\u00E1st offline m\u00F3dban?\n";
+                String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
+                MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.QUESTION, new DoNothingCommand(), new ExitCommand());
+                connected = false;
+            }
+        } else {
+            try{
+                SQLiteConfig config = new SQLiteConfig();
+                config.resetOpenMode(SQLiteOpenMode.CREATE);
+                connection = DriverManager.getConnection(location, config.toProperties());
+            } catch (SQLException e) {
+                String errorMessage = "Kapcsol\u00F3d\u00E1s a lok\u00E1lis adatb\u00E1zishoz sikertelen.\n" +
+                        "K\u00E9rj\u00FCk telep\u00EDtsd \u00FAjra a programot.\n";
+                String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
+                MainWindow.dialog.showDialog(errorTitle, errorMessage, DialogType.ERROR);
+                System.exit(0);
+            }
         }
+        connected = true;
     }
 
     public ArrayList<Verb> processQuery(String query, QuizComponents components) {

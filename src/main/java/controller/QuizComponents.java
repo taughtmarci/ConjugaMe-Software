@@ -1,14 +1,13 @@
 package controller;
 
 import model.Form;
-import model.Group;
 import model.Pronoun;
 
 import java.util.ArrayList;
 
 public class QuizComponents {
     private int numberOfVerbs;
-    private ArrayList<Group> selectedGroups = new ArrayList<Group>();
+    //private ArrayList<Group> selectedGroups = new ArrayList<Group>();
     private ArrayList<Pronoun> selectedPronouns = new ArrayList<Pronoun>();
     private ArrayList<Form> selectedForms = new ArrayList<Form>();
 

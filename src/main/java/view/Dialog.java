@@ -8,8 +8,6 @@ import java.awt.event.ActionListener;
 
 public class Dialog extends JFrame implements ActionListener {
 
-    private Runnable noCommand;
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String action = e.getActionCommand();

@@ -37,8 +37,8 @@ public class MainWindow extends JFrame {
         local = new Local("src/main/resources/local.db");
         online = new Online("conjugame.cxpxjtc5b29j.eu-central-1.rds.amazonaws.com", "3306", "Dictionary");
 
-        JPanel sq = new StartQuiz(this);
-        add(sq);
+        JPanel dashboard = new Dashboard(this);
+        add(dashboard);
     }
 
     public static void main(String[] args) {
