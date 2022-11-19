@@ -55,7 +55,7 @@ public class EndQuiz extends JPanel {
 
         newQuizButton.addActionListener(e -> {
             setVisible(false);
-            current = new StartQuiz(collection.getMain());
+            current = new SetupQuiz(collection.getMain());
             collection.getMain().switchPanels(this, current);
         });
     }

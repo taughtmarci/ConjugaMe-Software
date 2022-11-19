@@ -7,11 +7,12 @@ import controller.QuizComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicSpinnerUI;
 import java.awt.*;
 import java.util.ArrayList;
 
 
-public class StartQuiz extends JPanel {
+public class SetupQuiz extends JPanel {
     private final MainWindow main;
     private Quiz current;
     private QuizComponents components;
@@ -19,8 +20,10 @@ public class StartQuiz extends JPanel {
     private ArrayList<JCheckBox> pronounCheckBoxes;
     private ArrayList<JCheckBox> formCheckBoxes;
     private JSpinner verbNumberChooser;
+    private JSpinner minutesChooser;
+    private JSpinner secondsChooser;
 
-    public StartQuiz(MainWindow main) {
+    public SetupQuiz(MainWindow main) {
         this.main = main;
 
         setLayout(new MigLayout("al center center"));
@@ -111,14 +114,64 @@ public class StartQuiz extends JPanel {
         JPanel lastPanel = new JPanel();
         lastPanel.setLayout(new MigLayout("al center center"));
 
+        // group selector
+
+
         // number of verbs title
         JLabel verbNumberTitle = new JLabel("Ig\u00E9k sz\u00E1ma:");
-        lastPanel.add(verbNumberTitle, "wrap");
+        lastPanel.add(verbNumberTitle, "span");
+
+        JLabel verbNumberSubtitle = new JLabel("(hagyom\u00E1nyos)");
+        verbNumberSubtitle.setFont(new Font("Verdana", Font.ITALIC, 10));
+        verbNumberSubtitle.setForeground(Color.GRAY);
+        lastPanel.add(verbNumberSubtitle, "span");
 
         // number of verbs spinner
         SpinnerNumberModel verbNumberModel = new SpinnerNumberModel(25, 5, 500, 5);
         verbNumberChooser = new JSpinner(verbNumberModel);
-        lastPanel.add(verbNumberChooser, "wrap");
+        lastPanel.add(verbNumberChooser, "span");
+
+        // timing duration title
+        JLabel timingDurationTitle = new JLabel("Id\u0151tartam:");
+        lastPanel.add(timingDurationTitle, "span");
+
+        JLabel timingDurationSubtitle = new JLabel("(id\u0151z\u00EDtett)");
+        timingDurationSubtitle.setFont(new Font("Verdana", Font.ITALIC, 10));
+        timingDurationSubtitle.setForeground(Color.GRAY);
+        lastPanel.add(timingDurationSubtitle, "span");
+
+        // minutes spinner and label
+        SpinnerNumberModel minutesModel = new SpinnerNumberModel(5, 0, 180, 1);
+        minutesChooser = new JSpinner(minutesModel);
+        minutesChooser.setUI(new BasicSpinnerUI() {
+            protected Component createNextButton() {
+                return null;
+            }
+
+            protected Component createPreviousButton() {
+                return null;
+            }
+        });
+        lastPanel.add(minutesChooser);
+        JLabel minutesLabel = new JLabel("p");
+        lastPanel.add(minutesLabel);
+
+        // seconds spinner and label
+        SpinnerNumberModel secondsModel = new SpinnerNumberModel(0, 0, 59, 1);
+        secondsChooser = new JSpinner(secondsModel);
+        secondsChooser.setUI(new BasicSpinnerUI() {
+            protected Component createNextButton() {
+                return null;
+            }
+
+            protected Component createPreviousButton() {
+                return null;
+            }
+        });
+        ((JSpinner.DefaultEditor) secondsChooser.getEditor()).getTextField().setColumns(3);
+        lastPanel.add(secondsChooser);
+        JLabel secondsLabel = new JLabel("mp");
+        lastPanel.add(secondsLabel);
 
         lastPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         return lastPanel;

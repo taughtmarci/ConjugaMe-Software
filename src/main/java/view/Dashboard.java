@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Dashboard extends JPanel {
     private final int BUTTON_NUMBER = 6;
     private final MainWindow main;
+    private JPanel current;
 
     private JLabel logo;
     private final ImageIcon logoIcon;
@@ -71,6 +72,7 @@ public class Dashboard extends JPanel {
             buttons.get(i).setIcon(normalIcons.get(i));
 
             final int il = i;
+            final Dashboard pointer = this;
             buttons.get(i).addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
@@ -90,8 +92,15 @@ public class Dashboard extends JPanel {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     switch (il) {
-                        case 5 -> System.exit(0);
-                        default -> System.out.println("it works!");
+                        case 2:
+                            current = new SetupQuiz(main);
+                            main.switchPanels(pointer, current);
+                            break;
+                        case 5:
+                            System.exit(0);
+                            break;
+                        default:
+                            System.out.println("it works!");
                     }
                 }
             });
