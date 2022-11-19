@@ -21,27 +21,28 @@ public class Dialog extends JFrame implements ActionListener {
     }
 
     public int setPaneType(DialogType type) {
-        int paneType = switch (type) {
+        return switch (type) {
             case PLAIN -> -1;
             case ERROR -> 0;
             case INFORMATION -> 1;
             case WARNING -> 2;
             case QUESTION -> 3;
         };
-        return paneType;
     }
 
     public void showDialog(String title, String message, DialogType type) {
         int paneType = setPaneType(type);
-        JOptionPane.showMessageDialog(this, message, title, paneType);
+        SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, message, title, paneType));
     }
 
     public void showYesNoDialog(String title, String message, DialogType type, Runnable yesCommand, Runnable noCommand) {
         int paneType = setPaneType(type);
-        int result = JOptionPane.showConfirmDialog(this, message, title, JOptionPane.YES_NO_OPTION, paneType);
+        SwingUtilities.invokeLater(() -> {
+            int result = JOptionPane.showConfirmDialog(this, message, title, JOptionPane.YES_NO_OPTION, paneType);
 
-        if (result == JOptionPane.YES_OPTION)
-            yesCommand.run();
-        else noCommand.run();
+            if (result == JOptionPane.YES_OPTION)
+                yesCommand.run();
+            else noCommand.run();
+        });
     }
 }

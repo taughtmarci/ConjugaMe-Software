@@ -46,10 +46,12 @@ public class MainWindow extends JFrame {
     }
 
     public void switchPanels(JPanel prev, JPanel next) {
-        remove(prev);
-        add(next);
-        repaint();
-        revalidate();
+        SwingUtilities.invokeLater(() -> {
+            remove(prev);
+            add(next);
+            repaint();
+            revalidate();
+        });
     }
 
 }

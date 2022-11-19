@@ -1,5 +1,6 @@
 package view;
 
+import controller.GroupSelector;
 import controller.VerbCollection;
 import model.Form;
 import model.Pronoun;
@@ -9,6 +10,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicSpinnerUI;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -27,7 +29,7 @@ public class SetupQuiz extends JPanel {
         this.main = main;
 
         setLayout(new MigLayout("al center center"));
-        initComponents();
+        SwingUtilities.invokeLater(this::initComponents);
         setVisible(true);
     }
 
@@ -110,12 +112,16 @@ public class SetupQuiz extends JPanel {
         return formPanel;
     }
 
+    // TODO ezt az összeömlesztett csurmászt normalizálni
     private JPanel initLastPanel() {
         JPanel lastPanel = new JPanel();
         lastPanel.setLayout(new MigLayout("al center center"));
 
-        // group selector
-
+        // group selector with title
+        JLabel groupTitle = new JLabel("Igecsoport:");
+        lastPanel.add(groupTitle, "span");
+        GroupSelector gs = new GroupSelector();
+        lastPanel.add(gs, "span");
 
         // number of verbs title
         JLabel verbNumberTitle = new JLabel("Ig\u00E9k sz\u00E1ma:");

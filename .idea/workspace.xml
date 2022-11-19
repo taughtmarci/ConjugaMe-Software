@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Default button set,&#10;Solution check beginnings">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Section.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/ResultImage.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Time duration added to setup">
+      <change afterPath="$PROJECT_DIR$/config/groups.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/GroupSelector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Verb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Verb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Quiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/local.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/SetupQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/SetupQuiz.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,18 +75,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/MHO2BP/Desktop/saját projekt/ConjugaMe-Software&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/MHO2BP/Desktop/saját projekt/ConjugaMe-Software",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "File.Encoding"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\MHO2BP\Desktop\saját projekt\ConjugaMe-Software" />
@@ -185,7 +183,56 @@
       <option name="project" value="LOCAL" />
       <updated>1667991816924</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Blank button placeholder">
+      <created>1668519086209</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668519086209</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Blank button placeholder">
+      <created>1668562036320</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1668562036320</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Smooth dialog panels with options start&#10;End quiz panel and switch between panels&#10;More flexible quiz filling experience, bugfixes">
+      <created>1668696502045</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1668696502045</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Main dashboard">
+      <created>1668787843978</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1668787843978</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Main dashboard completed&#10;Need fixes with the pngs">
+      <created>1668797132648</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1668797132648</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Button icon fixes">
+      <created>1668891574223</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1668891574223</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Time duration added to setup">
+      <created>1668894051580</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1668894051580</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -212,7 +259,13 @@
     <MESSAGE value="Verb class refactor&#10;Create VerbBasic class&#10;Error handling in StartQuiz" />
     <MESSAGE value="broo... :(" />
     <MESSAGE value="First functioning database call" />
-    <option name="LAST_COMMIT_MESSAGE" value="First functioning database call" />
+    <MESSAGE value="Blank button placeholder" />
+    <MESSAGE value="Smooth dialog panels with options start&#10;End quiz panel and switch between panels&#10;More flexible quiz filling experience, bugfixes" />
+    <MESSAGE value="Main dashboard" />
+    <MESSAGE value="Main dashboard completed&#10;Need fixes with the pngs" />
+    <MESSAGE value="Button icon fixes" />
+    <MESSAGE value="Time duration added to setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Time duration added to setup" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
