@@ -1,5 +1,6 @@
 package view;
 
+import controller.ConfigReader;
 import controller.GroupSelector;
 import controller.VerbCollection;
 import model.Form;
@@ -10,7 +11,6 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicSpinnerUI;
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -24,6 +24,7 @@ public class SetupQuiz extends JPanel {
     private JSpinner verbNumberChooser;
     private JSpinner minutesChooser;
     private JSpinner secondsChooser;
+    private JCheckBox instantFeedbackCheckBox;
 
     public SetupQuiz(MainWindow main) {
         this.main = main;
@@ -44,11 +45,12 @@ public class SetupQuiz extends JPanel {
         // pronouns checkboxes
         pronounCheckBoxes = new ArrayList<JCheckBox>();
         for (Pronoun p : Pronoun.values()) {
-            boolean defaultFlag = (p.toString() != "Vos") && (p.toString() != "Vosotros");
+            boolean defaultFlag = (!p.toString().equals("Vos")) && (!p.toString().equals("Vosotros"));
             pronounCheckBoxes.add(new JCheckBox(p.toString(), defaultFlag));
             pronounPanel.add(pronounCheckBoxes.get(pronounCheckBoxes.size() - 1), "wrap");
         }
 
+        pronounPanel.setPreferredSize(new Dimension(getWidth(), 280));
         pronounPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         return pronounPanel;
     }
@@ -107,8 +109,9 @@ public class SetupQuiz extends JPanel {
         formPanel.add(indicativoPanel, "align left, cell 0 2");
         formPanel.add(imperativoPanel, "align left, cell 1 1");
         formPanel.add(subjuntivoPanel, "align left, cell 1 2");
-        formPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 
+        formPanel.setPreferredSize(new Dimension(getWidth(), 280));
+        formPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         return formPanel;
     }
 
@@ -118,10 +121,10 @@ public class SetupQuiz extends JPanel {
         lastPanel.setLayout(new MigLayout("al center center"));
 
         // group selector with title
-        JLabel groupTitle = new JLabel("Igecsoport:");
-        lastPanel.add(groupTitle, "span");
+        JLabel groupTitle = new JLabel("Igecsoport(ok):");
+        lastPanel.add(groupTitle, "align center, span");
         GroupSelector gs = new GroupSelector();
-        lastPanel.add(gs, "span");
+        lastPanel.add(gs, "align center, span");
 
         // number of verbs title
         JLabel verbNumberTitle = new JLabel("Ig\u00E9k sz\u00E1ma:");
@@ -136,6 +139,10 @@ public class SetupQuiz extends JPanel {
         SpinnerNumberModel verbNumberModel = new SpinnerNumberModel(25, 5, 500, 5);
         verbNumberChooser = new JSpinner(verbNumberModel);
         lastPanel.add(verbNumberChooser, "span");
+
+        // instant feedback checkbox
+        instantFeedbackCheckBox = new JCheckBox("Hib\u00E1k mutat\u00E1sa", true);
+        lastPanel.add(instantFeedbackCheckBox, "span");
 
         // timing duration title
         JLabel timingDurationTitle = new JLabel("Id\u0151tartam:");
@@ -179,15 +186,17 @@ public class SetupQuiz extends JPanel {
         JLabel secondsLabel = new JLabel("mp");
         lastPanel.add(secondsLabel);
 
+        lastPanel.setPreferredSize(new Dimension(getWidth(), 280));
         lastPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         return lastPanel;
     }
 
     private void initComponents() {
         components = new QuizComponents();
+        ConfigReader cf = new ConfigReader();
 
         // set up error label
-        JLabel errorLabel = new JLabel("");
+        JLabel errorLabel = new JLabel("\n");
         errorLabel.setFont(new Font("Verdana", Font.BOLD, 12));
         errorLabel.setForeground(Color.RED);
         add(errorLabel, "span");

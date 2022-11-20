@@ -7,7 +7,13 @@ import java.util.ArrayList;
 
 public class QuizComponents {
     private int numberOfVerbs;
-    //private ArrayList<Group> selectedGroups = new ArrayList<Group>();
+
+    private boolean showErrors;
+
+    private int durationMin;
+    private int durationSec;
+
+    private ArrayList<String> selectedGroups = new ArrayList<String>();
     private ArrayList<Pronoun> selectedPronouns = new ArrayList<Pronoun>();
     private ArrayList<Form> selectedForms = new ArrayList<Form>();
 
@@ -17,8 +23,11 @@ public class QuizComponents {
     public void printStats() {
         System.out.println("Pronouns: " + getSelectedPronouns().toString() + "\n"
                 + "Forms: " + getSelectedForms().toString() + "\n"
+                + "P.Presento: " + participioPresentoSelected + ", P.Pasado: " + participioPasadoSelected + "\n"
+                + "Groups: " + getSelectedGroups().toString() + "\n"
                 + "Number of verbs: " + getNumberOfVerbs() + "\n"
-                + "Has other than participio: " + onlyParticipio());
+                + "Feedback enabled: " + isShowErrors() + "\n"
+                + "Duration min: " + getDurationMin() + ", sec: " + getDurationSec() + "\n");
     }
 
     public ArrayList<Integer> getPronounIndices() {
@@ -77,8 +86,20 @@ public class QuizComponents {
         return selectedForms;
     }
 
+    public ArrayList<String> getSelectedGroups() {
+        return selectedGroups;
+    }
+
+    public void addGroup(String group) {
+        selectedGroups.add(group);
+    }
+
     public void addPronoun(String elem) {
         selectedPronouns.add(Pronoun.fromString(elem));
+    }
+
+    public void addForm(String elem) {
+        selectedForms.add(Form.fromString(elem));
     }
 
     public int getNumberOfVerbs() {
@@ -89,7 +110,27 @@ public class QuizComponents {
         this.numberOfVerbs = numberOfVerbs;
     }
 
-    public void addForm(String elem) {
-        selectedForms.add(Form.fromString(elem));
+    public boolean isShowErrors() {
+        return showErrors;
+    }
+
+    public void setShowErrors(boolean showErrors) {
+        this.showErrors = showErrors;
+    }
+
+    public int getDurationMin() {
+        return durationMin;
+    }
+
+    public void setDurationMin(int durationMin) {
+        this.durationMin = durationMin;
+    }
+
+    public int getDurationSec() {
+        return durationSec;
+    }
+
+    public void setDurationSec(int durationSec) {
+        this.durationSec = durationSec;
     }
 }

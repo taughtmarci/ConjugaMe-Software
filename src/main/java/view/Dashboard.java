@@ -36,7 +36,7 @@ public class Dashboard extends JPanel {
         this.clickedIcons = new ArrayList<>();
 
         try {
-            logoIcon = new ImageIcon(ImageIO.read(new File("title.png")));
+            logoIcon = new ImageIcon(ImageIO.read(new File("img/title/title.png")));
             for (int i = 0; i < BUTTON_NUMBER; i++) {
                 normalIcons.add(loadIcon(i + 1, IconVariation.NORMAL));
                 hoverIcons.add(loadIcon(i + 1, IconVariation.HOVER));

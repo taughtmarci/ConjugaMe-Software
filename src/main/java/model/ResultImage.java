@@ -18,9 +18,9 @@ public class ResultImage {
 
     public ResultImage() {
         try {
-            checkImg = ImageIO.read(new File("check.png"));
-            crossImg = ImageIO.read(new File("cross.png"));
-            blankImg = ImageIO.read(new File("blank.png"));
+            checkImg = ImageIO.read(new File("img/feedback/check.png"));
+            crossImg = ImageIO.read(new File("img/feedback/cross.png"));
+            blankImg = ImageIO.read(new File("img/feedback/blank.png"));
 
             checkIcon = new ImageIcon(checkImg);
             crossIcon = new ImageIcon(crossImg);

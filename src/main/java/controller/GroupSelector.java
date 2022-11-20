@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class GroupSelector extends JPanel{
+    private final String FILE_NAME = "config/groups.cfg";
     private BufferedReader br;
 
     private final JList<Object> list;
@@ -15,7 +16,7 @@ public class GroupSelector extends JPanel{
 
     public GroupSelector() {
         setLayout(new MigLayout("al center center"));
-        File file = new File("config/groups.txt");
+        File file = new File(FILE_NAME);
 
         InputStream is;
         try {
@@ -23,7 +24,7 @@ public class GroupSelector extends JPanel{
             InputStreamReader isr = new InputStreamReader(is, "utf-8");
             this.br = new BufferedReader(isr);
         } catch (FileNotFoundException | UnsupportedEncodingException e) {
-            // TODO normálisan
+            // TODO normálisan dialogban
             System.out.println("hiba: " + e);
         }
 
@@ -39,7 +40,7 @@ public class GroupSelector extends JPanel{
                 }
             }
         } catch (IOException e) {
-            // TODO normálisan
+            // TODO normálisan dialogban
             System.out.println("hiba: " + e);
         }
 
@@ -75,7 +76,7 @@ public class GroupSelector extends JPanel{
             }
         });
 
-        int[] select = {0, 1, 2};
+        int[] select = {0, 1};
         list.setSelectedIndices(select);
     }
 

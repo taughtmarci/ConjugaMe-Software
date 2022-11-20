@@ -21,7 +21,7 @@ abstract class Database {
     protected Connection connection;
     public boolean connected = false;
 
-    private final String mainTable = "Verbo";
+    private final String MAINTABLE = "Verbo";
     protected String randomKeyword;
 
     public Database(boolean onlineFlag, String location) {
