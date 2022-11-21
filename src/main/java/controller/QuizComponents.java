@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class QuizComponents {
     private int numberOfVerbs;
 
-    private boolean showErrors;
+    private boolean feedbackEnabled;
 
     private int durationMin;
     private int durationSec;
@@ -26,7 +26,7 @@ public class QuizComponents {
                 + "P.Presento: " + participioPresentoSelected + ", P.Pasado: " + participioPasadoSelected + "\n"
                 + "Groups: " + getSelectedGroups().toString() + "\n"
                 + "Number of verbs: " + getNumberOfVerbs() + "\n"
-                + "Feedback enabled: " + isShowErrors() + "\n"
+                + "Feedback enabled: " + isFeedbackEnabled() + "\n"
                 + "Duration min: " + getDurationMin() + ", sec: " + getDurationSec() + "\n");
     }
 
@@ -110,12 +110,12 @@ public class QuizComponents {
         this.numberOfVerbs = numberOfVerbs;
     }
 
-    public boolean isShowErrors() {
-        return showErrors;
+    public boolean isFeedbackEnabled() {
+        return feedbackEnabled;
     }
 
-    public void setShowErrors(boolean showErrors) {
-        this.showErrors = showErrors;
+    public void setFeedbackEnabled(boolean feedbackEnabled) {
+        this.feedbackEnabled = feedbackEnabled;
     }
 
     public int getDurationMin() {

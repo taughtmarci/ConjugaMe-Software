@@ -114,8 +114,7 @@ abstract class Database {
         // from part
         queryBuilder.append("FROM ");
         if (!components.onlyParticipio()) {
-            for (int i = 0; i < components.getSelectedForms().size(); i++)
-                queryBuilder.append("(");
+            queryBuilder.append("(".repeat(components.getSelectedForms().size()));
 
             queryBuilder.append("Verbo ");
             for (Form f : components.getSelectedForms()) {

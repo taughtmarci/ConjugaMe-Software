@@ -1,23 +1,28 @@
 package view;
 
-import controller.ConfigReader;
-import controller.GroupSelector;
-import controller.VerbCollection;
+import controller.*;
 import model.Form;
+import model.MenuButton;
 import model.Pronoun;
-import controller.QuizComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicSpinnerUI;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class SetupQuiz extends JPanel {
+    private final int BUTTON_NUMBER = 4;
+
     private final MainWindow main;
     private Quiz current;
+
     private QuizComponents components;
+    private final QuizComponents inputComponents;
 
     private ArrayList<JCheckBox> pronounCheckBoxes;
     private ArrayList<JCheckBox> formCheckBoxes;
@@ -26,8 +31,22 @@ public class SetupQuiz extends JPanel {
     private JSpinner secondsChooser;
     private JCheckBox instantFeedbackCheckBox;
 
+    private ArrayList<MenuButton> buttons;
+
     public SetupQuiz(MainWindow main) {
         this.main = main;
+        ConfigReader cf = new ConfigReader();
+        this.buttons = new ArrayList<>();
+        this.inputComponents = cf.inputComponents;
+
+        setLayout(new MigLayout("al center center"));
+        SwingUtilities.invokeLater(this::initComponents);
+        setVisible(true);
+    }
+
+    public SetupQuiz(MainWindow main, QuizComponents inputComponents) {
+        this.main = main;
+        this.inputComponents = inputComponents;
 
         setLayout(new MigLayout("al center center"));
         SwingUtilities.invokeLater(this::initComponents);
@@ -45,13 +64,14 @@ public class SetupQuiz extends JPanel {
         // pronouns checkboxes
         pronounCheckBoxes = new ArrayList<JCheckBox>();
         for (Pronoun p : Pronoun.values()) {
-            boolean defaultFlag = (!p.toString().equals("Vos")) && (!p.toString().equals("Vosotros"));
-            pronounCheckBoxes.add(new JCheckBox(p.toString(), defaultFlag));
+            //boolean defaultFlag = (!p.toString().equals("Vos")) && (!p.toString().equals("Vosotros"));
+            boolean inputFlag = inputComponents.getSelectedPronouns().contains(p);
+            pronounCheckBoxes.add(new JCheckBox(p.toString(), inputFlag));
             pronounPanel.add(pronounCheckBoxes.get(pronounCheckBoxes.size() - 1), "wrap");
         }
 
         pronounPanel.setPreferredSize(new Dimension(getWidth(), 280));
-        pronounPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        pronounPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1));
         return pronounPanel;
     }
 
@@ -90,13 +110,14 @@ public class SetupQuiz extends JPanel {
         // verb forms checkboxes
         formCheckBoxes = new ArrayList<>();
 
-        formCheckBoxes.add(new JCheckBox("Participio Presento"));
-        formCheckBoxes.add(new JCheckBox("Participio Pasado"));
+        formCheckBoxes.add(new JCheckBox("Participio Presento", inputComponents.isParticipioPresentoSelected()));
+        formCheckBoxes.add(new JCheckBox("Participio Pasado", inputComponents.isParticipioPasadoSelected()));
         participioPanel.add(formCheckBoxes.get(0), "wrap");
         participioPanel.add(formCheckBoxes.get(1), "wrap");
 
         for (Form f : Form.values()) {
-            formCheckBoxes.add(new JCheckBox(f.toString()));
+            boolean inputFlag = inputComponents.getSelectedForms().contains(f);
+            formCheckBoxes.add(new JCheckBox(f.toString(), inputFlag));
             if (f == Form.ImperativoAffirmativo || f == Form.ImperativoNegativo)
                 imperativoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
             else if (f == Form.SubjuntivoPresento || f == Form.SubjuntivoImperfecto || f == Form.SubjuntivoFuturo)
@@ -115,7 +136,7 @@ public class SetupQuiz extends JPanel {
         return formPanel;
     }
 
-    // TODO ezt az összeömlesztett csurmászt normalizálni
+    // TODO struktúráltabbá tenni
     private JPanel initLastPanel() {
         JPanel lastPanel = new JPanel();
         lastPanel.setLayout(new MigLayout("al center center"));
@@ -136,12 +157,12 @@ public class SetupQuiz extends JPanel {
         lastPanel.add(verbNumberSubtitle, "span");
 
         // number of verbs spinner
-        SpinnerNumberModel verbNumberModel = new SpinnerNumberModel(25, 5, 500, 5);
+        SpinnerNumberModel verbNumberModel = new SpinnerNumberModel(inputComponents.getNumberOfVerbs(), 5, 500, 5);
         verbNumberChooser = new JSpinner(verbNumberModel);
         lastPanel.add(verbNumberChooser, "span");
 
         // instant feedback checkbox
-        instantFeedbackCheckBox = new JCheckBox("Hib\u00E1k mutat\u00E1sa", true);
+        instantFeedbackCheckBox = new JCheckBox("Hib\u00E1k mutat\u00E1sa", inputComponents.isFeedbackEnabled());
         lastPanel.add(instantFeedbackCheckBox, "span");
 
         // timing duration title
@@ -154,7 +175,7 @@ public class SetupQuiz extends JPanel {
         lastPanel.add(timingDurationSubtitle, "span");
 
         // minutes spinner and label
-        SpinnerNumberModel minutesModel = new SpinnerNumberModel(5, 0, 180, 1);
+        SpinnerNumberModel minutesModel = new SpinnerNumberModel(inputComponents.getDurationMin(), 0, 180, 1);
         minutesChooser = new JSpinner(minutesModel);
         minutesChooser.setUI(new BasicSpinnerUI() {
             protected Component createNextButton() {
@@ -170,7 +191,7 @@ public class SetupQuiz extends JPanel {
         lastPanel.add(minutesLabel);
 
         // seconds spinner and label
-        SpinnerNumberModel secondsModel = new SpinnerNumberModel(0, 0, 59, 1);
+        SpinnerNumberModel secondsModel = new SpinnerNumberModel(inputComponents.getDurationSec(), 0, 59, 1);
         secondsChooser = new JSpinner(secondsModel);
         secondsChooser.setUI(new BasicSpinnerUI() {
             protected Component createNextButton() {
@@ -193,7 +214,6 @@ public class SetupQuiz extends JPanel {
 
     private void initComponents() {
         components = new QuizComponents();
-        ConfigReader cf = new ConfigReader();
 
         // set up error label
         JLabel errorLabel = new JLabel("\n");
@@ -202,9 +222,10 @@ public class SetupQuiz extends JPanel {
         add(errorLabel, "span");
 
         // add panels
-        add(initPronounPanel());
-        add(initFormPanel());
+        add(initPronounPanel(), "span 1");
+        add(initFormPanel(), "span 1");
         add(initLastPanel(), "wrap");
+        add(initButtonPanel(), "span");
 
         // new quiz button
         JButton newQuizButton = new JButton("\u00DAj kv\u00EDz ind\u00EDt\u00E1sa");
@@ -223,8 +244,6 @@ public class SetupQuiz extends JPanel {
                     }
                 }
             }
-
-            // TODO: kétoldalú érme
             components.setNumberOfVerbs((int) verbNumberChooser.getValue());
 
             // error handling
@@ -237,6 +256,11 @@ public class SetupQuiz extends JPanel {
                 error = "Legal\u00E1bb egy n\u00E9vm\u00E1s kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
 
             if (error.equals("")) {
+                try {
+                    ConfigWriter cw = new ConfigWriter(components);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
                 VerbCollection vc = new VerbCollection(main, components);
                 setVisible(false);
                 current = new Quiz(vc);
@@ -248,6 +272,23 @@ public class SetupQuiz extends JPanel {
             }
         });
         main.getRootPane().setDefaultButton(newQuizButton);
+    }
+
+    private JPanel initButtonPanel() {
+        JPanel buttonPanel = new JPanel(new MigLayout("align center center"));
+
+        try {
+            for (int i = 0; i < BUTTON_NUMBER; i++) {
+                buttons.add(new MenuButton("preferences", i));
+                buttons.get(i).setActionSetup(main, this, components);
+                buttonPanel.add(buttons.get(i), "align center");
+            }
+        } catch (IOException e) {
+            // TODO dialog
+            throw new RuntimeException(e);
+        }
+
+        return buttonPanel;
     }
 
 }

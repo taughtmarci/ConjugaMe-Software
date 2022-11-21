@@ -75,9 +75,9 @@ public class ConfigReader {
                     i++;
                     inputComponents.setNumberOfVerbs(Integer.parseInt(lines.get(i).trim()));
                     break;
-                case "Errors":
+                case "Feedback":
                     i++;
-                    inputComponents.setShowErrors(Boolean.parseBoolean(lines.get(i).trim()));
+                    inputComponents.setFeedbackEnabled(Boolean.parseBoolean(lines.get(i).trim()));
                     break;
                 case "Duration":
                     i++;

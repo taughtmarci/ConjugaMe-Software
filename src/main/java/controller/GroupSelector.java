@@ -80,4 +80,8 @@ public class GroupSelector extends JPanel{
         list.setSelectedIndices(select);
     }
 
+    public void setSelectedElems(ArrayList<String> elems) {
+
+    }
+
 }

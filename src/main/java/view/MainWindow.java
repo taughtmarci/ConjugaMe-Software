@@ -34,7 +34,7 @@ public class MainWindow extends JFrame {
         }
 
         // Connect to databases
-        local = new Local("src/main/resources/local.db");
+        local = new Local("local.db");
         online = new Online("conjugame.cxpxjtc5b29j.eu-central-1.rds.amazonaws.com", "3306", "Dictionary");
 
         JPanel dashboard = new Dashboard(this);
