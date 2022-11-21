@@ -4,54 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Relocated images">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/MenuButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/other/save.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/preferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/preferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_01_clicked.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_01_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_02_clicked.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_02_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_03_clicked.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_03_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_04_clicked.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_04_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_05_clicked.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_05_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_06_clicked.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/buttons/button_06_hover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GroupSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GroupSelector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/QuizComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/QuizComponents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/SetupQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/SetupQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1x/Asset 5title_small.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1x/buttons.ai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1x/exit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1x/paper_pencil.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1x/papir.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1x/results.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1x/results02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1x/settings.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1x/title.ai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1x/title.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1x/title_working.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/check_big.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/cross_big.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/local.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/title.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/title_comicallysmall.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/title_small.png" beforeDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Mamí sube algo, dame contenido">
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_01_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_01_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_02_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_02_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_03_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_03_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_04_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_04_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_05_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_05_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_06_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_06_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_00_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_00_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_01_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_01_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_02_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_02_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_03_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/preferences/button_03_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/back.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668944326145</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Mamí sube algo, dame contenido">
+      <created>1668991667007</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1668991667007</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -332,7 +323,8 @@
     <MESSAGE value="Ad configuration saving basics" />
     <MESSAGE value="Add configuration saving basics" />
     <MESSAGE value="Relocated images" />
-    <option name="LAST_COMMIT_MESSAGE" value="Relocated images" />
+    <MESSAGE value="Mamí sube algo, dame contenido" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mamí sube algo, dame contenido" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
