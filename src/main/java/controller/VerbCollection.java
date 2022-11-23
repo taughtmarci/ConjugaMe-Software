@@ -1,20 +1,18 @@
 package controller;
 
+import model.VerbQuizComponents;
 import model.Verb;
-import model.VerbBasic;
 import view.MainWindow;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class VerbCollection {
     private final MainWindow main;
-    private final QuizComponents components;
+    private final VerbQuizComponents components;
     private final ArrayList<Verb> verbs;
 
-    public VerbCollection(MainWindow main, QuizComponents components) {
+    public VerbCollection(MainWindow main, VerbQuizComponents components) {
         this.main = main;
         this.components = components;
         verbs = main.online.processQuery(main.online.buildQuery(components), components);
@@ -24,7 +22,7 @@ public class VerbCollection {
         return main;
     }
 
-    public QuizComponents getComponents() {
+    public VerbQuizComponents getComponents() {
         return components;
     }
 

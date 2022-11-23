@@ -1,24 +1,30 @@
-package controller;
-
-import model.Form;
-import model.Pronoun;
+package model;
 
 import java.util.ArrayList;
 
-public class QuizComponents {
+public class VerbQuizComponents {
     private int numberOfVerbs;
-
-    private boolean feedbackEnabled;
-
     private int durationMin;
     private int durationSec;
 
-    private ArrayList<String> selectedGroups = new ArrayList<String>();
+    private boolean participioPresentoSelected;
+    private boolean participioPasadoSelected;
+
+    private ArrayList<Group> selectedGroups = new ArrayList<Group>();
     private ArrayList<Pronoun> selectedPronouns = new ArrayList<Pronoun>();
     private ArrayList<Form> selectedForms = new ArrayList<Form>();
 
-    private boolean participioPresentoSelected;
-    private boolean participioPasadoSelected;
+    public boolean isWorkingCorrectly() {
+        if (onlyParticipio() && (!isParticipioPasadoSelected() && !isParticipioPresentoSelected()))
+            return false;
+        else if (getSelectedForms().size() < 0 || getSelectedPronouns().size() < 0 || getSelectedGroups().size() < 0)
+            return false;
+        else if (numberOfVerbs < 5 || numberOfVerbs > 500)
+            return false;
+        else if (durationMin < 1 || durationMin > 180)
+            return false;
+        else return durationSec >= 0 && durationSec <= 59;
+    }
 
     public void printStats() {
         System.out.println("Pronouns: " + getSelectedPronouns().toString() + "\n"
@@ -26,7 +32,6 @@ public class QuizComponents {
                 + "P.Presento: " + participioPresentoSelected + ", P.Pasado: " + participioPasadoSelected + "\n"
                 + "Groups: " + getSelectedGroups().toString() + "\n"
                 + "Number of verbs: " + getNumberOfVerbs() + "\n"
-                + "Feedback enabled: " + isFeedbackEnabled() + "\n"
                 + "Duration min: " + getDurationMin() + ", sec: " + getDurationSec() + "\n");
     }
 
@@ -86,11 +91,11 @@ public class QuizComponents {
         return selectedForms;
     }
 
-    public ArrayList<String> getSelectedGroups() {
+    public ArrayList<Group> getSelectedGroups() {
         return selectedGroups;
     }
 
-    public void addGroup(String group) {
+    public void addGroup(Group group) {
         selectedGroups.add(group);
     }
 
@@ -108,14 +113,6 @@ public class QuizComponents {
 
     public void setNumberOfVerbs(int numberOfVerbs) {
         this.numberOfVerbs = numberOfVerbs;
-    }
-
-    public boolean isFeedbackEnabled() {
-        return feedbackEnabled;
-    }
-
-    public void setFeedbackEnabled(boolean feedbackEnabled) {
-        this.feedbackEnabled = feedbackEnabled;
     }
 
     public int getDurationMin() {

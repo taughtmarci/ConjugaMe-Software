@@ -1,51 +1,24 @@
 package controller;
 
+import model.Group;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
 import java.util.ArrayList;
 
+@SuppressWarnings("unchecked")
 public class GroupSelector extends JPanel{
-    private final String FILE_NAME = "config/groups.cfg";
-    private BufferedReader br;
-
-    private final JList<Object> list;
+    private final GroupHandler handler;
     private final JScrollPane scrollPane;
+    private final JList list;
 
-    public GroupSelector() {
+    public GroupSelector(GroupHandler handler) {
+        this.handler = handler;
         setLayout(new MigLayout("al center center"));
-        File file = new File(FILE_NAME);
-
-        InputStream is;
-        try {
-            is = new FileInputStream(file);
-            InputStreamReader isr = new InputStreamReader(is, "utf-8");
-            this.br = new BufferedReader(isr);
-        } catch (FileNotFoundException | UnsupportedEncodingException e) {
-            // TODO normálisan dialogban
-            System.out.println("hiba: " + e);
-        }
-
-        ArrayList<String> lines = new ArrayList<>();
-        String line;
-
-        try {
-            if (br != null) {
-                line = br.readLine();
-                while (line != null) {
-                    lines.add(line);
-                    line = br.readLine();
-                }
-            }
-        } catch (IOException e) {
-            // TODO normálisan dialogban
-            System.out.println("hiba: " + e);
-        }
 
         // creation of the list
-        list = new JList<>(lines.toArray());
+        list = new JList(handler.getGroupNames().toArray());
         configureList();
         scrollPane = new JScrollPane(list);
         scrollPane.setPreferredSize(changeWidth(150));
@@ -75,13 +48,15 @@ public class GroupSelector extends JPanel{
                 }
             }
         });
-
-        int[] select = {0, 1};
-        list.setSelectedIndices(select);
     }
 
     public void setSelectedElems(ArrayList<String> elems) {
-
+        ArrayList<Integer> indices = new ArrayList<>();
+        for (String elem : elems) {
+            Group current = handler.getGroupByName(elem);
+            indices.add(current.id());
+        }
+        list.setSelectedIndices(indices.stream().mapToInt(i -> i).toArray());
     }
 
 }

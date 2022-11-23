@@ -2,7 +2,7 @@ package database;
 
 import controller.DialogCommands.DoNothingCommand;
 import controller.DialogCommands.ExitCommand;
-import controller.QuizComponents;
+import model.VerbQuizComponents;
 import model.*;
 import org.sqlite.SQLiteConfig;
 import org.sqlite.SQLiteOpenMode;
@@ -63,7 +63,7 @@ abstract class Database {
         connected = true;
     }
 
-    public ArrayList<Verb> processQuery(String query, QuizComponents components) {
+    public ArrayList<Verb> processQuery(String query, VerbQuizComponents components) {
         ArrayList<Verb> result = new ArrayList<>();
         if (connected) {
             try (Statement statement = connection.createStatement()) {
@@ -98,7 +98,7 @@ abstract class Database {
         return result;
     }
 
-    public String buildQuery(QuizComponents components) {
+    public String buildQuery(VerbQuizComponents components) {
         StringBuilder queryBuilder = new StringBuilder();
 
         // select part

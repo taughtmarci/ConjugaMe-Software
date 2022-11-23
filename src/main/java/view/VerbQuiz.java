@@ -4,18 +4,16 @@ import controller.QuizResults;
 import controller.Section;
 import controller.VerbCollection;
 import model.*;
-import controller.QuizComponents;
+import model.VerbQuizComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class Quiz extends JPanel {
+public class VerbQuiz extends JPanel {
     private final VerbCollection collection;
-    private final QuizComponents components;
+    private final VerbQuizComponents components;
 
     public int score;
     private JLabel scoreLabel;
@@ -38,7 +36,7 @@ public class Quiz extends JPanel {
     private ArrayList<Verb> incorrectVerbs;
     private EndQuiz current;
 
-    public Quiz(VerbCollection collection) {
+    public VerbQuiz(VerbCollection collection) {
         this.collection = collection;
         this.components = collection.getComponents();
 

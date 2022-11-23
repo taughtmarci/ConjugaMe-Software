@@ -1,10 +1,8 @@
 package model;
 
-import controller.ConfigWriter;
-import controller.QuizComponents;
 import view.Dashboard;
 import view.MainWindow;
-import view.SetupQuiz;
+import view.VerbQuizSetup;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -82,7 +80,7 @@ public class MenuButton extends JLabel {
             case 3 -> this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    JPanel next = new SetupQuiz(main);
+                    JPanel next = new VerbQuizSetup(main, current.comps);
                     main.switchPanels(current, next);
                 }
             });
@@ -109,7 +107,7 @@ public class MenuButton extends JLabel {
         }
     }
 
-    public void setActionSetup(MainWindow main, SetupQuiz current, QuizComponents outputComponents) {
+    public void setActionSetup(MainWindow main, VerbQuizSetup current, VerbQuizComponents outputComponents) {
         switch (number) {
             case 0 -> this.addMouseListener(new MouseAdapter() {
                 @Override
@@ -132,8 +130,13 @@ public class MenuButton extends JLabel {
             case 3 -> this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    JPanel next = new Dashboard(main);
-                    main.switchPanels(current, next);
+                    try {
+                        JPanel next = new Dashboard(main);
+                        main.switchPanels(current, next);
+                    } catch (IOException ex) {
+                        // todo dialogize
+                        throw new RuntimeException(ex);
+                    }
                 }
             });
             default -> throw new RuntimeException();

@@ -1,6 +1,6 @@
 package view;
 
-import controller.QuizComponents;
+import model.VerbQuizComponents;
 import controller.VerbCollection;
 import controller.QuizResults;
 import net.miginfocom.swing.MigLayout;
@@ -10,7 +10,7 @@ import javax.swing.*;
 public class EndQuiz extends JPanel {
     private final QuizResults results;
     private final VerbCollection collection;
-    private final QuizComponents components;
+    private final VerbQuizComponents components;
 
     private JLabel resultLabel;
     private JLabel percentLabel;
@@ -46,7 +46,7 @@ public class EndQuiz extends JPanel {
         restartButton.addActionListener(e -> {
             setVisible(false);
             collection.randomizeVerbList();
-            current = new Quiz(collection);
+            current = new VerbQuiz(collection);
             collection.getMain().switchPanels(this, current);
         });
 
@@ -55,8 +55,8 @@ public class EndQuiz extends JPanel {
 
         newQuizButton.addActionListener(e -> {
             setVisible(false);
-            current = new SetupQuiz(collection.getMain());
-            collection.getMain().switchPanels(this, current);
+            //current = new VerbQuizSetup();
+            //collection.getMain().switchPanels(this, current);
         });
     }
 }
