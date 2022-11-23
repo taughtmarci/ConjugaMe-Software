@@ -18,7 +18,6 @@ import java.util.ArrayList;
 
 public class VerbQuizSetup extends JPanel {
     private final int BUTTON_NUMBER = 4;
-
     private final MainWindow main;
     private VerbQuiz current;
 
@@ -272,13 +271,14 @@ public class VerbQuizSetup extends JPanel {
             if (error.equals("")) {
                 try {
                     prefs.getConfig().writeComponents("config/preferences.cfg", prefs.getComps());
+                    prefs.querySelectedVerbs();
                 } catch (IOException ex) {
                     // todo panel
                     throw new RuntimeException(ex);
                 }
-                VerbCollection vc = new VerbCollection(main, comps);
+
                 setVisible(false);
-                current = new VerbQuiz(vc);
+                current = new VerbQuiz(main, prefs);
                 main.switchPanels(this, current);
             } else {
                 errorLabel.setText(error);
@@ -303,6 +303,10 @@ public class VerbQuizSetup extends JPanel {
         }
 
         return buttonPanel;
+    }
+
+    public MainWindow getMain() {
+        return main;
     }
 
     public ArrayList<JCheckBox> getPronounCheckBoxes() {

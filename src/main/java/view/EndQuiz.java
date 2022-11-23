@@ -1,7 +1,6 @@
 package view;
 
 import model.VerbQuizComponents;
-import controller.VerbCollection;
 import controller.QuizResults;
 import net.miginfocom.swing.MigLayout;
 
@@ -9,8 +8,7 @@ import javax.swing.*;
 
 public class EndQuiz extends JPanel {
     private final QuizResults results;
-    private final VerbCollection collection;
-    private final VerbQuizComponents components;
+    //private final VerbQuizComponents components;
 
     private JLabel resultLabel;
     private JLabel percentLabel;
@@ -19,10 +17,9 @@ public class EndQuiz extends JPanel {
 
     private JPanel current;
 
-    public EndQuiz(QuizResults results, VerbCollection collection) {
+    public EndQuiz(QuizResults results) {
         this.results = results;
-        this.collection = collection;
-        this.components = collection.getComponents();
+        //this.components = collection.getComponents();
 
         setLayout(new MigLayout("align center center"));
         initComponents();
@@ -31,13 +28,13 @@ public class EndQuiz extends JPanel {
 
     private void initComponents() {
         // Result/Max
-        resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + components.getTotalNumberOfVerbs());
+        //resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + components.getTotalNumberOfVerbs());
         add(resultLabel, "span");
 
         // Result in percent
-        float percentResult = (float) results.getScore() / (float) components.getTotalNumberOfVerbs();
-        percentLabel = new JLabel(QuizResults.df.format(percentResult * 100) + "%");
-        add(percentLabel, "span");
+        //float percentResult = (float) results.getScore() / (float) components.getTotalNumberOfVerbs();
+        //percentLabel = new JLabel(QuizResults.df.format(percentResult * 100) + "%");
+        //add(percentLabel, "span");
 
         // Restart button
         restartButton = new JButton("\u00DAjraind\u00EDt\u00E1s");
@@ -45,9 +42,9 @@ public class EndQuiz extends JPanel {
 
         restartButton.addActionListener(e -> {
             setVisible(false);
-            collection.randomizeVerbList();
+            /*collection.randomizeVerbList();
             current = new VerbQuiz(collection);
-            collection.getMain().switchPanels(this, current);
+            collection.getMain().switchPanels(this, current);*/
         });
 
         newQuizButton = new JButton("\u00DAj kv\u00EDz ind\u00EDt\u00E1sa");

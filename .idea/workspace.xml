@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Reorganize structure">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add radio, complete radio">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/preferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/preferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GroupHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GroupHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GroupSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GroupSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbCollection.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Group.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/MenuButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/VerbQuizComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/VerbQuizComponents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -280,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669193765615</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Add radio, complete radio">
+      <created>1669200116137</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1669200116137</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -320,7 +323,8 @@
     <MESSAGE value="Mamí sube algo, dame contenido" />
     <MESSAGE value="New buttons" />
     <MESSAGE value="Reorganize structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reorganize structure" />
+    <MESSAGE value="Add radio, complete radio" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add radio, complete radio" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

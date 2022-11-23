@@ -2,7 +2,7 @@ package view;
 
 import controller.QuizResults;
 import controller.Section;
-import controller.VerbCollection;
+import controller.VerbQuizPreferences;
 import model.*;
 import model.VerbQuizComponents;
 import net.miginfocom.swing.MigLayout;
@@ -12,8 +12,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class VerbQuiz extends JPanel {
-    private final VerbCollection collection;
-    private final VerbQuizComponents components;
+    private final MainWindow main;
+    private final VerbQuizPreferences prefs;
+    private final ArrayList<Verb> verbs;
+    private final VerbQuizComponents comps;
 
     public int score;
     private JLabel scoreLabel;
@@ -36,9 +38,11 @@ public class VerbQuiz extends JPanel {
     private ArrayList<Verb> incorrectVerbs;
     private EndQuiz current;
 
-    public VerbQuiz(VerbCollection collection) {
-        this.collection = collection;
-        this.components = collection.getComponents();
+    public VerbQuiz(MainWindow main, VerbQuizPreferences prefs) {
+        this.main = main;
+        this.prefs = prefs;
+        this.verbs = prefs.getSelectedVerbs();
+        this.comps = prefs.getComps();
 
         this.currentVerbLabel = new JLabel("");
         this.currentFormLabel = new JLabel("");
@@ -58,35 +62,35 @@ public class VerbQuiz extends JPanel {
     }
 
     private void nextRound() {
-        if (iteration == components.getNumberOfVerbs() - 1) {
+        if (iteration == comps.getNumberOfVerbs() - 1) {
             finishQuiz();
         }
         else {
-            currentVerb = collection.getVerb(iteration);
+            currentVerb = verbs.get(iteration);
             currentVerbLabel.setText(currentVerb.getBasic().getInfinitivo());
 
-            if (!components.onlyParticipio()) {
+            if (!comps.onlyParticipio()) {
                 // TODO: ezt okosabban
-                currentForm = components.getSelectedForms().get((int)
-                        (Math.random() * components.getSelectedForms().size()));
+                currentForm = comps.getSelectedForms().get((int)
+                        (Math.random() * comps.getSelectedForms().size()));
                 currentFormLabel.setText(currentForm.toString());
 
                 int i = 0;
-                for (Pronoun p : components.getSelectedPronouns()) {
+                for (Pronoun p : comps.getSelectedPronouns()) {
                     String currentSolution = currentVerb.getSolution(currentForm, p);
                     sections.get(i).setSolution(currentSolution);
                     i++;
                 }
             }
 
-            if (components.isParticipioPresentoSelected())
+            if (comps.isParticipioPresentoSelected())
                 presentoSection.setSolution(currentVerb.getBasic().getPresento());
 
-            if (components.isParticipioPasadoSelected())
+            if (comps.isParticipioPasadoSelected())
                 pasadoSection.setSolution(currentVerb.getBasic().getPasado());
 
             this.updateUI();
-            collection.getMain().getRootPane().setDefaultButton(sendResultsButton);
+            main.getRootPane().setDefaultButton(sendResultsButton);
         }
     }
 
@@ -109,42 +113,42 @@ public class VerbQuiz extends JPanel {
         add(currentVerbLabel, "span, align center");
 
         // add sections panel
-        if (components.isParticipioPresentoSelected()) {
+        if (comps.isParticipioPresentoSelected()) {
             presentoSection = new Section("Participio presento", resultImage, true);
             add(presentoSection, "span, align center");
         }
 
-        if (components.isParticipioPasadoSelected()) {
-            pasadoSection = new Section("Participio pasado", resultImage, !components.isParticipioPresentoSelected());
+        if (comps.isParticipioPasadoSelected()) {
+            pasadoSection = new Section("Participio pasado", resultImage, !comps.isParticipioPresentoSelected());
             add(pasadoSection, "span, align center");
         }
 
         // pronoun sections
-        if (!components.onlyParticipio()) {
+        if (!comps.onlyParticipio()) {
             add(currentFormLabel, "span, align center");
-            for (Pronoun p : components.getSelectedPronouns()) {
+            for (Pronoun p : comps.getSelectedPronouns()) {
                 sections.add(new Section(p.toString(), resultImage));
                 add(sections.get(sections.size() - 1), "span, align center");
             }
         }
 
-        if (!components.isParticipioPresentoSelected() && !components.isParticipioPasadoSelected())
+        if (!comps.isParticipioPresentoSelected() && !comps.isParticipioPasadoSelected())
             sections.get(0).setFirst(true);
 
         // out of label
-        outOfLabel = new JLabel(iteration + 1 + "/" + components.getNumberOfVerbs());
+        outOfLabel = new JLabel(iteration + 1 + "/" + comps.getNumberOfVerbs());
         add(outOfLabel, "align left");
         add(sendResultsButton, "align right");
 
         sendResultsButton.addActionListener(e -> {
             if (sendResultsButton.getText().equals("K\u00FCld\u00E9s")) {
                 // evaluate sections
-                if (components.isParticipioPresentoSelected()) {
+                if (comps.isParticipioPresentoSelected()) {
                     if (presentoSection.evaluate()) score++;
                     else incorrectVerbs.add(currentVerb);
                 }
 
-                if (components.isParticipioPasadoSelected()) {
+                if (comps.isParticipioPasadoSelected()) {
                     if (pasadoSection.evaluate()) score++;
                     else incorrectVerbs.add(currentVerb);
                 }
@@ -157,7 +161,7 @@ public class VerbQuiz extends JPanel {
                 // update score and iteration
                 iteration++;
                 scoreLabel.setText((Integer.toString(score) + " pont"));
-                outOfLabel.setText(Integer.toString(iteration + 1) + "/" + components.getNumberOfVerbs());
+                outOfLabel.setText(Integer.toString(iteration + 1) + "/" + comps.getNumberOfVerbs());
 
                 // button swap
                 sendResultsButton.setText("Tov\u00E1bb");
@@ -190,10 +194,10 @@ public class VerbQuiz extends JPanel {
     }
 
     private void refreshAllSections() {
-        if (components.isParticipioPresentoSelected())
+        if (comps.isParticipioPresentoSelected())
             presentoSection.refreshSection();
 
-        if (components.isParticipioPasadoSelected())
+        if (comps.isParticipioPasadoSelected())
             pasadoSection.refreshSection();
 
         for (Section section: sections)
@@ -203,7 +207,7 @@ public class VerbQuiz extends JPanel {
     private void finishQuiz() {
         QuizResults results = new QuizResults(score, incorrectVerbs);
         setVisible(false);
-        current = new EndQuiz(results, collection);
-        collection.getMain().switchPanels(this, current);
+        //current = new EndQuiz(results, prefs);
+        main.switchPanels(this, current);
     }
 }

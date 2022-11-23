@@ -1,15 +1,18 @@
 package controller;
 
+import model.Verb;
 import model.VerbQuizComponents;
 import view.VerbQuizSetup;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class VerbQuizPreferences {
     private final VerbQuizSetup setup;
 
+    private ArrayList<Verb> selectedVerbs;
     private VerbQuizComponents comps;
     private final ConfigIO config;
 
@@ -66,6 +69,14 @@ public class VerbQuizPreferences {
         return error;
     }
 
+    public void querySelectedVerbs() {
+        selectedVerbs = setup.getMain().online.processQuery(setup.getMain().online.buildQuery(comps), comps);
+    }
+
+    public void randomizeVerbList(ArrayList<Verb> verbs) {
+        Collections.shuffle(verbs);
+    }
+
     public ConfigIO getConfig() {
         return config;
     }
@@ -86,4 +97,7 @@ public class VerbQuizPreferences {
         return selector;
     }
 
+    public ArrayList<Verb> getSelectedVerbs() {
+        return selectedVerbs;
+    }
 }
