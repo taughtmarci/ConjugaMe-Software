@@ -6,9 +6,11 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @SuppressWarnings("unchecked")
 public class GroupSelector extends JPanel{
+    private final int PIXEL_SIZE = 150;
     private final GroupHandler handler;
     private final JScrollPane scrollPane;
     private final JList list;
@@ -21,7 +23,7 @@ public class GroupSelector extends JPanel{
         list = new JList(handler.getGroupNames().toArray());
         configureList();
         scrollPane = new JScrollPane(list);
-        scrollPane.setPreferredSize(changeWidth(150));
+        scrollPane.setPreferredSize(changeWidth(PIXEL_SIZE));
 
         add(scrollPane);
         setVisible(true);
@@ -50,13 +52,22 @@ public class GroupSelector extends JPanel{
         });
     }
 
-    public void setSelectedElems(ArrayList<String> elems) {
+    public void setSelectedRows(ArrayList<Group> groups) {
         ArrayList<Integer> indices = new ArrayList<>();
-        for (String elem : elems) {
-            Group current = handler.getGroupByName(elem);
-            indices.add(current.id());
+        for (Group group : groups) {
+            indices.add(group.id());
         }
         list.setSelectedIndices(indices.stream().mapToInt(i -> i).toArray());
+    }
+
+    public ArrayList<Group> getSelectedRows() {
+        ArrayList<Group> result = new ArrayList<>();
+        for (int i = 0; i < list.getSelectedValuesList().size(); i++) {
+            if (!Arrays.equals(list.getSelectedIndices(), new int[]{-1})) {
+                result.add(new Group(list.getSelectedIndices()[i], (String) list.getSelectedValuesList().get(i)));
+            }
+        }
+        return result;
     }
 
 }

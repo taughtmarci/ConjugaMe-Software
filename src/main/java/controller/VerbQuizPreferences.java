@@ -10,28 +10,25 @@ import java.util.ArrayList;
 public class VerbQuizPreferences {
     private final VerbQuizSetup setup;
 
-    private final VerbQuizComponents comps;
+    private VerbQuizComponents comps;
     private final ConfigIO config;
 
     private boolean isTimedQuiz;
 
-    private GroupHandler handler;
+    private final GroupHandler handler;
+    private final GroupSelector selector;
 
-    public VerbQuizPreferences(VerbQuizSetup setup) {
+    public VerbQuizPreferences(VerbQuizSetup setup) throws IOException {
         this.setup = setup;
         this.comps = new VerbQuizComponents();
         this.config = new ConfigIO();
 
-        try {
-            this.handler = new GroupHandler();
-        } catch (IOException e) {
-            // todo dialog
-            throw new RuntimeException(e);
-        }
+        this.handler = new GroupHandler();
+        this.selector = new GroupSelector(handler);
     }
 
     public void setupComps() {
-        VerbQuizComponents comps = new VerbQuizComponents();
+        comps = new VerbQuizComponents();
 
         // pronouns
         for (JCheckBox cb : setup.getPronounCheckBoxes())
@@ -48,6 +45,9 @@ public class VerbQuizPreferences {
             }
         }
 
+        // groups
+        comps.setSelectedGroups(selector.getSelectedRows());
+
         // number of verbs
         comps.setNumberOfVerbs((int) setup.getVerbNumberChooser().getValue());
     }
@@ -60,6 +60,8 @@ public class VerbQuizPreferences {
             error = "Legal\u00E1bb egy igeid\u0151/m\u00F3d kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
         else if (comps.getSelectedForms().size() > 0 && comps.getSelectedPronouns().size() == 0)
             error = "Legal\u00E1bb egy n\u00E9vm\u00E1s kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
+        else if (comps.getSelectedGroups().size() == 0)
+            error = "Legal\u00E1bb egy igecsoport kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
 
         return error;
     }
@@ -79,4 +81,9 @@ public class VerbQuizPreferences {
     public GroupHandler getHandler() {
         return handler;
     }
+
+    public GroupSelector getSelector() {
+        return selector;
+    }
+
 }

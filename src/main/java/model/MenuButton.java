@@ -80,8 +80,13 @@ public class MenuButton extends JLabel {
             case 3 -> this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    JPanel next = new VerbQuizSetup(main, current.comps);
-                    main.switchPanels(current, next);
+                    try {
+                        JPanel next = new VerbQuizSetup(main, current.comps);
+                        main.switchPanels(current, next);
+                    } catch (IOException ex) {
+                        // todo dialogize
+                        throw new RuntimeException(ex);
+                    }
                 }
             });
             case 4 -> this.addMouseListener(new MouseAdapter() {

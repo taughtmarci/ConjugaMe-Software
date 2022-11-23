@@ -42,6 +42,8 @@ public class ConfigIO {
                     case "Group":
                         i++;
                         while (!lines.get(i).trim().equals("END")) {
+                            String[] tuple = lines.get(i).trim().split(";", 2);
+                            inputComps.addGroup(new Group(Integer.parseInt(tuple[0]), tuple[1]));
                             i++;
                         }
                         break;
@@ -60,7 +62,7 @@ public class ConfigIO {
                 }
             }
         } else {
-            // TODO dialog?
+            // todo dialog?
             file.createNewFile();
             inputComps = getDefaultPreferences();
         }
@@ -106,8 +108,10 @@ public class ConfigIO {
             writer.write(f.toString() + "\n");
         writer.write("END\n\n");
 
-        // TODO add groups
+        // add groups
         writer.write("Group\n");
+        for (Group g : outputComps.getSelectedGroups())
+            writer.write(g.id() + ";" + g.name() + "\n");
         writer.write("END\n\n");
 
         // add verb number and duration mins and sec

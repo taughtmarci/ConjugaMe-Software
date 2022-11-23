@@ -10,14 +10,21 @@ public class VerbQuizComponents {
     private boolean participioPresentoSelected;
     private boolean participioPasadoSelected;
 
-    private ArrayList<Group> selectedGroups = new ArrayList<Group>();
-    private ArrayList<Pronoun> selectedPronouns = new ArrayList<Pronoun>();
-    private ArrayList<Form> selectedForms = new ArrayList<Form>();
+    private ArrayList<Group> selectedGroups;
+    private ArrayList<Pronoun> selectedPronouns;
+
+    private ArrayList<Form> selectedForms;
+
+    public VerbQuizComponents() {
+        selectedGroups = new ArrayList<>();
+        selectedPronouns = new ArrayList<>();
+        selectedForms = new ArrayList<>();
+    }
 
     public boolean isWorkingCorrectly() {
         if (onlyParticipio() && (!isParticipioPasadoSelected() && !isParticipioPresentoSelected()))
             return false;
-        else if (getSelectedForms().size() < 0 || getSelectedPronouns().size() < 0 || getSelectedGroups().size() < 0)
+        else if (selectedForms.size() < 0 || selectedPronouns.size() < 0 || selectedGroups.size() < 0)
             return false;
         else if (numberOfVerbs < 5 || numberOfVerbs > 500)
             return false;
@@ -105,6 +112,18 @@ public class VerbQuizComponents {
 
     public void addForm(String elem) {
         selectedForms.add(Form.fromString(elem));
+    }
+
+    public void setSelectedGroups(ArrayList<Group> selectedGroups) {
+        this.selectedGroups = selectedGroups;
+    }
+
+    public void setSelectedPronouns(ArrayList<Pronoun> selectedPronouns) {
+        this.selectedPronouns = selectedPronouns;
+    }
+
+    public void setSelectedForms(ArrayList<Form> selectedForms) {
+        this.selectedForms = selectedForms;
     }
 
     public int getNumberOfVerbs() {
