@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add radio, complete radio">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="VerbCollection delete and refactor (room for improvements in EndQuiz)">
+      <change afterPath="$PROJECT_DIR$/config/creategrouptable.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/insertgrouptable.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/local.db-journal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbCollection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/config/local.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669200116137</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="VerbCollection delete and refactor (room for improvements in EndQuiz)">
+      <created>1669201317939</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1669201317939</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -324,7 +332,8 @@
     <MESSAGE value="New buttons" />
     <MESSAGE value="Reorganize structure" />
     <MESSAGE value="Add radio, complete radio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add radio, complete radio" />
+    <MESSAGE value="VerbCollection delete and refactor (room for improvements in EndQuiz)" />
+    <option name="LAST_COMMIT_MESSAGE" value="VerbCollection delete and refactor (room for improvements in EndQuiz)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

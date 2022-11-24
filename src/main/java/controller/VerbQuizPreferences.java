@@ -16,8 +16,6 @@ public class VerbQuizPreferences {
     private VerbQuizComponents comps;
     private final ConfigIO config;
 
-    private boolean isTimedQuiz;
-
     private final GroupHandler handler;
     private final GroupSelector selector;
 
@@ -67,14 +65,6 @@ public class VerbQuizPreferences {
             error = "Legal\u00E1bb egy igecsoport kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
 
         return error;
-    }
-
-    public void querySelectedVerbs() {
-        selectedVerbs = setup.getMain().online.processQuery(setup.getMain().online.buildQuery(comps), comps);
-    }
-
-    public void randomizeVerbList(ArrayList<Verb> verbs) {
-        Collections.shuffle(verbs);
     }
 
     public ConfigIO getConfig() {
