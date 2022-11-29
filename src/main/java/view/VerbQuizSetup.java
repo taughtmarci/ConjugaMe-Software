@@ -162,11 +162,6 @@ public class VerbQuizSetup extends JPanel {
         JLabel timedDurationTitle = new JLabel("Id\u0151tartam:");
         lastPanel.add(timedDurationTitle, "span");
 
-        /* placeholder for
-        timingDurationSubtitle.setFont(new Font("Verdana", Font.ITALIC, 10));
-        timingDurationSubtitle.setForeground(Color.GRAY);
-        */
-
         // minutes spinner and label
         SpinnerNumberModel minutesModel = new SpinnerNumberModel(comps.getDurationMin(), 1, 180, 1);
         minutesChooser = new JSpinner(minutesModel);
@@ -286,11 +281,10 @@ public class VerbQuizSetup extends JPanel {
                 try {
                     prefs.getConfig().writeComponents("config/preferences.cfg", prefs.getComps());
                     current = new VerbQuiz(main, new VerbQuizController(main, prefs.getComps()));
-
                     setVisible(false);
                     main.switchPanels(this, current);
                 } catch (IOException ex) {
-                    // todo panel
+                    // todo dialog
                     throw new RuntimeException(ex);
                 }
             } else {
@@ -311,7 +305,7 @@ public class VerbQuizSetup extends JPanel {
                 buttonPanel.add(buttons.get(i), "align center");
             }
         } catch (IOException e) {
-            // TODO dialog
+            // todo dialog
             throw new RuntimeException(e);
         }
 

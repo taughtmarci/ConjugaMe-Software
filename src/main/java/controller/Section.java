@@ -18,14 +18,6 @@ public class Section extends JPanel {
 
     private boolean isFirst = false;
 
-    public boolean isFirst() {
-        return isFirst;
-    }
-
-    public void setFirst(boolean first) {
-        isFirst = first;
-    }
-
     public Section(String pronoun, ResultImage resultImage) {
         this.pronoun = pronoun;
         this.solution = "undefined";
@@ -97,4 +89,13 @@ public class Section extends JPanel {
 
         if (isFirst) input.requestFocusInWindow();
     }
+
+    public boolean isFirst() {
+        return isFirst;
+    }
+
+    public void setFirst(boolean first) {
+        isFirst = first;
+    }
+
 }

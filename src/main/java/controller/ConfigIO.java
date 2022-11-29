@@ -1,9 +1,7 @@
 package controller;
 
-import model.Form;
-import model.Group;
-import model.Pronoun;
-import model.VerbQuizComponents;
+import model.*;
+import view.MainWindow;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -33,14 +31,14 @@ public class ConfigIO {
 
             for (int i = 0; i < lines.size(); i++) {
                 switch (lines.get(i)) {
-                    case "Pronoun":
+                    case "Pronoun" -> {
                         i++;
                         while (!lines.get(i).trim().equals("END")) {
                             inputComps.addPronoun(lines.get(i).trim());
                             i++;
                         }
-                        break;
-                    case "Form":
+                    }
+                    case "Form" -> {
                         i++;
                         while (!lines.get(i).trim().equals("END")) {
                             if (lines.get(i).trim().equals("Participio Presento"))
@@ -50,31 +48,29 @@ public class ConfigIO {
                             else inputComps.addForm(lines.get(i).trim());
                             i++;
                         }
-                        break;
-                    case "Group":
+                    }
+                    case "Group" -> {
                         i++;
                         while (!lines.get(i).trim().equals("END")) {
                             String[] tuple = lines.get(i).trim().split(";", 2);
                             inputComps.addGroup(new Group(Integer.parseInt(tuple[0]), tuple[1]));
                             i++;
                         }
-                        break;
-                    case "IsNormal":
+                    }
+                    case "IsNormal" -> {
                         i++;
                         inputComps.setNormal(Boolean.parseBoolean(lines.get(i).trim()));
-                        break;
-                    case "Number":
+                    }
+                    case "Number" -> {
                         i++;
                         inputComps.setNumberOfVerbs(Integer.parseInt(lines.get(i).trim()));
-                        break;
-                    case "Duration":
+                    }
+                    case "Duration" -> {
                         i++;
                         inputComps.setDurationMin(Integer.parseInt(lines.get(i).trim()));
                         i++;
                         inputComps.setDurationSec(Integer.parseInt(lines.get(i).trim()));
-                        break;
-                    default:
-                        System.out.println("felesleges");
+                    }
                 }
             }
         } else {
@@ -83,7 +79,7 @@ public class ConfigIO {
             inputComps = getDefaultPreferences();
         }
 
-        // todo dialog too?
+        // todo dialog?
         if (!inputComps.isWorkingCorrectly()) {
             inputComps = getDefaultPreferences();
         }
@@ -97,7 +93,8 @@ public class ConfigIO {
         outputComps.printStats();
 
         if (!outputComps.isWorkingCorrectly()) {
-            // TODO dialog?
+            MainWindow.dialog.showDialog("Preferencia ment\u00E9s hiba", "Nem siker\u00FClt menteni a megadott adatokat," +
+                    "a preferenci\u00E1kat tartalmaz\u00F3 f\u00E1jl az alap\u00E9rtelmezett \u00E1llapot\u00E1ba lett helyezve.", DialogType.WARNING);
             outputComps = getDefaultPreferences();
         }
 
@@ -145,7 +142,12 @@ public class ConfigIO {
         defaultComps.setDurationSec(0);
         defaultComps.setParticipioPresentoSelected(true);
         defaultComps.setParticipioPasadoSelected(true);
-        // TODO add groups
+
+        ArrayList<Group> defaultGroups = new ArrayList<>();
+        defaultGroups.add(new Group(0, "Conejito"));
+        defaultGroups.add(new Group(1, "Principiante"));
+        defaultComps.setSelectedGroups(defaultGroups);
+
         return defaultComps;
     }
 

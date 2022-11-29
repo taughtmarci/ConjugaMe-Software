@@ -25,15 +25,23 @@ public class VerbQuizComponents {
     }
 
     public boolean isWorkingCorrectly() {
-        if (onlyParticipio() && (!isParticipioPasadoSelected() && !isParticipioPresentoSelected()))
+        if (onlyParticipio() && (!participioPresentoSelected && !participioPasadoSelected)) {
+            System.out.println("Csinga?");
             return false;
-        else if (selectedForms.size() < 0 || selectedPronouns.size() < 0 || selectedGroups.size() < 0)
+        }
+        else if (!onlyParticipio() && (selectedPronouns.size() == 0 || selectedForms.size() == 0)) {
+            System.out.println("tesomsz moment");
             return false;
-        else if (numberOfVerbs < 5 || numberOfVerbs > 500)
+        }
+        else if (selectedGroups.size() == 0) {
+            System.out.println("chingada");
             return false;
-        else if (durationMin < 1 || durationMin > 180)
+        }
+        else if (numberOfVerbs < 1 || numberOfVerbs > 250) {
+            System.out.println("vroo");
             return false;
-        else return durationSec >= 0 && durationSec <= 59;
+        }
+        return durationSec >= 0 && durationSec <= 59 && durationMin >= 1 && durationMin <= 30;
     }
 
     public void printStats() {

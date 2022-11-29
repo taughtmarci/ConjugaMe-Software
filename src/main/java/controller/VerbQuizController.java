@@ -28,6 +28,11 @@ public class VerbQuizController {
         return verbs;
     }
 
+    public void printVerbs() {
+        for (Verb v : verbs)
+            v.printVerb();
+    }
+
     public VerbQuizComponents getComps() {
         return comps;
     }

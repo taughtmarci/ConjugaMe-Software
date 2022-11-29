@@ -50,6 +50,10 @@ public class VerbQuizPreferences {
 
         // number of verbs
         comps.setNumberOfVerbs((int) setup.getVerbNumberChooser().getValue());
+
+        // duration min and sec
+        comps.setDurationMin((int) setup.getMinutesChooser().getValue());
+        comps.setDurationSec((int) setup.getSecondsChooser().getValue());
     }
 
     public String validateForm() {
@@ -62,6 +66,12 @@ public class VerbQuizPreferences {
             error = "Legal\u00E1bb egy n\u00E9vm\u00E1s kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
         else if (comps.getSelectedGroups().size() == 0)
             error = "Legal\u00E1bb egy igecsoport kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
+        else if (comps.getNumberOfVerbs() < 0 || comps.getNumberOfVerbs() > 250)
+            error = "Az ig\u00E9k sz\u00E1ma 0 \u00E9s 250 k\u00F6z\u00F6tt kell, hogy legyen!";
+        else if (comps.getDurationMin() < 1 || comps.getDurationMin() > 30)
+            error = "A megadott perc 1 \u00E9s 30 k\u00F6z\u00F6tt kell, hogy legyen!";
+        else if (comps.getDurationMin() < 0 || comps.getDurationMin() > 59)
+            error = "A megadott m\u00E1sodperc 1 \u00E9s 30 k\u00F6z\u00F6tt kell, hogy legyen!";
 
         return error;
     }

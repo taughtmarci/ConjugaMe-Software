@@ -9,13 +9,10 @@
       <change beforePath="$PROJECT_DIR$/config/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/config/local.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/preferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/preferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Section.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Local.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Local.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Online.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Online.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/VerbQuizComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/VerbQuizComponents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
