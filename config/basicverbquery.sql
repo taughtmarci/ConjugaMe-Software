@@ -1,0 +1,8 @@
+SELECT
+"Verbo".*,
+"[GROUP_TABLE]"."VerbID",
+""
+FROM "Verbo"
+INNER JOIN "[GROUP_TABLE]" ON "[GROUP_TABLE]"."VerbID" = "Verbo"."ID"
+ORDER BY RANDOM()
+LIMIT [AMOUNT];

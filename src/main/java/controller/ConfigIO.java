@@ -6,11 +6,23 @@ import model.Pronoun;
 import model.VerbQuizComponents;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class ConfigIO {
     private File file;
     private BufferedReader br;
+
+    public String readSQL(String fileName) throws IOException {
+        StringBuilder contentBuilder = new StringBuilder();
+        try (Stream<String> stream = Files.lines(Paths.get(fileName), StandardCharsets.UTF_8)) {
+            stream.forEach(s -> contentBuilder.append(s).append("\n"));
+        }
+        return contentBuilder.toString();
+    }
 
     public VerbQuizComponents readComponents(String fileName) throws IOException {
         file = new File(fileName);
@@ -47,6 +59,10 @@ public class ConfigIO {
                             i++;
                         }
                         break;
+                    case "IsNormal":
+                        i++;
+                        inputComps.setNormal(Boolean.parseBoolean(lines.get(i).trim()));
+                        break;
                     case "Number":
                         i++;
                         inputComps.setNumberOfVerbs(Integer.parseInt(lines.get(i).trim()));
@@ -58,7 +74,7 @@ public class ConfigIO {
                         inputComps.setDurationSec(Integer.parseInt(lines.get(i).trim()));
                         break;
                     default:
-                        System.out.println(lines.get(i));
+                        System.out.println("felesleges");
                 }
             }
         } else {
@@ -114,7 +130,8 @@ public class ConfigIO {
             writer.write(g.id() + ";" + g.name() + "\n");
         writer.write("END\n\n");
 
-        // add verb number and duration mins and sec
+        // add isnormal, verb number and duration mins and sec
+        writer.write("IsNormal\n" + outputComps.isNormal() + "\n\n");
         writer.write("Number\n" + outputComps.getNumberOfVerbs() + "\n\n");
         writer.write("Duration\n" + outputComps.getDurationMin() + "\n" + outputComps.getDurationSec());
 

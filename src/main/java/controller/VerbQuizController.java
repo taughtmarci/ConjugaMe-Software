@@ -4,20 +4,31 @@ import model.Verb;
 import model.VerbQuizComponents;
 import view.MainWindow;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class VerbQuizController {
-    private MainWindow main;
+    private final MainWindow main;
     private ArrayList<Verb> verbs;
-    private VerbQuizComponents comps;
+    private final VerbQuizComponents comps;
 
-    private boolean isTimedQuiz;
-    public void querySelectedVerbs() {
-        verbs = main.online.processQuery(main.online.buildQuery(comps), comps);
+    public VerbQuizController(MainWindow main, VerbQuizComponents comps) throws IOException {
+        this.main = main;
+        this.comps = comps;
+        this.verbs = main.local.processQueries(comps);
+        randomizeVerbList(this.verbs);
     }
 
     public void randomizeVerbList(ArrayList<Verb> verbs) {
         Collections.shuffle(verbs);
+    }
+
+    public ArrayList<Verb> getVerbs() {
+        return verbs;
+    }
+
+    public VerbQuizComponents getComps() {
+        return comps;
     }
 }

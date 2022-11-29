@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class VerbQuizComponents {
+    private boolean isNormal;
     private int numberOfVerbs;
     private int durationMin;
     private int durationSec;
@@ -16,9 +17,11 @@ public class VerbQuizComponents {
     private ArrayList<Form> selectedForms;
 
     public VerbQuizComponents() {
-        selectedGroups = new ArrayList<>();
-        selectedPronouns = new ArrayList<>();
-        selectedForms = new ArrayList<>();
+        this.isNormal = true;
+        this.numberOfVerbs = 0;
+        this.selectedGroups = new ArrayList<>();
+        this.selectedPronouns = new ArrayList<>();
+        this.selectedForms = new ArrayList<>();
     }
 
     public boolean isWorkingCorrectly() {
@@ -148,5 +151,13 @@ public class VerbQuizComponents {
 
     public void setDurationSec(int durationSec) {
         this.durationSec = durationSec;
+    }
+
+    public boolean isNormal() {
+        return isNormal;
+    }
+
+    public void setNormal(boolean normal) {
+        isNormal = normal;
     }
 }

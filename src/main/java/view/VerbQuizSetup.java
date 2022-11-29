@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 
 public class VerbQuizSetup extends JPanel {
-    private final int BUTTON_NUMBER = 4;
+    private final int BUTTON_NUMBER = 0;
     private final MainWindow main;
     private VerbQuiz current;
 
@@ -50,18 +50,18 @@ public class VerbQuizSetup extends JPanel {
 
     private JPanel initPronounPanel() {
         JPanel pronounPanel = new JPanel();
-        pronounPanel.setLayout(new MigLayout("al center center"));
+        pronounPanel.setLayout(new MigLayout("al center top"));
 
         // pronouns title
         JLabel pronounTitle = new JLabel("Szem\u00E9ly(ek):");
-        pronounPanel.add(pronounTitle, "align center, wrap");
+        pronounPanel.add(pronounTitle, "al center, span");
 
         // pronouns checkboxes
         pronounCheckBoxes = new ArrayList<>();
         for (Pronoun p : Pronoun.values()) {
             boolean inputFlag = comps.getSelectedPronouns().contains(p);
             pronounCheckBoxes.add(new JCheckBox(p.toString(), inputFlag));
-            pronounPanel.add(pronounCheckBoxes.get(pronounCheckBoxes.size() - 1), "wrap");
+            pronounPanel.add(pronounCheckBoxes.get(pronounCheckBoxes.size() - 1), "al left center, wrap");
         }
 
         pronounPanel.setPreferredSize(new Dimension(getWidth(), 280));
@@ -132,7 +132,7 @@ public class VerbQuizSetup extends JPanel {
 
     private JPanel initModePanel() {
         JPanel lastPanel = new JPanel();
-        lastPanel.setLayout(new MigLayout("al center center"));
+        lastPanel.setLayout(new MigLayout("al center top"));
 
         // group selector with title
         JLabel groupTitle = new JLabel("Igecsoport(ok):");
@@ -142,10 +142,8 @@ public class VerbQuizSetup extends JPanel {
         lastPanel.add(groupList, "align center, span");
 
         // normal mode radio and title
-        normalModeRadio = new JRadioButton();
-        lastPanel.add(normalModeRadio, "align right");
-        JLabel normalModeTitle = new JLabel("Norm\u00E1l");
-        lastPanel.add(normalModeTitle, "span");
+        normalModeRadio = new JRadioButton("Norm\u00E1l");
+        lastPanel.add(normalModeRadio, "align left, span");
 
         // number of verbs title
         JLabel verbNumberTitle = new JLabel("Ig\u00E9k sz\u00E1ma:");
@@ -157,10 +155,8 @@ public class VerbQuizSetup extends JPanel {
         lastPanel.add(verbNumberChooser, "span");
 
         // timed mode radio and title
-        timedModeRadio = new JRadioButton();
-        lastPanel.add(timedModeRadio, "align right");
-        JLabel timedModeTitle = new JLabel("Id\u0151z\u00EDtett");
-        lastPanel.add(timedModeTitle, "span");
+        timedModeRadio = new JRadioButton("Id\u0151z\u00EDtett");
+        lastPanel.add(timedModeRadio, "align left, span");
 
         // timed duration title
         JLabel timedDurationTitle = new JLabel("Id\u0151tartam:");
@@ -212,12 +208,12 @@ public class VerbQuizSetup extends JPanel {
         // action listener to radios
         normalModeRadio.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             // own
-            normalModeTitle.setForeground(Color.BLACK);
+            verbNumberTitle.setForeground(Color.BLACK);
             ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEnabled(true);
             ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEditable(true);
 
             // other
-            timedModeTitle.setForeground(Color.GRAY);
+            timedDurationTitle.setForeground(Color.GRAY);
             minutesLabel.setForeground(Color.GRAY);
             secondsLabel.setForeground(Color.GRAY);
             ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEnabled(false);
@@ -228,7 +224,7 @@ public class VerbQuizSetup extends JPanel {
 
         timedModeRadio.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             // own
-            timedModeTitle.setForeground(Color.BLACK);
+            timedDurationTitle.setForeground(Color.BLACK);
             minutesLabel.setForeground(Color.BLACK);
             secondsLabel.setForeground(Color.BLACK);
             ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEnabled(true);
@@ -237,10 +233,28 @@ public class VerbQuizSetup extends JPanel {
             ((JSpinner.DefaultEditor) secondsChooser.getEditor()).getTextField().setEditable(true);
 
             // other
-            normalModeTitle.setForeground(Color.GRAY);
+            verbNumberTitle.setForeground(Color.GRAY);
             ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEnabled(false);
             ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEditable(false);
         }));
+
+        // select one of the radio buttons
+        if (comps.isNormal()) {
+            normalModeRadio.setSelected(true);
+            timedDurationTitle.setForeground(Color.GRAY);
+            minutesLabel.setForeground(Color.GRAY);
+            secondsLabel.setForeground(Color.GRAY);
+            ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEnabled(false);
+            ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEditable(false);
+            ((JSpinner.DefaultEditor) secondsChooser.getEditor()).getTextField().setEnabled(false);
+            ((JSpinner.DefaultEditor) secondsChooser.getEditor()).getTextField().setEditable(false);
+        }
+        else {
+            timedModeRadio.setSelected(true);
+            verbNumberTitle.setForeground(Color.GRAY);
+            ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEnabled(false);
+            ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEditable(false);
+        }
 
         lastPanel.setPreferredSize(new Dimension(getWidth(), 280));
         lastPanel.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -271,15 +285,14 @@ public class VerbQuizSetup extends JPanel {
             if (error.equals("")) {
                 try {
                     prefs.getConfig().writeComponents("config/preferences.cfg", prefs.getComps());
-                    prefs.querySelectedVerbs();
+                    current = new VerbQuiz(main, new VerbQuizController(main, prefs.getComps()));
+
+                    setVisible(false);
+                    main.switchPanels(this, current);
                 } catch (IOException ex) {
                     // todo panel
                     throw new RuntimeException(ex);
                 }
-
-                setVisible(false);
-                current = new VerbQuiz(main, prefs);
-                main.switchPanels(this, current);
             } else {
                 errorLabel.setText(error);
                 this.updateUI();

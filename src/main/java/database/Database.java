@@ -1,5 +1,6 @@
 package database;
 
+import controller.ConfigIO;
 import controller.DialogCommands.DoNothingCommand;
 import controller.DialogCommands.ExitCommand;
 import model.VerbQuizComponents;
@@ -8,11 +9,16 @@ import org.sqlite.SQLiteConfig;
 import org.sqlite.SQLiteOpenMode;
 import view.MainWindow;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 abstract class Database {
+    private final String MAINTABLE = "Verbo";
+    private final String BASICVERBQUERYPATH = "config/basicverbquery.sql";
+    private final String COMPLEXVERBQUERYPATH = "config/complexverbquery.sql";
+
     public boolean onlineFlag;
     protected String username;
     protected String password;
@@ -21,7 +27,6 @@ abstract class Database {
     protected Connection connection;
     public boolean connected = false;
 
-    private final String MAINTABLE = "Verbo";
     protected String randomKeyword;
 
     public Database(boolean onlineFlag, String location) {
@@ -41,8 +46,10 @@ abstract class Database {
             try {
                 connection = DriverManager.getConnection(location, username, password);
             } catch (SQLException e) {
-                String errorMessage = "Kapcsol\u00F3d\u00E1s az online adatb\u00E1zishoz sikertelen.\n" +
-                        "Szeretn\u00E9d elind\u00EDtani az alkalmaz\u00E1st offline m\u00F3dban?\n";
+                String errorMessage = """
+                        Kapcsol\u00F3d\u00E1s az online adatb\u00E1zishoz sikertelen.
+                        Szeretn\u00E9d elind\u00EDtani az alkalmaz\u00E1st offline m\u00F3dban?
+                        """;
                 String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
                 MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.QUESTION, new DoNothingCommand(), new ExitCommand());
                 connected = false;
@@ -53,8 +60,10 @@ abstract class Database {
                 config.resetOpenMode(SQLiteOpenMode.CREATE);
                 connection = DriverManager.getConnection(location, config.toProperties());
             } catch (SQLException e) {
-                String errorMessage = "Kapcsol\u00F3d\u00E1s a lok\u00E1lis adatb\u00E1zishoz sikertelen.\n" +
-                        "K\u00E9rj\u00FCk telep\u00EDtsd \u00FAjra a programot.\n";
+                String errorMessage = """
+                        Kapcsol\u00F3d\u00E1s a lok\u00E1lis adatb\u00E1zishoz sikertelen.
+                        K\u00E9rj\u00FCk telep\u00EDtsd \u00FAjra a programot.
+                        """;
                 String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
                 MainWindow.dialog.showDialog(errorTitle, errorMessage, DialogType.ERROR);
                 System.exit(0);
@@ -63,7 +72,7 @@ abstract class Database {
         connected = true;
     }
 
-    public ArrayList<Verb> processQuery(String query, VerbQuizComponents components) {
+    public ArrayList<Verb> buildQuery(String query, VerbQuizComponents comps) {
         ArrayList<Verb> result = new ArrayList<>();
         if (connected) {
             try (Statement statement = connection.createStatement()) {
@@ -71,16 +80,16 @@ abstract class Database {
 
                 while (resultSet.next()) {
                     VerbBasic tempBasic = new VerbBasic(resultSet.getString("Infinitivo"));
-                    if (components.isParticipioPresentoSelected()) tempBasic.setPresento(resultSet.getString("Presento"));
-                    if (components.isParticipioPasadoSelected()) tempBasic.setPasado(resultSet.getString("Pasado"));
+                    if (comps.isParticipioPresentoSelected()) tempBasic.setPresento(resultSet.getString("Presento"));
+                    if (comps.isParticipioPasadoSelected()) tempBasic.setPasado(resultSet.getString("Pasado"));
 
                     Verb temp = new Verb(tempBasic);
                     HashMap<Pronoun, String> tempContent = new HashMap<>();
                     ResultSetMetaData metaData = resultSet.getMetaData();
 
-                    for (Form f : components.getSelectedForms()) {
+                    for (Form f : comps.getSelectedForms()) {
                         int index = resultSet.findColumn("ID " + f.toString()) + 2;
-                        for (int i = 0; i < 7; i++) {
+                        for (int i = 0; i < comps.getSelectedPronouns().size(); i++) {
                             Pronoun columnName = Pronoun.fromString(metaData.getColumnName(index + i));
                             tempContent.put(columnName, resultSet.getString(index + i));
                         }
@@ -98,36 +107,53 @@ abstract class Database {
         return result;
     }
 
-    public String buildQuery(VerbQuizComponents components) {
-        StringBuilder queryBuilder = new StringBuilder();
+    public ArrayList<Verb> processQueries(VerbQuizComponents comps) throws IOException {
+        ArrayList<Verb> result = new ArrayList<>();
 
-        // select part
-        queryBuilder.append("SELECT Verbo.Infinitivo, ");
-        if (components.isParticipioPresentoSelected())
-            queryBuilder.append("Verbo.Presento, ");
-        if (components.isParticipioPasadoSelected())
-            queryBuilder.append("Verbo.Pasado, ");
-        for (Form f : components.getSelectedForms())
-            queryBuilder.append("`").append(f.toString()).append("`.*, ");
-        queryBuilder.append("''\n");
+        ConfigIO config = new ConfigIO();
+        String queryDefault;
+        if (comps.onlyParticipio()) queryDefault = config.readSQL(BASICVERBQUERYPATH);
+        else queryDefault = config.readSQL(COMPLEXVERBQUERYPATH);
 
-        // from part
-        queryBuilder.append("FROM ");
-        if (!components.onlyParticipio()) {
-            queryBuilder.append("(".repeat(components.getSelectedForms().size()));
+        for (Group g : comps.getSelectedGroups()) {
+            // replace group tables
+            String query = queryDefault.replace("[GROUP_TABLE]", "GRUPO_" + g.name());
 
-            queryBuilder.append("Verbo ");
-            for (Form f : components.getSelectedForms()) {
-                queryBuilder.append("INNER JOIN `").append(f.toString()).append("` on Verbo.ID = ");
-                queryBuilder.append("`").append(f.toString()).append("`.VerbID)\n");
+            if (!comps.onlyParticipio()) {
+                // replace form and pronoun selects
+                StringBuilder formSelects = new StringBuilder();
+                for (Form f : comps.getSelectedForms()) {
+                    StringBuilder temp = new StringBuilder();
+                    String formTemp = "\"" + f.toString() + "\".\"ID " + f.toString() + "\",\n";
+                    temp.append(formTemp);
+
+                    for (Pronoun p : comps.getSelectedPronouns()) {
+                        String pronounTemp = "\"" + f.toString() + "\".\"" + p.toString() + "\",\n";
+                        temp.append(pronounTemp);
+                    }
+                    formSelects.append(temp);
+                }
+                query = query.replace("[FORMS_AND_PRONOUNS]", formSelects.toString());
+
+                // replace form inner joins
+                StringBuilder formJoins = new StringBuilder();
+                for (Form f : comps.getSelectedForms()) {
+                    String temp = "INNER JOIN \"" + f.toString() + "\" ON \"" + f.toString() + "\".\"VerbID\" = \"Verbo\".\"ID\"\n";
+                    formJoins.append(temp);
+                }
+                query = query.replace("[FORM_INNER_JOINS]", formJoins.toString());
             }
-        }
-        else queryBuilder.append("Verbo\n");
-        //remaining parts
-        queryBuilder.append("ORDER BY ").append(randomKeyword).append("\nlimit ").append(components.getNumberOfVerbs()).append(";");
 
-        // debug
-        System.out.println(queryBuilder.toString());
-        return queryBuilder.toString();
+            // replace amount
+            query = query.replace("[AMOUNT]", Integer.toString(comps.getNumberOfVerbs()));
+
+            // debug
+            System.out.println("QUERY:\n" + query);
+
+            // make query
+            result.addAll(buildQuery(query, comps));
+        }
+
+        return result;
     }
 }

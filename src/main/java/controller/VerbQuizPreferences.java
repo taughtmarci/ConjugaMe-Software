@@ -12,7 +12,6 @@ import java.util.Collections;
 public class VerbQuizPreferences {
     private final VerbQuizSetup setup;
 
-    private ArrayList<Verb> selectedVerbs;
     private VerbQuizComponents comps;
     private final ConfigIO config;
 
@@ -85,9 +84,5 @@ public class VerbQuizPreferences {
 
     public GroupSelector getSelector() {
         return selector;
-    }
-
-    public ArrayList<Verb> getSelectedVerbs() {
-        return selectedVerbs;
     }
 }

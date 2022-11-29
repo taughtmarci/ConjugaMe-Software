@@ -4,7 +4,7 @@ public class Local extends Database {
 
     public Local(String location) {
         super(false, "jdbc:sqlite:" + location);
-        this.randomKeyword = "random()";
+        this.randomKeyword = "RANDOM()";
         connect();
     }
 

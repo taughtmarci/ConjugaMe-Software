@@ -5,7 +5,7 @@ public class Online extends Database {
     public Online(String ip, String port, String schema) {
         super(true, "jdbc:mysql://" + ip + ":" + port + "/" + schema);
         setCredentials("admin", "ManchaT3!");
-        this.randomKeyword = "rand()";
+        this.randomKeyword = "RAND()";
         connect();
     }
 

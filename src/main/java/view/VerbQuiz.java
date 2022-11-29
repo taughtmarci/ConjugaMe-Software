@@ -2,7 +2,7 @@ package view;
 
 import controller.QuizResults;
 import controller.Section;
-import controller.VerbQuizPreferences;
+import controller.VerbQuizController;
 import model.*;
 import model.VerbQuizComponents;
 import net.miginfocom.swing.MigLayout;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class VerbQuiz extends JPanel {
     private final MainWindow main;
-    private final VerbQuizPreferences prefs;
+    private final VerbQuizController controller;
     private final ArrayList<Verb> verbs;
     private final VerbQuizComponents comps;
 
@@ -38,11 +38,11 @@ public class VerbQuiz extends JPanel {
     private ArrayList<Verb> incorrectVerbs;
     private EndQuiz current;
 
-    public VerbQuiz(MainWindow main, VerbQuizPreferences prefs) {
+    public VerbQuiz(MainWindow main, VerbQuizController controller) {
         this.main = main;
-        this.prefs = prefs;
-        this.verbs = prefs.getSelectedVerbs();
-        this.comps = prefs.getComps();
+        this.controller = controller;
+        this.verbs = controller.getVerbs();
+        this.comps = controller.getComps();
 
         this.currentVerbLabel = new JLabel("");
         this.currentFormLabel = new JLabel("");
