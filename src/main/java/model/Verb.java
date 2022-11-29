@@ -26,6 +26,7 @@ public class Verb {
             System.out.println(f.toString() + ":");
             for (Pronoun p : forms.get(f).keySet())
                 System.out.println(p.toString() + ": " + forms.get(f).get(p));
+            System.out.println("");
         }
     }
 

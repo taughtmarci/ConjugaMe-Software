@@ -18,6 +18,7 @@ public class VerbQuizController {
         this.comps = comps;
         this.verbs = main.local.processQueries(comps);
         randomizeVerbList(this.verbs);
+        printVerbs();
     }
 
     public void randomizeVerbList(ArrayList<Verb> verbs) {
@@ -29,8 +30,10 @@ public class VerbQuizController {
     }
 
     public void printVerbs() {
-        for (Verb v : verbs)
+        for (Verb v : verbs) {
             v.printVerb();
+            System.out.println("\n");
+        }
     }
 
     public VerbQuizComponents getComps() {

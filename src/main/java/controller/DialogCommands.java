@@ -11,7 +11,7 @@ public class DialogCommands {
     public static class DoNothingCommand implements Runnable {
         @Override
         public void run() {
-            System.out.println("did nothing :D");
+            System.out.println("Command done");
         }
     }
 }

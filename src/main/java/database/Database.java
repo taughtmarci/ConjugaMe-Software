@@ -84,11 +84,11 @@ abstract class Database {
                     if (comps.isParticipioPasadoSelected()) tempBasic.setPasado(resultSet.getString("Pasado"));
 
                     Verb temp = new Verb(tempBasic);
-                    HashMap<Pronoun, String> tempContent = new HashMap<>();
                     ResultSetMetaData metaData = resultSet.getMetaData();
 
                     for (Form f : comps.getSelectedForms()) {
-                        int index = resultSet.findColumn("ID " + f.toString()) + 2;
+                        HashMap<Pronoun, String> tempContent = new HashMap<>();
+                        int index = resultSet.findColumn("ID " + f.toString()) + 1;
                         for (int i = 0; i < comps.getSelectedPronouns().size(); i++) {
                             Pronoun columnName = Pronoun.fromString(metaData.getColumnName(index + i));
                             tempContent.put(columnName, resultSet.getString(index + i));
@@ -148,7 +148,7 @@ abstract class Database {
             query = query.replace("[AMOUNT]", Integer.toString(comps.getNumberOfVerbs()));
 
             // debug
-            System.out.println("QUERY:\n" + query);
+            //System.out.println("QUERY:\n" + query);
 
             // make query
             result.addAll(buildQuery(query, comps));

@@ -90,7 +90,7 @@ public class ConfigIO {
     public void writeComponents(String fileName, VerbQuizComponents outputComps) throws IOException {
         file = new File(fileName);
         // debug
-        outputComps.printStats();
+        //outputComps.printStats();
 
         if (!outputComps.isWorkingCorrectly()) {
             MainWindow.dialog.showDialog("Preferencia ment\u00E9s hiba", "Nem siker\u00FClt menteni a megadott adatokat," +
@@ -98,7 +98,7 @@ public class ConfigIO {
             outputComps = getDefaultPreferences();
         }
 
-        FileWriter writer = new FileWriter(fileName);
+        OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
         // clear file data
         if (file.exists() && file.isFile()) {
             file.delete();
