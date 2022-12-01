@@ -1,25 +1,26 @@
 package view;
 
+import controller.VerbQuizResults;
 import model.VerbQuizComponents;
-import controller.QuizResults;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import java.io.IOException;
 
 public class EndQuiz extends JPanel {
-    private final QuizResults results;
-    //private final VerbQuizComponents components;
+    private final VerbQuizResults results;
+    private final VerbQuizComponents comps;
 
     private JLabel resultLabel;
     private JLabel percentLabel;
     private JButton restartButton;
-    private JButton newQuizButton;
+    private JButton preferencesButton;
 
     private JPanel current;
 
-    public EndQuiz(QuizResults results) {
+    public EndQuiz(VerbQuizResults results) {
         this.results = results;
-        //this.components = collection.getComponents();
+        this.comps = results.getComps();
 
         setLayout(new MigLayout("align center center"));
         initComponents();
@@ -28,13 +29,20 @@ public class EndQuiz extends JPanel {
 
     private void initComponents() {
         // Result/Max
-        //resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + components.getTotalNumberOfVerbs());
+        resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + comps.getTotalNumberOfVerbs());
         add(resultLabel, "span");
 
         // Result in percent
-        //float percentResult = (float) results.getScore() / (float) components.getTotalNumberOfVerbs();
-        //percentLabel = new JLabel(QuizResults.df.format(percentResult * 100) + "%");
-        //add(percentLabel, "span");
+        float percentResult = (float) results.getScore() / (float) comps.getTotalNumberOfVerbs();
+        percentLabel = new JLabel(VerbQuizResults.df.format(percentResult * 100) + "%");
+        add(percentLabel, "span");
+
+        /*
+        3 opció:
+        kvíz újraindítása
+        preferences menü
+        dashboard
+         */
 
         // Restart button
         restartButton = new JButton("\u00DAjraind\u00EDt\u00E1s");
@@ -42,18 +50,24 @@ public class EndQuiz extends JPanel {
 
         restartButton.addActionListener(e -> {
             setVisible(false);
-            /*collection.randomizeVerbList();
-            current = new VerbQuiz(collection);
-            collection.getMain().switchPanels(this, current);*/
+            results.getController().randomizeVerbList();
+            current = new VerbQuiz(results.getController().getMain(), results.getController());
+            results.getController().getMain().switchPanels(this, current);
         });
 
-        newQuizButton = new JButton("\u00DAj kv\u00EDz ind\u00EDt\u00E1sa");
-        add(newQuizButton);
+        // Preferences button
+        preferencesButton = new JButton("\u00DAj kv\u00EDz ind\u00EDt\u00E1sa");
+        add(preferencesButton);
 
-        newQuizButton.addActionListener(e -> {
+        preferencesButton.addActionListener(e -> {
             setVisible(false);
-            //current = new VerbQuizSetup();
-            //collection.getMain().switchPanels(this, current);
+            try {
+                current = new VerbQuizSetup(results.getController().getMain(), comps);
+                results.getController().getMain().switchPanels(this, current);
+            } catch (IOException ex) {
+                // todo dialog
+                throw new RuntimeException(ex);
+            }
         });
     }
 }

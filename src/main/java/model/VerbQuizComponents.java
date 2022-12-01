@@ -161,6 +161,10 @@ public class VerbQuizComponents {
         this.durationSec = durationSec;
     }
 
+    public int getDuration() {
+        return (durationMin * 60) + durationSec;
+    }
+
     public boolean isNormal() {
         return isNormal;
     }

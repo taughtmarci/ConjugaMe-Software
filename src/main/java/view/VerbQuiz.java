@@ -1,6 +1,6 @@
 package view;
 
-import controller.QuizResults;
+import controller.VerbQuizResults;
 import controller.Section;
 import controller.VerbQuizController;
 import model.*;
@@ -20,6 +20,8 @@ public class VerbQuiz extends JPanel {
     public int score;
     private JLabel scoreLabel;
 
+    public final boolean isNormal;
+    public int currentTime;
     public int iteration;
     private JLabel outOfLabel;
 
@@ -43,6 +45,7 @@ public class VerbQuiz extends JPanel {
         this.controller = controller;
         this.verbs = controller.getVerbs();
         this.comps = controller.getComps();
+        this.isNormal = comps.isNormal();
 
         this.currentVerbLabel = new JLabel("");
         this.currentFormLabel = new JLabel("");
@@ -70,7 +73,6 @@ public class VerbQuiz extends JPanel {
             currentVerbLabel.setText(currentVerb.getBasic().getInfinitivo());
 
             if (!comps.onlyParticipio()) {
-                // TODO: ezt okosabban
                 currentForm = comps.getSelectedForms().get((int)
                         (Math.random() * comps.getSelectedForms().size()));
                 currentFormLabel.setText(currentForm.toString());
@@ -99,13 +101,21 @@ public class VerbQuiz extends JPanel {
         scoreLabel = new JLabel(Integer.toString(score) + " pont");
         add(scoreLabel, "align left");
 
+        // timer label
+        if (!comps.isNormal()) {
+            JLabel timeLabel = new JLabel();
+            add(timeLabel, "align center");
+            currentTime = comps.getDuration();
+            Timer countBack = new Timer(1000, event -> currentTime--);
+            countBack.setRepeats(true);
+            countBack.start();
+
+        }
+
         // end quiz button
         JButton endQuizButton = new JButton("Kv\u00EDz befejez\u00E9se");
         add(endQuizButton, "align right, wrap");
-        endQuizButton.addActionListener(e -> {
-            finishQuiz();
-            //collection.getMain().switchPanels(this, new StartQuiz(collection.getMain()));
-        });
+        endQuizButton.addActionListener(e -> finishQuiz());
 
         // set up current verb and form labels
         currentVerbLabel.setFont(new Font("Verdana", Font.BOLD, 24));
@@ -205,9 +215,9 @@ public class VerbQuiz extends JPanel {
     }
 
     private void finishQuiz() {
-        QuizResults results = new QuizResults(score, incorrectVerbs);
+        VerbQuizResults results = new VerbQuizResults(score, controller, incorrectVerbs);
         setVisible(false);
-        //current = new EndQuiz(results, prefs);
+        current = new EndQuiz(results);
         main.switchPanels(this, current);
     }
 }

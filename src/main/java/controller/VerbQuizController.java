@@ -17,12 +17,12 @@ public class VerbQuizController {
         this.main = main;
         this.comps = comps;
         this.verbs = main.local.processQueries(comps);
-        randomizeVerbList(this.verbs);
+        randomizeVerbList();
         printVerbs();
     }
 
-    public void randomizeVerbList(ArrayList<Verb> verbs) {
-        Collections.shuffle(verbs);
+    public void randomizeVerbList() {
+        Collections.shuffle(this.verbs);
     }
 
     public ArrayList<Verb> getVerbs() {
@@ -38,5 +38,9 @@ public class VerbQuizController {
 
     public VerbQuizComponents getComps() {
         return comps;
+    }
+
+    public MainWindow getMain() {
+        return main;
     }
 }
