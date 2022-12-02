@@ -2,54 +2,42 @@ package model;
 
 import java.util.ArrayList;
 
-public class VerbQuizComponents {
-    private boolean isNormal;
-    private int numberOfVerbs;
-    private int durationMin;
-    private int durationSec;
+public class VerbQuizComponents extends QuizComponents {
 
     private boolean participioPresentoSelected;
     private boolean participioPasadoSelected;
 
-    private ArrayList<Group> selectedGroups;
     private ArrayList<Pronoun> selectedPronouns;
 
     private ArrayList<Form> selectedForms;
 
     public VerbQuizComponents() {
-        this.isNormal = true;
-        this.numberOfVerbs = 0;
-        this.selectedGroups = new ArrayList<>();
+        super();
+        this.isVerb = true;
         this.selectedPronouns = new ArrayList<>();
         this.selectedForms = new ArrayList<>();
     }
 
+    @Override
     public boolean isWorkingCorrectly() {
-        if (onlyParticipio() && (!participioPresentoSelected && !participioPasadoSelected)) {
-            System.out.println("Csinga?");
+        if (onlyParticipio() && (!participioPresentoSelected && !participioPasadoSelected))
             return false;
-        }
-        else if (!onlyParticipio() && (selectedPronouns.size() == 0 || selectedForms.size() == 0)) {
-            System.out.println("tesomsz moment");
+        else if (!onlyParticipio() && (selectedPronouns.size() == 0 || selectedForms.size() == 0))
             return false;
-        }
-        else if (selectedGroups.size() == 0) {
-            System.out.println("chingada");
+        else if (selectedGroups.size() == 0)
             return false;
-        }
-        else if (numberOfVerbs < 1 || numberOfVerbs > 250) {
-            System.out.println("vroo");
+        else if (wordAmount < 1 || wordAmount > 250)
             return false;
-        }
         return durationSec >= 0 && durationSec <= 59 && durationMin >= 1 && durationMin <= 30;
     }
 
+    @Override
     public void printStats() {
         System.out.println("Pronouns: " + getSelectedPronouns().toString() + "\n"
                 + "Forms: " + getSelectedForms().toString() + "\n"
                 + "P.Presento: " + participioPresentoSelected + ", P.Pasado: " + participioPasadoSelected + "\n"
                 + "Groups: " + getSelectedGroups().toString() + "\n"
-                + "Number of verbs: " + getNumberOfVerbs() + "\n"
+                + "Number of verbs: " + getWordAmount() + "\n"
                 + "Duration min: " + getDurationMin() + ", sec: " + getDurationSec() + "\n");
     }
 
@@ -93,10 +81,10 @@ public class VerbQuizComponents {
         int result = 0;
 
         if (!onlyParticipio())
-            result = numberOfVerbs * getSelectedPronouns().size();
+            result = wordAmount * getSelectedPronouns().size();
 
-        if (participioPresentoSelected) result += numberOfVerbs;
-        if (participioPasadoSelected) result += numberOfVerbs;
+        if (participioPresentoSelected) result += wordAmount;
+        if (participioPasadoSelected) result += wordAmount;
 
         return result;
     }
@@ -109,14 +97,6 @@ public class VerbQuizComponents {
         return selectedForms;
     }
 
-    public ArrayList<Group> getSelectedGroups() {
-        return selectedGroups;
-    }
-
-    public void addGroup(Group group) {
-        selectedGroups.add(group);
-    }
-
     public void addPronoun(String elem) {
         selectedPronouns.add(Pronoun.fromString(elem));
     }
@@ -125,51 +105,11 @@ public class VerbQuizComponents {
         selectedForms.add(Form.fromString(elem));
     }
 
-    public void setSelectedGroups(ArrayList<Group> selectedGroups) {
-        this.selectedGroups = selectedGroups;
-    }
-
     public void setSelectedPronouns(ArrayList<Pronoun> selectedPronouns) {
         this.selectedPronouns = selectedPronouns;
     }
 
     public void setSelectedForms(ArrayList<Form> selectedForms) {
         this.selectedForms = selectedForms;
-    }
-
-    public int getNumberOfVerbs() {
-        return numberOfVerbs;
-    }
-
-    public void setNumberOfVerbs(int numberOfVerbs) {
-        this.numberOfVerbs = numberOfVerbs;
-    }
-
-    public int getDurationMin() {
-        return durationMin;
-    }
-
-    public void setDurationMin(int durationMin) {
-        this.durationMin = durationMin;
-    }
-
-    public int getDurationSec() {
-        return durationSec;
-    }
-
-    public void setDurationSec(int durationSec) {
-        this.durationSec = durationSec;
-    }
-
-    public int getDuration() {
-        return (durationMin * 60) + durationSec;
-    }
-
-    public boolean isNormal() {
-        return isNormal;
-    }
-
-    public void setNormal(boolean normal) {
-        isNormal = normal;
     }
 }

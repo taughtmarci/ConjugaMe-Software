@@ -1,40 +1,31 @@
 package controller;
 
-import model.VerbQuizComponents;
+import model.Difficulty;
+import model.WordQuizComponents;
 import view.VerbQuiz;
-import view.VerbQuizSetup;
+import view.WordQuizSetup;
 
 import javax.swing.*;
 import java.io.IOException;
 
-public class VerbQuizPreferences extends QuizPreferences {
-    private final String FILE_PATH = "config/verbpreferences.cfg";
-    private VerbQuizComponents comps;
-    private final VerbQuizSetup setup;
-    private VerbQuiz current;
+public class WordQuizPreferences extends QuizPreferences {
+    private final String FILE_PATH = "config/wordpreferences.cfg";
+    private WordQuizComponents comps;
+    private final WordQuizSetup setup;
+    private WordQuiz current;
 
-    public VerbQuizPreferences(VerbQuizSetup setup) throws IOException {
+    public WordQuizPreferences(WordQuizSetup setup) throws IOException {
         super();
         this.setup = setup;
-        this.comps = new VerbQuizComponents();
+        this.comps = new WordQuizComponents();
     }
 
     public void setupComps() {
-        comps = new VerbQuizComponents();
+        comps = new WordQuizComponents();
 
-        // pronouns
-        for (JCheckBox cb : setup.getPronounCheckBoxes())
-            if (cb.isSelected()) comps.addPronoun(cb.getText());
-
-        // forms
-        for (JCheckBox cb : setup.getFormCheckBoxes()) {
-            if (cb.isSelected()) {
-                switch (cb.getText()) {
-                    case "Participio Presento" -> comps.setParticipioPresentoSelected(true);
-                    case "Participio Pasado" -> comps.setParticipioPasadoSelected(true);
-                    default -> comps.addForm(cb.getText());
-                }
-            }
+        // difficulty
+        for (JRadioButton difficultyRadioButton : setup.getDifficultyRadioButtons()) {
+            if (difficultyRadioButton.isSelected()) comps.setDifficulty(Difficulty.fromString(difficultyRadioButton.getText()));
         }
 
         // groups
@@ -43,8 +34,8 @@ public class VerbQuizPreferences extends QuizPreferences {
         // normal or timed
         comps.setNormal(setup.getNormalModeRadio().isSelected());
 
-        // number of verbs
-        comps.setWordAmount((int) setup.getVerbNumberChooser().getValue());
+        // number of words
+        comps.setWordAmount((int) setup.getWordNumberChooser().getValue());
 
         // duration min and sec
         comps.setDurationMin((int) setup.getMinutesChooser().getValue());
@@ -54,15 +45,10 @@ public class VerbQuizPreferences extends QuizPreferences {
     public String validateForm() {
         String error = "";
 
-        if (!comps.isParticipioPasadoSelected() && !comps.isParticipioPresentoSelected()
-                && comps.getSelectedForms().size() == 0)
-            error = "Legal\u00E1bb egy igeid\u0151/m\u00F3d kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
-        else if (comps.getSelectedForms().size() > 0 && comps.getSelectedPronouns().size() == 0)
-            error = "Legal\u00E1bb egy n\u00E9vm\u00E1s kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
-        else if (comps.getSelectedGroups().size() == 0)
+        if (comps.getSelectedGroups().size() == 0)
             error = "Legal\u00E1bb egy csoport kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
         else if (comps.getWordAmount() < 0 || comps.getWordAmount() > 250)
-            error = "Az ig\u00E9k sz\u00E1ma 0 \u00E9s 250 k\u00F6z\u00F6tt kell, hogy legyen!";
+            error = "Az szavak sz\u00E1ma 0 \u00E9s 250 k\u00F6z\u00F6tt kell, hogy legyen!";
         else if (comps.getDurationMin() < 1 || comps.getDurationMin() > 30)
             error = "A megadott perc 1 \u00E9s 30 k\u00F6z\u00F6tt kell, hogy legyen!";
         else if (comps.getDurationMin() < 0 || comps.getDurationMin() > 59)
@@ -76,7 +62,7 @@ public class VerbQuizPreferences extends QuizPreferences {
         String error = validateForm();
         if (error.equals("")) {
             try {
-                getConfig().writeVerbComponents(FILE_PATH, getComps());
+                getConfig().writeWordComponents("config/wordpreferences.cfg", getComps());
                 error = "Sikeres ment\u00E9s!";
             } catch (IOException e) {
                 error = "Nem sikerült menteni a preferenciákat.";
@@ -96,12 +82,11 @@ public class VerbQuizPreferences extends QuizPreferences {
         }
     }
 
-    public VerbQuizComponents getComps() {
+    public WordQuizComponents getComps() {
         return comps;
     }
 
-    public VerbQuizSetup getSetup() {
+    public WordQuizSetup getSetup() {
         return setup;
     }
-
 }

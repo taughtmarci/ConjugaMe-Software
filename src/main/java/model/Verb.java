@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-// TODO: MAKE NAMING CONVENTION
 public class Verb {
     public VerbBasic basic;
     public ArrayList<String> definition;

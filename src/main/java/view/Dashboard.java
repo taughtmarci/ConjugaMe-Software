@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Dashboard extends JPanel {
     private final int BUTTON_NUMBER = 6;
-    private final String FILE_PATH = "config/preferences.cfg";
+
     private final MainWindow main;
     private JPanel current;
     private final ConfigIO config;
@@ -33,7 +33,7 @@ public class Dashboard extends JPanel {
         this.buttons = new ArrayList<>();
 
         // get components from file
-        this.comps = config.readComponents(FILE_PATH);
+        this.comps = config.readVerbComponents(VERB_FILE_PATH);
         setLayout(new MigLayout("align center center"));
 
         // load buttons

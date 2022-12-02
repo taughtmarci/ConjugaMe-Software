@@ -15,9 +15,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 abstract class Database {
-    private final String MAINTABLE = "Verbo";
-    private final String BASICVERBQUERYPATH = "config/basicverbquery.sql";
-    private final String COMPLEXVERBQUERYPATH = "config/complexverbquery.sql";
+    private final String VERB_TABLE = "Verbo";
+    private final String WORD_TABLE = "Palabra";
+    private final String BASIC_VERB_QUERY_PATH = "config/basicverbquery.sql";
+    private final String COMPLEX_VERB_QUERY_PATH = "config/complexverbquery.sql";
+    private final String WORD_QUERY_PATH = "config/wordquery.sql";
 
     public boolean onlineFlag;
     protected String username;
@@ -72,7 +74,54 @@ abstract class Database {
         connected = true;
     }
 
-    public ArrayList<Verb> buildQuery(String query, VerbQuizComponents comps) {
+    public ArrayList<Verb> processVerbQueries(VerbQuizComponents comps) throws IOException {
+        ArrayList<Verb> result = new ArrayList<>();
+
+        ConfigIO config = new ConfigIO();
+        String queryDefault;
+        if (comps.onlyParticipio()) queryDefault = config.readSQL(BASIC_VERB_QUERY_PATH);
+        else queryDefault = config.readSQL(COMPLEX_VERB_QUERY_PATH);
+
+        for (Group g : comps.getSelectedGroups()) {
+            // replace group tables
+            String query = queryDefault.replace("[GROUP_TABLE]", "GRUPO_" + g.name());
+
+            if (!comps.onlyParticipio()) {
+                // replace form and pronoun selects
+                StringBuilder formSelects = new StringBuilder();
+                for (Form f : comps.getSelectedForms()) {
+                    StringBuilder temp = new StringBuilder();
+                    String formTemp = "\"" + f.toString() + "\".\"ID " + f.toString() + "\",\n";
+                    temp.append(formTemp);
+
+                    for (Pronoun p : comps.getSelectedPronouns()) {
+                        String pronounTemp = "\"" + f.toString() + "\".\"" + p.toString() + "\",\n";
+                        temp.append(pronounTemp);
+                    }
+                    formSelects.append(temp);
+                }
+                query = query.replace("[FORMS_AND_PRONOUNS]", formSelects.toString());
+
+                // replace form inner joins
+                StringBuilder formJoins = new StringBuilder();
+                for (Form f : comps.getSelectedForms()) {
+                    String temp = "INNER JOIN \"" + f.toString() + "\" ON \"" + f.toString() + "\".\"VerbID\" = \"Verbo\".\"ID\"\n";
+                    formJoins.append(temp);
+                }
+                query = query.replace("[FORM_INNER_JOINS]", formJoins.toString());
+            }
+
+            // replace amount
+            query = query.replace("[AMOUNT]", Integer.toString(comps.getWordAmount()));
+
+            // make query
+            result.addAll(buildVerbQuery(query, comps));
+        }
+
+        return result;
+    }
+
+    public ArrayList<Verb> buildVerbQuery(String query, VerbQuizComponents comps) {
         ArrayList<Verb> result = new ArrayList<>();
         if (connected) {
             try (Statement statement = connection.createStatement()) {
@@ -107,53 +156,39 @@ abstract class Database {
         return result;
     }
 
-    public ArrayList<Verb> processQueries(VerbQuizComponents comps) throws IOException {
-        ArrayList<Verb> result = new ArrayList<>();
+    public ArrayList<Word> processWordQueries(WordQuizComponents comps) throws IOException {
+        ArrayList<Word> result = new ArrayList<>();
 
         ConfigIO config = new ConfigIO();
-        String queryDefault;
-        if (comps.onlyParticipio()) queryDefault = config.readSQL(BASICVERBQUERYPATH);
-        else queryDefault = config.readSQL(COMPLEXVERBQUERYPATH);
+        String queryDefault = config.readSQL(WORD_QUERY_PATH);
 
         for (Group g : comps.getSelectedGroups()) {
-            // replace group tables
+            // replace group tables and amount
             String query = queryDefault.replace("[GROUP_TABLE]", "GRUPO_" + g.name());
-
-            if (!comps.onlyParticipio()) {
-                // replace form and pronoun selects
-                StringBuilder formSelects = new StringBuilder();
-                for (Form f : comps.getSelectedForms()) {
-                    StringBuilder temp = new StringBuilder();
-                    String formTemp = "\"" + f.toString() + "\".\"ID " + f.toString() + "\",\n";
-                    temp.append(formTemp);
-
-                    for (Pronoun p : comps.getSelectedPronouns()) {
-                        String pronounTemp = "\"" + f.toString() + "\".\"" + p.toString() + "\",\n";
-                        temp.append(pronounTemp);
-                    }
-                    formSelects.append(temp);
-                }
-                query = query.replace("[FORMS_AND_PRONOUNS]", formSelects.toString());
-
-                // replace form inner joins
-                StringBuilder formJoins = new StringBuilder();
-                for (Form f : comps.getSelectedForms()) {
-                    String temp = "INNER JOIN \"" + f.toString() + "\" ON \"" + f.toString() + "\".\"VerbID\" = \"Verbo\".\"ID\"\n";
-                    formJoins.append(temp);
-                }
-                query = query.replace("[FORM_INNER_JOINS]", formJoins.toString());
-            }
-
-            // replace amount
-            query = query.replace("[AMOUNT]", Integer.toString(comps.getNumberOfVerbs()));
-
-            // debug
-            //System.out.println("QUERY:\n" + query);
+            query = query.replace("[AMOUNT]", Integer.toString(comps.getWordAmount()));
 
             // make query
-            result.addAll(buildQuery(query, comps));
+            result.addAll(buildWordQuery(query, comps));
         }
 
+        return result;
+    }
+
+    public ArrayList<Word> buildWordQuery(String query, WordQuizComponents comps) {
+        ArrayList<Word> result = new ArrayList<>();
+        if (connected) {
+            try (Statement statement = connection.createStatement()) {
+                ResultSet resultSet = statement.executeQuery(query);
+
+                while (resultSet.next()) {
+                    result.add(new Word(resultSet.getString("Nombre_F"), resultSet.getString("Nombre_M")));
+                }
+            } catch (SQLException e) {
+                MainWindow.dialog.showDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
+                        + (onlineFlag ? " online " : " ") + "adatb\u00E1zisb\u00F3l.\n" + e.toString(), DialogType.ERROR);
+                connected = false;
+            }
+        }
         return result;
     }
 }

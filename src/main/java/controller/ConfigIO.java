@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.stream.Stream;
 
 public class ConfigIO {
-    private File file;
-    private BufferedReader br;
 
     public String readSQL(String fileName) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
@@ -22,8 +20,8 @@ public class ConfigIO {
         return contentBuilder.toString();
     }
 
-    public VerbQuizComponents readComponents(String fileName) throws IOException {
-        file = new File(fileName);
+    public static VerbQuizComponents readVerbComponents(String fileName) throws IOException {
+        File file = new File(fileName);
         VerbQuizComponents inputComps = new VerbQuizComponents();
 
         if (file.exists() && file.isFile()) {
@@ -63,7 +61,7 @@ public class ConfigIO {
                     }
                     case "Number" -> {
                         i++;
-                        inputComps.setNumberOfVerbs(Integer.parseInt(lines.get(i).trim()));
+                        inputComps.setWordAmount(Integer.parseInt(lines.get(i).trim()));
                     }
                     case "Duration" -> {
                         i++;
@@ -76,26 +74,26 @@ public class ConfigIO {
         } else {
             // todo dialog?
             file.createNewFile();
-            inputComps = getDefaultPreferences();
+            inputComps = getDefaultVerbComps();
         }
 
         // todo dialog?
         if (!inputComps.isWorkingCorrectly()) {
-            inputComps = getDefaultPreferences();
+            inputComps = getDefaultVerbComps();
         }
 
         return inputComps;
     }
 
-    public void writeComponents(String fileName, VerbQuizComponents outputComps) throws IOException {
-        file = new File(fileName);
+    public void writeVerbComponents(String fileName, VerbQuizComponents outputComps) throws IOException {
+        File file = new File(fileName);
         // debug
         //outputComps.printStats();
 
         if (!outputComps.isWorkingCorrectly()) {
             MainWindow.dialog.showDialog("Preferencia ment\u00E9s hiba", "Nem siker\u00FClt menteni a megadott adatokat," +
                     "a preferenci\u00E1kat tartalmaz\u00F3 f\u00E1jl az alap\u00E9rtelmezett \u00E1llapot\u00E1ba lett helyezve.", DialogType.WARNING);
-            outputComps = getDefaultPreferences();
+            outputComps = getDefaultVerbComps();
         }
 
         OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
@@ -129,15 +127,106 @@ public class ConfigIO {
 
         // add isnormal, verb number and duration mins and sec
         writer.write("IsNormal\n" + outputComps.isNormal() + "\n\n");
-        writer.write("Number\n" + outputComps.getNumberOfVerbs() + "\n\n");
+        writer.write("Number\n" + outputComps.getWordAmount() + "\n\n");
         writer.write("Duration\n" + outputComps.getDurationMin() + "\n" + outputComps.getDurationSec());
 
         writer.close();
     }
 
-    private VerbQuizComponents getDefaultPreferences() {
+    public static WordQuizComponents readWordComponents(String fileName) throws IOException {
+        File file = new File(fileName);
+        WordQuizComponents inputComps = new WordQuizComponents();
+
+        if (file.exists() && file.isFile()) {
+            ArrayList<String> lines = readLines(file);
+
+            for (int i = 0; i < lines.size(); i++) {
+                switch (lines.get(i)) {
+                    case "Difficulty" -> {
+                        i++;
+                        while (!lines.get(i).trim().equals("END")) {
+                            inputComps.setDifficulty(Difficulty.fromString(lines.get(i).trim()));
+                            i++;
+                        }
+                    }
+                    case "Group" -> {
+                        i++;
+                        while (!lines.get(i).trim().equals("END")) {
+                            String[] tuple = lines.get(i).trim().split(";", 2);
+                            inputComps.addGroup(new Group(Integer.parseInt(tuple[0]), tuple[1]));
+                            i++;
+                        }
+                    }
+                    case "IsNormal" -> {
+                        i++;
+                        inputComps.setNormal(Boolean.parseBoolean(lines.get(i).trim()));
+                    }
+                    case "Number" -> {
+                        i++;
+                        inputComps.setWordAmount(Integer.parseInt(lines.get(i).trim()));
+                    }
+                    case "Duration" -> {
+                        i++;
+                        inputComps.setDurationMin(Integer.parseInt(lines.get(i).trim()));
+                        i++;
+                        inputComps.setDurationSec(Integer.parseInt(lines.get(i).trim()));
+                    }
+                }
+            }
+        } else {
+            // todo dialog?
+            file.createNewFile();
+            inputComps = getDefaultWordComps();
+        }
+
+        // todo dialog?
+        if (!inputComps.isWorkingCorrectly()) {
+            inputComps = getDefaultWordComps();
+        }
+
+        return inputComps;
+    }
+
+    public void writeWordComponents(String fileName, WordQuizComponents outputComps) throws IOException {
+        File file = new File(fileName);
+        // debug
+        //outputComps.printStats();
+
+        if (!outputComps.isWorkingCorrectly()) {
+            MainWindow.dialog.showDialog("Preferencia ment\u00E9s hiba", "Nem siker\u00FClt menteni a megadott adatokat," +
+                    "a preferenci\u00E1kat tartalmaz\u00F3 f\u00E1jl az alap\u00E9rtelmezett \u00E1llapot\u00E1ba lett helyezve.", DialogType.WARNING);
+            outputComps = getDefaultWordComps();
+        }
+
+        OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
+        // clear file data
+        if (file.exists() && file.isFile()) {
+            file.delete();
+            file.createNewFile();
+        }
+
+        // add difficulty
+        writer.write("Difficulty\n");
+        writer.write(outputComps.getDifficulty().toString() + "\n");
+        writer.write("END\n\n");
+
+        // add groups
+        writer.write("Group\n");
+        for (Group g : outputComps.getSelectedGroups())
+            writer.write(g.id() + ";" + g.name() + "\n");
+        writer.write("END\n\n");
+
+        // add isnormal, verb number and duration mins and sec
+        writer.write("IsNormal\n" + outputComps.isNormal() + "\n\n");
+        writer.write("Number\n" + outputComps.getWordAmount() + "\n\n");
+        writer.write("Duration\n" + outputComps.getDurationMin() + "\n" + outputComps.getDurationSec());
+
+        writer.close();
+    }
+
+    private static VerbQuizComponents getDefaultVerbComps() {
         VerbQuizComponents defaultComps = new VerbQuizComponents();
-        defaultComps.setNumberOfVerbs(25);
+        defaultComps.setWordAmount(25);
         defaultComps.setDurationMin(5);
         defaultComps.setDurationSec(0);
         defaultComps.setParticipioPresentoSelected(true);
@@ -151,9 +240,23 @@ public class ConfigIO {
         return defaultComps;
     }
 
+    private static WordQuizComponents getDefaultWordComps() {
+        WordQuizComponents defaultComps = new WordQuizComponents();
+        defaultComps.setWordAmount(25);
+        defaultComps.setDurationMin(5);
+        defaultComps.setDurationSec(0);
+
+        ArrayList<Group> defaultGroups = new ArrayList<>();
+        defaultGroups.add(new Group(0, "Conejito"));
+        defaultGroups.add(new Group(1, "Principiante"));
+        defaultComps.setSelectedGroups(defaultGroups);
+
+        return defaultComps;
+    }
+
     public ArrayList<Group> readVerifiedGroups(String fileName) throws IOException {
         ArrayList<Group> verifiedGroups = new ArrayList<>();
-        file = new File(fileName);
+        File file = new File(fileName);
 
         if (file.exists() && file.isFile()) {
             ArrayList<String> lines = readLines(file);
@@ -168,10 +271,10 @@ public class ConfigIO {
         return verifiedGroups;
     }
 
-    public ArrayList<String> readLines(File file) throws IOException {
+    public static ArrayList<String> readLines(File file) throws IOException {
         InputStream is = new FileInputStream(file);
         InputStreamReader isr = new InputStreamReader(is, "utf-8");
-        this.br = new BufferedReader(isr);
+        BufferedReader br = new BufferedReader(isr);
 
         ArrayList<String> lines = new ArrayList<>();
         String line;

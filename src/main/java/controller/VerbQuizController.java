@@ -17,11 +17,18 @@ public class VerbQuizController {
         this.main = main;
         this.comps = comps;
 
-        if (!comps.isNormal()) comps.setNumberOfVerbs(comps.getDuration());
-        this.verbs = main.local.processQueries(comps);
+        if (!comps.isNormal()) comps.setWordAmount(comps.getDuration());
+        this.verbs = main.local.processVerbQueries(comps);
 
         randomizeVerbList();
         printVerbs();
+    }
+
+    public void printVerbs() {
+        for (Verb v : verbs) {
+            v.printVerb();
+            System.out.println("\n");
+        }
     }
 
     public void randomizeVerbList() {
@@ -30,13 +37,6 @@ public class VerbQuizController {
 
     public ArrayList<Verb> getVerbs() {
         return verbs;
-    }
-
-    public void printVerbs() {
-        for (Verb v : verbs) {
-            v.printVerb();
-            System.out.println("\n");
-        }
     }
 
     public VerbQuizComponents getComps() {

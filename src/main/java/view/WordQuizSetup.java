@@ -1,10 +1,10 @@
 package view;
 
-import controller.*;
-import model.Form;
+import controller.GroupSelector;
 import controller.MenuButton;
-import model.Pronoun;
-import model.VerbQuizComponents;
+import controller.WordQuizPreferences;
+import model.Difficulty;
+import model.WordQuizComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -13,32 +13,32 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
-public class VerbQuizSetup extends JPanel {
+public class WordQuizSetup extends JPanel {
     private final int BUTTON_NUMBER = 3;
     private final SetupPane setupPane;
 
-    private VerbQuizComponents comps;
-    private final VerbQuizPreferences prefs;
+    private WordQuizComponents comps;
+    private final WordQuizPreferences prefs;
 
-    private ArrayList<JCheckBox> pronounCheckBoxes;
-    private ArrayList<JCheckBox> formCheckBoxes;
-    private JSpinner verbNumberChooser;
+    private ButtonGroup difficultyMode;
+    private ArrayList<JRadioButton> difficultyRadioButtons;
+
+    private JSpinner wordNumberChooser;
     private JSpinner minutesChooser;
     private JSpinner secondsChooser;
     private GroupSelector groupList;
 
-    private ButtonGroup verbMode;
+    private ButtonGroup wordMode;
     private JRadioButton normalModeRadio;
     private JRadioButton timedModeRadio;
 
     private JLabel errorLabel;
     private final ArrayList<MenuButton> buttons;
 
-    public VerbQuizSetup(SetupPane setupPane, VerbQuizComponents comps) throws IOException {
+    public WordQuizSetup(SetupPane setupPane, WordQuizComponents comps) throws IOException {
         this.setupPane = setupPane;
         this.comps = comps;
-        this.prefs = new VerbQuizPreferences(this);
+        this.prefs = new WordQuizPreferences(this);
         this.buttons = new ArrayList<>();
 
         setLayout(new MigLayout("al center center"));
@@ -46,86 +46,26 @@ public class VerbQuizSetup extends JPanel {
         setVisible(true);
     }
 
-    private JPanel initPronounPanel() {
-        JPanel pronounPanel = new JPanel();
-        pronounPanel.setLayout(new MigLayout("al center top"));
+    private JPanel initDifficultyPanel() {
+        JPanel difficultyPanel = new JPanel();
+        difficultyPanel.setLayout(new MigLayout("al center top"));
 
-        // pronouns title
-        JLabel pronounTitle = new JLabel("Szem\u00E9ly(ek):");
-        pronounPanel.add(pronounTitle, "al center, span");
+        // difficulty title
+        JLabel difficultyTitle = new JLabel("Neh\u00E9zs\u00E9gi szint:");
+        difficultyPanel.add(difficultyTitle, "al center, span");
 
-        // pronouns checkboxes
-        pronounCheckBoxes = new ArrayList<>();
-        for (Pronoun p : Pronoun.values()) {
-            boolean inputFlag = comps.getSelectedPronouns().contains(p);
-            pronounCheckBoxes.add(new JCheckBox(p.toString(), inputFlag));
-            pronounPanel.add(pronounCheckBoxes.get(pronounCheckBoxes.size() - 1), "al left center, wrap");
+        // difficulty radio buttons
+        difficultyMode = new ButtonGroup();
+        difficultyRadioButtons = new ArrayList<>();
+        for (Difficulty d : Difficulty.values()) {
+            difficultyRadioButtons.add(new JRadioButton(d.toString(), comps.getDifficulty().equalsName(d.toString())));
+            difficultyMode.add(difficultyRadioButtons.get(difficultyRadioButtons.size() - 1));
+            difficultyPanel.add(difficultyRadioButtons.get(difficultyRadioButtons.size() - 1), "al left center, wrap");
         }
 
-        pronounPanel.setPreferredSize(new Dimension(getWidth(), 280));
-        pronounPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1));
-        return pronounPanel;
-    }
-
-    private JPanel initFormPanel() {
-        // main form panel
-        JPanel formPanel = new JPanel();
-        formPanel.setLayout(new MigLayout("", "[center]", "[top]"));
-
-        JLabel formTitle = new JLabel("Igeid\u0151(k) \u00E9s m\u00F3d(ok):");
-        formPanel.add(formTitle, "align center, span");
-
-        // participio panel and title
-        JPanel participioPanel = new JPanel();
-        participioPanel.setLayout(new MigLayout());
-        JLabel participioTitle = new JLabel("Participio");
-        participioPanel.add(participioTitle, "wrap");
-
-        // indicativo panel and title
-        JPanel indicativoPanel = new JPanel();
-        indicativoPanel.setLayout(new MigLayout());
-        JLabel indicativoTitle = new JLabel("Indicativo");
-        indicativoPanel.add(indicativoTitle, "wrap");
-
-        // imperativo panel and title
-        JPanel imperativoPanel = new JPanel();
-        imperativoPanel.setLayout(new MigLayout());
-        JLabel imperativoTitle = new JLabel("Imperativo");
-        imperativoPanel.add(imperativoTitle, "wrap");
-
-        // subjuntivo panel and title
-        JPanel subjuntivoPanel = new JPanel();
-        subjuntivoPanel.setLayout(new MigLayout());
-        JLabel subjuntivoTitle = new JLabel("Subjuntivo");
-        subjuntivoPanel.add(subjuntivoTitle, "wrap");
-
-        // verb forms checkboxes
-        formCheckBoxes = new ArrayList<>();
-
-        formCheckBoxes.add(new JCheckBox("Participio Presento", comps.isParticipioPresentoSelected()));
-        formCheckBoxes.add(new JCheckBox("Participio Pasado", comps.isParticipioPasadoSelected()));
-        participioPanel.add(formCheckBoxes.get(0), "wrap");
-        participioPanel.add(formCheckBoxes.get(1), "wrap");
-
-        for (Form f : Form.values()) {
-            boolean inputFlag = comps.getSelectedForms().contains(f);
-            formCheckBoxes.add(new JCheckBox(f.toString(), inputFlag));
-            if (f == Form.ImperativoAffirmativo || f == Form.ImperativoNegativo)
-                imperativoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
-            else if (f == Form.SubjuntivoPresento || f == Form.SubjuntivoImperfecto || f == Form.SubjuntivoFuturo)
-                subjuntivoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
-            else indicativoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
-        }
-
-        // border, add panels to formPanel
-        formPanel.add(participioPanel, "align left, cell 0 1");
-        formPanel.add(indicativoPanel, "align left, cell 0 2");
-        formPanel.add(imperativoPanel, "align left, cell 1 1");
-        formPanel.add(subjuntivoPanel, "align left, cell 1 2");
-
-        formPanel.setPreferredSize(new Dimension(getWidth(), 280));
-        formPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        return formPanel;
+        difficultyPanel.setPreferredSize(new Dimension(getWidth(), 280));
+        difficultyPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        return difficultyPanel;
     }
 
     private JPanel initModePanel() {
@@ -144,13 +84,13 @@ public class VerbQuizSetup extends JPanel {
         lastPanel.add(normalModeRadio, "align left, span");
 
         // number of verbs title
-        JLabel verbNumberTitle = new JLabel("Ig\u00E9k sz\u00E1ma:");
-        lastPanel.add(verbNumberTitle, "span");
+        JLabel wordNumberTitle = new JLabel("Szavak sz\u00E1ma:");
+        lastPanel.add(wordNumberTitle, "span");
 
         // number of verbs spinner
         SpinnerNumberModel verbNumberModel = new SpinnerNumberModel(comps.getWordAmount(), 5, 500, 5);
-        verbNumberChooser = new JSpinner(verbNumberModel);
-        lastPanel.add(verbNumberChooser, "span");
+        wordNumberChooser = new JSpinner(verbNumberModel);
+        lastPanel.add(wordNumberChooser, "span");
 
         // timed mode radio and title
         timedModeRadio = new JRadioButton("Id\u0151z\u00EDtett");
@@ -194,16 +134,16 @@ public class VerbQuizSetup extends JPanel {
         lastPanel.add(secondsLabel);
 
         // button group for radios
-        verbMode = new ButtonGroup();
-        verbMode.add(normalModeRadio);
-        verbMode.add(timedModeRadio);
+        wordMode = new ButtonGroup();
+        wordMode.add(normalModeRadio);
+        wordMode.add(timedModeRadio);
 
         // action listener to radios
         normalModeRadio.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             // own
-            verbNumberTitle.setForeground(Color.BLACK);
-            ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEnabled(true);
-            ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEditable(true);
+            wordNumberTitle.setForeground(Color.BLACK);
+            ((JSpinner.DefaultEditor) wordNumberChooser.getEditor()).getTextField().setEnabled(true);
+            ((JSpinner.DefaultEditor) wordNumberChooser.getEditor()).getTextField().setEditable(true);
 
             // other
             timedDurationTitle.setForeground(Color.GRAY);
@@ -226,9 +166,9 @@ public class VerbQuizSetup extends JPanel {
             ((JSpinner.DefaultEditor) secondsChooser.getEditor()).getTextField().setEditable(true);
 
             // other
-            verbNumberTitle.setForeground(Color.GRAY);
-            ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEnabled(false);
-            ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEditable(false);
+            wordNumberTitle.setForeground(Color.GRAY);
+            ((JSpinner.DefaultEditor) wordNumberChooser.getEditor()).getTextField().setEnabled(false);
+            ((JSpinner.DefaultEditor) wordNumberChooser.getEditor()).getTextField().setEditable(false);
         }));
 
         // select one of the radio buttons
@@ -244,9 +184,9 @@ public class VerbQuizSetup extends JPanel {
         }
         else {
             timedModeRadio.setSelected(true);
-            verbNumberTitle.setForeground(Color.GRAY);
-            ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEnabled(false);
-            ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEditable(false);
+            wordNumberTitle.setForeground(Color.GRAY);
+            ((JSpinner.DefaultEditor) wordNumberChooser.getEditor()).getTextField().setEnabled(false);
+            ((JSpinner.DefaultEditor) wordNumberChooser.getEditor()).getTextField().setEditable(false);
         }
 
         lastPanel.setPreferredSize(new Dimension(getWidth(), 280));
@@ -261,8 +201,7 @@ public class VerbQuizSetup extends JPanel {
         add(errorLabel, "span");
 
         // add panels
-        add(initPronounPanel(), "span 1");
-        add(initFormPanel(), "span 1");
+        add(initDifficultyPanel(), "span 1");
         add(initModePanel(), "span");
         add(initButtonPanel(), "align center, span");
     }
@@ -286,8 +225,6 @@ public class VerbQuizSetup extends JPanel {
             // todo dialog
             throw new RuntimeException(e);
         }
-
-        return buttonPanel;
     }
 
     private void setErrorLabel(String text) {
@@ -298,20 +235,16 @@ public class VerbQuizSetup extends JPanel {
         return setupPane;
     }
 
-    public VerbQuizPreferences getPrefs() {
-        return prefs;
+    public WordQuizComponents getComps() {
+        return comps;
     }
 
-    public ArrayList<JCheckBox> getPronounCheckBoxes() {
-        return pronounCheckBoxes;
+    public ArrayList<JRadioButton> getDifficultyRadioButtons() {
+        return difficultyRadioButtons;
     }
 
-    public ArrayList<JCheckBox> getFormCheckBoxes() {
-        return formCheckBoxes;
-    }
-
-    public JSpinner getVerbNumberChooser() {
-        return verbNumberChooser;
+    public JSpinner getWordNumberChooser() {
+        return wordNumberChooser;
     }
 
     public JSpinner getMinutesChooser() {
@@ -326,8 +259,8 @@ public class VerbQuizSetup extends JPanel {
         return groupList;
     }
 
-    public ButtonGroup getVerbMode() {
-        return verbMode;
+    public ButtonGroup getWordMode() {
+        return wordMode;
     }
 
     public JRadioButton getNormalModeRadio() {
@@ -342,4 +275,7 @@ public class VerbQuizSetup extends JPanel {
         return errorLabel;
     }
 
+    public ArrayList<MenuButton> getButtons() {
+        return buttons;
+    }
 }

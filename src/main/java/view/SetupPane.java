@@ -1,6 +1,7 @@
 package view;
 
 import model.VerbQuizComponents;
+import model.WordQuizComponents;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -8,21 +9,22 @@ import java.io.IOException;
 public class SetupPane extends JPanel {
     private final MainWindow main;
     private final VerbQuizSetup verbQuizSetup;
-    private JPanel wordQuizSetup;
+    private final WordQuizSetup wordQuizSetup;
 
     private JTabbedPane tabbedPane;
 
-    public SetupPane(MainWindow main, VerbQuizComponents verbComps) throws IOException {
+    public SetupPane(MainWindow main, VerbQuizComponents verbComps, WordQuizComponents wordComps) throws IOException {
         this.main = main;
         this.verbQuizSetup = new VerbQuizSetup(this, verbComps);
+        this.wordQuizSetup = new WordQuizSetup(this, wordComps);
         this.tabbedPane = new JTabbedPane();
 
-        initComponents();
+        SwingUtilities.invokeLater(this::initComponents);
     }
 
     private void initComponents() {
-        tabbedPane.add("Ig\u00E9k", verbQuizSetup);
-
+        tabbedPane.add("Igeragoz\u00E1s", verbQuizSetup);
+        tabbedPane.add("Sz\u00F3ford\u00EDt\u00E1s", wordQuizSetup);
         this.add(tabbedPane);
     }
 
@@ -32,5 +34,13 @@ public class SetupPane extends JPanel {
 
     public VerbQuizSetup getVerbQuizSetup() {
         return verbQuizSetup;
+    }
+
+    public WordQuizSetup getWordQuizSetup() {
+        return wordQuizSetup;
+    }
+
+    public JTabbedPane getTabbedPane() {
+        return tabbedPane;
     }
 }

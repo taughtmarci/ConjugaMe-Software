@@ -66,7 +66,7 @@ public class VerbQuiz extends JPanel {
     }
 
     private void nextRound() {
-        if (iteration == comps.getNumberOfVerbs() - 1) {
+        if (iteration == comps.getWordAmount() - 1) {
             finishQuiz();
         }
         else {
@@ -104,7 +104,7 @@ public class VerbQuiz extends JPanel {
 
         // out of or timer label
         if (comps.isNormal()) {
-            outOfLabel = new JLabel(iteration + 1 + "/" + comps.getNumberOfVerbs());
+            outOfLabel = new JLabel(iteration + 1 + "/" + comps.getWordAmount());
             add(outOfLabel, "align center");
         } else {
             currentTime = comps.getDuration();
@@ -164,7 +164,7 @@ public class VerbQuiz extends JPanel {
                 // update score and iteration
                 iteration++;
                 scoreLabel.setText((score + " pont"));
-                if (comps.isNormal()) outOfLabel.setText(iteration + 1 + "/" + comps.getNumberOfVerbs());
+                if (comps.isNormal()) outOfLabel.setText(iteration + 1 + "/" + comps.getWordAmount());
 
                 // button swap
                 sendResultsButton.setText("Tov\u00E1bb");
