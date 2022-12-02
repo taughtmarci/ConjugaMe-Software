@@ -1,0 +1,7 @@
+SELECT
+"Palabra".*,
+"[GROUP_TABLE]"."WordID"
+FROM "Palabra"
+INNER JOIN "[GROUP_TABLE]" ON "[GROUP_TABLE]"."WordID" = "Palabra"."ID"
+ORDER BY RANDOM()
+LIMIT [AMOUNT];
