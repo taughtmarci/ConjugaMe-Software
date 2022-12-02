@@ -1,16 +1,15 @@
 package controller;
 
-import model.Verb;
 import model.VerbQuizComponents;
+import view.VerbQuiz;
 import view.VerbQuizSetup;
 
 import javax.swing.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class VerbQuizPreferences {
     private final VerbQuizSetup setup;
+    private VerbQuiz current;
 
     private VerbQuizComponents comps;
     private final ConfigIO config;
@@ -48,6 +47,9 @@ public class VerbQuizPreferences {
         // groups
         comps.setSelectedGroups(selector.getSelectedRows());
 
+        // normal or timed
+        comps.setNormal(setup.getNormalModeRadio().isSelected());
+
         // number of verbs
         comps.setNumberOfVerbs((int) setup.getVerbNumberChooser().getValue());
 
@@ -74,6 +76,31 @@ public class VerbQuizPreferences {
             error = "A megadott m\u00E1sodperc 1 \u00E9s 30 k\u00F6z\u00F6tt kell, hogy legyen!";
 
         return error;
+    }
+
+    public void savePrefs(boolean startFlag) {
+        setupComps();
+        String error = validateForm();
+        if (error.equals("")) {
+            try {
+                getConfig().writeComponents("config/preferences.cfg", getComps());
+                error = "Sikeres ment\u00E9s!";
+            } catch (IOException e) {
+                error = "Nem sikerült menteni a preferenciákat.";
+            }
+        }
+        if (startFlag && error.equals("Sikeres ment\u00E9s!")) {
+            try {
+                current = new VerbQuiz(setup.getSetupPane().getMain(), new VerbQuizController(setup.getSetupPane().getMain(), getComps()));
+            } catch (IOException e) {
+                // todo dialogize
+                throw new RuntimeException(e);
+            }
+            setup.setVisible(false);
+            setup.getSetupPane().getMain().switchPanels(setup.getSetupPane(), current);
+        } else {
+            setup.writeOutErrors(error);
+        }
     }
 
     public ConfigIO getConfig() {

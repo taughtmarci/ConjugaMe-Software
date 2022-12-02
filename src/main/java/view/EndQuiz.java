@@ -55,14 +55,14 @@ public class EndQuiz extends JPanel {
             results.getController().getMain().switchPanels(this, current);
         });
 
-        // Preferences button
-        preferencesButton = new JButton("\u00DAj kv\u00EDz ind\u00EDt\u00E1sa");
+        // Back to dashboard button
+        preferencesButton = new JButton("Dashboard");
         add(preferencesButton);
 
         preferencesButton.addActionListener(e -> {
             setVisible(false);
             try {
-                current = new VerbQuizSetup(results.getController().getMain(), comps);
+                current = new Dashboard(results.getController().getMain());
                 results.getController().getMain().switchPanels(this, current);
             } catch (IOException ex) {
                 // todo dialog

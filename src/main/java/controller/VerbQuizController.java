@@ -16,7 +16,10 @@ public class VerbQuizController {
     public VerbQuizController(MainWindow main, VerbQuizComponents comps) throws IOException {
         this.main = main;
         this.comps = comps;
+
+        if (!comps.isNormal()) comps.setNumberOfVerbs(comps.getDuration());
         this.verbs = main.local.processQueries(comps);
+
         randomizeVerbList();
         printVerbs();
     }

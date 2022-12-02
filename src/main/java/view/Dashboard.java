@@ -3,7 +3,7 @@ package view;
 import controller.ConfigIO;
 import controller.GroupHandler;
 import model.VerbQuizComponents;
-import model.MenuButton;
+import controller.MenuButton;
 import net.miginfocom.swing.MigLayout;
 
 import javax.imageio.ImageIO;

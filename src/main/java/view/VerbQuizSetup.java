@@ -2,7 +2,7 @@ package view;
 
 import controller.*;
 import model.Form;
-import model.MenuButton;
+import controller.MenuButton;
 import model.Pronoun;
 import model.VerbQuizComponents;
 import net.miginfocom.swing.MigLayout;
@@ -10,16 +10,13 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicSpinnerUI;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class VerbQuizSetup extends JPanel {
-    private final int BUTTON_NUMBER = 0;
-    private final MainWindow main;
-    private VerbQuiz current;
+    private final int BUTTON_NUMBER = 3;
+    private final SetupPane setupPane;
 
     private VerbQuizComponents comps;
     private final VerbQuizPreferences prefs;
@@ -35,10 +32,11 @@ public class VerbQuizSetup extends JPanel {
     private JRadioButton normalModeRadio;
     private JRadioButton timedModeRadio;
 
+    private JLabel errorLabel;
     private final ArrayList<MenuButton> buttons;
 
-    public VerbQuizSetup(MainWindow main, VerbQuizComponents comps) throws IOException {
-        this.main = main;
+    public VerbQuizSetup(SetupPane setupPane, VerbQuizComponents comps) throws IOException {
+        this.setupPane = setupPane;
         this.comps = comps;
         this.buttons = new ArrayList<>();
         this.prefs = new VerbQuizPreferences(this);
@@ -258,41 +256,21 @@ public class VerbQuizSetup extends JPanel {
 
     private void initComponents() {
         // set up error label
-        JLabel errorLabel = new JLabel("\n");
+        errorLabel = new JLabel("\n");
         errorLabel.setFont(new Font("Verdana", Font.BOLD, 12));
-        errorLabel.setForeground(Color.RED);
         add(errorLabel, "span");
 
         // add panels
         add(initPronounPanel(), "span 1");
         add(initFormPanel(), "span 1");
-        add(initModePanel(), "wrap");
-        add(initButtonPanel(), "span");
+        add(initModePanel(), "span");
+        add(initButtonPanel(), "align center, span");
+    }
 
-        // new quiz button
-        JButton newQuizButton = new JButton("\u00DAj kv\u00EDz ind\u00EDt\u00E1sa");
-        add(newQuizButton, "span, align center");
-
-        newQuizButton.addActionListener(e -> {
-            prefs.setupComps();
-            String error = prefs.validateForm();
-
-            if (error.equals("")) {
-                try {
-                    prefs.getConfig().writeComponents("config/preferences.cfg", prefs.getComps());
-                    current = new VerbQuiz(main, new VerbQuizController(main, prefs.getComps()));
-                    setVisible(false);
-                    main.switchPanels(this, current);
-                } catch (IOException ex) {
-                    // todo dialog
-                    throw new RuntimeException(ex);
-                }
-            } else {
-                errorLabel.setText(error);
-                this.updateUI();
-            }
-        });
-        main.getRootPane().setDefaultButton(newQuizButton);
+    public void writeOutErrors(String error) {
+        if (error.equals("Sikeres ment\u00E9s!")) errorLabel.setForeground(Color.GREEN.darker());
+        else errorLabel.setForeground(Color.RED.darker());
+        setErrorLabel(error);
     }
 
     private JPanel initButtonPanel() {
@@ -300,8 +278,8 @@ public class VerbQuizSetup extends JPanel {
 
         try {
             for (int i = 0; i < BUTTON_NUMBER; i++) {
-                buttons.add(new MenuButton("preferences", i));
-                buttons.get(i).setActionSetup(main, this, comps);
+                buttons.add(new MenuButton("preferences", i + 1));
+                buttons.get(i).setActionSetup(setupPane.getMain(), this.getSetupPane(), comps);
                 buttonPanel.add(buttons.get(i), "align center");
             }
         } catch (IOException e) {
@@ -312,8 +290,12 @@ public class VerbQuizSetup extends JPanel {
         return buttonPanel;
     }
 
-    public MainWindow getMain() {
-        return main;
+    public SetupPane getSetupPane() {
+        return setupPane;
+    }
+
+    public VerbQuizPreferences getPrefs() {
+        return prefs;
     }
 
     public ArrayList<JCheckBox> getPronounCheckBoxes() {
@@ -339,4 +321,25 @@ public class VerbQuizSetup extends JPanel {
     public GroupSelector getGroupList() {
         return groupList;
     }
+
+    public ButtonGroup getVerbMode() {
+        return verbMode;
+    }
+
+    public JRadioButton getNormalModeRadio() {
+        return normalModeRadio;
+    }
+
+    public JRadioButton getTimedModeRadio() {
+        return timedModeRadio;
+    }
+
+    public JLabel getErrorLabel() {
+        return errorLabel;
+    }
+
+    public void setErrorLabel(String text) {
+        errorLabel.setText(text);
+    }
+
 }

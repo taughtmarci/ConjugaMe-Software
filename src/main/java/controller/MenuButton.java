@@ -1,7 +1,10 @@
-package model;
+package controller;
 
+import model.IconVariation;
+import model.VerbQuizComponents;
 import view.Dashboard;
 import view.MainWindow;
+import view.SetupPane;
 import view.VerbQuizSetup;
 
 import javax.imageio.ImageIO;
@@ -81,7 +84,7 @@ public class MenuButton extends JLabel {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     try {
-                        JPanel next = new VerbQuizSetup(main, current.comps);
+                        JPanel next = new SetupPane(main, current.comps);
                         main.switchPanels(current, next);
                     } catch (IOException ex) {
                         // todo dialogize
@@ -112,24 +115,18 @@ public class MenuButton extends JLabel {
         }
     }
 
-    public void setActionSetup(MainWindow main, VerbQuizSetup current, VerbQuizComponents outputComponents) {
+    public void setActionSetup(MainWindow main, SetupPane current, VerbQuizComponents outputComponents) {
         switch (number) {
-            case 0 -> this.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    System.out.println("xD");
-                }
-            });
             case 1 -> this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println(":P");
+                    current.getVerbQuizSetup().getPrefs().savePrefs(true);
                 }
             });
             case 2 -> this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println(":)))");
+                    current.getVerbQuizSetup().getPrefs().savePrefs(false);
                 }
             });
             case 3 -> this.addMouseListener(new MouseAdapter() {

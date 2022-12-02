@@ -19,6 +19,7 @@ public class VerbQuiz extends JPanel {
 
     public int score;
     private JLabel scoreLabel;
+    private Timer countBack;
 
     public final boolean isNormal;
     public int currentTime;
@@ -101,15 +102,22 @@ public class VerbQuiz extends JPanel {
         scoreLabel = new JLabel(Integer.toString(score) + " pont");
         add(scoreLabel, "align left");
 
-        // timer label
-        if (!comps.isNormal()) {
-            JLabel timeLabel = new JLabel();
-            add(timeLabel, "align center");
+        // out of or timer label
+        if (comps.isNormal()) {
+            outOfLabel = new JLabel(iteration + 1 + "/" + comps.getNumberOfVerbs());
+            add(outOfLabel, "align center");
+        } else {
             currentTime = comps.getDuration();
-            Timer countBack = new Timer(1000, event -> currentTime--);
+            JLabel timeLabel = new JLabel((currentTime / 60) + ":" + (currentTime % 60));
+            add(timeLabel, "align center");
+
+            countBack = new Timer(1000, event -> {
+                currentTime--;
+                timeLabel.setText((currentTime / 60) + ":" + (currentTime % 60));
+                if (currentTime == 0) finishQuiz();
+            });
             countBack.setRepeats(true);
             countBack.start();
-
         }
 
         // end quiz button
@@ -145,33 +153,18 @@ public class VerbQuiz extends JPanel {
         if (!comps.isParticipioPresentoSelected() && !comps.isParticipioPasadoSelected())
             sections.get(0).setFirst(true);
 
-        // out of label
-        outOfLabel = new JLabel(iteration + 1 + "/" + comps.getNumberOfVerbs());
-        add(outOfLabel, "align left");
+        // send results button
         add(sendResultsButton, "align right");
 
         sendResultsButton.addActionListener(e -> {
             if (sendResultsButton.getText().equals("K\u00FCld\u00E9s")) {
                 // evaluate sections
-                if (comps.isParticipioPresentoSelected()) {
-                    if (presentoSection.evaluate()) score++;
-                    else incorrectVerbs.add(currentVerb);
-                }
-
-                if (comps.isParticipioPasadoSelected()) {
-                    if (pasadoSection.evaluate()) score++;
-                    else incorrectVerbs.add(currentVerb);
-                }
-
-                for (Section section : sections) {
-                    if (section.evaluate()) score++;
-                    else incorrectVerbs.add(currentVerb);
-                }
+                evaluateSections();
 
                 // update score and iteration
                 iteration++;
-                scoreLabel.setText((Integer.toString(score) + " pont"));
-                outOfLabel.setText(Integer.toString(iteration + 1) + "/" + comps.getNumberOfVerbs());
+                scoreLabel.setText((score + " pont"));
+                if (comps.isNormal()) outOfLabel.setText(iteration + 1 + "/" + comps.getNumberOfVerbs());
 
                 // button swap
                 sendResultsButton.setText("Tov\u00E1bb");
@@ -203,6 +196,29 @@ public class VerbQuiz extends JPanel {
         });
     }
 
+    private void stopCountBack() {
+        evaluateSections();
+        countBack.setRepeats(false);
+        countBack.stop();
+    }
+
+    private void evaluateSections() {
+        if (comps.isParticipioPresentoSelected()) {
+            if (presentoSection.evaluate()) score++;
+            else incorrectVerbs.add(currentVerb);
+        }
+
+        if (comps.isParticipioPasadoSelected()) {
+            if (pasadoSection.evaluate()) score++;
+            else incorrectVerbs.add(currentVerb);
+        }
+
+        for (Section section : sections) {
+            if (section.evaluate()) score++;
+            else incorrectVerbs.add(currentVerb);
+        }
+    }
+
     private void refreshAllSections() {
         if (comps.isParticipioPresentoSelected())
             presentoSection.refreshSection();
@@ -215,6 +231,7 @@ public class VerbQuiz extends JPanel {
     }
 
     private void finishQuiz() {
+        if (!comps.isNormal()) stopCountBack();
         VerbQuizResults results = new VerbQuizResults(score, controller, incorrectVerbs);
         setVisible(false);
         current = new EndQuiz(results);
