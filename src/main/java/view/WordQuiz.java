@@ -38,7 +38,6 @@ public class WordQuiz extends JPanel {
         this.main = main;
         this.comps = MainWindow.wordComps;
         this.isNormal = comps.isNormal();
-        this.controller = new WordQuizController(this);
 
         this.currentWordLabel = new JLabel("");
         this.currentDefinitionsLabel = new JLabel("");
@@ -47,8 +46,10 @@ public class WordQuiz extends JPanel {
         this.resultImage = new ResultImage();
         this.pressedNext = false;
 
+        this.controller = new WordQuizController(this);
         setLayout(new MigLayout("al center center"));
         initComponents();
+        controller.nextRound();
         setVisible(true);
     }
 
@@ -82,8 +83,9 @@ public class WordQuiz extends JPanel {
 
         // set up current verb and form labels
         currentWordLabel.setFont(new Font("Verdana", Font.BOLD, 24));
-        currentDefinitionsLabel.setFont(new Font("Verdana", Font.BOLD, 12));
+        currentDefinitionsLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
         add(currentWordLabel, "span, align center");
+        add(currentDefinitionsLabel, "span, align center");
 
         // add sections panel
         wordSection = new WordSection(resultImage);

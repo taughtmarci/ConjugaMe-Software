@@ -2,7 +2,6 @@ package controller;
 
 import model.IconVariation;
 import model.QuizComponents;
-import model.VerbQuizComponents;
 import view.Dashboard;
 import view.MainWindow;
 import view.SetupPane;
@@ -146,7 +145,34 @@ public class MenuButton extends JLabel {
                 // TODO dialog
             }
         } else {
-            // TODO HERE!!!!!!
+            switch (number) {
+                case 1 -> this.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        current.getWordQuizSetup().getPrefs().savePrefs(true);
+                    }
+                });
+                case 2 -> this.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        current.getWordQuizSetup().getPrefs().savePrefs(false);
+                    }
+                });
+                case 3 -> this.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        try {
+                            JPanel next = new Dashboard(main);
+                            main.switchPanels(current, next);
+                        } catch (IOException ex) {
+                            // todo dialogize
+                            throw new RuntimeException(ex);
+                        }
+                    }
+                });
+                default -> throw new RuntimeException();
+                // TODO dialog
+            }
         }
     }
 

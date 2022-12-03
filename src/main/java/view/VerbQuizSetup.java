@@ -261,10 +261,12 @@ public class VerbQuizSetup extends JPanel {
         add(errorLabel, "span");
 
         // add panels
-        add(initPronounPanel(), "span 1");
-        add(initFormPanel(), "span 1");
-        add(initModePanel(), "span");
-        add(initButtonPanel(), "align center, span");
+        JPanel prefPanels = new JPanel(new MigLayout());
+        prefPanels.add(initPronounPanel());
+        prefPanels.add(initFormPanel());
+        prefPanels.add(initModePanel());
+        add(prefPanels, "al center center, wrap");
+        add(initButtonPanel(), "al center center, span");
     }
 
     public void writeOutErrors(String error) {
@@ -278,7 +280,7 @@ public class VerbQuizSetup extends JPanel {
 
         try {
             for (int i = 0; i < BUTTON_NUMBER; i++) {
-                buttons.add(new MenuButton("preferences", i + 1));
+                buttons.add(new MenuButton("verbprefs", i + 1));
                 buttons.get(i).setActionSetup(setupPane.getMain(), this.getSetupPane(), comps);
                 buttonPanel.add(buttons.get(i), "align center");
             }

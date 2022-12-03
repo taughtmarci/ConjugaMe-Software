@@ -8,7 +8,7 @@ import model.WordQuizComponents;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-// TODO EZEKKEL SÜRGŐSEN KEZDENI VALAMIT
+// TODO EZEKKEL AZONNAL KEZDENI VALAMIT
 public class WordQuizResults {
     private final int score;
     private final WordQuizController controller;

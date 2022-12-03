@@ -39,7 +39,6 @@ public class VerbQuiz extends JPanel {
         this.main = main;
         this.comps = MainWindow.verbComps;
         this.isNormal = comps.isNormal();
-        this.controller = new VerbQuizController(this);
 
         this.currentVerbLabel = new JLabel("");
         this.currentFormLabel = new JLabel("");
@@ -49,8 +48,10 @@ public class VerbQuiz extends JPanel {
         this.resultImage = new ResultImage();
         this.pressedNext = false;
 
+        this.controller = new VerbQuizController(this);
         setLayout(new MigLayout("al center center"));
         initComponents();
+        controller.nextRound();
         setVisible(true);
     }
 

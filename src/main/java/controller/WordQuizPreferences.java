@@ -3,7 +3,6 @@ package controller;
 import model.Difficulty;
 import model.WordQuizComponents;
 import view.MainWindow;
-import view.VerbQuiz;
 import view.WordQuiz;
 import view.WordQuizSetup;
 
@@ -11,7 +10,6 @@ import javax.swing.*;
 import java.io.IOException;
 
 public class WordQuizPreferences extends QuizPreferences {
-    private final String FILE_PATH = "config/wordpreferences.cfg";
     private WordQuizComponents comps;
     private final WordQuizSetup setup;
     private WordQuiz current;

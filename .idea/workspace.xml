@@ -4,24 +4,63 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Rename preferences file&#10;Add word query sql">
-      <change afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Quiz and controller start problem">
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/Asset 82title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/Asset 83title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/Asset 84title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_01_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_01_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_02_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_02_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_03_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_03_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/palabra.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/Asset 82title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/Asset 83title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/Asset 84title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_01_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_01_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_02_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_02_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_03_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_03_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/palabra.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GroupHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GroupHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/basicverbquery.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/complexverbquery.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/creategrouptable.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/insertgrouptable.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/local.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wordquery.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/Asset 82title_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/Asset 83title_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/Asset 84title_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/button_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/button_01_clicked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/button_01_hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/button_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/button_02_clicked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/button_02_hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/button_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/button_03_clicked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/button_03_hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/preferences/palabra.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Word.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/SetupPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/SetupPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
@@ -326,7 +365,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670020518405</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Quiz and controller start problem">
+      <created>1670027140486</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1670027140486</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -345,7 +391,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Finished basics of Quiz component" />
     <MESSAGE value="set up online database connection" />
     <MESSAGE value="Add dialog handler class&#10;Database classes refactor with abstraction" />
     <MESSAGE value="Create Verb and VerbCollection classes&#10;Create singleQueryStatement db function&#10;View Verbs on Quiz panel" />
@@ -370,7 +415,8 @@
     <MESSAGE value="Add SetupPane" />
     <MESSAGE value="Mess" />
     <MESSAGE value="Rename preferences file&#10;Add word query sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename preferences file&#10;Add word query sql" />
+    <MESSAGE value="Quiz and controller start problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quiz and controller start problem" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

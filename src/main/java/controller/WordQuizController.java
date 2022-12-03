@@ -1,9 +1,6 @@
 package controller;
 
-import model.Pronoun;
-import model.Verb;
-import model.Word;
-import model.WordQuizComponents;
+import model.*;
 import view.EndQuiz;
 import view.MainWindow;
 import view.WordQuiz;
@@ -11,6 +8,7 @@ import view.WordQuiz;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class WordQuizController {
     private final WordQuiz quiz;
@@ -22,6 +20,7 @@ public class WordQuizController {
     public Word currentWord;
 
     private ArrayList<Word> incorrectWords;
+    private ArrayList<Word> correctWords;
     private EndQuiz next;
 
     public WordQuizController(WordQuiz quiz) throws IOException {
@@ -31,13 +30,12 @@ public class WordQuizController {
         if (!comps.isNormal()) comps.setWordAmount(comps.getDuration());
         this.words = MainWindow.local.processWordQueries(comps);
         this.incorrectWords = new ArrayList<>();
+        this.correctWords = new ArrayList<>();
 
         randomizeWordList();
-        printWords();
-
+        //printWords();
         score = 0;
         iteration = 0;
-        nextRound();
     }
 
     public void nextRound() {
@@ -46,12 +44,53 @@ public class WordQuizController {
         }
         else {
             currentWord = words.get(iteration);
-            quiz.setCurrentWordLabel(currentWord.getMasculino());
-            // todo definitions label
-            quiz.setSectionSolutions(currentWord.getFemenino(), currentWord.getMasculino());
 
+            // word hint label
+            String currentHint = "";
+            if (comps.getDifficulty() != Difficulty.WithoutHint) {
+                if (currentWord.getMasculino().equals(""))
+                    currentHint = currentWord.getFemenino();
+                else currentHint = currentWord.getMasculino();
+
+                switch (comps.getDifficulty()) {
+                    case Easy -> currentHint = createHint(currentHint, 0.33);
+                    case Medium -> currentHint = createHint(currentHint, 0.5);
+                    case Hard -> currentHint = createHint(currentHint, 0.75);
+                }
+            }
+            quiz.setCurrentWordLabel(currentHint);
+
+            // definitions
+            StringBuilder currentDefinitions = new StringBuilder();
+            for (String def : currentWord.definitions)
+                if (!def.equals("")) currentDefinitions.append(def).append(", ");
+            currentDefinitions = new StringBuilder((currentDefinitions.substring(0, currentDefinitions.length() - 2)));
+            quiz.setCurrentDefinitionsLabel(currentDefinitions.toString());
+
+            // solutions
+            quiz.setSectionSolutions(currentWord.getFemenino(), currentWord.getMasculino());
             quiz.updateUI();
         }
+    }
+
+    String createHint(String s, double diff) {
+        char[] characters = s.toCharArray();
+
+        double diffMax = diff + (diff * 0.2);
+        double diffMin = diff - (diff * 0.05);
+        double smallChange = Math.random() * (diffMax - diffMin);
+
+        Random rd = new Random();
+        if (rd.nextBoolean()) diff += smallChange;
+        else diff -= smallChange;
+
+        int changeAmount = (int) (s.length() * diff);
+        System.out.println(changeAmount);
+        for (int i = 0; i < changeAmount; i++) {
+            int rand = (int)(Math.random() * s.length());
+            characters[rand] = '_';
+        }
+        return new String(characters);
     }
 
     public void evaluateSection() {
@@ -70,7 +109,7 @@ public class WordQuizController {
     public void printWords() {
         for (Word w : words) {
             w.printWord();
-            System.out.println("\n");
+            System.out.println("");
         }
     }
 

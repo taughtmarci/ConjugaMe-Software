@@ -17,9 +17,9 @@ import java.util.HashMap;
 abstract class Database {
     private final String VERB_TABLE = "Verbo";
     private final String WORD_TABLE = "Palabra";
-    private final String BASIC_VERB_QUERY_PATH = "config/basicverbquery.sql";
-    private final String COMPLEX_VERB_QUERY_PATH = "config/complexverbquery.sql";
-    private final String WORD_QUERY_PATH = "config/wordquery.sql";
+    private final String BASIC_VERB_QUERY_PATH = "database/basicverbquery.sql";
+    private final String COMPLEX_VERB_QUERY_PATH = "database/complexverbquery.sql";
+    private final String WORD_QUERY_PATH = "database/wordquery.sql";
 
     public boolean onlineFlag;
     protected String username;
@@ -168,20 +168,23 @@ abstract class Database {
             query = query.replace("[AMOUNT]", Integer.toString(comps.getWordAmount()));
 
             // make query
-            result.addAll(buildWordQuery(query, comps));
+            result.addAll(buildWordQuery(query));
         }
 
         return result;
     }
 
-    public ArrayList<Word> buildWordQuery(String query, WordQuizComponents comps) {
+    public ArrayList<Word> buildWordQuery(String query) {
         ArrayList<Word> result = new ArrayList<>();
         if (connected) {
             try (Statement statement = connection.createStatement()) {
                 ResultSet resultSet = statement.executeQuery(query);
 
                 while (resultSet.next()) {
-                    result.add(new Word(resultSet.getString("Nombre_F"), resultSet.getString("Nombre_M")));
+                    Word temp = new Word(resultSet.getString("Nombre_F"), resultSet.getString("Nombre_M"));
+                    for (int i = 0; i < 3; i++)
+                        temp.addDefinition(resultSet.getString("Definici\uu00F3n_0" + (i + 1)));
+                    result.add(temp);
                 }
             } catch (SQLException e) {
                 MainWindow.dialog.showDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"

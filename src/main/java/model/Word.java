@@ -6,7 +6,7 @@ public class Word {
     public String femenino;
     public String masculino;
 
-    public ArrayList<String> definition;
+    public ArrayList<String> definitions = new ArrayList<>();
 
     public Word(boolean isFemenino, String word) {
         if (isFemenino) this.femenino = word;
@@ -19,8 +19,18 @@ public class Word {
     }
 
     public void printWord() {
-        System.out.println("La: " + (!femenino.equals("") ? femenino : "-") + "\n" +
-                "El: " + (!masculino.equals("") ? masculino : "-") + "\n");
+        StringBuilder currentDefinitions = new StringBuilder();
+        for (String def : definitions)
+            if (!def.equals("")) currentDefinitions.append(def).append(", ");
+        currentDefinitions = new StringBuilder((currentDefinitions.substring(0, currentDefinitions.length() - 2)));
+
+        System.out.println("La: " + femenino + "\n" +
+                "El: " + masculino + "\n" +
+                currentDefinitions);
+    }
+
+    public void addDefinition(String text) {
+        definitions.add(text);
     }
 
     public String getFemenino() {

@@ -49,7 +49,7 @@ public class MainWindow extends JFrame {
         wordComps = ConfigIO.readWordComponents(WORD_FILE_PATH);
 
         // Connect to databases
-        local = new Local("config/local.db");
+        local = new Local("database/local.db");
         online = new Online("conjugame.cxpxjtc5b29j.eu-central-1.rds.amazonaws.com", "3306", "Dictionary");
 
         // Configure JFrame

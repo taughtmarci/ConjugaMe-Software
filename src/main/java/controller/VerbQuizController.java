@@ -24,6 +24,7 @@ public class VerbQuizController {
     public Form currentForm;
 
     private ArrayList<Verb> incorrectVerbs;
+    private ArrayList<Verb> correctVerbs;
     private EndQuiz next;
 
     public VerbQuizController(VerbQuiz quiz) throws IOException {
@@ -33,13 +34,13 @@ public class VerbQuizController {
         if (!comps.isNormal()) comps.setWordAmount(comps.getDuration());
         this.verbs = MainWindow.local.processVerbQueries(comps);
         this.incorrectVerbs = new ArrayList<>();
+        this.correctVerbs = new ArrayList<>();
 
         randomizeVerbList();
         printVerbs();
 
         score = 0;
         iteration = 0;
-        nextRound();
     }
 
     public void nextRound() {

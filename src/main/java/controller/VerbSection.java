@@ -14,17 +14,14 @@ public class VerbSection extends JPanel {
 
     public JLabel pronounLabel;
     public JTextField input;
-    public JLabel checkLabel;
+    public JLabel checkLabel = new JLabel();
 
-    private boolean isFirst;
+    private boolean isFirst = false;
 
     public VerbSection(String pronoun, ResultImage resultImage) {
         this.pronoun = pronoun;
         this.solution = "undefined";
         this.resultImage = resultImage;
-
-        this.checkLabel = new JLabel();
-        this.isFirst = false;
 
         setLayout(new MigLayout("al center center"));
         initComponents();

@@ -201,9 +201,11 @@ public class WordQuizSetup extends JPanel {
         add(errorLabel, "span");
 
         // add panels
-        add(initDifficultyPanel(), "span 1");
-        add(initModePanel(), "span");
-        add(initButtonPanel(), "align center, span");
+        JPanel prefPanels = new JPanel(new MigLayout());
+        prefPanels.add(initDifficultyPanel());
+        prefPanels.add(initModePanel());
+        add(prefPanels, "al center center, wrap");
+        add(initButtonPanel(), "al center center, span");
     }
 
     public void writeOutErrors(String error) {
@@ -213,13 +215,13 @@ public class WordQuizSetup extends JPanel {
     }
 
     private JPanel initButtonPanel() {
-        JPanel buttonPanel = new JPanel(new MigLayout("align center center"));
+        JPanel buttonPanel = new JPanel(new MigLayout());
 
         try {
             for (int i = 0; i < BUTTON_NUMBER; i++) {
-                buttons.add(new MenuButton("preferences", i + 1));
+                buttons.add(new MenuButton("wordprefs", i + 1));
                 buttons.get(i).setActionSetup(setupPane.getMain(), this.getSetupPane(), comps);
-                buttonPanel.add(buttons.get(i), "align center");
+                buttonPanel.add(buttons.get(i));
             }
         } catch (IOException e) {
             // todo dialog
@@ -239,6 +241,10 @@ public class WordQuizSetup extends JPanel {
 
     public WordQuizComponents getComps() {
         return comps;
+    }
+
+    public WordQuizPreferences getPrefs() {
+        return prefs;
     }
 
     public ArrayList<JRadioButton> getDifficultyRadioButtons() {
