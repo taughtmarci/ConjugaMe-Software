@@ -1,6 +1,5 @@
 package view;
 
-import controller.VerbSection;
 import controller.WordQuizController;
 import controller.WordSection;
 import model.*;
@@ -9,7 +8,6 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class WordQuiz extends JPanel {
     private final MainWindow main;
@@ -65,11 +63,13 @@ public class WordQuiz extends JPanel {
         } else {
             currentTime = comps.getDuration();
             JLabel timeLabel = new JLabel((currentTime / 60) + ":" + (currentTime % 60));
+            timeLabel.setForeground(Color.BLACK);
             add(timeLabel, "align center");
 
             countBack = new Timer(1000, event -> {
                 currentTime--;
                 timeLabel.setText((currentTime / 60) + ":" + (currentTime % 60));
+                if (currentTime == 15) timeLabel.setForeground(Color.RED.darker());
                 if (currentTime == 0) controller.finishQuiz();
             });
             countBack.setRepeats(true);
@@ -104,32 +104,10 @@ public class WordQuiz extends JPanel {
                 scoreLabel.setText((controller.getScore() + " pont"));
                 if (comps.isNormal()) outOfLabel.setText(controller.getIteration() + 1 + "/" + comps.getWordAmount());
 
-                // button swap
-                sendResultsButton.setText("Tov\u00E1bb");
-
-                Timer cooldown = new Timer(3000, event -> {
-                    if (!pressedNext) {
-                        wordSection.refreshSection();
-                        controller.nextRound();
-                        System.out.println("debug");
-                    }
-                    pressedNext = false;
-                    // button swap
-                    sendResultsButton.setText("K\u00FCld\u00E9s");
-                });
-
-                cooldown.setRepeats(false);
-                cooldown.start();
-            }
-            else if (sendResultsButton.getText().equals("Tov\u00E1bb")) {
-                pressedNext = true;
+                // refresh the section and next round
                 wordSection.refreshSection();
                 controller.nextRound();
-
-                // button swap
-                sendResultsButton.setText("K\u00FCld\u00E9s");
             }
-
             this.updateUI();
         });
 

@@ -5,7 +5,7 @@ public enum Difficulty {
     Easy ("K\u00F6nny\u0171"),
     Medium ("K\u00F6zepes"),
     Hard ("Neh\u00E9z"),
-    WithoutHint ("Nincs seg\u00F3ts\u00E9g");
+    WithoutHint ("Nincs seg\u00EDts\u00E9g");
 
     private final String name;
 

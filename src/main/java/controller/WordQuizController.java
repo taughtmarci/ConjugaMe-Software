@@ -77,17 +77,17 @@ public class WordQuizController {
         char[] characters = s.toCharArray();
 
         double diffMax = diff + (diff * 0.2);
-        double diffMin = diff - (diff * 0.05);
-        double smallChange = Math.random() * (diffMax - diffMin);
+        double smallChange = Math.random() * (diffMax - diff);
 
         Random rd = new Random();
         if (rd.nextBoolean()) diff += smallChange;
         else diff -= smallChange;
 
         int changeAmount = (int) (s.length() * diff);
-        System.out.println(changeAmount);
         for (int i = 0; i < changeAmount; i++) {
-            int rand = (int)(Math.random() * s.length());
+            int rand;
+            do {rand = (int) (Math.random() * s.length());}
+            while (characters[rand] == '_');
             characters[rand] = '_';
         }
         return new String(characters);

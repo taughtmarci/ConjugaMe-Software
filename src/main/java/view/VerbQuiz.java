@@ -124,32 +124,10 @@ public class VerbQuiz extends JPanel {
                 scoreLabel.setText((controller.getScore() + " pont"));
                 if (comps.isNormal()) outOfLabel.setText(controller.getIteration() + 1 + "/" + comps.getWordAmount());
 
-                // button swap
-                sendResultsButton.setText("Tov\u00E1bb");
-
-                Timer cooldown = new Timer(3000, event -> {
-                    if (!pressedNext) {
-                        refreshAllSections();
-                        controller.nextRound();
-                        System.out.println("debug");
-                    }
-                    pressedNext = false;
-                    // button swap
-                    sendResultsButton.setText("K\u00FCld\u00E9s");
-                });
-
-                cooldown.setRepeats(false);
-                cooldown.start();
-            }
-            else if (sendResultsButton.getText().equals("Tov\u00E1bb")) {
-                pressedNext = true;
+                // refresh the sections and next round
                 refreshAllSections();
                 controller.nextRound();
-
-                // button swap
-                sendResultsButton.setText("K\u00FCld\u00E9s");
             }
-
             this.updateUI();
         });
 

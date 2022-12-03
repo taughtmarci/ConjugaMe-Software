@@ -12,6 +12,8 @@ public class VerbSection extends JPanel {
     public String solution;
     public final ResultImage resultImage;
 
+    public Timer resultIconTime;
+
     public JLabel pronounLabel;
     public JTextField input;
     public JLabel checkLabel = new JLabel();
@@ -53,6 +55,9 @@ public class VerbSection extends JPanel {
         input.setBorder(new LineBorder(Color.GRAY));
         checkLabel.setIcon(resultImage.blankImage());
 
+        resultIconTime = new Timer(2000, e -> checkLabel.setIcon(resultImage.blankImage()));
+        resultIconTime.setRepeats(false);
+
         add(pronounLabel, "width 100!, align right");
         add(input, "align center");
         add(checkLabel, "align left, wrap");
@@ -61,24 +66,26 @@ public class VerbSection extends JPanel {
     }
 
     public boolean evaluate() {
+        boolean result;
+
         String inputSolution = input.getText().trim();
         if (this.solution.equals(inputSolution)) {
             checkLabel.setIcon(resultImage.checkImage());
-            input.setBorder(new LineBorder(Color.GREEN));
-            return true;
+            //input.setBorder(new LineBorder(Color.GREEN));
+            result = true;
         }
         else {
             checkLabel.setIcon(resultImage.crossImage());
-            input.setBorder(new LineBorder(Color.RED));
-            return false;
+            //input.setBorder(new LineBorder(Color.RED));
+            result = false;
         }
+        resultIconTime.start();
+
+        return result;
     }
 
     public void refreshSection() {
-        checkLabel.setIcon(resultImage.blankImage());
-        input.setBorder(new LineBorder(Color.GRAY));
         input.setText("");
-
         if (isFirst) input.requestFocusInWindow();
     }
 

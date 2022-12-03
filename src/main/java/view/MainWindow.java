@@ -1,5 +1,6 @@
 package view;
 
+import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import controller.ConfigIO;
 import database.Local;

@@ -1,30 +1,19 @@
 package model;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class ResultImage {
-    private final BufferedImage checkImg;
-    private final BufferedImage crossImg;
-    private final BufferedImage blankImg;
-
     private final ImageIcon checkIcon;
     private final ImageIcon crossIcon;
     private final ImageIcon blankIcon;
 
     public ResultImage() {
         try {
-            checkImg = ImageIO.read(new File("img/feedback/check.png"));
-            crossImg = ImageIO.read(new File("img/feedback/cross.png"));
-            blankImg = ImageIO.read(new File("img/feedback/blank.png"));
-
-            checkIcon = new ImageIcon(checkImg);
-            crossIcon = new ImageIcon(crossImg);
-            blankIcon = new ImageIcon(blankImg);
+            checkIcon = new ImageIcon(new URL(new URL("file:"), "img/feedback/check.gif"));
+            crossIcon = new ImageIcon(new URL(new URL("file:"),"img/feedback/cross.gif"));
+            blankIcon = new ImageIcon(new URL(new URL("file:"), "img/feedback/blank.png"));
         } catch (IOException e) {
             // TODO dialog
             throw new RuntimeException(e);
