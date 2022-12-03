@@ -8,11 +8,9 @@ import java.util.ArrayList;
 public class GroupHandler {
     private final ArrayList<Group> groups;
     private ArrayList<Group> defaultVerified;
-    private ConfigIO config;
 
     public GroupHandler() throws IOException {
-        this.config = new ConfigIO();
-        this.groups = config.readVerifiedGroups("config/groups.cfg");
+        this.groups = ConfigIO.readVerifiedGroups("config/groups.cfg");
         this.defaultVerified = new ArrayList<>();
         setupDefaultVerified();
 
@@ -60,7 +58,4 @@ public class GroupHandler {
         return defaultVerified;
     }
 
-    public ConfigIO getConfig() {
-        return config;
-    }
 }

@@ -1,27 +1,101 @@
 package controller;
 
+import model.Form;
+import model.Pronoun;
 import model.Verb;
 import model.VerbQuizComponents;
+import view.EndQuiz;
 import view.MainWindow;
+import view.VerbQuiz;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class VerbQuizController {
-    private final MainWindow main;
+    private final VerbQuiz quiz;
     private ArrayList<Verb> verbs;
     private final VerbQuizComponents comps;
 
-    public VerbQuizController(MainWindow main, VerbQuizComponents comps) throws IOException {
-        this.main = main;
-        this.comps = comps;
+    public int score;
+    public int iteration;
+
+    public Verb currentVerb;
+    public Form currentForm;
+
+    private ArrayList<Verb> incorrectVerbs;
+    private EndQuiz next;
+
+    public VerbQuizController(VerbQuiz quiz) throws IOException {
+        this.quiz = quiz;
+        this.comps = quiz.getComps();
 
         if (!comps.isNormal()) comps.setWordAmount(comps.getDuration());
-        this.verbs = main.local.processVerbQueries(comps);
+        this.verbs = MainWindow.local.processVerbQueries(comps);
+        this.incorrectVerbs = new ArrayList<>();
 
         randomizeVerbList();
         printVerbs();
+
+        score = 0;
+        iteration = 0;
+        nextRound();
+    }
+
+    public void nextRound() {
+        if (iteration == comps.getWordAmount() - 1) {
+            finishQuiz();
+        }
+        else {
+            currentVerb = verbs.get(iteration);
+            quiz.setCurrentVerbLabel(currentVerb.getBasic().getInfinitivo());
+
+            if (!comps.onlyParticipio()) {
+                currentForm = comps.getSelectedForms().get((int)
+                        (Math.random() * comps.getSelectedForms().size()));
+                quiz.setCurrentFormLabel(currentForm.toString());
+
+                int i = 0;
+                for (Pronoun p : comps.getSelectedPronouns()) {
+                    String currentSolution = currentVerb.getSolution(currentForm, p);
+                    quiz.setSectionSolution(i, currentSolution);
+                    i++;
+                }
+            }
+
+            if (comps.isParticipioPresentoSelected())
+                quiz.setPresentoSectionSolution(currentVerb.getBasic().getPresento());
+
+            if (comps.isParticipioPasadoSelected())
+                quiz.setPasadoSectionSolution(currentVerb.getBasic().getPasado());
+
+            quiz.updateUI();
+        }
+    }
+
+    public void evaluateSections() {
+        if (comps.isParticipioPresentoSelected()) {
+            if (quiz.getPresentoSection().evaluate()) score++;
+            else incorrectVerbs.add(currentVerb);
+        }
+
+        if (comps.isParticipioPasadoSelected()) {
+            if (quiz.getPasadoSection().evaluate()) score++;
+            else incorrectVerbs.add(currentVerb);
+        }
+
+        for (VerbSection verbSection : quiz.getSections()) {
+            if (verbSection.evaluate()) score++;
+            else incorrectVerbs.add(currentVerb);
+        }
+    }
+
+    public void finishQuiz() {
+        if (!comps.isNormal()) quiz.stopCountBack();
+        VerbQuizResults results = new VerbQuizResults(score, this, incorrectVerbs);
+        quiz.setVisible(false);
+        next = new EndQuiz(quiz.getMain(), results);
+        quiz.getMain().switchPanels(quiz, next);
     }
 
     public void printVerbs() {
@@ -35,15 +109,19 @@ public class VerbQuizController {
         Collections.shuffle(this.verbs);
     }
 
-    public ArrayList<Verb> getVerbs() {
-        return verbs;
-    }
-
     public VerbQuizComponents getComps() {
         return comps;
     }
 
-    public MainWindow getMain() {
-        return main;
+    public int getScore() {
+        return score;
+    }
+
+    public int getIteration() {
+        return iteration;
+    }
+
+    public void setIteration(int iteration) {
+        this.iteration = iteration;
     }
 }

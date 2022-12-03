@@ -13,10 +13,10 @@ public class SetupPane extends JPanel {
 
     private JTabbedPane tabbedPane;
 
-    public SetupPane(MainWindow main, VerbQuizComponents verbComps, WordQuizComponents wordComps) throws IOException {
+    public SetupPane(MainWindow main) throws IOException {
         this.main = main;
-        this.verbQuizSetup = new VerbQuizSetup(this, verbComps);
-        this.wordQuizSetup = new WordQuizSetup(this, wordComps);
+        this.verbQuizSetup = new VerbQuizSetup(this);
+        this.wordQuizSetup = new WordQuizSetup(this);
         this.tabbedPane = new JTabbedPane();
 
         SwingUtilities.invokeLater(this::initComponents);

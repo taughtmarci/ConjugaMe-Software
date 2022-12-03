@@ -84,7 +84,7 @@ public class MenuButton extends JLabel {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     try {
-                        JPanel next = new SetupPane(main, current.comps);
+                        JPanel next = new SetupPane(main);
                         main.switchPanels(current, next);
                     } catch (IOException ex) {
                         // todo dialogize

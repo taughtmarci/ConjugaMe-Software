@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.io.IOException;
 
 public class EndQuiz extends JPanel {
+    private final MainWindow main;
+
     private final VerbQuizResults results;
     private final VerbQuizComponents comps;
 
@@ -16,9 +18,10 @@ public class EndQuiz extends JPanel {
     private JButton restartButton;
     private JButton preferencesButton;
 
-    private JPanel current;
+    private JPanel next;
 
-    public EndQuiz(VerbQuizResults results) {
+    public EndQuiz(MainWindow main, VerbQuizResults results) {
+        this.main = main;
         this.results = results;
         this.comps = results.getComps();
 
@@ -51,8 +54,13 @@ public class EndQuiz extends JPanel {
         restartButton.addActionListener(e -> {
             setVisible(false);
             results.getController().randomizeVerbList();
-            current = new VerbQuiz(results.getController().getMain(), results.getController());
-            results.getController().getMain().switchPanels(this, current);
+            try {
+                next = new VerbQuiz(main);
+            } catch (IOException ex) {
+                // todo dialogize
+                throw new RuntimeException(ex);
+            }
+            main.switchPanels(this, next);
         });
 
         // Back to dashboard button
@@ -62,8 +70,8 @@ public class EndQuiz extends JPanel {
         preferencesButton.addActionListener(e -> {
             setVisible(false);
             try {
-                current = new Dashboard(results.getController().getMain());
-                results.getController().getMain().switchPanels(this, current);
+                next = new Dashboard(main);
+                main.switchPanels(this, next);
             } catch (IOException ex) {
                 // todo dialog
                 throw new RuntimeException(ex);

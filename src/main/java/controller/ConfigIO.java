@@ -254,7 +254,7 @@ public class ConfigIO {
         return defaultComps;
     }
 
-    public ArrayList<Group> readVerifiedGroups(String fileName) throws IOException {
+    public static ArrayList<Group> readVerifiedGroups(String fileName) throws IOException {
         ArrayList<Group> verifiedGroups = new ArrayList<>();
         File file = new File(fileName);
 

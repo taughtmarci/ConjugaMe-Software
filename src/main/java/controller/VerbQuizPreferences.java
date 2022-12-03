@@ -1,6 +1,7 @@
 package controller;
 
 import model.VerbQuizComponents;
+import view.MainWindow;
 import view.VerbQuiz;
 import view.VerbQuizSetup;
 
@@ -77,6 +78,7 @@ public class VerbQuizPreferences extends QuizPreferences {
         if (error.equals("")) {
             try {
                 getConfig().writeVerbComponents(FILE_PATH, getComps());
+                MainWindow.verbComps = getComps();
                 error = "Sikeres ment\u00E9s!";
             } catch (IOException e) {
                 error = "Nem sikerült menteni a preferenciákat.";
@@ -84,7 +86,7 @@ public class VerbQuizPreferences extends QuizPreferences {
         }
         if (startFlag && error.equals("Sikeres ment\u00E9s!")) {
             try {
-                current = new VerbQuiz(setup.getSetupPane().getMain(), new VerbQuizController(setup.getSetupPane().getMain(), getComps()));
+                current = new VerbQuiz(setup.getSetupPane().getMain());
             } catch (IOException e) {
                 // todo dialogize
                 throw new RuntimeException(e);
@@ -98,10 +100,6 @@ public class VerbQuizPreferences extends QuizPreferences {
 
     public VerbQuizComponents getComps() {
         return comps;
-    }
-
-    public VerbQuizSetup getSetup() {
-        return setup;
     }
 
 }

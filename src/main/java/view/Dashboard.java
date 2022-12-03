@@ -4,6 +4,7 @@ import controller.ConfigIO;
 import controller.GroupHandler;
 import model.VerbQuizComponents;
 import controller.MenuButton;
+import model.WordQuizComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.imageio.ImageIO;
@@ -19,7 +20,8 @@ public class Dashboard extends JPanel {
     private JPanel current;
     private final ConfigIO config;
     private final GroupHandler groupHandler;
-    public final VerbQuizComponents comps;
+    public final VerbQuizComponents verbComps;
+    public final WordQuizComponents wordComps;
 
     private JLabel logo;
     private final ImageIcon logoIcon;
@@ -32,8 +34,9 @@ public class Dashboard extends JPanel {
         this.groupHandler = new GroupHandler();
         this.buttons = new ArrayList<>();
 
-        // get components from file
-        this.comps = config.readVerbComponents(VERB_FILE_PATH);
+        // get components from main class
+        this.verbComps = MainWindow.verbComps;
+        this.wordComps = MainWindow.wordComps;
         setLayout(new MigLayout("align center center"));
 
         // load buttons

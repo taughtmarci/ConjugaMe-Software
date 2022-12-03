@@ -6,6 +6,7 @@ import model.VerbQuizComponents;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+// TODO EZEKKEL AZONNAL KEZDENI VALAMIT
 public class VerbQuizResults {
     private final int score;
     private final VerbQuizController controller;

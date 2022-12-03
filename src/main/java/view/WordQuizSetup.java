@@ -35,9 +35,9 @@ public class WordQuizSetup extends JPanel {
     private JLabel errorLabel;
     private final ArrayList<MenuButton> buttons;
 
-    public WordQuizSetup(SetupPane setupPane, WordQuizComponents comps) throws IOException {
+    public WordQuizSetup(SetupPane setupPane) throws IOException {
         this.setupPane = setupPane;
-        this.comps = comps;
+        this.comps = MainWindow.wordComps;
         this.prefs = new WordQuizPreferences(this);
         this.buttons = new ArrayList<>();
 
@@ -225,6 +225,8 @@ public class WordQuizSetup extends JPanel {
             // todo dialog
             throw new RuntimeException(e);
         }
+
+        return buttonPanel;
     }
 
     private void setErrorLabel(String text) {

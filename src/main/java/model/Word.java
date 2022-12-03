@@ -22,4 +22,20 @@ public class Word {
         System.out.println("La: " + (!femenino.equals("") ? femenino : "-") + "\n" +
                 "El: " + (!masculino.equals("") ? masculino : "-") + "\n");
     }
+
+    public String getFemenino() {
+        return femenino;
+    }
+
+    public void setFemenino(String femenino) {
+        this.femenino = femenino;
+    }
+
+    public String getMasculino() {
+        return masculino;
+    }
+
+    public void setMasculino(String masculino) {
+        this.masculino = masculino;
+    }
 }

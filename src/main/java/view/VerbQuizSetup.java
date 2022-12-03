@@ -35,9 +35,9 @@ public class VerbQuizSetup extends JPanel {
     private JLabel errorLabel;
     private final ArrayList<MenuButton> buttons;
 
-    public VerbQuizSetup(SetupPane setupPane, VerbQuizComponents comps) throws IOException {
+    public VerbQuizSetup(SetupPane setupPane) throws IOException {
         this.setupPane = setupPane;
-        this.comps = comps;
+        this.comps = MainWindow.verbComps;
         this.prefs = new VerbQuizPreferences(this);
         this.buttons = new ArrayList<>();
 

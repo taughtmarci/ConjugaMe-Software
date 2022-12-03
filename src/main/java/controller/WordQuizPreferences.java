@@ -2,7 +2,9 @@ package controller;
 
 import model.Difficulty;
 import model.WordQuizComponents;
+import view.MainWindow;
 import view.VerbQuiz;
+import view.WordQuiz;
 import view.WordQuizSetup;
 
 import javax.swing.*;
@@ -63,6 +65,7 @@ public class WordQuizPreferences extends QuizPreferences {
         if (error.equals("")) {
             try {
                 getConfig().writeWordComponents("config/wordpreferences.cfg", getComps());
+                MainWindow.wordComps = getComps();
                 error = "Sikeres ment\u00E9s!";
             } catch (IOException e) {
                 error = "Nem sikerült menteni a preferenciákat.";
@@ -70,7 +73,7 @@ public class WordQuizPreferences extends QuizPreferences {
         }
         if (startFlag && error.equals("Sikeres ment\u00E9s!")) {
             try {
-                current = new VerbQuiz(setup.getSetupPane().getMain(), new VerbQuizController(setup.getSetupPane().getMain(), getComps()));
+                current = new WordQuiz(setup.getSetupPane().getMain());
             } catch (IOException e) {
                 // todo dialogize
                 throw new RuntimeException(e);

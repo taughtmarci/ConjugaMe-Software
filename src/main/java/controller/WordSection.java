@@ -7,70 +7,43 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class Section extends JPanel {
-    public final String pronoun;
-    public String solution;
+public class WordSection extends JPanel {
+    public String femeninoSolution;
+    public String masculinoSolution;
     public final ResultImage resultImage;
 
-    public JLabel pronounLabel;
     public JTextField input;
-    public JLabel checkLabel = new JLabel();
+    public JLabel checkLabel;
 
-    private boolean isFirst = false;
+    private boolean isFirst;
 
-    public Section(String pronoun, ResultImage resultImage) {
-        this.pronoun = pronoun;
-        this.solution = "undefined";
+    public WordSection(ResultImage resultImage) {
+        this.femeninoSolution = "undefined";
+        this.masculinoSolution = "undefined";
         this.resultImage = resultImage;
 
-        setLayout(new MigLayout("al center center"));
-        initComponents();
-    }
-
-    public Section(String pronoun, ResultImage resultImage, boolean isFirst) {
-        this.pronoun = pronoun;
-        this.solution = "undefined";
-        this.resultImage = resultImage;
-        this.isFirst = isFirst;
-
-        setLayout(new MigLayout("al center center"));
-        initComponents();
-    }
-
-    public Section(String pronoun, String solution, ResultImage resultImage) {
-        this.pronoun = pronoun;
-        this.solution = solution;
-        this.resultImage = resultImage;
+        this.checkLabel = new JLabel();
+        this.isFirst = false;
 
         setLayout(new MigLayout("al center center"));
         initComponents();
     }
 
     private void initComponents() {
-        pronounLabel = new JLabel(pronoun, SwingConstants.RIGHT);
         input = new JTextField(15);
         input.setText("");
         input.setBorder(new LineBorder(Color.GRAY));
         checkLabel.setIcon(resultImage.blankImage());
 
-        add(pronounLabel, "width 100!, align right");
         add(input, "align center");
         add(checkLabel, "align left, wrap");
 
         if (isFirst) input.requestFocusInWindow();
     }
 
-    public String getSolution() {
-        return solution;
-    }
-
-    public void setSolution(String solution) {
-        this.solution = solution;
-    }
-
     public boolean evaluate() {
         String inputSolution = input.getText().trim();
-        if (this.solution.equals(inputSolution)) {
+        if (femeninoSolution.equals(inputSolution) || masculinoSolution.equals(inputSolution)) {
             checkLabel.setIcon(resultImage.checkImage());
             input.setBorder(new LineBorder(Color.GREEN));
             return true;
@@ -90,6 +63,22 @@ public class Section extends JPanel {
         if (isFirst) input.requestFocusInWindow();
     }
 
+    public String getFemeninoSolution() {
+        return femeninoSolution;
+    }
+
+    public void setFemeninoSolution(String femeninoSolution) {
+        this.femeninoSolution = femeninoSolution;
+    }
+
+    public String getMasculinoSolution() {
+        return masculinoSolution;
+    }
+
+    public void setMasculinoSolution(String masculinoSolution) {
+        this.masculinoSolution = masculinoSolution;
+    }
+
     public boolean isFirst() {
         return isFirst;
     }
@@ -97,5 +86,4 @@ public class Section extends JPanel {
     public void setFirst(boolean first) {
         isFirst = first;
     }
-
 }
