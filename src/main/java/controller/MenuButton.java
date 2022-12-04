@@ -2,9 +2,7 @@ package controller;
 
 import model.IconVariation;
 import model.QuizComponents;
-import view.Dashboard;
-import view.MainWindow;
-import view.SetupPane;
+import view.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -61,22 +59,28 @@ public class MenuButton extends JLabel {
 
     public void setActionDashboard(MainWindow main, Dashboard current) {
         switch (number) {
-            case 0 -> this.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    System.out.println("xD");
-                }
-            });
             case 1 -> this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println(":P");
+                    try {
+                        JPanel next = new VerbQuiz(main);
+                        main.switchPanels(current, next);
+                    } catch (IOException ex) {
+                        // todo dialogize
+                        throw new RuntimeException(ex);
+                    }
                 }
             });
             case 2 -> this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    System.out.println(":O");
+                    try {
+                        JPanel next = new WordQuiz(main);
+                        main.switchPanels(current, next);
+                    } catch (IOException ex) {
+                        // todo dialogize
+                        throw new RuntimeException(ex);
+                    }
                 }
             });
             case 3 -> this.addMouseListener(new MouseAdapter() {

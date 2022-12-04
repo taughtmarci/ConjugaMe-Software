@@ -83,6 +83,10 @@ public class WordQuizPreferences extends QuizPreferences {
         }
     }
 
+    public void startQuiz() {
+
+    }
+
     public WordQuizComponents getComps() {
         return comps;
     }

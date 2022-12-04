@@ -30,8 +30,6 @@ public class WordQuiz extends JPanel {
     private WordSection wordSection;
     private final ResultImage resultImage;
 
-    private boolean pressedNext;
-
     public WordQuiz(MainWindow main) throws IOException {
         this.main = main;
         this.comps = MainWindow.wordComps;
@@ -42,7 +40,6 @@ public class WordQuiz extends JPanel {
         this.sendResultsButton = new JButton("K\u00FCld\u00E9s");
 
         this.resultImage = new ResultImage();
-        this.pressedNext = false;
 
         this.controller = new WordQuizController(this);
         setLayout(new MigLayout("al center center"));

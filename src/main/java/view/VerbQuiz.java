@@ -33,8 +33,6 @@ public class VerbQuiz extends JPanel {
     private final ArrayList<VerbSection> verbSections;
     private final ResultImage resultImage;
 
-    private boolean pressedNext;
-
     public VerbQuiz(MainWindow main) throws IOException {
         this.main = main;
         this.comps = MainWindow.verbComps;
@@ -46,7 +44,6 @@ public class VerbQuiz extends JPanel {
 
         this.verbSections = new ArrayList<>();
         this.resultImage = new ResultImage();
-        this.pressedNext = false;
 
         this.controller = new VerbQuizController(this);
         setLayout(new MigLayout("al center center"));

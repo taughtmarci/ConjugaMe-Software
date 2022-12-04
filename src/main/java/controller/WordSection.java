@@ -12,6 +12,8 @@ public class WordSection extends JPanel {
     public String masculinoSolution;
     public final ResultImage resultImage;
 
+    public Timer resultIconTime;
+
     public JTextField input;
     public JLabel checkLabel;
 
@@ -35,6 +37,9 @@ public class WordSection extends JPanel {
         input.setBorder(new LineBorder(Color.GRAY));
         checkLabel.setIcon(resultImage.blankImage());
 
+        resultIconTime = new Timer(2000, e -> checkLabel.setIcon(resultImage.blankImage()));
+        resultIconTime.setRepeats(false);
+
         add(input, "align center");
         add(checkLabel, "align left, wrap");
 
@@ -42,17 +47,20 @@ public class WordSection extends JPanel {
     }
 
     public boolean evaluate() {
+        boolean result;
+
         String inputSolution = input.getText().trim();
         if (femeninoSolution.equals(inputSolution) || masculinoSolution.equals(inputSolution)) {
             checkLabel.setIcon(resultImage.checkImage());
-            input.setBorder(new LineBorder(Color.GREEN));
-            return true;
+            result = true;
         }
         else {
             checkLabel.setIcon(resultImage.crossImage());
-            input.setBorder(new LineBorder(Color.RED));
-            return false;
+            result = false;
         }
+        resultIconTime.start();
+
+        return result;
     }
 
     public void refreshSection() {
