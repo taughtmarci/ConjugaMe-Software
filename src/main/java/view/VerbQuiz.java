@@ -11,43 +11,36 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class VerbQuiz extends JPanel {
-    private final MainWindow main;
+public class VerbQuiz extends Quiz {
     private final VerbQuizController controller;
-    private final VerbQuizComponents comps;
-
-    private JLabel scoreLabel;
+    public VerbQuizComponents comps;
 
     public int currentTime;
     private Timer countBack;
 
-    public final boolean isNormal;
+    private JLabel scoreLabel;
     private JLabel outOfLabel;
 
     private final JLabel currentVerbLabel;
     private final JLabel currentFormLabel;
-    private final JButton sendResultsButton;
 
     private VerbSection presentoVerbSection;
     private VerbSection pasadoVerbSection;
     private final ArrayList<VerbSection> verbSections;
-    private final ResultImage resultImage;
 
     public VerbQuiz(MainWindow main) throws IOException {
-        this.main = main;
-        this.comps = MainWindow.verbComps;
-        this.isNormal = comps.isNormal();
+        super(main);
 
         this.currentVerbLabel = new JLabel("");
         this.currentFormLabel = new JLabel("");
-        this.sendResultsButton = new JButton("K\u00FCld\u00E9s");
-
         this.verbSections = new ArrayList<>();
-        this.resultImage = new ResultImage();
 
+        this.comps = new VerbQuizComponents();
         this.controller = new VerbQuizController(this);
+
         setLayout(new MigLayout("al center center"));
         initComponents();
+
         controller.nextRound();
         setVisible(true);
     }
@@ -113,10 +106,10 @@ public class VerbQuiz extends JPanel {
             verbSections.get(0).setFirst(true);
 
         // send results button
-        add(sendResultsButton, "align right");
+        add(sendButton, "align right");
 
-        sendResultsButton.addActionListener(e -> {
-            if (sendResultsButton.getText().equals("K\u00FCld\u00E9s")) {
+        sendButton.addActionListener(e -> {
+            if (sendButton.getText().equals("K\u00FCld\u00E9s")) {
                 // evaluate sections
                 controller.evaluateSections();
 
@@ -132,7 +125,7 @@ public class VerbQuiz extends JPanel {
             this.updateUI();
         });
 
-        main.getRootPane().setDefaultButton(sendResultsButton);
+        main.getRootPane().setDefaultButton(sendButton);
     }
 
     public void stopCountBack() {
@@ -141,7 +134,7 @@ public class VerbQuiz extends JPanel {
         countBack.stop();
     }
 
-    private void refreshAllSections() {
+    protected void refreshAllSections() {
         if (comps.isParticipioPresentoSelected())
             presentoVerbSection.refreshSection();
 
@@ -186,9 +179,5 @@ public class VerbQuiz extends JPanel {
 
     public void setCurrentFormLabel(String text) {
         currentFormLabel.setText(text);
-    }
-
-    public MainWindow getMain() {
-        return main;
     }
 }

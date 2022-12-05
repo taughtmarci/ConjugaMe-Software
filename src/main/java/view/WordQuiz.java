@@ -9,40 +9,32 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
-public class WordQuiz extends JPanel {
-    private final MainWindow main;
+public class WordQuiz extends Quiz {
     private final WordQuizController controller;
     private final WordQuizComponents comps;
-
-    private JLabel scoreLabel;
 
     public int currentTime;
     private Timer countBack;
 
-    public final boolean isNormal;
-
+    private JLabel scoreLabel;
     private JLabel outOfLabel;
+
     private final JLabel currentWordLabel;
     private final JLabel currentDefinitionsLabel;
-    private final JButton sendResultsButton;
-
     private WordSection wordSection;
-    private final ResultImage resultImage;
 
     public WordQuiz(MainWindow main) throws IOException {
-        this.main = main;
-        this.comps = MainWindow.wordComps;
-        this.isNormal = comps.isNormal();
+        super(main);
 
         this.currentWordLabel = new JLabel("");
         this.currentDefinitionsLabel = new JLabel("");
-        this.sendResultsButton = new JButton("K\u00FCld\u00E9s");
 
-        this.resultImage = new ResultImage();
-
+        this.comps = MainWindow.wordComps;
         this.controller = new WordQuizController(this);
+
         setLayout(new MigLayout("al center center"));
         initComponents();
+
         controller.nextRound();
         setVisible(true);
     }
@@ -90,10 +82,10 @@ public class WordQuiz extends JPanel {
         add(wordSection, "span, align center");
 
         // send results button
-        add(sendResultsButton, "align right");
+        add(sendButton, "align right");
 
-        sendResultsButton.addActionListener(e -> {
-            if (sendResultsButton.getText().equals("K\u00FCld\u00E9s")) {
+        sendButton.addActionListener(e -> {
+            if (sendButton.getText().equals("K\u00FCld\u00E9s")) {
                 // evaluate sections
                 controller.evaluateSection();
 
@@ -109,7 +101,7 @@ public class WordQuiz extends JPanel {
             this.updateUI();
         });
 
-        main.getRootPane().setDefaultButton(sendResultsButton);
+        main.getRootPane().setDefaultButton(sendButton);
     }
 
     public void stopCountBack() {
@@ -145,9 +137,5 @@ public class WordQuiz extends JPanel {
 
     public void setCurrentDefinitionsLabel(String text) {
         currentDefinitionsLabel.setText(text);
-    }
-
-    public MainWindow getMain() {
-        return main;
     }
 }

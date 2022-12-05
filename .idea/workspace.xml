@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Fix issue with feedback gifs in wordquiz">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/QuizController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/QuizResults.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/Section.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/Quiz.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add Section abstract class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Quiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
     </list>
@@ -355,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670242622289</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Add Section abstract class">
+      <created>1670248724826</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1670248724826</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -374,7 +370,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="broo... :(" />
     <MESSAGE value="First functioning database call" />
     <MESSAGE value="Blank button placeholder" />
     <MESSAGE value="Smooth dialog panels with options start&#10;End quiz panel and switch between panels&#10;More flexible quiz filling experience, bugfixes" />
@@ -399,7 +394,8 @@
     <MESSAGE value="Animated feedback on quizes&#10;Fix on quiz feedback issue" />
     <MESSAGE value="Quiz can be started from dashboard" />
     <MESSAGE value="Fix issue with feedback gifs in wordquiz" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix issue with feedback gifs in wordquiz" />
+    <MESSAGE value="Add Section abstract class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Section abstract class" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

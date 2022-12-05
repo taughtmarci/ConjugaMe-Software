@@ -1,22 +1,27 @@
 package view;
 
-import controller.QuizController;
 import model.QuizComponents;
+import model.ResultImage;
+import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import java.io.IOException;
 
-public class Quiz {
-    private final MainWindow main;
-    private final QuizController controller;
-    private final QuizComponents comps;
+public abstract class Quiz extends JPanel {
+    protected final MainWindow main;
+    protected final JButton sendButton;
+    protected final ResultImage resultImage;
 
-    public int currentTime;
-    private Timer countBack;
+    public Quiz(MainWindow main) throws IOException {
+        this.main = main;
+        this.resultImage = new ResultImage();
 
-    private JLabel scoreLabel;
-    private final JLabel outOfLabel;
-    private final JButton sendButton;
+        this.sendButton = new JButton("K\u00FCld\u00E9s");
+        setLayout(new MigLayout("al center center"));
+    }
 
-    private
+    public MainWindow getMain() {
+        return main;
+    }
 
 }
