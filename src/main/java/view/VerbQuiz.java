@@ -64,19 +64,24 @@ public class VerbQuiz extends JPanel {
         } else {
             currentTime = comps.getDuration();
             JLabel timeLabel = new JLabel((currentTime / 60) + ":" + (currentTime % 60));
+            timeLabel.setForeground(Color.BLACK);
             add(timeLabel, "align center");
 
             countBack = new Timer(1000, event -> {
                 currentTime--;
                 timeLabel.setText((currentTime / 60) + ":" + (currentTime % 60));
-                if (currentTime == 0) controller.finishQuiz();
+                if (currentTime == 15) timeLabel.setForeground(Color.RED.darker());
+                if (currentTime == 0) {
+                    controller.evaluateSections();
+                    controller.finishQuiz();
+                }
             });
             countBack.setRepeats(true);
             countBack.start();
         }
 
         // end quiz button
-        JButton endQuizButton = new JButton("Kv\u00EDz befejez\u00E9se");
+        JButton endQuizButton = new JButton("Befejez\u00E9s");
         add(endQuizButton, "align right, wrap");
         endQuizButton.addActionListener(e -> controller.finishQuiz());
 

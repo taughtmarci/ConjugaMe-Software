@@ -67,14 +67,17 @@ public class WordQuiz extends JPanel {
                 currentTime--;
                 timeLabel.setText((currentTime / 60) + ":" + (currentTime % 60));
                 if (currentTime == 15) timeLabel.setForeground(Color.RED.darker());
-                if (currentTime == 0) controller.finishQuiz();
+                if (currentTime == 0) {
+                    controller.evaluateSection();
+                    controller.finishQuiz();
+                }
             });
             countBack.setRepeats(true);
             countBack.start();
         }
 
         // end quiz button
-        JButton endQuizButton = new JButton("Kv\u00EDz befejez\u00E9se");
+        JButton endQuizButton = new JButton("Befejez\u00E9s");
         add(endQuizButton, "align right, wrap");
         endQuizButton.addActionListener(e -> controller.finishQuiz());
 

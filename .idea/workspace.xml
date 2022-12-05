@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Animated feedback on quizes&#10;Fix on quiz feedback issue">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Quiz can be started from dashboard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
@@ -332,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670100670596</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Quiz can be started from dashboard">
+      <created>1670161163195</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1670161163195</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -351,7 +358,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Create Verb and VerbCollection classes&#10;Create singleQueryStatement db function&#10;View Verbs on Quiz panel" />
     <MESSAGE value="Verb class refactor&#10;Create VerbBasic class&#10;Error handling in StartQuiz" />
     <MESSAGE value="broo... :(" />
     <MESSAGE value="First functioning database call" />
@@ -376,7 +382,8 @@
     <MESSAGE value="Quiz and controller start problem" />
     <MESSAGE value="WordQuiz improvement" />
     <MESSAGE value="Animated feedback on quizes&#10;Fix on quiz feedback issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="Animated feedback on quizes&#10;Fix on quiz feedback issue" />
+    <MESSAGE value="Quiz can be started from dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quiz can be started from dashboard" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

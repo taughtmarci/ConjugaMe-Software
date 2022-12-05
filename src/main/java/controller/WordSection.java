@@ -15,17 +15,14 @@ public class WordSection extends JPanel {
     public Timer resultIconTime;
 
     public JTextField input;
-    public JLabel checkLabel;
+    public JLabel checkLabel = new JLabel();
 
-    private boolean isFirst;
+    private boolean isFirst = false;
 
     public WordSection(ResultImage resultImage) {
         this.femeninoSolution = "undefined";
         this.masculinoSolution = "undefined";
         this.resultImage = resultImage;
-
-        this.checkLabel = new JLabel();
-        this.isFirst = false;
 
         setLayout(new MigLayout("al center center"));
         initComponents();
@@ -50,11 +47,13 @@ public class WordSection extends JPanel {
         boolean result;
 
         String inputSolution = input.getText().trim();
-        if (femeninoSolution.equals(inputSolution) || masculinoSolution.equals(inputSolution)) {
+        if (femeninoSolution.equalsIgnoreCase(inputSolution) || masculinoSolution.equalsIgnoreCase(inputSolution)) {
             checkLabel.setIcon(resultImage.checkImage());
             result = true;
-        }
-        else {
+        } else if (("la " + femeninoSolution).equalsIgnoreCase(inputSolution) || ("el " + masculinoSolution).equalsIgnoreCase(inputSolution)) {
+            checkLabel.setIcon(resultImage.checkImage());
+            result = true;
+        } else {
             checkLabel.setIcon(resultImage.crossImage());
             result = false;
         }
@@ -64,10 +63,7 @@ public class WordSection extends JPanel {
     }
 
     public void refreshSection() {
-        checkLabel.setIcon(resultImage.blankImage());
-        input.setBorder(new LineBorder(Color.GRAY));
         input.setText("");
-
         if (isFirst) input.requestFocusInWindow();
     }
 

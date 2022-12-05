@@ -69,7 +69,7 @@ public class VerbSection extends JPanel {
         boolean result;
 
         String inputSolution = input.getText().trim();
-        if (this.solution.equals(inputSolution)) {
+        if (this.solution.equalsIgnoreCase(inputSolution)) {
             checkLabel.setIcon(resultImage.checkImage());
             //input.setBorder(new LineBorder(Color.GREEN));
             result = true;
