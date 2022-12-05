@@ -1,48 +1,36 @@
 package controller;
 
 import model.ResultImage;
-import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import java.awt.*;
 
-public class WordSection extends JPanel {
+public class WordSection extends Section {
     public String femeninoSolution;
     public String masculinoSolution;
-    public final ResultImage resultImage;
-
-    public Timer resultIconTime;
-
-    public JTextField input;
-    public JLabel checkLabel = new JLabel();
-
-    private boolean isFirst = false;
 
     public WordSection(ResultImage resultImage) {
+        super(resultImage);
         this.femeninoSolution = "undefined";
         this.masculinoSolution = "undefined";
-        this.resultImage = resultImage;
 
-        setLayout(new MigLayout("al center center"));
         initComponents();
     }
 
     private void initComponents() {
         input = new JTextField(15);
         input.setText("");
-        input.setBorder(new LineBorder(Color.GRAY));
         checkLabel.setIcon(resultImage.blankImage());
 
-        resultIconTime = new Timer(2000, e -> checkLabel.setIcon(resultImage.blankImage()));
-        resultIconTime.setRepeats(false);
+        resultIconTimer = new Timer(2000, e -> checkLabel.setIcon(resultImage.blankImage()));
+        resultIconTimer.setRepeats(false);
 
         add(input, "align center");
         add(checkLabel, "align left, wrap");
 
-        if (isFirst) input.requestFocusInWindow();
+        input.requestFocusInWindow();
     }
 
+    @Override
     public boolean evaluate() {
         boolean result;
 
@@ -57,14 +45,9 @@ public class WordSection extends JPanel {
             checkLabel.setIcon(resultImage.crossImage());
             result = false;
         }
-        resultIconTime.start();
+        resultIconTimer.start();
 
         return result;
-    }
-
-    public void refreshSection() {
-        input.setText("");
-        if (isFirst) input.requestFocusInWindow();
     }
 
     public String getFemeninoSolution() {
@@ -83,11 +66,4 @@ public class WordSection extends JPanel {
         this.masculinoSolution = masculinoSolution;
     }
 
-    public boolean isFirst() {
-        return isFirst;
-    }
-
-    public void setFirst(boolean first) {
-        isFirst = first;
-    }
 }

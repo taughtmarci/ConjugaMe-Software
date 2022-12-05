@@ -16,6 +16,7 @@ public class WordQuizController {
     private final WordQuizComponents comps;
 
     public int score;
+    public int outOf;
     public int iteration;
     public Word currentWord;
 
@@ -35,6 +36,7 @@ public class WordQuizController {
         randomizeWordList();
         //printWords();
         score = 0;
+        outOf = 0;
         iteration = 0;
     }
 
@@ -96,11 +98,12 @@ public class WordQuizController {
     public void evaluateSection() {
         if (quiz.getWordSection().evaluate()) score++;
         else incorrectWords.add(currentWord);
+        outOf++;
     }
 
     public void finishQuiz() {
         if (!comps.isNormal()) quiz.stopCountBack();
-        WordQuizResults results = new WordQuizResults(score, this, incorrectWords);
+        WordQuizResults results = new WordQuizResults(this);
         quiz.setVisible(false);
         //next = new EndQuiz(quiz.getMain(), results);
         quiz.getMain().switchPanels(quiz, next);
@@ -125,11 +128,19 @@ public class WordQuizController {
         return score;
     }
 
+    public int getOutOf() {
+        return outOf;
+    }
+
     public int getIteration() {
         return iteration;
     }
 
     public void setIteration(int iteration) {
         this.iteration = iteration;
+    }
+
+    public ArrayList<Word> getIncorrectWords() {
+        return incorrectWords;
     }
 }

@@ -1,7 +1,5 @@
 package controller;
 
-import model.Verb;
-import model.VerbQuizComponents;
 import model.Word;
 import model.WordQuizComponents;
 
@@ -16,11 +14,12 @@ public class WordQuizResults {
     private final ArrayList<Word> incorrectWords;
     public static final DecimalFormat df = new DecimalFormat("0.00");
 
-    public WordQuizResults(int score, WordQuizController controller, ArrayList<Word> incorrectWords) {
-        this.score = score;
+    public WordQuizResults(WordQuizController controller) {
         this.controller = controller;
         this.comps = controller.getComps();
-        this.incorrectWords = incorrectWords;
+
+        this.score = controller.getScore();
+        this.incorrectWords = controller.getIncorrectWords();
     }
 
     public int getScore() {

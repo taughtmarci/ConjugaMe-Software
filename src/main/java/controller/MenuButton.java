@@ -61,7 +61,7 @@ public class MenuButton extends JLabel {
         switch (number) {
             case 1 -> this.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseClicked(MouseEvent e) {
+                public void mousePressed(MouseEvent e) {
                     try {
                         JPanel next = new VerbQuiz(main);
                         main.switchPanels(current, next);
@@ -73,7 +73,7 @@ public class MenuButton extends JLabel {
             });
             case 2 -> this.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseClicked(MouseEvent e) {
+                public void mousePressed(MouseEvent e) {
                     try {
                         JPanel next = new WordQuiz(main);
                         main.switchPanels(current, next);
@@ -85,7 +85,7 @@ public class MenuButton extends JLabel {
             });
             case 3 -> this.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseClicked(MouseEvent e) {
+                public void mousePressed(MouseEvent e) {
                     try {
                         JPanel next = new SetupPane(main);
                         main.switchPanels(current, next);
@@ -97,19 +97,19 @@ public class MenuButton extends JLabel {
             });
             case 4 -> this.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseClicked(MouseEvent e) {
+                public void mousePressed(MouseEvent e) {
                     System.out.println(":D");
                 }
             });
             case 5 -> this.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseClicked(MouseEvent e) {
+                public void mousePressed(MouseEvent e) {
                     System.out.println(":))");
                 }
             });
             case 6 -> this.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseClicked(MouseEvent e) {
+                public void mousePressed(MouseEvent e) {
                     System.exit(0);
                 }
             });
@@ -123,19 +123,19 @@ public class MenuButton extends JLabel {
             switch (number) {
                 case 1 -> this.addMouseListener(new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         current.getVerbQuizSetup().getPrefs().savePrefs(true);
                     }
                 });
                 case 2 -> this.addMouseListener(new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         current.getVerbQuizSetup().getPrefs().savePrefs(false);
                     }
                 });
                 case 3 -> this.addMouseListener(new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         try {
                             JPanel next = new Dashboard(main);
                             main.switchPanels(current, next);
@@ -152,19 +152,19 @@ public class MenuButton extends JLabel {
             switch (number) {
                 case 1 -> this.addMouseListener(new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         current.getWordQuizSetup().getPrefs().savePrefs(true);
                     }
                 });
                 case 2 -> this.addMouseListener(new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         current.getWordQuizSetup().getPrefs().savePrefs(false);
                     }
                 });
                 case 3 -> this.addMouseListener(new MouseAdapter() {
                     @Override
-                    public void mouseClicked(MouseEvent e) {
+                    public void mousePressed(MouseEvent e) {
                         try {
                             JPanel next = new Dashboard(main);
                             main.switchPanels(current, next);

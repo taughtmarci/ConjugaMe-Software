@@ -9,16 +9,20 @@ import java.util.ArrayList;
 // TODO EZEKKEL AZONNAL KEZDENI VALAMIT
 public class VerbQuizResults {
     private final int score;
+    private final int outOf;
     private final VerbQuizController controller;
     private final VerbQuizComponents comps;
     private final ArrayList<Verb> incorrectVerbs;
     public static final DecimalFormat df = new DecimalFormat("0.00");
 
-    public VerbQuizResults(int score, VerbQuizController controller, ArrayList<Verb> incorrectVerbs) {
-        this.score = score;
+    public VerbQuizResults(VerbQuizController controller) {
         this.controller = controller;
         this.comps = controller.getComps();
-        this.incorrectVerbs = incorrectVerbs;
+        this.score = controller.getScore();
+        this.incorrectVerbs = controller.getIncorrectVerbs();
+
+        if (comps.isNormal()) this.outOf = comps.getTotalNumberOfVerbs();
+        else this.outOf = controller.getOutOf();
     }
 
     public int getScore() {
@@ -35,5 +39,9 @@ public class VerbQuizResults {
 
     public VerbQuizController getController() {
         return controller;
+    }
+
+    public int getOutOf() {
+        return outOf;
     }
 }

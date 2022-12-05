@@ -32,11 +32,11 @@ public class EndQuiz extends JPanel {
 
     private void initComponents() {
         // Result/Max
-        resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + comps.getTotalNumberOfVerbs());
+        resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + results.getOutOf());
         add(resultLabel, "span");
 
         // Result in percent
-        float percentResult = (float) results.getScore() / (float) comps.getTotalNumberOfVerbs();
+        float percentResult = (float) results.getScore() / (float) results.getOutOf();
         percentLabel = new JLabel(VerbQuizResults.df.format(percentResult * 100) + "%");
         add(percentLabel, "span");
 

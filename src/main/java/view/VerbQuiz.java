@@ -72,7 +72,6 @@ public class VerbQuiz extends JPanel {
                 timeLabel.setText((currentTime / 60) + ":" + (currentTime % 60));
                 if (currentTime == 15) timeLabel.setForeground(Color.RED.darker());
                 if (currentTime == 0) {
-                    controller.evaluateSections();
                     controller.finishQuiz();
                 }
             });

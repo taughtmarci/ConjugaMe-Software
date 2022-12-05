@@ -20,12 +20,11 @@ public class WordQuiz extends JPanel {
     private Timer countBack;
 
     public final boolean isNormal;
-    private JLabel outOfLabel;
 
+    private JLabel outOfLabel;
     private final JLabel currentWordLabel;
     private final JLabel currentDefinitionsLabel;
     private final JButton sendResultsButton;
-
 
     private WordSection wordSection;
     private final ResultImage resultImage;
@@ -68,7 +67,6 @@ public class WordQuiz extends JPanel {
                 timeLabel.setText((currentTime / 60) + ":" + (currentTime % 60));
                 if (currentTime == 15) timeLabel.setForeground(Color.RED.darker());
                 if (currentTime == 0) {
-                    controller.evaluateSection();
                     controller.finishQuiz();
                 }
             });

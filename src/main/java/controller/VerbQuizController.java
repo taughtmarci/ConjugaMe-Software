@@ -18,6 +18,7 @@ public class VerbQuizController {
     private final VerbQuizComponents comps;
 
     public int score;
+    public int outOf;
     public int iteration;
 
     public Verb currentVerb;
@@ -37,9 +38,10 @@ public class VerbQuizController {
         this.correctVerbs = new ArrayList<>();
 
         randomizeVerbList();
-        printVerbs();
+        //printVerbs();
 
         score = 0;
+        outOf = 0;
         iteration = 0;
     }
 
@@ -76,24 +78,39 @@ public class VerbQuizController {
 
     public void evaluateSections() {
         if (comps.isParticipioPresentoSelected()) {
-            if (quiz.getPresentoSection().evaluate()) score++;
-            else incorrectVerbs.add(currentVerb);
+            if (quiz.getPresentoSection().evaluate()) {
+                score++;
+            }
+            else {
+                incorrectVerbs.add(currentVerb);
+            }
+            outOf++;
         }
 
         if (comps.isParticipioPasadoSelected()) {
-            if (quiz.getPasadoSection().evaluate()) score++;
-            else incorrectVerbs.add(currentVerb);
+            if (quiz.getPasadoSection().evaluate()) {
+                score++;
+            }
+            else {
+                incorrectVerbs.add(currentVerb);
+            }
+            outOf++;
         }
 
         for (VerbSection verbSection : quiz.getSections()) {
-            if (verbSection.evaluate()) score++;
-            else incorrectVerbs.add(currentVerb);
+            if (verbSection.evaluate()) {
+                score++;
+            }
+            else {
+                incorrectVerbs.add(currentVerb);
+            }
+            outOf++;
         }
     }
 
     public void finishQuiz() {
         if (!comps.isNormal()) quiz.stopCountBack();
-        VerbQuizResults results = new VerbQuizResults(score, this, incorrectVerbs);
+        VerbQuizResults results = new VerbQuizResults(this);
         quiz.setVisible(false);
         next = new EndQuiz(quiz.getMain(), results);
         quiz.getMain().switchPanels(quiz, next);
@@ -118,11 +135,19 @@ public class VerbQuizController {
         return score;
     }
 
+    public int getOutOf() {
+        return outOf;
+    }
+
     public int getIteration() {
         return iteration;
     }
 
     public void setIteration(int iteration) {
         this.iteration = iteration;
+    }
+
+    public ArrayList<Verb> getIncorrectVerbs() {
+        return incorrectVerbs;
     }
 }
