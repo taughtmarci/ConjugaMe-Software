@@ -31,6 +31,19 @@ public class EndVerbQuiz extends JPanel {
         setVisible(true);
     }
 
+    private JPanel initStatsPane() {
+        JPanel statsPanel = new JPanel(new MigLayout("al center center"));
+        JTabbedPane pane = new JTabbedPane();
+
+        if (results.getIncorrectVerbs().size() > 0) {
+            JPanel incorrectPanel = new JPanel();
+
+        }
+
+        statsPanel.add(pane);
+        return statsPanel;
+    }
+
     private void initComponents() {
         // Result/Max
         resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + results.getOutOf());
