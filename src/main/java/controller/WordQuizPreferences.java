@@ -28,6 +28,10 @@ public class WordQuizPreferences extends QuizPreferences {
             if (difficultyRadioButton.isSelected()) comps.setDifficulty(Difficulty.fromString(difficultyRadioButton.getText()));
         }
 
+        // articles needed
+        if (setup.getArticlesCheckBox().isSelected()) comps.setArticlesNeeded(true);
+        else comps.setArticlesNeeded(false);
+
         // groups
         comps.setSelectedGroups(selector.getSelectedRows());
 

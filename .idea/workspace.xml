@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add Quiz abstract class">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Setup spinner and saving issues fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/WordQuizComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/WordQuizComponents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -362,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670249600511</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Setup spinner and saving issues fix">
+      <created>1670323787395</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1670323787395</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -381,7 +388,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Blank button placeholder" />
     <MESSAGE value="Smooth dialog panels with options start&#10;End quiz panel and switch between panels&#10;More flexible quiz filling experience, bugfixes" />
     <MESSAGE value="Main dashboard" />
     <MESSAGE value="Main dashboard completed&#10;Need fixes with the pngs" />
@@ -406,7 +412,8 @@
     <MESSAGE value="Fix issue with feedback gifs in wordquiz" />
     <MESSAGE value="Add Section abstract class" />
     <MESSAGE value="Add Quiz abstract class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Quiz abstract class" />
+    <MESSAGE value="Setup spinner and saving issues fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setup spinner and saving issues fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

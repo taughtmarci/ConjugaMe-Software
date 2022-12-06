@@ -78,7 +78,7 @@ public class WordQuiz extends Quiz {
         add(currentDefinitionsLabel, "span, align center");
 
         // add sections panel
-        wordSection = new WordSection(resultImage);
+        wordSection = new WordSection(resultImage, comps.isArticlesNeeded());
         add(wordSection, "span, align center");
 
         // send results button

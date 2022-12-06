@@ -7,11 +7,13 @@ import javax.swing.*;
 public class WordSection extends Section {
     public String femeninoSolution;
     public String masculinoSolution;
+    public boolean articlesNeeded;
 
-    public WordSection(ResultImage resultImage) {
+    public WordSection(ResultImage resultImage, boolean articlesNeeded) {
         super(resultImage);
         this.femeninoSolution = "undefined";
         this.masculinoSolution = "undefined";
+        this.articlesNeeded = articlesNeeded;
 
         initComponents();
     }
@@ -35,7 +37,7 @@ public class WordSection extends Section {
         boolean result;
 
         String inputSolution = input.getText().trim();
-        if (femeninoSolution.equalsIgnoreCase(inputSolution) || masculinoSolution.equalsIgnoreCase(inputSolution)) {
+        if (!articlesNeeded && (femeninoSolution.equalsIgnoreCase(inputSolution) || masculinoSolution.equalsIgnoreCase(inputSolution))) {
             checkLabel.setIcon(resultImage.checkImage());
             result = true;
         } else if (("la " + femeninoSolution).equalsIgnoreCase(inputSolution) || ("el " + masculinoSolution).equalsIgnoreCase(inputSolution)) {

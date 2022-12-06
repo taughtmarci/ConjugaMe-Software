@@ -23,6 +23,7 @@ public class WordQuizSetup extends JPanel {
 
     private ButtonGroup difficultyMode;
     private ArrayList<JRadioButton> difficultyRadioButtons;
+    private JCheckBox articlesCheckBox;
 
     private JSpinner wordNumberChooser;
     private JSpinner minutesChooser;
@@ -63,6 +64,16 @@ public class WordQuizSetup extends JPanel {
             difficultyMode.add(difficultyRadioButtons.get(difficultyRadioButtons.size() - 1));
             difficultyPanel.add(difficultyRadioButtons.get(difficultyRadioButtons.size() - 1), "al left center, wrap");
         }
+        JLabel spanTitle = new JLabel(" ");
+        difficultyPanel.add(spanTitle, "span");
+
+        // articles needed title
+        JLabel articlesTitle = new JLabel("N\u00E9vel\u0151k:");
+        difficultyPanel.add(articlesTitle, "al left, span");
+
+        // articles needed checkbox
+        articlesCheckBox = new JCheckBox("Sz\u00FCks\u00E9gesek", comps.isArticlesNeeded());
+        difficultyPanel.add(articlesCheckBox);
 
         difficultyPanel.setPreferredSize(new Dimension(getWidth(), 280));
         difficultyPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
@@ -84,7 +95,7 @@ public class WordQuizSetup extends JPanel {
         normalModeRadio = new JRadioButton("Norm\u00E1l");
         lastPanel.add(normalModeRadio, "align left, span");
 
-        // number of verbs title
+        // number of words title
         JLabel wordNumberTitle = new JLabel("Szavak sz\u00E1ma:");
         lastPanel.add(wordNumberTitle, "span");
 
@@ -260,6 +271,10 @@ public class WordQuizSetup extends JPanel {
 
     public ArrayList<JRadioButton> getDifficultyRadioButtons() {
         return difficultyRadioButtons;
+    }
+
+    public JCheckBox getArticlesCheckBox() {
+        return articlesCheckBox;
     }
 
     public JSpinner getWordNumberChooser() {

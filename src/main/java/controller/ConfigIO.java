@@ -144,10 +144,11 @@ public class ConfigIO {
                 switch (lines.get(i)) {
                     case "Difficulty" -> {
                         i++;
-                        while (!lines.get(i).trim().equals("END")) {
-                            inputComps.setDifficulty(Difficulty.fromString(lines.get(i).trim()));
-                            i++;
-                        }
+                        inputComps.setDifficulty(Difficulty.fromString(lines.get(i).trim()));
+                    }
+                    case "Articles" -> {
+                        i++;
+                        inputComps.setArticlesNeeded(Boolean.parseBoolean(lines.get(i).trim()));
                     }
                     case "Group" -> {
                         i++;
@@ -207,8 +208,11 @@ public class ConfigIO {
 
         // add difficulty
         writer.write("Difficulty\n");
-        writer.write(outputComps.getDifficulty().toString() + "\n");
-        writer.write("END\n\n");
+        writer.write(outputComps.getDifficulty().toString() + "\n\n");
+
+        // add articles needed
+        writer.write("Articles\n");
+        writer.write(outputComps.isArticlesNeeded() + "\n\n");
 
         // add groups
         writer.write("Group\n");
