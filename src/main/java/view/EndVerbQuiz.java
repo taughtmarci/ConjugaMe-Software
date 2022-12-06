@@ -1,13 +1,14 @@
 package view;
 
 import controller.VerbQuizResults;
+import model.QuizComponents;
 import model.VerbQuizComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.io.IOException;
 
-public class EndQuiz extends JPanel {
+public class EndVerbQuiz extends JPanel {
     private final MainWindow main;
 
     private final VerbQuizResults results;
@@ -20,7 +21,7 @@ public class EndQuiz extends JPanel {
 
     private JPanel next;
 
-    public EndQuiz(MainWindow main, VerbQuizResults results) {
+    public EndVerbQuiz(MainWindow main, VerbQuizResults results) {
         this.main = main;
         this.results = results;
         this.comps = results.getComps();
@@ -37,7 +38,7 @@ public class EndQuiz extends JPanel {
 
         // Result in percent
         float percentResult = (float) results.getScore() / (float) results.getOutOf();
-        percentLabel = new JLabel(VerbQuizResults.df.format(percentResult * 100) + "%");
+        percentLabel = new JLabel(QuizComponents.df.format(percentResult * 100) + "%");
         add(percentLabel, "span");
 
         /*
@@ -73,7 +74,7 @@ public class EndQuiz extends JPanel {
                 next = new Dashboard(main);
                 main.switchPanels(this, next);
             } catch (IOException ex) {
-                // todo dialog
+                // todo dialogize
                 throw new RuntimeException(ex);
             }
         });

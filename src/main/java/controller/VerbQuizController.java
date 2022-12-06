@@ -4,7 +4,7 @@ import model.Form;
 import model.Pronoun;
 import model.Verb;
 import model.VerbQuizComponents;
-import view.EndQuiz;
+import view.EndVerbQuiz;
 import view.MainWindow;
 import view.VerbQuiz;
 
@@ -26,7 +26,7 @@ public class VerbQuizController {
 
     private ArrayList<Verb> incorrectVerbs;
     private ArrayList<Verb> correctVerbs;
-    private EndQuiz next;
+    private EndVerbQuiz next;
 
     public VerbQuizController(VerbQuiz quiz) throws IOException {
         this.quiz = quiz;
@@ -112,7 +112,7 @@ public class VerbQuizController {
         if (!comps.isNormal()) quiz.stopCountBack();
         VerbQuizResults results = new VerbQuizResults(this);
         quiz.setVisible(false);
-        next = new EndQuiz(quiz.getMain(), results);
+        next = new EndVerbQuiz(quiz.getMain(), results);
         quiz.getMain().switchPanels(quiz, next);
     }
 

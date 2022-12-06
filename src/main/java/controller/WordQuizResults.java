@@ -3,16 +3,14 @@ package controller;
 import model.Word;
 import model.WordQuizComponents;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-// TODO EZEKKEL AZONNAL KEZDENI VALAMIT
 public class WordQuizResults {
     private final int score;
+    private final int outOf;
     private final WordQuizController controller;
     private final WordQuizComponents comps;
     private final ArrayList<Word> incorrectWords;
-    public static final DecimalFormat df = new DecimalFormat("0.00");
 
     public WordQuizResults(WordQuizController controller) {
         this.controller = controller;
@@ -20,10 +18,17 @@ public class WordQuizResults {
 
         this.score = controller.getScore();
         this.incorrectWords = controller.getIncorrectWords();
+
+        if (comps.isNormal()) this.outOf = comps.getWordAmount();
+        else this.outOf = controller.getOutOf();
     }
 
     public int getScore() {
         return score;
+    }
+
+    public int getOutOf() {
+        return outOf;
     }
 
     public ArrayList<Word> getIncorrectWords() {

@@ -1,7 +1,8 @@
 package controller;
 
 import model.*;
-import view.EndQuiz;
+import view.EndVerbQuiz;
+import view.EndWordQuiz;
 import view.MainWindow;
 import view.WordQuiz;
 
@@ -22,7 +23,7 @@ public class WordQuizController {
 
     private ArrayList<Word> incorrectWords;
     private ArrayList<Word> correctWords;
-    private EndQuiz next;
+    private EndWordQuiz next;
 
     public WordQuizController(WordQuiz quiz) throws IOException {
         this.quiz = quiz;
@@ -105,7 +106,7 @@ public class WordQuizController {
         if (!comps.isNormal()) quiz.stopCountBack();
         WordQuizResults results = new WordQuizResults(this);
         quiz.setVisible(false);
-        //next = new EndQuiz(quiz.getMain(), results);
+        next = new EndWordQuiz(quiz.getMain(), results);
         quiz.getMain().switchPanels(quiz, next);
     }
 

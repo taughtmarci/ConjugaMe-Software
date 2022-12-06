@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class VerbQuiz extends Quiz {
     private final VerbQuizController controller;
-    public VerbQuizComponents comps;
+    private final VerbQuizComponents comps;
 
     public int currentTime;
     private Timer countBack;
@@ -35,7 +35,7 @@ public class VerbQuiz extends Quiz {
         this.currentFormLabel = new JLabel("");
         this.verbSections = new ArrayList<>();
 
-        this.comps = new VerbQuizComponents();
+        this.comps = MainWindow.verbComps;
         this.controller = new VerbQuizController(this);
 
         setLayout(new MigLayout("al center center"));
@@ -97,6 +97,7 @@ public class VerbQuiz extends Quiz {
         if (!comps.onlyParticipio()) {
             add(currentFormLabel, "span, align center");
             for (Pronoun p : comps.getSelectedPronouns()) {
+                System.out.println("Hello");
                 verbSections.add(new VerbSection(p.toString(), resultImage));
                 add(verbSections.get(verbSections.size() - 1), "span, align center");
             }

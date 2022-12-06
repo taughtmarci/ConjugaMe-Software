@@ -1,5 +1,6 @@
 package model;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public abstract class QuizComponents {
@@ -10,6 +11,7 @@ public abstract class QuizComponents {
     protected int durationSec;
 
     protected ArrayList<Group> selectedGroups;
+    public static final DecimalFormat df = new DecimalFormat("0.00");
 
     public QuizComponents() {
         this.isNormal = true;
