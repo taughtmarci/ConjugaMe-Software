@@ -118,9 +118,10 @@ public class WordQuiz extends Quiz {
         return wordSection;
     }
 
-    public void setSectionSolutions(String femenino, String masculino) {
+    public void setSectionSolutions(String femenino, String masculino, boolean isNoun) {
         wordSection.setFemeninoSolution(femenino);
         wordSection.setMasculinoSolution(masculino);
+        wordSection.setNoun(isNoun);
     }
 
     public JLabel getCurrentWordLabel() {

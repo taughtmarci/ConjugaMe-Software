@@ -1,4 +1,4 @@
-SELECT
+SELECT DISTINCT
 "Palabra".*,
 "[GROUP_TABLE]"."WordID"
 FROM "Palabra"

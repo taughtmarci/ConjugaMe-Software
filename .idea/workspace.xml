@@ -6,7 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="ID added to queries">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/basicverbquery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/basicverbquery.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/complexverbquery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/complexverbquery.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/local.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/wordquery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/wordquery.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Word.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,4 +1,4 @@
-SELECT
+SELECT DISTINCT
 "Verbo".*,
 "[GROUP_TABLE]"."VerbID",
 ""

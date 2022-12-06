@@ -3,22 +3,18 @@ package model;
 import java.util.ArrayList;
 
 public class Word {
-    public int ID;
-    public String femenino;
-    public String masculino;
+    public final int ID;
+    public final String femenino;
+    public final String masculino;
+    public final boolean isNoun;
 
     public ArrayList<String> definitions = new ArrayList<>();
 
-    public Word(int ID, boolean isFemenino, String word) {
-        this.ID = ID;
-        if (isFemenino) this.femenino = word;
-        else this.masculino = word;
-    }
-
-    public Word(int ID, String femenino, String masculino) {
+    public Word(int ID, String femenino, String masculino, boolean isNoun) {
         this.ID = ID;
         this.femenino = femenino;
         this.masculino = masculino;
+        this.isNoun = isNoun;
     }
 
     public void printWord() {
@@ -30,6 +26,7 @@ public class Word {
         System.out.println("ID: " + getID() + "\n" +
                 "La: " + femenino + "\n" +
                 "El: " + masculino + "\n" +
+                "Noun: " + isNoun() + "\n" +
                 currentDefinitions + "\n");
     }
 
@@ -45,15 +42,11 @@ public class Word {
         return femenino;
     }
 
-    public void setFemenino(String femenino) {
-        this.femenino = femenino;
-    }
-
     public String getMasculino() {
         return masculino;
     }
 
-    public void setMasculino(String masculino) {
-        this.masculino = masculino;
+    public boolean isNoun() {
+        return isNoun;
     }
 }

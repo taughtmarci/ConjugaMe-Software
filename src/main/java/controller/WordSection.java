@@ -3,16 +3,19 @@ package controller;
 import model.ResultImage;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class WordSection extends Section {
     public String femeninoSolution;
     public String masculinoSolution;
+    public boolean isNoun;
     public boolean articlesNeeded;
 
     public WordSection(ResultImage resultImage, boolean articlesNeeded) {
         super(resultImage);
         this.femeninoSolution = "undefined";
         this.masculinoSolution = "undefined";
+        this.isNoun = false;
         this.articlesNeeded = articlesNeeded;
 
         initComponents();
@@ -36,11 +39,18 @@ public class WordSection extends Section {
     public boolean evaluate() {
         boolean result;
 
-        String inputSolution = input.getText().trim();
-        if (!articlesNeeded && (femeninoSolution.equalsIgnoreCase(inputSolution) || masculinoSolution.equalsIgnoreCase(inputSolution))) {
-            checkLabel.setIcon(resultImage.checkImage());
-            result = true;
-        } else if (("la " + femeninoSolution).equalsIgnoreCase(inputSolution) || ("el " + masculinoSolution).equalsIgnoreCase(inputSolution)) {
+        ArrayList<String> solutions = new ArrayList<>();
+        if (!getFemeninoSolution().equals("")) {
+            if (!isNoun || !articlesNeeded) solutions.add(getFemeninoSolution());
+            if (isNoun) solutions.add("la " + getFemeninoSolution());
+        }
+        if (!getMasculinoSolution().equals("")) {
+            if (!isNoun || !articlesNeeded) solutions.add(getMasculinoSolution());
+            if (isNoun) solutions.add("el " + getMasculinoSolution());
+        }
+
+        String inputSolution = input.getText().trim().toLowerCase();
+        if (solutions.contains(inputSolution)) {
             checkLabel.setIcon(resultImage.checkImage());
             result = true;
         } else {
@@ -68,4 +78,11 @@ public class WordSection extends Section {
         this.masculinoSolution = masculinoSolution;
     }
 
+    public boolean isNoun() {
+        return isNoun;
+    }
+
+    public void setNoun(boolean noun) {
+        isNoun = noun;
+    }
 }

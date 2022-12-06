@@ -71,7 +71,8 @@ public class WordQuizController {
             quiz.setCurrentDefinitionsLabel(currentDefinitions.toString());
 
             // solutions
-            quiz.setSectionSolutions(currentWord.getFemenino(), currentWord.getMasculino());
+            currentWord.printWord();
+            quiz.setSectionSolutions(currentWord.getFemenino(), currentWord.getMasculino(), currentWord.isNoun());
             quiz.updateUI();
         }
     }

@@ -183,7 +183,8 @@ abstract class Database {
                 ResultSet resultSet = statement.executeQuery(query);
 
                 while (resultSet.next()) {
-                    Word temp = new Word(resultSet.getInt("ID"), resultSet.getString("Nombre_F"), resultSet.getString("Nombre_M"));
+                    Word temp = new Word(resultSet.getInt("ID"), resultSet.getString("Nombre_F"),
+                            resultSet.getString("Nombre_M"), resultSet.getBoolean("IsNoun"));
                     for (int i = 0; i < 3; i++)
                         temp.addDefinition(resultSet.getString("Definici\uu00F3n_0" + (i + 1)));
 
