@@ -9,6 +9,7 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicSpinnerUI;
+import javax.swing.text.DefaultFormatter;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -150,6 +151,9 @@ public class VerbQuizSetup extends JPanel {
         // number of verbs spinner
         SpinnerNumberModel verbNumberModel = new SpinnerNumberModel(comps.getWordAmount(), 5, 500, 5);
         verbNumberChooser = new JSpinner(verbNumberModel);
+        JFormattedTextField verbNumberField = (JFormattedTextField) verbNumberChooser.getEditor().getComponent(0);
+        DefaultFormatter verbNumberFormatter = (DefaultFormatter) verbNumberField.getFormatter();
+        verbNumberFormatter.setCommitsOnValidEdit(true);
         lastPanel.add(verbNumberChooser, "span");
 
         // timed mode radio and title
@@ -161,7 +165,7 @@ public class VerbQuizSetup extends JPanel {
         lastPanel.add(timedDurationTitle, "span");
 
         // minutes spinner and label
-        SpinnerNumberModel minutesModel = new SpinnerNumberModel(comps.getDurationMin(), 1, 180, 1);
+        SpinnerNumberModel minutesModel = new SpinnerNumberModel(comps.getDurationMin(), 1, 30, 1);
         minutesChooser = new JSpinner(minutesModel);
         minutesChooser.setUI(new BasicSpinnerUI() {
             protected Component createNextButton() {
@@ -172,6 +176,10 @@ public class VerbQuizSetup extends JPanel {
                 return null;
             }
         });
+        ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setColumns(3);
+        JFormattedTextField minutesField = (JFormattedTextField) minutesChooser.getEditor().getComponent(0);
+        DefaultFormatter minutesFormatter = (DefaultFormatter) minutesField.getFormatter();
+        minutesFormatter.setCommitsOnValidEdit(true);
         lastPanel.add(minutesChooser);
         JLabel minutesLabel = new JLabel("p");
         lastPanel.add(minutesLabel);
@@ -189,6 +197,9 @@ public class VerbQuizSetup extends JPanel {
             }
         });
         ((JSpinner.DefaultEditor) secondsChooser.getEditor()).getTextField().setColumns(3);
+        JFormattedTextField secondsField = (JFormattedTextField) secondsChooser.getEditor().getComponent(0);
+        DefaultFormatter secondsFormatter = (DefaultFormatter) secondsField.getFormatter();
+        secondsFormatter.setCommitsOnValidEdit(true);
         lastPanel.add(secondsChooser);
         JLabel secondsLabel = new JLabel("mp");
         lastPanel.add(secondsLabel);

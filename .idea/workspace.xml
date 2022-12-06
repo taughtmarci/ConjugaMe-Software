@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add Quiz abstract class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/QuizController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/QuizResults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/QuizComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/QuizComponents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,19 +78,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Marci/Desktop/ConjugaMe",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "File.Encoding"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marci/Desktop/ConjugaMe&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\MHO2BP\Desktop\saját projekt\ConjugaMe-Software" />

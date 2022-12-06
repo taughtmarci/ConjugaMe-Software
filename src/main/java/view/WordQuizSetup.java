@@ -9,6 +9,7 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicSpinnerUI;
+import javax.swing.text.DefaultFormatter;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -87,9 +88,12 @@ public class WordQuizSetup extends JPanel {
         JLabel wordNumberTitle = new JLabel("Szavak sz\u00E1ma:");
         lastPanel.add(wordNumberTitle, "span");
 
-        // number of verbs spinner
-        SpinnerNumberModel verbNumberModel = new SpinnerNumberModel(comps.getWordAmount(), 5, 500, 5);
-        wordNumberChooser = new JSpinner(verbNumberModel);
+        // number of words spinner
+        SpinnerNumberModel wordNumberModel = new SpinnerNumberModel(comps.getWordAmount(), 5, 500, 5);
+        wordNumberChooser = new JSpinner(wordNumberModel);
+        JFormattedTextField wordNumberField = (JFormattedTextField) wordNumberChooser.getEditor().getComponent(0);
+        DefaultFormatter wordNumberFormatter = (DefaultFormatter) wordNumberField.getFormatter();
+        wordNumberFormatter.setCommitsOnValidEdit(true);
         lastPanel.add(wordNumberChooser, "span");
 
         // timed mode radio and title
@@ -101,7 +105,7 @@ public class WordQuizSetup extends JPanel {
         lastPanel.add(timedDurationTitle, "span");
 
         // minutes spinner and label
-        SpinnerNumberModel minutesModel = new SpinnerNumberModel(comps.getDurationMin(), 1, 180, 1);
+        SpinnerNumberModel minutesModel = new SpinnerNumberModel(comps.getDurationMin(), 1, 30, 1);
         minutesChooser = new JSpinner(minutesModel);
         minutesChooser.setUI(new BasicSpinnerUI() {
             protected Component createNextButton() {
@@ -112,6 +116,10 @@ public class WordQuizSetup extends JPanel {
                 return null;
             }
         });
+        ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setColumns(3);
+        JFormattedTextField minutesField = (JFormattedTextField) minutesChooser.getEditor().getComponent(0);
+        DefaultFormatter minutesFormatter = (DefaultFormatter) minutesField.getFormatter();
+        minutesFormatter.setCommitsOnValidEdit(true);
         lastPanel.add(minutesChooser);
         JLabel minutesLabel = new JLabel("p");
         lastPanel.add(minutesLabel);
@@ -129,6 +137,9 @@ public class WordQuizSetup extends JPanel {
             }
         });
         ((JSpinner.DefaultEditor) secondsChooser.getEditor()).getTextField().setColumns(3);
+        JFormattedTextField secondsField = (JFormattedTextField) secondsChooser.getEditor().getComponent(0);
+        DefaultFormatter secondsFormatter = (DefaultFormatter) secondsField.getFormatter();
+        secondsFormatter.setCommitsOnValidEdit(true);
         lastPanel.add(secondsChooser);
         JLabel secondsLabel = new JLabel("mp");
         lastPanel.add(secondsLabel);

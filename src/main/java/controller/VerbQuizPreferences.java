@@ -1,5 +1,6 @@
 package controller;
 
+import model.Verb;
 import model.VerbQuizComponents;
 import view.MainWindow;
 import view.VerbQuiz;
@@ -21,7 +22,7 @@ public class VerbQuizPreferences extends QuizPreferences {
     }
 
     public void setupComps() {
-        comps = new VerbQuizComponents();
+        this.comps = new VerbQuizComponents();
 
         // pronouns
         for (JCheckBox cb : setup.getPronounCheckBoxes())
@@ -54,6 +55,7 @@ public class VerbQuizPreferences extends QuizPreferences {
 
     public String validateForm() {
         String error = "";
+        comps.printStats();;
 
         if (!comps.isParticipioPasadoSelected() && !comps.isParticipioPresentoSelected()
                 && comps.getSelectedForms().size() == 0)
@@ -62,12 +64,12 @@ public class VerbQuizPreferences extends QuizPreferences {
             error = "Legal\u00E1bb egy n\u00E9vm\u00E1s kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
         else if (comps.getSelectedGroups().size() == 0)
             error = "Legal\u00E1bb egy csoport kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
-        else if (comps.getWordAmount() < 0 || comps.getWordAmount() > 250)
-            error = "Az ig\u00E9k sz\u00E1ma 0 \u00E9s 250 k\u00F6z\u00F6tt kell, hogy legyen!";
+        else if (comps.getWordAmount() < 5 || comps.getWordAmount() > 500)
+            error = "Az ig\u00E9k sz\u00E1ma 5 \u00E9s 500 k\u00F6z\u00F6tt kell, hogy legyen!";
         else if (comps.getDurationMin() < 1 || comps.getDurationMin() > 30)
             error = "A megadott perc 1 \u00E9s 30 k\u00F6z\u00F6tt kell, hogy legyen!";
-        else if (comps.getDurationMin() < 0 || comps.getDurationMin() > 59)
-            error = "A megadott m\u00E1sodperc 1 \u00E9s 30 k\u00F6z\u00F6tt kell, hogy legyen!";
+        else if (comps.getDurationSec() < 0 || comps.getDurationSec() > 59)
+            error = "A megadott m\u00E1sodperc 0 \u00E9s 30 k\u00F6z\u00F6tt kell, hogy legyen!";
 
         return error;
     }

@@ -16,6 +16,7 @@ public class EndWordQuiz extends JPanel {
 
     private JLabel resultLabel;
     private JLabel percentLabel;
+    private JProgressBar percentIndicator;
     private JButton restartButton;
     private JButton preferencesButton;
 
@@ -37,9 +38,13 @@ public class EndWordQuiz extends JPanel {
         add(resultLabel, "span");
 
         // Result in percent
-        float percentResult = (float) results.getScore() / (float) results.getOutOf();
-        percentLabel = new JLabel(QuizComponents.df.format(percentResult * 100) + "%");
+        float percentResult = ((float) results.getScore() / (float) results.getOutOf()) * 100;
+        percentLabel = new JLabel(QuizComponents.df.format(percentResult) + "%");
         add(percentLabel, "span");
+
+        percentIndicator = new JProgressBar();
+        percentIndicator.setValue((int) percentResult);
+        add(percentIndicator, "span");
 
         // Restart button
         restartButton = new JButton("\u00DAjraind\u00EDt\u00E1s");
