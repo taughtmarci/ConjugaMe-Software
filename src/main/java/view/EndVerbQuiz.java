@@ -6,6 +6,7 @@ import model.VerbQuizComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 public class EndVerbQuiz extends JPanel {
@@ -16,6 +17,8 @@ public class EndVerbQuiz extends JPanel {
 
     private JLabel resultLabel;
     private JLabel percentLabel;
+    private JProgressBar percentIndicator;
+
     private JButton restartButton;
     private JButton preferencesButton;
 
@@ -37,8 +40,7 @@ public class EndVerbQuiz extends JPanel {
 
         if (results.getIncorrectVerbs().size() > 0) {
             JPanel incorrectPanel = new JPanel();
-
-        }
+        } else if (results.getCorrectVerbs().size() > 0)
 
         statsPanel.add(pane);
         return statsPanel;
@@ -54,12 +56,11 @@ public class EndVerbQuiz extends JPanel {
         percentLabel = new JLabel(QuizComponents.df.format(percentResult * 100) + "%");
         add(percentLabel, "span");
 
-        /*
-        3 opció:
-        kvíz újraindítása
-        preferences menü
-        dashboard
-         */
+        percentIndicator = new JProgressBar();
+        percentIndicator.setValue((int) percentResult);
+        percentIndicator.setPreferredSize(new Dimension(150, 20));
+        add(percentIndicator, "al center, span");
+
 
         // Restart button
         restartButton = new JButton("\u00DAjraind\u00EDt\u00E1s");
@@ -78,7 +79,7 @@ public class EndVerbQuiz extends JPanel {
         });
 
         // Back to dashboard button
-        preferencesButton = new JButton("Dashboard");
+        preferencesButton = new JButton("F\u0151men\u00FC");
         add(preferencesButton);
 
         preferencesButton.addActionListener(e -> {

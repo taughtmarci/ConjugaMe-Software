@@ -6,6 +6,7 @@ import model.WordQuizComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 public class EndWordQuiz extends JPanel {
@@ -44,7 +45,8 @@ public class EndWordQuiz extends JPanel {
 
         percentIndicator = new JProgressBar();
         percentIndicator.setValue((int) percentResult);
-        add(percentIndicator, "span");
+        percentIndicator.setPreferredSize(new Dimension(150, 20));
+        add(percentIndicator, "al center, span");
 
         // Restart button
         restartButton = new JButton("\u00DAjraind\u00EDt\u00E1s");
@@ -63,7 +65,7 @@ public class EndWordQuiz extends JPanel {
         });
 
         // Back to dashboard button
-        preferencesButton = new JButton("Dashboard");
+        preferencesButton = new JButton("F\u0151men\u00FC");
         add(preferencesButton);
 
         preferencesButton.addActionListener(e -> {

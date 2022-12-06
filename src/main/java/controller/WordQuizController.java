@@ -1,7 +1,6 @@
 package controller;
 
 import model.*;
-import view.EndVerbQuiz;
 import view.EndWordQuiz;
 import view.MainWindow;
 import view.WordQuiz;
@@ -71,7 +70,6 @@ public class WordQuizController {
             quiz.setCurrentDefinitionsLabel(currentDefinitions.toString());
 
             // solutions
-            currentWord.printWord();
             quiz.setSectionSolutions(currentWord.getFemenino(), currentWord.getMasculino(), currentWord.isNoun());
             quiz.updateUI();
         }

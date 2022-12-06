@@ -24,8 +24,8 @@ public class VerbQuizController {
     public Verb currentVerb;
     public Form currentForm;
 
-    private ArrayList<Verb> incorrectVerbs;
     private ArrayList<Verb> correctVerbs;
+    private ArrayList<Verb> incorrectVerbs;
     private EndVerbQuiz next;
 
     public VerbQuizController(VerbQuiz quiz) throws IOException {
@@ -57,7 +57,8 @@ public class VerbQuizController {
             StringBuilder currentDefinitions = new StringBuilder();
             for (String def : currentVerb.definitions)
                 if (!def.equals("")) currentDefinitions.append(def).append(", ");
-            currentDefinitions = new StringBuilder((currentDefinitions.substring(0, currentDefinitions.length() - 2)));
+            if (currentDefinitions.length() > 1)
+                currentDefinitions = new StringBuilder((currentDefinitions.substring(0, currentDefinitions.length() - 2)));
             quiz.setCurrentDefinitionsLabel(currentDefinitions.toString());
 
             if (!comps.onlyParticipio()) {
@@ -152,6 +153,10 @@ public class VerbQuizController {
 
     public void setIteration(int iteration) {
         this.iteration = iteration;
+    }
+
+    public ArrayList<Verb> getCorrectVerbs() {
+        return correctVerbs;
     }
 
     public ArrayList<Verb> getIncorrectVerbs() {

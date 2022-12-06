@@ -10,6 +10,8 @@ public class VerbQuizResults {
     private final int outOf;
     private final VerbQuizController controller;
     private final VerbQuizComponents comps;
+
+    private final ArrayList<Verb> correctVerbs;
     private final ArrayList<Verb> incorrectVerbs;
 
 
@@ -18,6 +20,7 @@ public class VerbQuizResults {
         this.comps = controller.getComps();
 
         this.score = controller.getScore();
+        this.correctVerbs = controller.getCorrectVerbs();
         this.incorrectVerbs = controller.getIncorrectVerbs();
 
         if (comps.isNormal()) this.outOf = comps.getTotalNumberOfVerbs();
@@ -26,6 +29,10 @@ public class VerbQuizResults {
 
     public int getScore() {
         return score;
+    }
+
+    public int getOutOf() {
+        return outOf;
     }
 
     public ArrayList<Verb> getIncorrectVerbs() {
@@ -40,7 +47,7 @@ public class VerbQuizResults {
         return controller;
     }
 
-    public int getOutOf() {
-        return outOf;
+    public ArrayList<Verb> getCorrectVerbs() {
+        return correctVerbs;
     }
 }
