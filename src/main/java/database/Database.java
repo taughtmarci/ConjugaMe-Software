@@ -164,7 +164,7 @@ abstract class Database {
 
         for (Group g : comps.getSelectedGroups()) {
             // replace group tables and amount
-            String query = queryDefault.replace("[GROUP_TABLE]", "GRUPO_" + g.name());
+            String query = queryDefault.replace("[GROUP_TABLE]", "PALABRA_" + g.name());
             query = query.replace("[AMOUNT]", Integer.toString(comps.getWordAmount()));
 
             // make query
