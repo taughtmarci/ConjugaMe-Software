@@ -132,7 +132,7 @@ abstract class Database {
                     if (comps.isParticipioPresentoSelected()) tempBasic.setPresento(resultSet.getString("Presento"));
                     if (comps.isParticipioPasadoSelected()) tempBasic.setPasado(resultSet.getString("Pasado"));
 
-                    Verb temp = new Verb(tempBasic);
+                    Verb temp = new Verb(resultSet.getInt("ID"), tempBasic);
                     ResultSetMetaData metaData = resultSet.getMetaData();
 
                     for (Form f : comps.getSelectedForms()) {
@@ -145,6 +145,8 @@ abstract class Database {
                         temp.appendVerbForm(f, tempContent);
                     }
 
+                    // debug
+                    temp.printVerb();
                     result.add(temp);
                 }
             } catch (SQLException e) {
@@ -181,9 +183,12 @@ abstract class Database {
                 ResultSet resultSet = statement.executeQuery(query);
 
                 while (resultSet.next()) {
-                    Word temp = new Word(resultSet.getString("Nombre_F"), resultSet.getString("Nombre_M"));
+                    Word temp = new Word(resultSet.getInt("ID"), resultSet.getString("Nombre_F"), resultSet.getString("Nombre_M"));
                     for (int i = 0; i < 3; i++)
                         temp.addDefinition(resultSet.getString("Definici\uu00F3n_0" + (i + 1)));
+
+                    // debug
+                    temp.printWord();
                     result.add(temp);
                 }
             } catch (SQLException e) {

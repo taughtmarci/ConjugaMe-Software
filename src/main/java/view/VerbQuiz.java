@@ -97,7 +97,6 @@ public class VerbQuiz extends Quiz {
         if (!comps.onlyParticipio()) {
             add(currentFormLabel, "span, align center");
             for (Pronoun p : comps.getSelectedPronouns()) {
-                System.out.println("Hello");
                 verbSections.add(new VerbSection(p.toString(), resultImage));
                 add(verbSections.get(verbSections.size() - 1), "span, align center");
             }

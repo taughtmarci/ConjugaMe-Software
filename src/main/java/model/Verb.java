@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Verb {
+    public int ID;
     public VerbBasic basic;
     public ArrayList<String> definition;
 
@@ -11,13 +12,15 @@ public class Verb {
 
     public HashMap<Form, HashMap<Pronoun, String>> forms;
 
-    public Verb(VerbBasic basic) {
+    public Verb(int ID, VerbBasic basic) {
+        this.ID = ID;
         this.basic = basic;
         this.forms = new HashMap<>();
     }
 
     public void printVerb() {
-        System.out.println(getBasic().getInfinitivo() + ":\n" +
+        System.out.println("ID: " + getID() + "\n" +
+                getBasic().getInfinitivo() + ":\n" +
                 "Participio presento: " + (getBasic().getPresento() != null ? getBasic().getPresento() : "-") + "\n" +
                 "Participio pasado: " + (getBasic().getPasado() != null ? getBasic().getPasado() : "-") + "\n");
 
@@ -37,6 +40,10 @@ public class Verb {
         if (forms.containsKey(form))
             return forms.get(form).get(pronoun);
         else return null;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public VerbBasic getBasic() {
