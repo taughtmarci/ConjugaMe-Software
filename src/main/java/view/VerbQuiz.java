@@ -22,6 +22,7 @@ public class VerbQuiz extends Quiz {
     private JLabel outOfLabel;
 
     private final JLabel currentVerbLabel;
+    private final JLabel currentDefinitionsLabel;
     private final JLabel currentFormLabel;
 
     private VerbSection presentoVerbSection;
@@ -32,6 +33,7 @@ public class VerbQuiz extends Quiz {
         super(main);
 
         this.currentVerbLabel = new JLabel("");
+        this.currentDefinitionsLabel = new JLabel("");
         this.currentFormLabel = new JLabel("");
         this.verbSections = new ArrayList<>();
 
@@ -79,8 +81,10 @@ public class VerbQuiz extends Quiz {
 
         // set up current verb and form labels
         currentVerbLabel.setFont(new Font("Verdana", Font.BOLD, 24));
+        currentDefinitionsLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
         currentFormLabel.setFont(new Font("Verdana", Font.BOLD, 12));
         add(currentVerbLabel, "span, align center");
+        add(currentDefinitionsLabel, "span, align center");
 
         // add sections panel
         if (comps.isParticipioPresentoSelected()) {
@@ -175,6 +179,10 @@ public class VerbQuiz extends Quiz {
 
     public void setCurrentVerbLabel(String text) {
         currentVerbLabel.setText(text);
+    }
+
+    public void setCurrentDefinitionsLabel(String text) {
+        currentDefinitionsLabel.setText(text);
     }
 
     public void setCurrentFormLabel(String text) {

@@ -133,6 +133,9 @@ abstract class Database {
                     if (comps.isParticipioPasadoSelected()) tempBasic.setPasado(resultSet.getString("Pasado"));
 
                     Verb temp = new Verb(resultSet.getInt("ID"), tempBasic);
+                    for (int i = 0; i < 3; i++)
+                        temp.addDefinition(resultSet.getString("Definici\uu00F3n_0" + (i + 1)));
+
                     ResultSetMetaData metaData = resultSet.getMetaData();
 
                     for (Form f : comps.getSelectedForms()) {

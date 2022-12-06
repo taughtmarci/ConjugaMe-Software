@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Verb {
     public int ID;
     public VerbBasic basic;
-    public ArrayList<String> definition;
+    public ArrayList<String> definitions = new ArrayList<>();
 
     public Verb pronominal;
 
@@ -54,12 +54,16 @@ public class Verb {
         this.basic = basic;
     }
 
-    public ArrayList<String> getDefinition() {
-        return definition;
+    public void addDefinition(String text) {
+        definitions.add(text);
     }
 
-    public void setDefinition(ArrayList<String> definition) {
-        this.definition = definition;
+    public ArrayList<String> getDefinitions() {
+        return definitions;
+    }
+
+    public void setDefinitions(ArrayList<String> definitions) {
+        this.definitions = definitions;
     }
 
     public Verb getPronominal() {
