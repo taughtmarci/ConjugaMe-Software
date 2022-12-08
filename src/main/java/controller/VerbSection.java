@@ -64,6 +64,10 @@ public class VerbSection extends Section {
         if (isFirst) input.requestFocusInWindow();
     }
 
+    public String getPronoun() {
+        return pronoun;
+    }
+
     public boolean isFirst() {
         return isFirst;
     }

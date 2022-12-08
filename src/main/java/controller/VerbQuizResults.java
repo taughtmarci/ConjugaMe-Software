@@ -1,5 +1,7 @@
 package controller;
 
+import model.CorrectConjugations;
+import model.IncorrectConjugations;
 import model.Verb;
 import model.VerbQuizComponents;
 
@@ -11,8 +13,8 @@ public class VerbQuizResults {
     private final VerbQuizController controller;
     private final VerbQuizComponents comps;
 
-    private final ArrayList<Verb> correctVerbs;
-    private final ArrayList<Verb> incorrectVerbs;
+    private final CorrectConjugations correctConjugations;
+    private final IncorrectConjugations incorrectConjugations;
 
 
     public VerbQuizResults(VerbQuizController controller) {
@@ -20,8 +22,8 @@ public class VerbQuizResults {
         this.comps = controller.getComps();
 
         this.score = controller.getScore();
-        this.correctVerbs = controller.getCorrectVerbs();
-        this.incorrectVerbs = controller.getIncorrectVerbs();
+        this.correctConjugations = new CorrectConjugations(controller.getCorrectConjugations());
+        this.incorrectConjugations = new IncorrectConjugations(controller.getMistakes(), controller.getIncorrectConjugations());
 
         if (comps.isNormal()) this.outOf = comps.getTotalNumberOfVerbs();
         else this.outOf = controller.getOutOf();
@@ -35,10 +37,6 @@ public class VerbQuizResults {
         return outOf;
     }
 
-    public ArrayList<Verb> getIncorrectVerbs() {
-        return incorrectVerbs;
-    }
-
     public VerbQuizComponents getComps() {
         return comps;
     }
@@ -47,7 +45,11 @@ public class VerbQuizResults {
         return controller;
     }
 
-    public ArrayList<Verb> getCorrectVerbs() {
-        return correctVerbs;
+    public CorrectConjugations getCorrectConjugations() {
+        return correctConjugations;
+    }
+
+    public IncorrectConjugations getIncorrectConjugations() {
+        return incorrectConjugations;
     }
 }

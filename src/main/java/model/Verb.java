@@ -36,6 +36,12 @@ public class Verb {
         forms.put(form, content);
     }
 
+    public String getVerbForm(Form form, Pronoun pronoun) {
+        if (forms.containsKey(form)) {
+            return forms.get(form).get(pronoun);
+        } else return "undefined";
+    }
+
     public String getSolution(Form form, Pronoun pronoun) {
         if (forms.containsKey(form))
             return forms.get(form).get(pronoun);

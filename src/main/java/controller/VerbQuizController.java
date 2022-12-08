@@ -1,9 +1,6 @@
 package controller;
 
-import model.Form;
-import model.Pronoun;
-import model.Verb;
-import model.VerbQuizComponents;
+import model.*;
 import view.EndVerbQuiz;
 import view.MainWindow;
 import view.VerbQuiz;
@@ -24,8 +21,9 @@ public class VerbQuizController {
     public Verb currentVerb;
     public Form currentForm;
 
-    private ArrayList<Verb> correctVerbs;
-    private ArrayList<Verb> incorrectVerbs;
+    private ArrayList<String> mistakes;
+    private ArrayList<Conjugation> correctConjugations;
+    private ArrayList<Conjugation> incorrectConjugations;
     private EndVerbQuiz next;
 
     public VerbQuizController(VerbQuiz quiz) throws IOException {
@@ -34,8 +32,10 @@ public class VerbQuizController {
 
         if (!comps.isNormal()) comps.setWordAmount(comps.getDuration());
         this.verbs = MainWindow.local.processVerbQueries(comps);
-        this.incorrectVerbs = new ArrayList<>();
-        this.correctVerbs = new ArrayList<>();
+
+        this.mistakes = new ArrayList<>();
+        this.correctConjugations = new ArrayList<>();
+        this.incorrectConjugations = new ArrayList<>();
 
         randomizeVerbList();
         //printVerbs();
@@ -46,7 +46,7 @@ public class VerbQuizController {
     }
 
     public void nextRound() {
-        if (iteration == comps.getWordAmount() - 1) {
+        if (iteration == comps.getWordAmount()) {
             finishQuiz();
         }
         else {
@@ -81,32 +81,60 @@ public class VerbQuizController {
 
     public void evaluateSections() {
         if (comps.isParticipioPresentoSelected()) {
-            if (quiz.getPresentoSection().evaluate()) {
+            Conjugation conj = new Conjugation(
+                    currentVerb.getID(),
+                    currentVerb.getBasic().getInfinitivo(),
+                    currentVerb.getBasic().getPresento(),
+                    "Participio Presento",
+                    ""
+            );
 
+            if (quiz.getPresentoSection().evaluate()) {
                 score++;
+                correctConjugations.add(conj);
             }
             else {
-                incorrectVerbs.add(currentVerb);
+                mistakes.add(quiz.getPresentoSection().getInput());
+                incorrectConjugations.add(conj);
             }
             outOf++;
         }
 
         if (comps.isParticipioPasadoSelected()) {
+            Conjugation conj = new Conjugation(
+                    currentVerb.getID(),
+                    currentVerb.getBasic().getInfinitivo(),
+                    currentVerb.getBasic().getPasado(),
+                    "Participio Pasado",
+                    ""
+            );
+
             if (quiz.getPasadoSection().evaluate()) {
+                correctConjugations.add(conj);
                 score++;
             }
             else {
-                incorrectVerbs.add(currentVerb);
+                mistakes.add(quiz.getPasadoSection().getInput());
+                incorrectConjugations.add(conj);
             }
             outOf++;
         }
 
         for (VerbSection verbSection : quiz.getSections()) {
+            Conjugation conj = new Conjugation(
+                    currentVerb.getID(),
+                    currentVerb.getBasic().getInfinitivo(),
+                    currentVerb.getVerbForm(currentForm, Pronoun.fromString(verbSection.getPronoun())),
+                    currentForm.toString(),
+                    verbSection.getPronoun()
+            );
             if (verbSection.evaluate()) {
+                correctConjugations.add(conj);
                 score++;
             }
             else {
-                incorrectVerbs.add(currentVerb);
+                mistakes.add(verbSection.getInput());
+                incorrectConjugations.add(conj);
             }
             outOf++;
         }
@@ -151,11 +179,15 @@ public class VerbQuizController {
         this.iteration = iteration;
     }
 
-    public ArrayList<Verb> getCorrectVerbs() {
-        return correctVerbs;
+    public ArrayList<String> getMistakes() {
+        return mistakes;
     }
 
-    public ArrayList<Verb> getIncorrectVerbs() {
-        return incorrectVerbs;
+    public ArrayList<Conjugation> getCorrectConjugations() {
+        return correctConjugations;
+    }
+
+    public ArrayList<Conjugation> getIncorrectConjugations() {
+        return incorrectConjugations;
     }
 }

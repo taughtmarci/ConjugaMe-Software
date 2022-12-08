@@ -19,8 +19,8 @@ public class CorrectWords {
 
         for (int i = 0; i < this.size(); i++) {
             String[] temp = {
-                    words.get(i).getFemenino(),
-                    words.get(i).getMasculino(),
+                    "la " + words.get(i).getFemenino(),
+                    "el " + words.get(i).getMasculino(),
                     words.get(i).getDefinitions()
             };
             result[i] = temp;

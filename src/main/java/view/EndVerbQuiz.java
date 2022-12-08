@@ -1,11 +1,14 @@
 package view;
 
 import controller.VerbQuizResults;
+import model.CorrectConjugations;
+import model.IncorrectConjugations;
 import model.QuizComponents;
 import model.VerbQuizComponents;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.io.IOException;
 
@@ -22,6 +25,12 @@ public class EndVerbQuiz extends JPanel {
     private JButton restartButton;
     private JButton preferencesButton;
 
+    private CorrectConjugations correctConjugations;
+    private JTable correctsList;
+
+    private IncorrectConjugations incorrectConjugations;
+    private JTable incorrectsList;
+
     private JPanel next;
 
     public EndVerbQuiz(MainWindow main, VerbQuizResults results) {
@@ -29,41 +38,86 @@ public class EndVerbQuiz extends JPanel {
         this.results = results;
         this.comps = results.getComps();
 
+        this.correctConjugations = results.getCorrectConjugations();
+        this.incorrectConjugations = results.getIncorrectConjugations();
+
         setLayout(new MigLayout("align center center"));
         initComponents();
         setVisible(true);
     }
 
-    private JPanel initStatsPane() {
+    private JPanel initResultsPanel() {
+        JPanel resultsPanel = new JPanel(new MigLayout("al center center"));
+
+        // Result/Max
+        resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + results.getOutOf());
+        resultsPanel.add(resultLabel, "span");
+
+        // Result in percent
+        float percentResult = ((float) results.getScore() / (float) results.getOutOf()) * 100;
+        percentLabel = new JLabel("Sz\u00E1zal\u00E9k: " + QuizComponents.df.format(percentResult) + "%");
+        resultsPanel.add(percentLabel, "span");
+
+        percentIndicator = new JProgressBar();
+        percentIndicator.setPreferredSize(new Dimension(150, 20));
+        percentIndicator.setValue((int) percentResult);
+        resultsPanel.add(percentIndicator, "al center, span");
+
+        return resultsPanel;
+    }
+
+    private JPanel initStatsPanel() {
         JPanel statsPanel = new JPanel(new MigLayout("al center center"));
         JTabbedPane pane = new JTabbedPane();
 
-        if (results.getIncorrectVerbs().size() > 0) {
-            JPanel incorrectPanel = new JPanel();
-        } else if (results.getCorrectVerbs().size() > 0)
+        JPanel incorrectPanel = new JPanel();
+        JPanel correctPanel = new JPanel();
+
+        if (incorrectConjugations.size() > 0) {
+            incorrectsList = new JTable(incorrectConjugations.getData(), incorrectConjugations.getColumnNames());
+            // set model
+            DefaultTableModel incorrectsModel = new DefaultTableModel(incorrectConjugations.getData(), incorrectConjugations.getColumnNames()) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            incorrectsList.setModel(incorrectsModel);
+
+            JScrollPane incorrectScroll = new JScrollPane(incorrectsList);
+            incorrectPanel.add(incorrectScroll);
+        }
+        if (correctConjugations.size() > 0) {
+            correctsList = new JTable(correctConjugations.getData(), correctConjugations.getColumnNames());
+            // set model
+            DefaultTableModel correctsModel = new DefaultTableModel(correctConjugations.getData(), correctConjugations.getColumnNames()) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            correctsList.setModel(correctsModel);
+
+            JScrollPane correctScroll = new JScrollPane(correctsList);
+            correctPanel.add(correctScroll);
+        }
+
+        pane.add("Hib\u00E1s v\u00E1laszok", incorrectPanel);
+        pane.add("J\u00F3 v\u00E1laszok", correctPanel);
+
+        if (incorrectConjugations.size() == 0) pane.setEnabledAt(0, false);
+        if (correctConjugations.size() == 0) pane.setEnabledAt(1, false);
 
         statsPanel.add(pane);
         return statsPanel;
     }
 
-    private void initComponents() {
-        // Result/Max
-        resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + results.getOutOf());
-        add(resultLabel, "span");
-
-        // Result in percent
-        float percentResult = ((float) results.getScore() / (float) results.getOutOf()) * 100;
-        percentLabel = new JLabel(QuizComponents.df.format(percentResult) + "%");
-        add(percentLabel, "span");
-
-        percentIndicator = new JProgressBar();
-        percentIndicator.setPreferredSize(new Dimension(150, 20));
-        percentIndicator.setValue((int) percentResult);
-        add(percentIndicator, "al center, span");
+    private JPanel initButtonPanel() {
+        JPanel buttonPanel = new JPanel(new MigLayout("al center center"));
 
         // Restart button
         restartButton = new JButton("\u00DAjraind\u00EDt\u00E1s");
-        add(restartButton);
+        buttonPanel.add(restartButton);
 
         restartButton.addActionListener(e -> {
             setVisible(false);
@@ -79,7 +133,7 @@ public class EndVerbQuiz extends JPanel {
 
         // Back to dashboard button
         preferencesButton = new JButton("F\u0151men\u00FC");
-        add(preferencesButton);
+        buttonPanel. add(preferencesButton);
 
         preferencesButton.addActionListener(e -> {
             setVisible(false);
@@ -91,5 +145,13 @@ public class EndVerbQuiz extends JPanel {
                 throw new RuntimeException(ex);
             }
         });
+
+        return buttonPanel;
+    }
+
+    private void initComponents() {
+        add(initResultsPanel(), "al center, span");
+        add(initStatsPanel(), "al center, span");
+        add(initButtonPanel(), "al center, span");
     }
 }

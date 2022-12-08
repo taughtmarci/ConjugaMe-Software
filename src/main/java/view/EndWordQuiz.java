@@ -52,7 +52,7 @@ public class EndWordQuiz extends JPanel {
 
         // Result in percent
         float percentResult = ((float) results.getScore() / (float) results.getOutOf()) * 100;
-        percentLabel = new JLabel(QuizComponents.df.format(percentResult) + "%");
+        percentLabel = new JLabel("Sz\u00E1zal\u00E9k: " + QuizComponents.df.format(percentResult) + "%");
         resultsPanel.add(percentLabel, "span");
 
         percentIndicator = new JProgressBar();
