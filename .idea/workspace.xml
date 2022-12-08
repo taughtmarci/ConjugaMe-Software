@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Now with verb hints!">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Percent indicator made better">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/CorrectWords.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/IncorrectTableRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/IncorrectWords.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Section.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Verb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Verb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Word.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Word.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" afterDir="false" />
     </list>
@@ -76,20 +84,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Marci/Desktop/ConjugaMe",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marci/Desktop/ConjugaMe&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="model" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\MHO2BP\Desktop\saját projekt\ConjugaMe-Software" />
       <recent name="C:\Users\MHO2BP\Desktop\saját projekt\ConjugaMe-Software\src\main\resources" />
@@ -102,6 +113,7 @@
     <configuration name="ConjugaMe" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="view.MainWindow" />
       <module name="ConjugaMe.main" />
+      <option name="VM_PARAMETERS" value="-Dsun.java2d.uiScale=1" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -402,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670338043984</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Percent indicator made better">
+      <created>1670357712738</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1670357712738</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -421,7 +440,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add group selector" />
     <MESSAGE value="Ad configuration saving basics" />
     <MESSAGE value="Add configuration saving basics" />
     <MESSAGE value="Relocated images" />
@@ -446,7 +464,8 @@
     <MESSAGE value="ID added to queries" />
     <MESSAGE value="Word quiz evaluation logics fix" />
     <MESSAGE value="Now with verb hints!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now with verb hints!" />
+    <MESSAGE value="Percent indicator made better" />
+    <option name="LAST_COMMIT_MESSAGE" value="Percent indicator made better" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

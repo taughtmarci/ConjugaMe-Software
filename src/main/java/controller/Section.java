@@ -27,6 +27,10 @@ public abstract class Section extends JPanel {
         input.requestFocusInWindow();
     }
 
+    public String getInput() {
+        return input.getText();
+    }
+
     public String getSolution() {
         return solution;
     }

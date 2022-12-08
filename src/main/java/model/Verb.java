@@ -6,8 +6,8 @@ import java.util.HashMap;
 public class Verb {
     public int ID;
     public VerbBasic basic;
-    public ArrayList<String> definitions = new ArrayList<>();
 
+    public ArrayList<String> definitions = new ArrayList<>();
     public Verb pronominal;
 
     public HashMap<Form, HashMap<Pronoun, String>> forms;
@@ -58,8 +58,13 @@ public class Verb {
         definitions.add(text);
     }
 
-    public ArrayList<String> getDefinitions() {
-        return definitions;
+    public String getDefinitions() {
+        StringBuilder currentDefinitions = new StringBuilder();
+        for (String def : definitions)
+            if (!def.equals("")) currentDefinitions.append(def).append(", ");
+        if (currentDefinitions.length() > 1)
+            currentDefinitions = new StringBuilder((currentDefinitions.substring(0, currentDefinitions.length() - 2)));
+        return currentDefinitions.toString();
     }
 
     public void setDefinitions(ArrayList<String> definitions) {

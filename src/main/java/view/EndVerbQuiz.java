@@ -52,15 +52,14 @@ public class EndVerbQuiz extends JPanel {
         add(resultLabel, "span");
 
         // Result in percent
-        float percentResult = (float) results.getScore() / (float) results.getOutOf();
-        percentLabel = new JLabel(QuizComponents.df.format(percentResult * 100) + "%");
+        float percentResult = ((float) results.getScore() / (float) results.getOutOf()) * 100;
+        percentLabel = new JLabel(QuizComponents.df.format(percentResult) + "%");
         add(percentLabel, "span");
 
         percentIndicator = new JProgressBar();
-        percentIndicator.setValue((int) percentResult);
         percentIndicator.setPreferredSize(new Dimension(150, 20));
+        percentIndicator.setValue((int) percentResult);
         add(percentIndicator, "al center, span");
-
 
         // Restart button
         restartButton = new JButton("\u00DAjraind\u00EDt\u00E1s");

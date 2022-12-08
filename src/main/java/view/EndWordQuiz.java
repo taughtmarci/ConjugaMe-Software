@@ -1,11 +1,12 @@
 package view;
 
 import controller.WordQuizResults;
-import model.QuizComponents;
-import model.WordQuizComponents;
+import model.*;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.io.IOException;
 
@@ -21,6 +22,12 @@ public class EndWordQuiz extends JPanel {
     private JButton restartButton;
     private JButton preferencesButton;
 
+    private CorrectWords correctWords;
+    private JTable correctsList;
+
+    private IncorrectWords incorrectWords;
+    private JTable incorrectsList;
+
     private JPanel next;
 
     public EndWordQuiz(MainWindow main, WordQuizResults results) {
@@ -28,29 +35,86 @@ public class EndWordQuiz extends JPanel {
         this.results = results;
         this.comps = results.getComps();
 
+        this.correctWords = results.getCorrectWords();
+        this.incorrectWords = results.getIncorrectWords();
+
         setLayout(new MigLayout("al center center"));
         initComponents();
         setVisible(true);
     }
 
-    private void initComponents() {
+    private JPanel initResultsPanel() {
+        JPanel resultsPanel = new JPanel(new MigLayout("al center center"));
+
         // Result/Max
         resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + results.getOutOf());
-        add(resultLabel, "span");
+        resultsPanel.add(resultLabel, "span");
 
         // Result in percent
         float percentResult = ((float) results.getScore() / (float) results.getOutOf()) * 100;
         percentLabel = new JLabel(QuizComponents.df.format(percentResult) + "%");
-        add(percentLabel, "span");
+        resultsPanel.add(percentLabel, "span");
 
         percentIndicator = new JProgressBar();
-        percentIndicator.setValue((int) percentResult);
         percentIndicator.setPreferredSize(new Dimension(150, 20));
-        add(percentIndicator, "al center, span");
+        percentIndicator.setValue((int) percentResult);
+        resultsPanel.add(percentIndicator, "al center, span");
+
+        return resultsPanel;
+    }
+
+    private JPanel initStatsPanel() {
+        JPanel statsPanel = new JPanel(new MigLayout("al center center"));
+        JTabbedPane pane = new JTabbedPane();
+
+        JPanel incorrectPanel = new JPanel();
+        JPanel correctPanel = new JPanel();
+
+        if (incorrectWords.size() > 0) {
+            incorrectsList = new JTable(incorrectWords.getData(), incorrectWords.getColumnNames());
+            // set model
+            DefaultTableModel incorrectsModel = new DefaultTableModel(incorrectWords.getData(), incorrectWords.getColumnNames()) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            incorrectsList.setModel(incorrectsModel);
+
+            JScrollPane incorrectScroll = new JScrollPane(incorrectsList);
+            incorrectPanel.add(incorrectScroll);
+        }
+        if (correctWords.size() > 0) {
+            correctsList = new JTable(correctWords.getData(), correctWords.getColumnNames());
+            // set model
+            DefaultTableModel correctsModel = new DefaultTableModel(correctWords.getData(), correctWords.getColumnNames()) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            correctsList.setModel(correctsModel);
+
+            JScrollPane correctScroll = new JScrollPane(correctsList);
+            correctPanel.add(correctScroll);
+        }
+
+        pane.add("Hib\u00E1s v\u00E1laszok", incorrectPanel);
+        pane.add("J\u00F3 v\u00E1laszok", correctPanel);
+
+        if (incorrectWords.size() == 0) pane.setEnabledAt(0, false);
+        if (correctWords.size() == 0) pane.setEnabledAt(1, false);
+
+        statsPanel.add(pane);
+        return statsPanel;
+    }
+
+    private JPanel initButtonPanel() {
+        JPanel buttonPanel = new JPanel(new MigLayout("al center center"));
 
         // Restart button
         restartButton = new JButton("\u00DAjraind\u00EDt\u00E1s");
-        add(restartButton);
+        buttonPanel.add(restartButton);
 
         restartButton.addActionListener(e -> {
             setVisible(false);
@@ -66,7 +130,7 @@ public class EndWordQuiz extends JPanel {
 
         // Back to dashboard button
         preferencesButton = new JButton("F\u0151men\u00FC");
-        add(preferencesButton);
+        buttonPanel.add(preferencesButton);
 
         preferencesButton.addActionListener(e -> {
             setVisible(false);
@@ -78,5 +142,13 @@ public class EndWordQuiz extends JPanel {
                 throw new RuntimeException(ex);
             }
         });
+
+        return buttonPanel;
+    }
+
+    private void initComponents() {
+        add(initResultsPanel(), "al center, span");
+        add(initStatsPanel(), "al center, span");
+        add(initButtonPanel(), "al center, span");
     }
 }

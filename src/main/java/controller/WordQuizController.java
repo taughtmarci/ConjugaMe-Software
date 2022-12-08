@@ -8,6 +8,7 @@ import view.WordQuiz;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Random;
 
 public class WordQuizController {
@@ -20,8 +21,10 @@ public class WordQuizController {
     public int iteration;
     public Word currentWord;
 
-    private ArrayList<Word> incorrectWords;
+    private ArrayList<String> mistakes;
     private ArrayList<Word> correctWords;
+    private ArrayList<Word> incorrectWords;
+
     private EndWordQuiz next;
 
     public WordQuizController(WordQuiz quiz) throws IOException {
@@ -30,8 +33,10 @@ public class WordQuizController {
 
         if (!comps.isNormal()) comps.setWordAmount(comps.getDuration());
         this.words = MainWindow.local.processWordQueries(comps);
-        this.incorrectWords = new ArrayList<>();
+
+        this.mistakes = new ArrayList<>();
         this.correctWords = new ArrayList<>();
+        this.incorrectWords = new ArrayList<>();
 
         randomizeWordList();
         //printWords();
@@ -41,7 +46,7 @@ public class WordQuizController {
     }
 
     public void nextRound() {
-        if (iteration == comps.getWordAmount() - 1) {
+        if (iteration == comps.getWordAmount()) {
             finishQuiz();
         }
         else {
@@ -63,11 +68,7 @@ public class WordQuizController {
             quiz.setCurrentWordLabel(currentHint);
 
             // definitions
-            StringBuilder currentDefinitions = new StringBuilder();
-            for (String def : currentWord.definitions)
-                if (!def.equals("")) currentDefinitions.append(def).append(", ");
-            currentDefinitions = new StringBuilder((currentDefinitions.substring(0, currentDefinitions.length() - 2)));
-            quiz.setCurrentDefinitionsLabel(currentDefinitions.toString());
+            quiz.setCurrentDefinitionsLabel(currentWord.getDefinitions());
 
             // solutions
             quiz.setSectionSolutions(currentWord.getFemenino(), currentWord.getMasculino(), currentWord.isNoun());
@@ -96,8 +97,14 @@ public class WordQuizController {
     }
 
     public void evaluateSection() {
-        if (quiz.getWordSection().evaluate()) score++;
-        else incorrectWords.add(currentWord);
+        if (quiz.getWordSection().evaluate()) {
+            score++;
+            correctWords.add(currentWord);
+        }
+        else {
+            mistakes.add(quiz.getWordSection().getInput());
+            incorrectWords.add(currentWord);
+        }
         outOf++;
     }
 
@@ -138,6 +145,14 @@ public class WordQuizController {
 
     public void setIteration(int iteration) {
         this.iteration = iteration;
+    }
+
+    public ArrayList<Word> getCorrectWords() {
+        return correctWords;
+    }
+
+    public ArrayList<String> getMistakes() {
+        return mistakes;
     }
 
     public ArrayList<Word> getIncorrectWords() {

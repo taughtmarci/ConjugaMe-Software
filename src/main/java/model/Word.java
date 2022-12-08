@@ -34,6 +34,15 @@ public class Word {
         definitions.add(text);
     }
 
+    public String getDefinitions() {
+        StringBuilder currentDefinitions = new StringBuilder();
+        for (String def : definitions)
+            if (!def.equals("")) currentDefinitions.append(def).append(", ");
+        if (currentDefinitions.length() > 1)
+            currentDefinitions = new StringBuilder((currentDefinitions.substring(0, currentDefinitions.length() - 2)));
+        return currentDefinitions.toString();
+    }
+
     public int getID() {
         return ID;
     }

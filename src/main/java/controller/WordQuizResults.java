@@ -1,23 +1,25 @@
 package controller;
 
-import model.Word;
+import model.CorrectWords;
+import model.IncorrectWords;
 import model.WordQuizComponents;
-
-import java.util.ArrayList;
 
 public class WordQuizResults {
     private final int score;
     private final int outOf;
     private final WordQuizController controller;
     private final WordQuizComponents comps;
-    private final ArrayList<Word> incorrectWords;
+
+    private final CorrectWords correctWords;
+    private final IncorrectWords incorrectWords;
 
     public WordQuizResults(WordQuizController controller) {
         this.controller = controller;
         this.comps = controller.getComps();
 
         this.score = controller.getScore();
-        this.incorrectWords = controller.getIncorrectWords();
+        this.correctWords = new CorrectWords(controller.getCorrectWords());
+        this.incorrectWords = new IncorrectWords(controller.getMistakes(), controller.getIncorrectWords());
 
         if (comps.isNormal()) this.outOf = comps.getWordAmount();
         else this.outOf = controller.getOutOf();
@@ -31,7 +33,11 @@ public class WordQuizResults {
         return outOf;
     }
 
-    public ArrayList<Word> getIncorrectWords() {
+    public CorrectWords getCorrectWords() {
+        return correctWords;
+    }
+
+    public IncorrectWords getIncorrectWords() {
         return incorrectWords;
     }
 

@@ -54,12 +54,7 @@ public class VerbQuizController {
             quiz.setCurrentVerbLabel(currentVerb.getBasic().getInfinitivo());
 
             // definitions
-            StringBuilder currentDefinitions = new StringBuilder();
-            for (String def : currentVerb.definitions)
-                if (!def.equals("")) currentDefinitions.append(def).append(", ");
-            if (currentDefinitions.length() > 1)
-                currentDefinitions = new StringBuilder((currentDefinitions.substring(0, currentDefinitions.length() - 2)));
-            quiz.setCurrentDefinitionsLabel(currentDefinitions.toString());
+            quiz.setCurrentDefinitionsLabel(currentVerb.getDefinitions());
 
             if (!comps.onlyParticipio()) {
                 currentForm = comps.getSelectedForms().get((int)
@@ -87,6 +82,7 @@ public class VerbQuizController {
     public void evaluateSections() {
         if (comps.isParticipioPresentoSelected()) {
             if (quiz.getPresentoSection().evaluate()) {
+
                 score++;
             }
             else {
