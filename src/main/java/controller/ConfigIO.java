@@ -37,6 +37,10 @@ public class ConfigIO {
                         i++;
                         inputConfig.setEnterAsTab(Boolean.parseBoolean(lines.get(i).trim()));
                     }
+                    case "IsEnyeEnabled" -> {
+                        i++;
+                        inputConfig.setEnyeEnabled(Boolean.parseBoolean(lines.get(i).trim()));
+                    }
                 }
             }
         } else {
@@ -61,7 +65,8 @@ public class ConfigIO {
         writer.write("IsDarkMode\n" + outputConfig.isDarkMode() + "\n\n");
         writer.write("IsOfflineMode\n" + outputConfig.isOfflineMode() + "\n\n");
         writer.write("IsInstantFeedback\n" + outputConfig.isInstantFeedback() + "\n\n");
-        writer.write("IsEnterAsTab\n" + outputConfig.isEnterAsTab());
+        writer.write("IsEnterAsTab\n" + outputConfig.isEnterAsTab() + "\n\n");
+        writer.write("IsEnyeEnabled\n" + outputConfig.isEnterAsTab());
 
         writer.close();
     }

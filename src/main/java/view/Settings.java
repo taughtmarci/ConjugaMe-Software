@@ -1,7 +1,5 @@
 package view;
 
-import com.formdev.flatlaf.FlatDarkLaf;
-import com.formdev.flatlaf.FlatLightLaf;
 import controller.MenuButton;
 import controller.SettingsPreferences;
 import model.AppConfigurations;
@@ -22,8 +20,13 @@ public class Settings extends JPanel {
     private ButtonGroup darkModeGroup;
     private JRadioButton lightModeRadio;
     private JRadioButton darkModeRadio;
+    private JCheckBox offlineModeCheckBox;
+    private JCheckBox instantFeedbackCheckBox;
 
-
+    private ButtonGroup enterAsTabGroup;
+    private JRadioButton enterRadio;
+    private JRadioButton tabRadio;
+    private JCheckBox enyeCheckBox;
 
     private JLabel errorLabel;
     private final ArrayList<MenuButton> buttons;
@@ -39,29 +42,79 @@ public class Settings extends JPanel {
         setVisible(true);
     }
 
-    private JPanel initAppSettings() {
-        JPanel appSettingsPanel = new JPanel(new MigLayout("al center center"));
-
-        // app settings title
+    private JPanel initMainSettings() {
+        // app settings panel and title
+        JPanel appSettingsPanel = new JPanel(new MigLayout("al left center"));
         JLabel appSettingsTitle = new JLabel("Alkalmaz\u00E1s");
         appSettingsPanel.add(appSettingsTitle, "al center, span");
 
         // appearance
         JLabel appearanceTitle = new JLabel("Megjelen\u00E9s:");
-        appSettingsPanel.add(appearanceTitle, "span");
+        appSettingsPanel.add(appearanceTitle, "al left, span");
 
-        lightModeRadio = new JRadioButton("Vil\u00E1gos", !config.isDarkMode());
-        darkModeRadio = new JRadioButton("S\u00F6t\u00E9t", config.isDarkMode());
+        lightModeRadio = new JRadioButton("Vil\u00E1gos m\u00F3d", !config.isDarkMode());
+        darkModeRadio = new JRadioButton("S\u00F6t\u00E9t m\u00F3d", config.isDarkMode());
 
         darkModeGroup = new ButtonGroup();
         darkModeGroup.add(lightModeRadio);
         darkModeGroup.add(darkModeRadio);
 
-        appSettingsPanel.add(lightModeRadio, "span");
-        appSettingsPanel.add(darkModeRadio, "span");
+        appSettingsPanel.add(lightModeRadio, "al left, span");
+        appSettingsPanel.add(darkModeRadio, "al left, span");
+        appSettingsPanel.add(new JLabel(" "), "span");
 
+        // offline mode
+        offlineModeCheckBox = new JCheckBox("Offline m\u00F3d", config.isOfflineMode());
+        appSettingsPanel.add(offlineModeCheckBox, "al left, span");
+        JTextArea offlineModeHint = new JTextArea("""
+                Bekapcsolva nem fog \u00FAjabb
+                sz\u00F3t\u00E1rakat keresni \u00E9s let\u00F6lteni.""");
+        offlineModeHint.setEnabled(false);
+        appSettingsPanel.add(offlineModeHint, "al left, span");
+        appSettingsPanel.add(new JLabel(" "), "span");
+
+        // instant feedback
+        instantFeedbackCheckBox = new JCheckBox("Visszajelz\u00E9s azonnal", config.isInstantFeedback());
+        appSettingsPanel.add(instantFeedbackCheckBox, "al left, span");
+        JTextArea instantFeedbackHint = new JTextArea("""
+                Kv\u00EDzkit\u00F6lt\u00E9s k\u00F6zben kijelzi
+                a helyes \u00E9s hib\u00E1s v\u00E1laszokat.""");
+        instantFeedbackHint.setEnabled(false);
+        appSettingsPanel.add(instantFeedbackHint, "al left, span");
+
+        // quiz settings panel
+        JPanel quizSettingsPanel = new JPanel(new MigLayout("al center center"));
+        JLabel quizSettingsTitle = new JLabel("Kv\u00EDz");
+        quizSettingsPanel.add(quizSettingsTitle, "al center center, span");
+
+        // enye enabled
+        enyeCheckBox = new JCheckBox("ny cser\u00E9je \u00F1-re", config.isEnyeEnabled());
+        quizSettingsPanel.add(enyeCheckBox, "al left, span");
+        quizSettingsPanel.add(new JLabel(" "), "span");
+
+        // enter as tab
+        JLabel enterAsTabTitle = new JLabel("Enter billenty\u0171 megnyom\u00E1sakor:");
+        quizSettingsPanel.add(enterAsTabTitle, "al left, span");
+
+        tabRadio = new JRadioButton("K\u00F6vetkez\u0151 mez\u0151 (tab)", config.isEnterAsTab());
+        enterRadio = new JRadioButton("K\u00FCld\u00E9s gomb (enter)", !config.isEnterAsTab());
+
+        enterAsTabGroup = new ButtonGroup();
+        enterAsTabGroup.add(tabRadio);
+        enterAsTabGroup.add(enterRadio);
+
+        quizSettingsPanel.add(tabRadio, "al left, span");
+        quizSettingsPanel.add(enterRadio, "al left, span");
+
+        appSettingsPanel.setPreferredSize(new Dimension(185, getHeight()));
         appSettingsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        return appSettingsPanel;
+        quizSettingsPanel.setPreferredSize(new Dimension(185, getHeight()));
+        quizSettingsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+
+        JPanel mainSettingsPanel = new JPanel(new MigLayout("al center center"));
+        mainSettingsPanel.add(appSettingsPanel, "al center center, span");
+        mainSettingsPanel.add(quizSettingsPanel, "al center center, span");
+        return mainSettingsPanel;
     }
 
     private void initComponents() {
@@ -75,7 +128,7 @@ public class Settings extends JPanel {
         errorLabel.setFont(new Font("Verdana", Font.BOLD, 12));
         add(errorLabel, "span");
 
-        add(initAppSettings(), "al center, span");
+        add(initMainSettings(), "al center, span");
         add(initButtonPanel(), "al center center, span");
     }
 
@@ -124,5 +177,21 @@ public class Settings extends JPanel {
 
     public JRadioButton getDarkModeRadio() {
         return darkModeRadio;
+    }
+
+    public JCheckBox getOfflineModeCheckBox() {
+        return offlineModeCheckBox;
+    }
+
+    public JCheckBox getInstantFeedbackCheckBox() {
+        return instantFeedbackCheckBox;
+    }
+
+    public JCheckBox getEnyeCheckBox() {
+        return enyeCheckBox;
+    }
+
+    public JRadioButton getEnterRadio() {
+        return enterRadio;
     }
 }

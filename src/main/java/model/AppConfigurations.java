@@ -5,12 +5,14 @@ public class AppConfigurations {
     public boolean isOfflineMode;
     public boolean isInstantFeedback;
     public boolean isEnterAsTab;
+    public boolean isEnyeEnabled;
 
     public AppConfigurations() {
         this.isDarkMode = false;
         this.isOfflineMode = false;
         this.isInstantFeedback = false;
         this.isEnterAsTab = false;
+        this.isEnyeEnabled = false;
     }
 
     public boolean isDarkMode() {
@@ -43,5 +45,13 @@ public class AppConfigurations {
 
     public void setEnterAsTab(boolean enterAsTab) {
         isEnterAsTab = enterAsTab;
+    }
+
+    public boolean isEnyeEnabled() {
+        return isEnyeEnabled;
+    }
+
+    public void setEnyeEnabled(boolean enyeEnabled) {
+        isEnyeEnabled = enyeEnabled;
     }
 }

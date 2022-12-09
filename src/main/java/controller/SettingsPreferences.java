@@ -5,7 +5,6 @@ import com.formdev.flatlaf.FlatLightLaf;
 import model.AppConfigurations;
 import view.MainWindow;
 import view.Settings;
-import view.WordQuiz;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -24,11 +23,21 @@ public class SettingsPreferences {
 
         // appearance
         config.setDarkMode(settings.getDarkModeRadio().isSelected());
-        if (this.config.isDarkMode() != settings.getConfig().isDarkMode()) {
-            if (this.config.isDarkMode()) UIManager.setLookAndFeel(new FlatDarkLaf());
-            else UIManager.setLookAndFeel(new FlatLightLaf());
-            SwingUtilities.updateComponentTreeUI(settings.getMain());
-        }
+        if (this.config.isDarkMode()) UIManager.setLookAndFeel(new FlatDarkLaf());
+        else UIManager.setLookAndFeel(new FlatLightLaf());
+        SwingUtilities.updateComponentTreeUI(settings.getMain());
+
+        // offline mode
+        config.setOfflineMode(settings.getOfflineModeCheckBox().isSelected());
+
+        // instant feedback
+        config.setInstantFeedback(settings.getInstantFeedbackCheckBox().isSelected());
+
+        // enye enabled
+        config.setEnyeEnabled(settings.getEnyeCheckBox().isSelected());
+
+        // enter as tab
+        config.setEnterAsTab(!settings.getEnterRadio().isSelected());
     }
 
     public void savePrefs() throws UnsupportedLookAndFeelException {
