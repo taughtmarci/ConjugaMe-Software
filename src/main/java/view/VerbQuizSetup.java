@@ -113,7 +113,7 @@ public class VerbQuizSetup extends JPanel {
             formCheckBoxes.add(new JCheckBox(f.toString(), inputFlag));
             if (f == Form.ImperativoAffirmativo || f == Form.ImperativoNegativo)
                 imperativoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
-            else if (f == Form.SubjuntivoPresento || f == Form.SubjuntivoImperfecto || f == Form.SubjuntivoFuturo)
+            else if (f == Form.SubjuntivoPresente || f == Form.SubjuntivoImperfecto || f == Form.SubjuntivoFuturo)
                 subjuntivoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
             else indicativoPanel.add(formCheckBoxes.get(formCheckBoxes.size() - 1), "wrap");
         }

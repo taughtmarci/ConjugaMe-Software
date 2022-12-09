@@ -1,14 +1,14 @@
 package model;
 
 public enum Form {
-    IndicativoPresento ("Indicativo Presento"),
+    IndicativoPresente("Indicativo Presente"),
     IndicativoPreterito ("Indicativo Pret\u00E9rito"),
     IndicativoImperfecto ("Indicativo Imperfecto"),
     IndicativoCondicional ("Indicativo Condicional"),
     IndicativoFuturo ("Indicativo Futuro"),
     ImperativoAffirmativo ("Imperativo Affirmativo"),
     ImperativoNegativo ("Imperativo Negativo"),
-    SubjuntivoPresento ("Subjuntivo Presento"),
+    SubjuntivoPresente("Subjuntivo Presente"),
     SubjuntivoImperfecto ("Subjuntivo Imperfecto"),
     SubjuntivoFuturo ("Subjuntivo Futuro");
 

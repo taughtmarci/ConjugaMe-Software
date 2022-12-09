@@ -5,7 +5,6 @@ import model.*;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.io.IOException;
@@ -46,6 +45,13 @@ public class EndWordQuiz extends JPanel {
     private JPanel initResultsPanel() {
         JPanel resultsPanel = new JPanel(new MigLayout("al center center"));
 
+        // Runtime measurement
+        if (!results.getComps().isNormal()) {
+            int resultTime = results.getController().getTime();
+            JLabel timeLabel = new JLabel("Id\u0151: " + (resultTime / 60) + ":" + (resultTime % 60));
+            resultsPanel.add(timeLabel, "span");
+        }
+
         // Result/Max
         resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + results.getOutOf());
         resultsPanel.add(resultLabel, "span");
@@ -60,6 +66,7 @@ public class EndWordQuiz extends JPanel {
         percentIndicator.setValue((int) percentResult);
         resultsPanel.add(percentIndicator, "al center, span");
 
+        resultsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         return resultsPanel;
     }
 
@@ -100,12 +107,13 @@ public class EndWordQuiz extends JPanel {
         }
 
         pane.add("Hib\u00E1s v\u00E1laszok", incorrectPanel);
-        pane.add("J\u00F3 v\u00E1laszok", correctPanel);
+        pane.add("Helyes v\u00E1laszok", correctPanel);
 
         if (incorrectWords.size() == 0) pane.setEnabledAt(0, false);
         if (correctWords.size() == 0) pane.setEnabledAt(1, false);
 
         statsPanel.add(pane);
+        statsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         return statsPanel;
     }
 

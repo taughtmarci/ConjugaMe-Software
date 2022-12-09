@@ -85,19 +85,17 @@ public class WordQuiz extends Quiz {
         add(sendButton, "align right");
 
         sendButton.addActionListener(e -> {
-            if (sendButton.getText().equals("K\u00FCld\u00E9s")) {
-                // evaluate sections
-                controller.evaluateSection();
+            // evaluate sections
+            controller.evaluateSection();
 
-                // update score and iteration
-                controller.setIteration(controller.getIteration() + 1);
-                scoreLabel.setText((controller.getScore() + " pont"));
-                if (comps.isNormal()) outOfLabel.setText(controller.getIteration() + 1 + "/" + comps.getWordAmount());
+            // update score and iteration
+            controller.setIteration(controller.getIteration() + 1);
+            scoreLabel.setText((controller.getScore() + " pont"));
+            if (comps.isNormal()) outOfLabel.setText(controller.getIteration() + 1 + "/" + comps.getWordAmount());
 
-                // refresh the section and next round
-                wordSection.refreshSection();
-                controller.nextRound();
-            }
+            // refresh the section and next round
+            wordSection.refreshSection();
+            controller.nextRound();
             this.updateUI();
         });
 

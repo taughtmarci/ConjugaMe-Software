@@ -12,6 +12,60 @@ import java.util.stream.Stream;
 
 public class ConfigIO {
 
+    public static AppConfigurations readAppConfigurations(String fileName) throws IOException {
+        File file = new File(fileName);
+        AppConfigurations inputConfig = new AppConfigurations();
+
+        if (file.exists() && file.isFile()) {
+            ArrayList<String> lines = readLines(file);
+
+            for (int i = 0; i < lines.size(); i++) {
+                switch (lines.get(i)) {
+                    case "IsDarkMode" -> {
+                        i++;
+                        inputConfig.setDarkMode(Boolean.parseBoolean(lines.get(i).trim()));
+                    }
+                    case "IsOfflineMode" -> {
+                        i++;
+                        inputConfig.setOfflineMode(Boolean.parseBoolean(lines.get(i).trim()));
+                    }
+                    case "IsInstantFeedback" -> {
+                        i++;
+                        inputConfig.setInstantFeedback(Boolean.parseBoolean(lines.get(i).trim()));
+                    }
+                    case "IsEnterAsTab" -> {
+                        i++;
+                        inputConfig.setEnterAsTab(Boolean.parseBoolean(lines.get(i).trim()));
+                    }
+                }
+            }
+        } else {
+            // todo dialog?
+            file.createNewFile();
+            inputConfig = new AppConfigurations();
+        }
+
+        return inputConfig;
+    }
+
+    public static void writeAppConfigurations(String fileName, AppConfigurations outputConfig) throws IOException {
+        File file = new File(fileName);
+
+        OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
+        // clear file data
+        if (file.exists() && file.isFile()) {
+            file.delete();
+            file.createNewFile();
+        }
+
+        writer.write("IsDarkMode\n" + outputConfig.isDarkMode() + "\n\n");
+        writer.write("IsOfflineMode\n" + outputConfig.isOfflineMode() + "\n\n");
+        writer.write("IsInstantFeedback\n" + outputConfig.isInstantFeedback() + "\n\n");
+        writer.write("IsEnterAsTab\n" + outputConfig.isEnterAsTab());
+
+        writer.close();
+    }
+
     public String readSQL(String fileName) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
         try (Stream<String> stream = Files.lines(Paths.get(fileName), StandardCharsets.UTF_8)) {

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class IncorrectConjugations {
     private final ArrayList<String> mistakes;
     private final ArrayList<Conjugation> conjugations;
-    private final String[] columnNames = {"Hib\u00E1s v\u00E1lasz", "Ige", "Ragozatlan alak", "Igeid\u0151/m\u00F3d", "Szem\u00E9ly"};
+    private final String[] columnNames = {"Hib\u00E1s v\u00E1lasz", "Helyes v\u00E1lasz", "Ragozatlan alak", "Igeid\u0151/m\u00F3d", "Szem\u00E9ly"};
 
     public IncorrectConjugations(ArrayList<String> mistakes, ArrayList<Conjugation> conjugations) {
         this.mistakes = mistakes;

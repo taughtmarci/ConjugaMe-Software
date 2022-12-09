@@ -104,13 +104,44 @@ public class MenuButton extends JLabel {
             case 5 -> this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
-                    System.out.println(":))");
+                    JPanel next = new Settings(main);
+                    main.switchPanels(current, next);
                 }
             });
             case 6 -> this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
                     System.exit(0);
+                }
+            });
+            default -> throw new RuntimeException();
+            // TODO dialog
+        }
+    }
+
+    public void setActionSettings(MainWindow main, Settings current) {
+        switch (number) {
+            case 1 -> this.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    try {
+                        current.getPrefs().savePrefs();
+                    } catch (UnsupportedLookAndFeelException ex) {
+                        // todo dialogize
+                        throw new RuntimeException(ex);
+                    }
+                }
+            });
+            case 2 -> this.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    try {
+                        JPanel next = new Dashboard(main);
+                        main.switchPanels(current, next);
+                    } catch (IOException ex) {
+                        // todo dialogize
+                        throw new RuntimeException(ex);
+                    }
                 }
             });
             default -> throw new RuntimeException();

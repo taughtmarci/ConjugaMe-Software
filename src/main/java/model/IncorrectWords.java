@@ -22,8 +22,8 @@ public class IncorrectWords {
         for (int i = 0; i < this.size(); i++) {
             String[] temp = {
                     mistakes.get(i),
-                    "la " + words.get(i).getFemenino(),
-                    "el " + words.get(i).getMasculino(),
+                    ((words.get(i).isNoun() && !words.get(i).getFemenino().equals("")) ? "la " : "") + words.get(i).getFemenino(),
+                    ((words.get(i).isNoun() && !words.get(i).getMasculino().equals("")) ? "el " : "") + words.get(i).getMasculino(),
                     words.get(i).getDefinitions()
             };
             result[i] = temp;

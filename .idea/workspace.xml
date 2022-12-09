@@ -4,21 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Word quiz with result statistics">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Conjugation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/CorrectConjugations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/IncorrectConjugations.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Verb quiz with result statistics">
+      <change afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/insertverb.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SettingsPreferences.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/AppConfigurations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/local.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GroupSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GroupSelector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/CorrectWords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CorrectWords.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Form.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Form.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/IncorrectConjugations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/IncorrectConjugations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/IncorrectWords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/IncorrectWords.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Verb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Verb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/SetupPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/SetupPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -428,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670501841333</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Verb quiz with result statistics">
+      <created>1670513076826</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1670513076826</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -447,7 +465,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add configuration saving basics" />
     <MESSAGE value="Relocated images" />
     <MESSAGE value="Mamí sube algo, dame contenido" />
     <MESSAGE value="New buttons" />
@@ -472,7 +489,8 @@
     <MESSAGE value="Now with verb hints!" />
     <MESSAGE value="Percent indicator made better" />
     <MESSAGE value="Word quiz with result statistics" />
-    <option name="LAST_COMMIT_MESSAGE" value="Word quiz with result statistics" />
+    <MESSAGE value="Verb quiz with result statistics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Verb quiz with result statistics" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

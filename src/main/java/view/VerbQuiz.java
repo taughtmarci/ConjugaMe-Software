@@ -8,6 +8,8 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.AWTEventListener;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -113,22 +115,21 @@ public class VerbQuiz extends Quiz {
         add(sendButton, "align right");
 
         sendButton.addActionListener(e -> {
-            if (sendButton.getText().equals("K\u00FCld\u00E9s")) {
-                // evaluate sections
-                controller.evaluateSections();
+            // evaluate sections
+            controller.evaluateSections();
 
-                // update score and iteration
-                controller.setIteration(controller.getIteration() + 1);
-                scoreLabel.setText((controller.getScore() + " pont"));
-                if (comps.isNormal()) outOfLabel.setText(controller.getIteration() + 1 + "/" + comps.getWordAmount());
+            // update score and iteration
+            controller.setIteration(controller.getIteration() + 1);
+            scoreLabel.setText((controller.getScore() + " pont"));
+            if (comps.isNormal()) outOfLabel.setText(controller.getIteration() + 1 + "/" + comps.getWordAmount());
 
-                // refresh the sections and next round
-                refreshAllSections();
-                controller.nextRound();
-            }
+            // refresh the sections and next round
+            refreshAllSections();
+            controller.nextRound();
             this.updateUI();
         });
 
+        Toolkit.getDefaultToolkit().addAWTEventListener(new EnterKeyListener(), AWTEvent.KEY_EVENT_MASK);
         main.getRootPane().setDefaultButton(sendButton);
     }
 
@@ -147,6 +148,20 @@ public class VerbQuiz extends Quiz {
 
         for (VerbSection verbSection : verbSections)
             verbSection.refreshSection();
+    }
+
+    private static class EnterKeyListener implements AWTEventListener {
+
+        @Override
+        public void eventDispatched(AWTEvent event) {
+            if (event instanceof KeyEvent key && key.getKeyCode() == KeyEvent.VK_ENTER  && key.getModifiersEx() == 0 && key.getID() == KeyEvent.KEY_PRESSED) {
+                if (key.getComponent() instanceof JButton) {
+                    return;
+                }
+                key.getComponent().transferFocus();
+            }
+        }
+
     }
 
     public VerbQuizComponents getComps() {

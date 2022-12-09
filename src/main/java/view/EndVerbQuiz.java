@@ -49,6 +49,13 @@ public class EndVerbQuiz extends JPanel {
     private JPanel initResultsPanel() {
         JPanel resultsPanel = new JPanel(new MigLayout("al center center"));
 
+        // Runtime measurement
+        if (!results.getComps().isNormal()) {
+            int resultTime = results.getController().getTime();
+            JLabel timeLabel = new JLabel("Id\u0151: " + (resultTime / 60) + ":" + (resultTime % 60));
+            resultsPanel.add(timeLabel, "span");
+        }
+
         // Result/Max
         resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + results.getOutOf());
         resultsPanel.add(resultLabel, "span");
@@ -103,7 +110,7 @@ public class EndVerbQuiz extends JPanel {
         }
 
         pane.add("Hib\u00E1s v\u00E1laszok", incorrectPanel);
-        pane.add("J\u00F3 v\u00E1laszok", correctPanel);
+        pane.add("Helyes v\u00E1laszok", correctPanel);
 
         if (incorrectConjugations.size() == 0) pane.setEnabledAt(0, false);
         if (correctConjugations.size() == 0) pane.setEnabledAt(1, false);

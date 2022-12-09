@@ -11,12 +11,10 @@ import java.util.Arrays;
 @SuppressWarnings("unchecked")
 public class GroupSelector extends JPanel{
     private final int PIXEL_SIZE = 150;
-    private final GroupHandler handler;
     private final JScrollPane scrollPane;
     private final JList list;
 
     public GroupSelector(GroupHandler handler) {
-        this.handler = handler;
         setLayout(new MigLayout("al center center"));
 
         // creation of the list

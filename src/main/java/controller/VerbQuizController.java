@@ -17,6 +17,7 @@ public class VerbQuizController {
     public int score;
     public int outOf;
     public int iteration;
+    public int time;
 
     public Verb currentVerb;
     public Form currentForm;
@@ -141,7 +142,10 @@ public class VerbQuizController {
     }
 
     public void finishQuiz() {
-        if (!comps.isNormal()) quiz.stopCountBack();
+        if (!comps.isNormal()) {
+            quiz.stopCountBack();
+            setTime(comps.getDuration() - quiz.currentTime);
+        }
         VerbQuizResults results = new VerbQuizResults(this);
         quiz.setVisible(false);
         next = new EndVerbQuiz(quiz.getMain(), results);
@@ -177,6 +181,14 @@ public class VerbQuizController {
 
     public void setIteration(int iteration) {
         this.iteration = iteration;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 
     public ArrayList<String> getMistakes() {

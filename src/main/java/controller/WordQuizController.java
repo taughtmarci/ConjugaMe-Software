@@ -18,6 +18,7 @@ public class WordQuizController {
     public int score;
     public int outOf;
     public int iteration;
+    public int time;
     public Word currentWord;
 
     private ArrayList<String> mistakes;
@@ -108,7 +109,10 @@ public class WordQuizController {
     }
 
     public void finishQuiz() {
-        if (!comps.isNormal()) quiz.stopCountBack();
+        if (!comps.isNormal()) {
+            quiz.stopCountBack();
+            setTime(comps.getDuration() - quiz.currentTime);
+        }
         WordQuizResults results = new WordQuizResults(this);
         quiz.setVisible(false);
         next = new EndWordQuiz(quiz.getMain(), results);
@@ -140,6 +144,14 @@ public class WordQuizController {
 
     public int getIteration() {
         return iteration;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 
     public void setIteration(int iteration) {
