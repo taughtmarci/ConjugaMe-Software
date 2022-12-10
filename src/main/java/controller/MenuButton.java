@@ -6,6 +6,8 @@ import view.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -20,22 +22,37 @@ public class MenuButton extends JLabel {
     private final ImageIcon hoverIcon;
     private final ImageIcon clickedIcon;
 
+    private boolean isDarkMode;
+    private ImageIcon greyIcon;
+
     public MenuButton(String panel, int number) throws IOException {
         super();
         this.panel = panel;
         this.number = number;
+        this.isDarkMode = MainWindow.config.isDarkMode();
 
         String pathTemp = "img/buttons/" + panel + "/button_0" + number;
         BufferedImage normalImage = ImageIO.read(new File(pathTemp + IconVariation.NORMAL + ".png"));
         BufferedImage hoverImage = ImageIO.read(new File(pathTemp + IconVariation.HOVER + ".png"));
         BufferedImage clickedImage = ImageIO.read(new File(pathTemp + IconVariation.CLICKED + ".png"));
+        BufferedImage greyImage = ImageIO.read(new File(pathTemp + IconVariation.GREY + ".png"));
 
         this.normalIcon = new ImageIcon(normalImage);
         this.hoverIcon = new ImageIcon(hoverImage);
         this.clickedIcon = new ImageIcon(clickedImage);
+        this.greyIcon = new ImageIcon(greyImage);
 
-        setIcon(normalIcon);
+        if (isDarkMode) setIcon(greyIcon);
+        else setIcon(normalIcon);
+
         setLookActions();
+    }
+
+    public void refreshDarkMode(boolean isDarkMode) {
+        this.isDarkMode = isDarkMode;
+
+        if (isDarkMode) setIcon(greyIcon);
+        else setIcon(normalIcon);
     }
 
     private void setLookActions() {
@@ -52,7 +69,8 @@ public class MenuButton extends JLabel {
 
             @Override
             public void mouseExited(MouseEvent e) {
-                setIcon(normalIcon);
+                if (isDarkMode) setIcon(greyIcon);
+                else setIcon(normalIcon);
             }
         });
     }
@@ -126,7 +144,7 @@ public class MenuButton extends JLabel {
                 public void mousePressed(MouseEvent e) {
                     try {
                         current.getPrefs().savePrefs();
-                    } catch (UnsupportedLookAndFeelException ex) {
+                    } catch (UnsupportedLookAndFeelException | IOException ex) {
                         // todo dialogize
                         throw new RuntimeException(ex);
                     }

@@ -3,7 +3,8 @@ package model;
 public enum IconVariation {
     NORMAL (""),
     HOVER ("_hover"),
-    CLICKED ("_clicked");
+    CLICKED ("_clicked"),
+    GREY("_grey");
 
     private final String name;
 

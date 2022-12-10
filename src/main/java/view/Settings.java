@@ -167,6 +167,10 @@ public class Settings extends JPanel {
         return prefs;
     }
 
+    public ArrayList<MenuButton> getButtons() {
+        return buttons;
+    }
+
     public String getErrorLabel() {
         return errorLabel.getText();
     }

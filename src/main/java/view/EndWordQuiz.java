@@ -7,6 +7,8 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 
 public class EndWordQuiz extends JPanel {
@@ -19,7 +21,7 @@ public class EndWordQuiz extends JPanel {
     private JLabel percentLabel;
     private JProgressBar percentIndicator;
     private JButton restartButton;
-    private JButton preferencesButton;
+    private JButton dashboardButton;
 
     private CorrectWords correctWords;
     private JTable correctsList;
@@ -40,6 +42,8 @@ public class EndWordQuiz extends JPanel {
         setLayout(new MigLayout("al center center"));
         initComponents();
         setVisible(true);
+
+        configureKeyPresses();
     }
 
     private JPanel initResultsPanel() {
@@ -137,10 +141,10 @@ public class EndWordQuiz extends JPanel {
         });
 
         // Back to dashboard button
-        preferencesButton = new JButton("F\u0151men\u00FC");
-        buttonPanel.add(preferencesButton);
+        dashboardButton = new JButton("F\u0151men\u00FC");
+        buttonPanel.add(dashboardButton);
 
-        preferencesButton.addActionListener(e -> {
+        dashboardButton.addActionListener(e -> {
             setVisible(false);
             try {
                 next = new Dashboard(main);
@@ -158,5 +162,33 @@ public class EndWordQuiz extends JPanel {
         add(initResultsPanel(), "al center, span");
         add(initStatsPanel(), "al center, span");
         add(initButtonPanel(), "al center, span");
+
+        main.getRootPane().setDefaultButton(restartButton);
     }
+
+    private void configureKeyPresses() {
+        this.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                int key = e.getKeyCode();
+
+                if (key == KeyEvent.VK_ENTER)
+                    restartButton.doClick();
+
+                if (key == KeyEvent.VK_BACK_SPACE)
+                    dashboardButton.doClick();
+            }
+        });
+    }
+
 }

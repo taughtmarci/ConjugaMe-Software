@@ -4,13 +4,66 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Instant feedback finish">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="--- STATE OF THE ART ---&#10;change ny to ñ while typing">
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_01_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_02_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_03_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_04_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_05_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_06_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/settings/button_01_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/settings/button_02_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_01_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_02_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/verbprefs/button_03_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_01_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_02_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_03_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 118title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 119title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 122title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 126title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 127title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 129title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 132title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 135title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 136title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 82title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 83title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/Asset 84title_small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/button_04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/button_04_clicked.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/button_04_hover.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/other/palabra.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Section.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/dashboard/button_04.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_04.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/dashboard/button_04_clicked.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_04_clicked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/dashboard/button_04_hover.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/buttons/dashboard/button_04_hover.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/verbprefs/palabra.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/wordprefs/Asset 82title_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/wordprefs/Asset 83title_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/wordprefs/Asset 84title_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/wordprefs/button_01.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/wordprefs/button_01_clicked.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_01_clicked.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/wordprefs/button_01_hover.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/buttons/wordprefs/button_01_hover.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/buttons/wordprefs/palabra.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SettingsPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SettingsPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/IconVariation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/IconVariation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/other/buttons.ai" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/other/buttons.ai" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/other/exit.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/other/exit.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/other/results.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/other/results.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -455,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670664174747</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="--- STATE OF THE ART ---&#10;change ny to ñ while typing">
+      <created>1670669640349</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1670669640349</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -474,7 +534,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add radio, complete radio" />
     <MESSAGE value="VerbCollection delete and refactor (room for improvements in EndQuiz)" />
     <MESSAGE value="Add SetupPane" />
     <MESSAGE value="Mess" />
@@ -499,7 +558,8 @@
     <MESSAGE value="Add Settings panel buttons" />
     <MESSAGE value="Finish settings panel" />
     <MESSAGE value="Instant feedback finish" />
-    <option name="LAST_COMMIT_MESSAGE" value="Instant feedback finish" />
+    <MESSAGE value="--- STATE OF THE ART ---&#10;change ny to ñ while typing" />
+    <option name="LAST_COMMIT_MESSAGE" value="--- STATE OF THE ART ---&#10;change ny to ñ while typing" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

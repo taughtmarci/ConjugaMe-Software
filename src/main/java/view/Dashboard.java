@@ -16,22 +16,17 @@ import java.util.ArrayList;
 public class Dashboard extends JPanel {
     private final int BUTTON_NUMBER = 6;
 
-    private final MainWindow main;
-    private JPanel current;
-    private final ConfigIO config;
-    private final GroupHandler groupHandler;
     public final VerbQuizComponents verbComps;
     public final WordQuizComponents wordComps;
 
     private JLabel logo;
     private final ImageIcon logoIcon;
 
-    private ArrayList<MenuButton> buttons;
+    private final ArrayList<MenuButton> buttons;
 
     public Dashboard(MainWindow main) throws IOException {
-        this.main = main;
-        this.config = new ConfigIO();
-        this.groupHandler = new GroupHandler();
+        ConfigIO config = new ConfigIO();
+        GroupHandler groupHandler = new GroupHandler();
         this.buttons = new ArrayList<>();
 
         // get components from main class
@@ -54,7 +49,7 @@ public class Dashboard extends JPanel {
         logo.setIcon(logoIcon);
         add(logo, "align center, span");
 
-        this.add(initButtonPanel());
+        add(initButtonPanel());
     }
 
     private JPanel initButtonPanel() {

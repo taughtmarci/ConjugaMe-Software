@@ -3,10 +3,13 @@ package controller;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import model.AppConfigurations;
+import view.Dashboard;
 import view.MainWindow;
 import view.Settings;
 
 import javax.swing.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 
 public class SettingsPreferences {
@@ -16,6 +19,8 @@ public class SettingsPreferences {
     public SettingsPreferences(Settings settings) {
         this.settings = settings;
         this.config = new AppConfigurations();
+
+        configureKeyPresses();
     }
 
     public void setupConfig() throws UnsupportedLookAndFeelException {
@@ -23,8 +28,16 @@ public class SettingsPreferences {
 
         // appearance
         config.setDarkMode(settings.getDarkModeRadio().isSelected());
-        if (this.config.isDarkMode()) UIManager.setLookAndFeel(new FlatDarkLaf());
-        else UIManager.setLookAndFeel(new FlatLightLaf());
+        if (this.config.isDarkMode()) {
+            UIManager.setLookAndFeel(new FlatDarkLaf());
+            for (MenuButton button : settings.getButtons())
+                button.refreshDarkMode(settings.getDarkModeRadio().isSelected());
+        }
+        else {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+            for (MenuButton button : settings.getButtons())
+                button.refreshDarkMode(settings.getDarkModeRadio().isSelected());
+        }
         SwingUtilities.updateComponentTreeUI(settings.getMain());
 
         // offline mode
@@ -40,7 +53,7 @@ public class SettingsPreferences {
         config.setEnterAsTab(!settings.getEnterRadio().isSelected());
     }
 
-    public void savePrefs() throws UnsupportedLookAndFeelException {
+    public void savePrefs() throws UnsupportedLookAndFeelException, IOException {
         setupConfig();
         String error = "";
         try {
@@ -51,6 +64,44 @@ public class SettingsPreferences {
             error = "Nem sikerült menteni a beállításokat.";
         }
         settings.writeOutErrors(error);
+    }
+
+    private void configureKeyPresses() {
+        this.settings.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                int key = e.getKeyCode();
+
+                if (key == KeyEvent.VK_ENTER) {
+                    try {
+                        savePrefs();
+                    } catch (UnsupportedLookAndFeelException | IOException ex) {
+                        // todo dialogize
+                        throw new RuntimeException(ex);
+                    }
+                }
+
+                if (key == KeyEvent.VK_BACK_SPACE) {
+                    try {
+                        JPanel next = new Dashboard(settings.getMain());
+                        settings.getMain().switchPanels(settings, next);
+                    } catch (IOException ex) {
+                        // todo dialogize
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+        });
     }
 
     public AppConfigurations getConfig() {

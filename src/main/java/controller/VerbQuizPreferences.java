@@ -1,6 +1,5 @@
 package controller;
 
-import model.Verb;
 import model.VerbQuizComponents;
 import view.MainWindow;
 import view.VerbQuiz;

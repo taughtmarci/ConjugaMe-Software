@@ -41,6 +41,8 @@ public class MainWindow extends JFrame {
                     "Kérjük, telepítsd újra az alkalmazást!\n" + e.toString(), DialogType.ERROR);
         }
         setVisible(true);
+        setFocusable(true);
+        requestFocusInWindow();
     }
 
     private void initComponents() throws UnsupportedLookAndFeelException, IOException {
@@ -81,6 +83,8 @@ public class MainWindow extends JFrame {
             add(next);
             repaint();
             revalidate();
+            next.setFocusable(true);
+            next.requestFocusInWindow();
         });
     }
 

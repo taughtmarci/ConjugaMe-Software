@@ -91,7 +91,4 @@ public class WordQuizPreferences extends QuizPreferences {
         return comps;
     }
 
-    public WordQuizSetup getSetup() {
-        return setup;
-    }
 }

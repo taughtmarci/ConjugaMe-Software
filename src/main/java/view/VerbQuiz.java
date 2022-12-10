@@ -135,8 +135,9 @@ public class VerbQuiz extends Quiz {
             this.updateUI();
         });
 
-        Toolkit.getDefaultToolkit().addAWTEventListener(new EnterKeyListener(), AWTEvent.KEY_EVENT_MASK);
-        main.getRootPane().setDefaultButton(sendButton);
+        if (MainWindow.config.isEnterAsTab())
+            Toolkit.getDefaultToolkit().addAWTEventListener(new EnterKeyListener(), AWTEvent.KEY_EVENT_MASK);
+        else main.getRootPane().setDefaultButton(sendButton);
     }
 
     public void stopCountBack() {
@@ -157,7 +158,6 @@ public class VerbQuiz extends Quiz {
     }
 
     private static class EnterKeyListener implements AWTEventListener {
-
         @Override
         public void eventDispatched(AWTEvent event) {
             if (event instanceof KeyEvent key && key.getKeyCode() == KeyEvent.VK_ENTER  && key.getModifiersEx() == 0 && key.getID() == KeyEvent.KEY_PRESSED) {
