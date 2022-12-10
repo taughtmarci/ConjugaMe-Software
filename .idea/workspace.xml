@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add Settings panel buttons">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Finish settings panel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SettingsPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SettingsPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/AppConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/AppConfigurations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/letters_unicode.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/letters_unicode.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/CorrectConjugations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CorrectConjugations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/IncorrectConjugations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/IncorrectConjugations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -442,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670594903253</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Finish settings panel">
+      <created>1670618801072</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1670618801072</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -461,7 +470,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="New buttons" />
     <MESSAGE value="Reorganize structure" />
     <MESSAGE value="Add radio, complete radio" />
     <MESSAGE value="VerbCollection delete and refactor (room for improvements in EndQuiz)" />
@@ -486,7 +494,8 @@
     <MESSAGE value="Verb quiz with result statistics" />
     <MESSAGE value="Init Settings panel" />
     <MESSAGE value="Add Settings panel buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Settings panel buttons" />
+    <MESSAGE value="Finish settings panel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish settings panel" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -23,6 +23,8 @@ public class WordQuiz extends Quiz {
     private final JLabel currentDefinitionsLabel;
     private WordSection wordSection;
 
+    private final boolean isInstantFeedback;
+
     public WordQuiz(MainWindow main) throws IOException {
         super(main);
 
@@ -31,6 +33,8 @@ public class WordQuiz extends Quiz {
 
         this.comps = MainWindow.wordComps;
         this.controller = new WordQuizController(this);
+
+        this.isInstantFeedback = MainWindow.config.isInstantFeedback();
 
         setLayout(new MigLayout("al center center"));
         initComponents();
@@ -41,8 +45,10 @@ public class WordQuiz extends Quiz {
 
     private void initComponents() {
         // score label
-        scoreLabel = new JLabel(controller.getScore() + " pont");
-        add(scoreLabel, "align left");
+        if (this.isInstantFeedback) {
+            scoreLabel = new JLabel(controller.getScore() + " pont");
+            add(scoreLabel, "align left");
+        }
 
         // out of or timer label
         if (comps.isNormal()) {
@@ -90,7 +96,7 @@ public class WordQuiz extends Quiz {
 
             // update score and iteration
             controller.setIteration(controller.getIteration() + 1);
-            scoreLabel.setText((controller.getScore() + " pont"));
+            if (this.isInstantFeedback) scoreLabel.setText((controller.getScore() + " pont"));
             if (comps.isNormal()) outOfLabel.setText(controller.getIteration() + 1 + "/" + comps.getWordAmount());
 
             // refresh the section and next round

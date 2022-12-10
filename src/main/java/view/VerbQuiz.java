@@ -31,6 +31,8 @@ public class VerbQuiz extends Quiz {
     private VerbSection pasadoVerbSection;
     private final ArrayList<VerbSection> verbSections;
 
+    private final boolean isInstantFeedback;
+
     public VerbQuiz(MainWindow main) throws IOException {
         super(main);
 
@@ -42,6 +44,8 @@ public class VerbQuiz extends Quiz {
         this.comps = MainWindow.verbComps;
         this.controller = new VerbQuizController(this);
 
+        this.isInstantFeedback = MainWindow.config.isInstantFeedback();
+
         setLayout(new MigLayout("al center center"));
         initComponents();
 
@@ -51,8 +55,10 @@ public class VerbQuiz extends Quiz {
 
     private void initComponents() {
         // score label
-        scoreLabel = new JLabel(controller.getScore() + " pont");
-        add(scoreLabel, "align left");
+        if (this.isInstantFeedback) {
+            scoreLabel = new JLabel(controller.getScore() + " pont");
+            add(scoreLabel, "align left");
+        }
 
         // out of or timer label
         if (comps.isNormal()) {
@@ -120,7 +126,7 @@ public class VerbQuiz extends Quiz {
 
             // update score and iteration
             controller.setIteration(controller.getIteration() + 1);
-            scoreLabel.setText((controller.getScore() + " pont"));
+            if (this.isInstantFeedback) scoreLabel.setText((controller.getScore() + " pont"));
             if (comps.isNormal()) outOfLabel.setText(controller.getIteration() + 1 + "/" + comps.getWordAmount());
 
             // refresh the sections and next round

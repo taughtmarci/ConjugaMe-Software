@@ -1,6 +1,7 @@
 package controller;
 
 import model.ResultImage;
+import view.MainWindow;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -11,12 +12,15 @@ public class WordSection extends Section {
     public boolean isNoun;
     public boolean articlesNeeded;
 
+    private final boolean isInstantFeedback;
+
     public WordSection(ResultImage resultImage, boolean articlesNeeded) {
         super(resultImage);
         this.femeninoSolution = "undefined";
         this.masculinoSolution = "undefined";
         this.isNoun = false;
         this.articlesNeeded = articlesNeeded;
+        this.isInstantFeedback = MainWindow.config.isInstantFeedback();
 
         initComponents();
     }
@@ -24,13 +28,15 @@ public class WordSection extends Section {
     private void initComponents() {
         input = new JTextField(15);
         input.setText("");
-        checkLabel.setIcon(resultImage.blankImage());
 
-        resultIconTimer = new Timer(2000, e -> checkLabel.setIcon(resultImage.blankImage()));
-        resultIconTimer.setRepeats(false);
+        if (this.isInstantFeedback) {
+            checkLabel.setIcon(resultImage.blankImage());
+            resultIconTimer = new Timer(2000, e -> checkLabel.setIcon(resultImage.blankImage()));
+            resultIconTimer.setRepeats(false);
 
-        add(input, "align center");
-        add(checkLabel, "align left, wrap");
+            add(input, "align center");
+            add(checkLabel, "align left, wrap");
+        } else add(input, "align center, wrap");
 
         input.requestFocusInWindow();
     }
@@ -51,13 +57,15 @@ public class WordSection extends Section {
 
         String inputSolution = input.getText().trim().toLowerCase();
         if (solutions.contains(inputSolution)) {
-            checkLabel.setIcon(resultImage.checkImage());
+            if (this.isInstantFeedback)
+                checkLabel.setIcon(resultImage.checkImage());
             result = true;
         } else {
-            checkLabel.setIcon(resultImage.crossImage());
+            if (this.isInstantFeedback)
+                checkLabel.setIcon(resultImage.crossImage());
             result = false;
         }
-        resultIconTimer.start();
+        if (this.isInstantFeedback) resultIconTimer.start();
 
         return result;
     }

@@ -1,6 +1,7 @@
 package controller;
 
 import model.ResultImage;
+import view.MainWindow;
 
 import javax.swing.*;
 
@@ -9,10 +10,12 @@ public class VerbSection extends Section {
     public JLabel pronounLabel;
 
     private boolean isFirst = false;
+    private final boolean isInstantFeedback;
 
     public VerbSection(String pronoun, ResultImage resultImage) {
         super(resultImage);
         this.pronoun = pronoun;
+        this.isInstantFeedback = MainWindow.config.isInstantFeedback();
 
         initComponents();
     }
@@ -21,6 +24,7 @@ public class VerbSection extends Section {
         super(resultImage);
         this.pronoun = pronoun;
         this.isFirst = isFirst;
+        this.isInstantFeedback = MainWindow.config.isInstantFeedback();
 
         initComponents();
     }
@@ -29,14 +33,17 @@ public class VerbSection extends Section {
         pronounLabel = new JLabel(pronoun, SwingConstants.RIGHT);
         input = new JTextField(15);
         input.setText("");
-        checkLabel.setIcon(resultImage.blankImage());
-
-        resultIconTimer = new Timer(2000, e -> checkLabel.setIcon(resultImage.blankImage()));
-        resultIconTimer.setRepeats(false);
+        if (this.isInstantFeedback) {
+            checkLabel.setIcon(resultImage.blankImage());
+            resultIconTimer = new Timer(2000, e -> checkLabel.setIcon(resultImage.blankImage()));
+            resultIconTimer.setRepeats(false);
+        }
 
         add(pronounLabel, "width 100!, align right");
-        add(input, "align center");
-        add(checkLabel, "align left, wrap");
+        if (this.isInstantFeedback) {
+            add(input, "align center");
+            add(checkLabel, "align left, wrap");
+        } else add(input, "align center, wrap");
 
         if (isFirst) input.requestFocusInWindow();
     }
@@ -47,13 +54,15 @@ public class VerbSection extends Section {
 
         String inputSolution = input.getText().trim();
         if (this.solution.equalsIgnoreCase(inputSolution)) {
-            checkLabel.setIcon(resultImage.checkImage());
+            if (this.isInstantFeedback)
+                checkLabel.setIcon(resultImage.checkImage());
             result = true;
         } else {
-            checkLabel.setIcon(resultImage.crossImage());
+            if (this.isInstantFeedback)
+                checkLabel.setIcon(resultImage.crossImage());
             result = false;
         }
-        resultIconTimer.start();
+        if (this.isInstantFeedback) resultIconTimer.start();
 
         return result;
     }

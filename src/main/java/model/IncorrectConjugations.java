@@ -22,8 +22,8 @@ public class IncorrectConjugations {
         for (int i = 0; i < this.size(); i++) {
             String[] temp = {
                     mistakes.get(i),
-                    conjugations.get(i).infinitivo(),
                     conjugations.get(i).conjugation(),
+                    conjugations.get(i).infinitivo(),
                     conjugations.get(i).form(),
                     conjugations.get(i).pronoun()
             };
