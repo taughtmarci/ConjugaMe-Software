@@ -31,8 +31,7 @@ public class VerbSection extends Section {
 
     private void initComponents() {
         pronounLabel = new JLabel(pronoun, SwingConstants.RIGHT);
-        input = new JTextField(15);
-        input.setText("");
+
         if (this.isInstantFeedback) {
             checkLabel.setIcon(resultImage.blankImage());
             resultIconTimer = new Timer(2000, e -> checkLabel.setIcon(resultImage.blankImage()));

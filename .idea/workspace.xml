@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Finish settings panel">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Instant feedback finish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Section.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbSection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/CorrectConjugations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CorrectConjugations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/IncorrectConjugations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/IncorrectConjugations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -451,7 +448,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670618801072</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Instant feedback finish">
+      <created>1670664174747</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1670664174747</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -470,7 +474,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Reorganize structure" />
     <MESSAGE value="Add radio, complete radio" />
     <MESSAGE value="VerbCollection delete and refactor (room for improvements in EndQuiz)" />
     <MESSAGE value="Add SetupPane" />
@@ -495,7 +498,8 @@
     <MESSAGE value="Init Settings panel" />
     <MESSAGE value="Add Settings panel buttons" />
     <MESSAGE value="Finish settings panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish settings panel" />
+    <MESSAGE value="Instant feedback finish" />
+    <option name="LAST_COMMIT_MESSAGE" value="Instant feedback finish" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

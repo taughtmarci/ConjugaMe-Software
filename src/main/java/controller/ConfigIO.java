@@ -66,7 +66,7 @@ public class ConfigIO {
         writer.write("IsOfflineMode\n" + outputConfig.isOfflineMode() + "\n\n");
         writer.write("IsInstantFeedback\n" + outputConfig.isInstantFeedback() + "\n\n");
         writer.write("IsEnterAsTab\n" + outputConfig.isEnterAsTab() + "\n\n");
-        writer.write("IsEnyeEnabled\n" + outputConfig.isEnterAsTab());
+        writer.write("IsEnyeEnabled\n" + outputConfig.isEnyeEnabled());
 
         writer.close();
     }

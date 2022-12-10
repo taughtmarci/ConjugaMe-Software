@@ -26,9 +26,6 @@ public class WordSection extends Section {
     }
 
     private void initComponents() {
-        input = new JTextField(15);
-        input.setText("");
-
         if (this.isInstantFeedback) {
             checkLabel.setIcon(resultImage.blankImage());
             resultIconTimer = new Timer(2000, e -> checkLabel.setIcon(resultImage.blankImage()));
