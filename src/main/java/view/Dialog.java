@@ -32,17 +32,15 @@ public class Dialog extends JFrame implements ActionListener {
 
     public void showDialog(String title, String message, DialogType type) {
         int paneType = setPaneType(type);
-        SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this, message, title, paneType));
+        JOptionPane.showMessageDialog(this, message, title, paneType);
     }
 
     public void showYesNoDialog(String title, String message, DialogType type, Runnable yesCommand, Runnable noCommand) {
         int paneType = setPaneType(type);
-        SwingUtilities.invokeLater(() -> {
-            int result = JOptionPane.showConfirmDialog(this, message, title, JOptionPane.YES_NO_OPTION, paneType);
+        int result = JOptionPane.showConfirmDialog(this, message, title, JOptionPane.YES_NO_OPTION, paneType);
 
-            if (result == JOptionPane.YES_OPTION)
-                yesCommand.run();
-            else noCommand.run();
-        });
+        if (result == JOptionPane.YES_OPTION)
+            yesCommand.run();
+        else noCommand.run();
     }
 }

@@ -9,16 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Bugfixes, aesthetics upgrades">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ConjugaMe_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConjugaMe.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/title/title_comicallysmall.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/launch4j.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup_config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Deploy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/local.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +106,7 @@
       <recent name="view.MainWindow" />
     </key>
   </component>
-  <component name="RunManager" selected="JAR Application.Jar run">
+  <component name="RunManager" selected="Application.ConjugaMe">
     <configuration name="ConjugaMe" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -157,13 +151,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Create Verb and VerbCollection classes&#10;Create singleQueryStatement db function&#10;View Verbs on Quiz panel">
-      <created>1666781864459</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1666781864459</updated>
     </task>
     <task id="LOCAL-00006" summary="Verb class refactor&#10;Create VerbBasic class&#10;Error handling in StartQuiz">
       <created>1667302367329</created>
@@ -501,7 +488,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670784130843</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Deploy">
+      <created>1670789966027</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1670789966027</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -520,7 +514,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Quiz and controller start problem" />
     <MESSAGE value="WordQuiz improvement" />
     <MESSAGE value="Animated feedback on quizes&#10;Fix on quiz feedback issue" />
     <MESSAGE value="Quiz can be started from dashboard" />
@@ -545,7 +538,8 @@
     <MESSAGE value="Add levels to verbs and words" />
     <MESSAGE value="Add words and verbs revision" />
     <MESSAGE value="Bugfixes, aesthetics upgrades" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugfixes, aesthetics upgrades" />
+    <MESSAGE value="Deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deploy" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
