@@ -35,10 +35,12 @@ public class MainWindow extends JFrame {
         try {
             initComponents();
         } catch (UnsupportedLookAndFeelException e) {
-            MainWindow.dialog.showDialog("Megjelenési hiba", e.toString(), DialogType.ERROR);
+            MainWindow.dialog.showDialog("Megjelen\u00E9si hiba", e.toString(), DialogType.ERROR);
+            System.exit(2);
         } catch (IOException e) {
-            MainWindow.dialog.showDialog("Fájlkezelési hiba", "Az alkalmazás konfigurációs fájljai megsérülhettek.\n" +
-                    "Kérjük, telepítsd újra az alkalmazást!\n" + e.toString(), DialogType.ERROR);
+            MainWindow.dialog.showDialog("F\u00E1jlkezel\u00E9si hiba", "Az alkalmaz\u00E1s konfigur\u00E1ci\u00F3s f\u00E1jljai megs\u00E9r\u00FClhettek.\n" +
+                    "K\u00E9rj\u00FCk, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\n" + e.toString(), DialogType.ERROR);
+            System.exit(1);
         }
         setVisible(true);
         setFocusable(true);

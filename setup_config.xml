@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\Marci\Desktop\ConjugaMe\out\artifacts\ConjugaMe_jar\ConjugaMe.jar</jar>
+  <outfile>C:\Users\Marci\Desktop\ConjugaMe\ConjugaMe.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\Marci\Desktop\ConjugaMe\img\title\title_comicallysmall.ico</icon>
+  <jre>
+    <path>C:\Program Files (x86)\Java\jre1.8.0_351</path>
+    <requiresJdk>true</requiresJdk>
+    <requires64Bit>true</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+</launch4jConfig>

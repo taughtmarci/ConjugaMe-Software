@@ -9,6 +9,14 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'view.MainWindow'
+        )
+    }
+}
+
 dependencies {
     implementation 'com.miglayout:miglayout:3.7.4'
     implementation 'com.formdev:flatlaf:2.4'
