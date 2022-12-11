@@ -33,4 +33,8 @@ public class CorrectConjugations {
     public String[] getColumnNames() {
         return columnNames;
     }
+
+    public ArrayList<Conjugation> getConjugations() {
+        return conjugations;
+    }
 }

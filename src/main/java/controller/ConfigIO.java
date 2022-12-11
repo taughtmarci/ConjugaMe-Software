@@ -71,10 +71,13 @@ public class ConfigIO {
         writer.close();
     }
 
-    public String readSQL(String fileName) throws IOException {
+    public static String readSQL(String fileName) {
         StringBuilder contentBuilder = new StringBuilder();
         try (Stream<String> stream = Files.lines(Paths.get(fileName), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s).append("\n"));
+        } catch (IOException e) {
+            // todo dialogize
+            throw new RuntimeException(e);
         }
         return contentBuilder.toString();
     }

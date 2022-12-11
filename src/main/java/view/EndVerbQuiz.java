@@ -177,11 +177,6 @@ public class EndVerbQuiz extends JPanel {
 
             @Override
             public void keyPressed(KeyEvent e) {
-
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
                 int key = e.getKeyCode();
 
                 if (key == KeyEvent.VK_ENTER)
@@ -189,6 +184,11 @@ public class EndVerbQuiz extends JPanel {
 
                 if (key == KeyEvent.VK_BACK_SPACE)
                     dashboardButton.doClick();
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
             }
         });
     }

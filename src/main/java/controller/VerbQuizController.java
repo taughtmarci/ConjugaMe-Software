@@ -146,8 +146,10 @@ public class VerbQuizController {
             quiz.stopCountBack();
             setTime(comps.getDuration() - quiz.currentTime);
         }
+
         VerbQuizResults results = new VerbQuizResults(this);
         quiz.setVisible(false);
+
         next = new EndVerbQuiz(quiz.getMain(), results);
         quiz.getMain().switchPanels(quiz, next);
     }

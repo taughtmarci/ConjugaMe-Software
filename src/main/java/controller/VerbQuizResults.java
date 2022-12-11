@@ -1,9 +1,10 @@
 package controller;
 
+import model.Conjugation;
 import model.CorrectConjugations;
 import model.IncorrectConjugations;
-import model.Verb;
 import model.VerbQuizComponents;
+import view.MainWindow;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,31 @@ public class VerbQuizResults {
 
         if (comps.isNormal()) this.outOf = comps.getTotalNumberOfVerbs();
         else this.outOf = controller.getOutOf();
+
+        if (controller.getOutOf() > 0) {
+            if (score > 0) updateCorrectLevels();
+            if (outOf - score > 0) updateIncorrectLevels();
+        }
+    }
+
+    private void updateIncorrectLevels() {
+        ArrayList<Integer> ids = new ArrayList<>();
+        for (Conjugation conjugation : incorrectConjugations.getConjugations()) {
+            if (!ids.contains(conjugation.id()))
+                ids.add(conjugation.id());
+        }
+
+        MainWindow.local.updateLevels(MainWindow.local.VERB_TABLE, true, ids);
+    }
+
+    private void updateCorrectLevels() {
+        ArrayList<Integer> ids = new ArrayList<>();
+        for (Conjugation conjugation : correctConjugations.getConjugations()) {
+            if (!ids.contains(conjugation.id()))
+                ids.add(conjugation.id());
+        }
+
+        MainWindow.local.updateLevels(MainWindow.local.VERB_TABLE, false, ids);
     }
 
     public int getScore() {

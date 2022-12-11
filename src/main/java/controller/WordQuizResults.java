@@ -1,8 +1,9 @@
 package controller;
 
-import model.CorrectWords;
-import model.IncorrectWords;
-import model.WordQuizComponents;
+import model.*;
+import view.MainWindow;
+
+import java.util.ArrayList;
 
 public class WordQuizResults {
     private final int score;
@@ -23,6 +24,31 @@ public class WordQuizResults {
 
         if (comps.isNormal()) this.outOf = comps.getWordAmount();
         else this.outOf = controller.getOutOf();
+
+        if (controller.getOutOf() > 0) {
+            if (score > 0) updateCorrectLevels();
+            if (outOf - score > 0) updateIncorrectLevels();
+        }
+    }
+
+    private void updateIncorrectLevels() {
+        ArrayList<Integer> ids = new ArrayList<>();
+        for (Word word : incorrectWords.getWords()) {
+            if (!ids.contains(word.getID()))
+                ids.add(word.getID());
+        }
+
+        MainWindow.local.updateLevels(MainWindow.local.WORD_TABLE, true, ids);
+    }
+
+    private void updateCorrectLevels() {
+        ArrayList<Integer> ids = new ArrayList<>();
+        for (Word word : correctWords.getWords()) {
+            if (!ids.contains(word.getID()))
+                ids.add(word.getID());
+        }
+
+        MainWindow.local.updateLevels(MainWindow.local.WORD_TABLE, false, ids);
     }
 
     public int getScore() {

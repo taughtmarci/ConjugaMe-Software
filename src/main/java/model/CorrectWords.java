@@ -32,4 +32,8 @@ public class CorrectWords {
     public String[] getColumnNames() {
         return columnNames;
     }
+
+    public ArrayList<Word> getWords() {
+        return words;
+    }
 }

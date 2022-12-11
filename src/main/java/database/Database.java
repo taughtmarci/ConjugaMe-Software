@@ -15,11 +15,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 abstract class Database {
-    private final String VERB_TABLE = "Verbo";
-    private final String WORD_TABLE = "Palabra";
+    public final String VERB_TABLE = "Verbo";
+    public final String WORD_TABLE = "Palabra";
     private final String BASIC_VERB_QUERY_PATH = "database/basicverbquery.sql";
     private final String COMPLEX_VERB_QUERY_PATH = "database/complexverbquery.sql";
     private final String WORD_QUERY_PATH = "database/wordquery.sql";
+
+    private final String UPDATE_LEVELS_PATH = "database/updatelevels.sql";
+    private final String RESET_LEVELS_PATH = "database/resetlevels.sql";
 
     public boolean onlineFlag;
     protected String username;
@@ -74,13 +77,12 @@ abstract class Database {
         connected = true;
     }
 
-    public ArrayList<Verb> processVerbQueries(VerbQuizComponents comps) throws IOException {
+    public ArrayList<Verb> processVerbQueries(VerbQuizComponents comps) {
         ArrayList<Verb> result = new ArrayList<>();
 
-        ConfigIO config = new ConfigIO();
         String queryDefault;
-        if (comps.onlyParticipio()) queryDefault = config.readSQL(BASIC_VERB_QUERY_PATH);
-        else queryDefault = config.readSQL(COMPLEX_VERB_QUERY_PATH);
+        if (comps.onlyParticipio()) queryDefault = ConfigIO.readSQL(BASIC_VERB_QUERY_PATH);
+        else queryDefault = ConfigIO.readSQL(COMPLEX_VERB_QUERY_PATH);
 
         for (Group g : comps.getSelectedGroups()) {
             // replace group tables
@@ -132,7 +134,7 @@ abstract class Database {
                     if (comps.isParticipioPresentoSelected()) tempBasic.setPresento(resultSet.getString("Presento"));
                     if (comps.isParticipioPasadoSelected()) tempBasic.setPasado(resultSet.getString("Pasado"));
 
-                    Verb temp = new Verb(resultSet.getInt("ID"), tempBasic);
+                    Verb temp = new Verb(resultSet.getInt("VerbID"), tempBasic);
                     for (int i = 0; i < 3; i++)
                         temp.addDefinition(resultSet.getString("Definici\uu00F3n_0" + (i + 1)));
 
@@ -161,11 +163,10 @@ abstract class Database {
         return result;
     }
 
-    public ArrayList<Word> processWordQueries(WordQuizComponents comps) throws IOException {
+    public ArrayList<Word> processWordQueries(WordQuizComponents comps) {
         ArrayList<Word> result = new ArrayList<>();
 
-        ConfigIO config = new ConfigIO();
-        String queryDefault = config.readSQL(WORD_QUERY_PATH);
+        String queryDefault = ConfigIO.readSQL(WORD_QUERY_PATH);
 
         for (Group g : comps.getSelectedGroups()) {
             // replace group tables and amount
@@ -186,13 +187,13 @@ abstract class Database {
                 ResultSet resultSet = statement.executeQuery(query);
 
                 while (resultSet.next()) {
-                    Word temp = new Word(resultSet.getInt("ID"), resultSet.getString("Nombre_F"),
+                    Word temp = new Word(resultSet.getInt("WordID"), resultSet.getString("Nombre_F"),
                             resultSet.getString("Nombre_M"), resultSet.getBoolean("IsNoun"));
                     for (int i = 0; i < 3; i++)
                         temp.addDefinition(resultSet.getString("Definici\uu00F3n_0" + (i + 1)));
 
                     // debug
-                    temp.printWord();
+                    //temp.printWord();
                     result.add(temp);
                 }
             } catch (SQLException e) {
@@ -202,5 +203,44 @@ abstract class Database {
             }
         }
         return result;
+    }
+
+    public void executeUpdateQuery(String query) {
+        if (connected) {
+            try (Statement statement = connection.createStatement()) {
+                int result = statement.executeUpdate(query);
+                // debug
+                //System.out.println(result);
+            } catch (SQLException e) {
+                    MainWindow.dialog.showDialog("Adatb\u00E1zis friss\u00EDt\u00E9si hiba", "Sikertelen t\u00E1blafriss\u00EDt\u00E9s az"
+                            + (onlineFlag ? " online " : " ") + "adatb\u00E1zisban.\n" + e.toString(), DialogType.ERROR);
+                    connected = false;
+                }
+        }
+    }
+
+    public void updateLevels(String tablename, boolean isIncrement, ArrayList<Integer> ids) {
+        String queryDefault = ConfigIO.readSQL(UPDATE_LEVELS_PATH);
+        String query = queryDefault.replace("[TABLE_NAME]", tablename);
+
+        int amount = isIncrement ? 3 : -1;
+        query = query.replace("[AMOUNT]", Integer.toString(amount));
+
+        StringBuilder conditions = new StringBuilder();
+        final String supply = isIncrement ? "ID = " : "(Level > 0 AND ID = ";
+
+        conditions.append(supply).append(ids.get(0));
+        if (!isIncrement) conditions.append(")");
+        ids.remove(0);
+
+        for (int id : ids) {
+            conditions.append(" OR ").append(supply).append(id);
+            if (!isIncrement) conditions.append(")");
+        }
+
+        query = query.replace("[CONDITIONS]", conditions.toString());
+        // debug
+        //System.out.println(query);
+        executeUpdateQuery(query);
     }
 }
