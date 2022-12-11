@@ -74,6 +74,7 @@ public class EndVerbQuiz extends JPanel {
         percentIndicator.setValue((int) percentResult);
         resultsPanel.add(percentIndicator, "al center, span");
 
+        resultsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         return resultsPanel;
     }
 
@@ -120,6 +121,7 @@ public class EndVerbQuiz extends JPanel {
         if (correctConjugations.size() == 0) pane.setEnabledAt(1, false);
 
         statsPanel.add(pane);
+        statsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         return statsPanel;
     }
 
@@ -144,7 +146,7 @@ public class EndVerbQuiz extends JPanel {
 
         // Back to dashboard button
         dashboardButton = new JButton("F\u0151men\u00FC");
-        buttonPanel. add(dashboardButton);
+        buttonPanel.add(dashboardButton);
 
         dashboardButton.addActionListener(e -> {
             setVisible(false);

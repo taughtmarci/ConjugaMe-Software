@@ -209,10 +209,13 @@ public class VerbQuizSetup extends JPanel {
         verbMode.add(normalModeRadio);
         verbMode.add(timedModeRadio);
 
+        // dark mode color bugfix
+        Color foregroundColor = MainWindow.config.isDarkMode() ? Color.LIGHT_GRAY : Color.BLACK;
+
         // action listener to radios
         normalModeRadio.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             // own
-            verbNumberTitle.setForeground(Color.BLACK);
+            verbNumberTitle.setForeground(foregroundColor);
             ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEnabled(true);
             ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEditable(true);
 
@@ -228,9 +231,9 @@ public class VerbQuizSetup extends JPanel {
 
         timedModeRadio.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             // own
-            timedDurationTitle.setForeground(Color.BLACK);
-            minutesLabel.setForeground(Color.BLACK);
-            secondsLabel.setForeground(Color.BLACK);
+            timedDurationTitle.setForeground(foregroundColor);
+            minutesLabel.setForeground(foregroundColor);
+            secondsLabel.setForeground(foregroundColor);
             ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEnabled(true);
             ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEditable(true);
             ((JSpinner.DefaultEditor) secondsChooser.getEditor()).getTextField().setEnabled(true);

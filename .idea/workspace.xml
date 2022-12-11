@@ -4,21 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add levels to verbs and words">
-      <change afterPath="$PROJECT_DIR$/database/verbrevisionquery.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/wordrevisionquery.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ScoresController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/CorrectVerbs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/view/Scores.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Bugfixes, aesthetics upgrades">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SettingsPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SettingsPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/local.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Verb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Verb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/VerbBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/VerbBasic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/SetupPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/SetupPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Scores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Scores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,13 +137,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Database set up&#10;Add Pronoun, Form enums and VerbGroup class for model&#10;Extend StartQuiz parameters start with pronouns checkboxes">
-      <created>1666122448820</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1666122448820</updated>
     </task>
     <task id="LOCAL-00002" summary="Finished basics of Quiz component">
       <created>1666207890227</created>
@@ -484,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670763288602</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Add words and verbs revision">
+      <created>1670771198319</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1670771198319</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -503,8 +500,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Mess" />
-    <MESSAGE value="Rename preferences file&#10;Add word query sql" />
     <MESSAGE value="Quiz and controller start problem" />
     <MESSAGE value="WordQuiz improvement" />
     <MESSAGE value="Animated feedback on quizes&#10;Fix on quiz feedback issue" />
@@ -528,7 +523,9 @@
     <MESSAGE value="--- STATE OF THE ART ---&#10;change ny to ñ while typing" />
     <MESSAGE value="Dark mode completion" />
     <MESSAGE value="Add levels to verbs and words" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add levels to verbs and words" />
+    <MESSAGE value="Add words and verbs revision" />
+    <MESSAGE value="Bugfixes, aesthetics upgrades" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfixes, aesthetics upgrades" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

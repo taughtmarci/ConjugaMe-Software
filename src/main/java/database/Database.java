@@ -9,7 +9,6 @@ import org.sqlite.SQLiteConfig;
 import org.sqlite.SQLiteOpenMode;
 import view.MainWindow;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +16,8 @@ import java.util.HashMap;
 abstract class Database {
     public final String VERB_TABLE = "Verbo";
     public final String WORD_TABLE = "Palabra";
+    public final String SCORE_TABLE = "Score";
+
     private final String BASIC_VERB_QUERY_PATH = "database/basicverbquery.sql";
     private final String COMPLEX_VERB_QUERY_PATH = "database/complexverbquery.sql";
     private final String WORD_QUERY_PATH = "database/wordquery.sql";

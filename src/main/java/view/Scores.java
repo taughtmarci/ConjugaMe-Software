@@ -22,6 +22,11 @@ public class Scores extends JPanel {
     private JComboBox<String> verbRevisionComboBox;
     private JScrollPane verbRevisionScroll;
 
+
+
+    private JButton dashboardButton;
+    private JPanel next;
+
     public Scores(MainWindow main) throws IOException {
         this.main = main;
         this.controller = new ScoresController(this);
@@ -92,6 +97,23 @@ public class Scores extends JPanel {
     private void initComponents() {
         tabbedPane.add("Ford\u00EDt\u00E1sok \u00E1tn\u00E9z\u00E9sre", initWordRevisionPanel());
         tabbedPane.add("Ig\u00E9k \u00E1tn\u00E9z\u00E9sre", initVerbRevisionPanel());
-        add(tabbedPane, "al center center");
+        add(tabbedPane, "al center center, span");
+
+        // Back to dashboard button
+        dashboardButton = new JButton("F\u0151men\u00FC");
+        add(dashboardButton, "align right, span");
+
+        dashboardButton.addActionListener(e -> {
+            setVisible(false);
+            try {
+                next = new Dashboard(main);
+                main.switchPanels(this, next);
+            } catch (IOException ex) {
+                // todo dialogize
+                throw new RuntimeException(ex);
+            }
+        });
+
+        main.getRootPane().setDefaultButton(dashboardButton);
     }
 }

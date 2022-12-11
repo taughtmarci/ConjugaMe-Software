@@ -160,10 +160,13 @@ public class WordQuizSetup extends JPanel {
         wordMode.add(normalModeRadio);
         wordMode.add(timedModeRadio);
 
+        // dark mode color bugfix
+        Color foregroundColor = MainWindow.config.isDarkMode() ? Color.LIGHT_GRAY : Color.BLACK;
+
         // action listener to radios
         normalModeRadio.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             // own
-            wordNumberTitle.setForeground(Color.BLACK);
+            wordNumberTitle.setForeground(foregroundColor);
             ((JSpinner.DefaultEditor) wordNumberChooser.getEditor()).getTextField().setEnabled(true);
             ((JSpinner.DefaultEditor) wordNumberChooser.getEditor()).getTextField().setEditable(true);
 
@@ -179,9 +182,9 @@ public class WordQuizSetup extends JPanel {
 
         timedModeRadio.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             // own
-            timedDurationTitle.setForeground(Color.BLACK);
-            minutesLabel.setForeground(Color.BLACK);
-            secondsLabel.setForeground(Color.BLACK);
+            timedDurationTitle.setForeground(foregroundColor);
+            minutesLabel.setForeground(foregroundColor);
+            secondsLabel.setForeground(foregroundColor);
             ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEnabled(true);
             ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEditable(true);
             ((JSpinner.DefaultEditor) secondsChooser.getEditor()).getTextField().setEnabled(true);

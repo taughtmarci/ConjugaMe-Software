@@ -57,18 +57,19 @@ public class VerbQuiz extends Quiz {
         // score label
         if (this.isInstantFeedback) {
             scoreLabel = new JLabel(controller.getScore() + " pont");
-            add(scoreLabel, "align left");
+            add(scoreLabel, "align center, span");
         }
 
         // out of or timer label
         if (comps.isNormal()) {
             outOfLabel = new JLabel(controller.getIteration() + 1 + "/" + comps.getWordAmount());
-            add(outOfLabel, "align center");
+            add(outOfLabel, "align left, span 1");
         } else {
             currentTime = comps.getDuration();
             JLabel timeLabel = new JLabel((currentTime / 60) + ":" + (currentTime % 60));
-            timeLabel.setForeground(Color.BLACK);
-            add(timeLabel, "align center");
+            timeLabel.setFont(new Font("Verdana", Font.BOLD, 12));
+            timeLabel.setForeground(timeLabel.getForeground());
+            add(timeLabel, "align center, span 1");
 
             countBack = new Timer(1000, event -> {
                 currentTime--;
@@ -84,7 +85,7 @@ public class VerbQuiz extends Quiz {
 
         // end quiz button
         JButton endQuizButton = new JButton("Befejez\u00E9s");
-        add(endQuizButton, "align right, wrap");
+        add(endQuizButton, "align right, span");
         endQuizButton.addActionListener(e -> controller.finishQuiz());
 
         // set up current verb and form labels
