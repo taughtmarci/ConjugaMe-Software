@@ -9,10 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Deploy">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Dialog handling bugfix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/local.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +104,7 @@
       <recent name="view.MainWindow" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ConjugaMe">
+  <component name="RunManager" selected="JAR Application.Jar run">
     <configuration name="ConjugaMe" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -117,12 +115,35 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ConjugaMe [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="Jar run" type="JarApplication">
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/ConjugaMe_jar/ConjugaMe.jar" />
       <option name="VM_PARAMETERS" value="-Dsun.java2d.uiScale=1" />
+      <option name="PROGRAM_PARAMETERS" value="-cp view.MainWindow" />
       <option name="WORKING_DIRECTORY" value="C:\Users\Marci\Desktop\ConjugaMe" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <module name="ConjugaMe.main" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
@@ -140,8 +161,14 @@
     </configuration>
     <list>
       <item itemvalue="Application.ConjugaMe" />
+      <item itemvalue="Gradle.ConjugaMe [jar]" />
       <item itemvalue="JAR Application.Jar run" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.ConjugaMe [jar]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -151,13 +178,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Verb class refactor&#10;Create VerbBasic class&#10;Error handling in StartQuiz">
-      <created>1667302367329</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1667302367329</updated>
     </task>
     <task id="LOCAL-00007" summary="broo... :(">
       <created>1667511872975</created>
@@ -495,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670789966027</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Dialog handling bugfix">
+      <created>1670790637074</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1670790637077</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -514,7 +541,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="WordQuiz improvement" />
     <MESSAGE value="Animated feedback on quizes&#10;Fix on quiz feedback issue" />
     <MESSAGE value="Quiz can be started from dashboard" />
     <MESSAGE value="Fix issue with feedback gifs in wordquiz" />
@@ -539,7 +565,8 @@
     <MESSAGE value="Add words and verbs revision" />
     <MESSAGE value="Bugfixes, aesthetics upgrades" />
     <MESSAGE value="Deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deploy" />
+    <MESSAGE value="Dialog handling bugfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dialog handling bugfix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
