@@ -1,7 +1,5 @@
 package view;
 
-import controller.ConfigIO;
-import controller.GroupHandler;
 import model.VerbQuizComponents;
 import controller.MenuButton;
 import model.WordQuizComponents;
@@ -32,8 +30,9 @@ public class Dashboard extends JPanel {
         this.wordComps = MainWindow.wordComps;
         setLayout(new MigLayout("align center center"));
 
-        // load buttons
-        logoIcon = new ImageIcon(ImageIO.read(new File("img/title/title.png")));
+        // load logo and buttons
+        String logoVersion = MainWindow.config.isDarkMode() ? "title_grey.png" : "title.png";
+        logoIcon = new ImageIcon(ImageIO.read(new File("img/title/" + logoVersion)));
         for (int i = 0; i < BUTTON_NUMBER; i++) {
             buttons.add(new MenuButton("dashboard", i + 1));
             buttons.get(i).setActionDashboard(main, this);

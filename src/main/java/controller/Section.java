@@ -9,6 +9,9 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
+import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 public abstract class Section extends JPanel {
     public String solution;
@@ -18,9 +21,23 @@ public abstract class Section extends JPanel {
     public JTextField input = new JTextField(15);
     public JLabel checkLabel = new JLabel();
 
+    private final Color borderColor = MainWindow.config.getBorderColor();
+
     public Section(ResultImage resultImage) {
         this.solution = "undefined";
         this.resultImage = resultImage;
+
+        this.input.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                createBorder();
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                removeBorder();
+            }
+        });
 
         if (MainWindow.config.isEnyeEnabled()) {
             input.getDocument().addDocumentListener(new DocumentListener() {
@@ -61,7 +78,16 @@ public abstract class Section extends JPanel {
             });
         }
 
+        setBorder(BorderFactory.createLineBorder(UIManager.getColor("Panel.background")));
         setLayout(new MigLayout("al center center"));
+    }
+
+    private void createBorder() {
+        setBorder(BorderFactory.createLineBorder(borderColor));
+    }
+
+    private void removeBorder() {
+        setBorder(BorderFactory.createLineBorder(UIManager.getColor("Panel.background")));
     }
 
     public abstract boolean evaluate();
@@ -71,7 +97,11 @@ public abstract class Section extends JPanel {
         input.requestFocusInWindow();
     }
 
-    public String getInput() {
+    public JTextField getInput() {
+        return input;
+    }
+
+    public String getInputText() {
         return input.getText();
     }
 

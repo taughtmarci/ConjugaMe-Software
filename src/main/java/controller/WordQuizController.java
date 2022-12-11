@@ -102,7 +102,7 @@ public class WordQuizController {
             correctWords.add(currentWord);
         }
         else {
-            mistakes.add(quiz.getWordSection().getInput());
+            mistakes.add(quiz.getWordSection().getInputText());
             incorrectWords.add(currentWord);
         }
         outOf++;

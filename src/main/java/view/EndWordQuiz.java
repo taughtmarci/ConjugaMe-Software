@@ -70,7 +70,7 @@ public class EndWordQuiz extends JPanel {
         percentIndicator.setValue((int) percentResult);
         resultsPanel.add(percentIndicator, "al center, span");
 
-        resultsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        resultsPanel.setBorder(BorderFactory.createLineBorder(MainWindow.config.getBorderColor()));
         return resultsPanel;
     }
 
@@ -117,7 +117,7 @@ public class EndWordQuiz extends JPanel {
         if (correctWords.size() == 0) pane.setEnabledAt(1, false);
 
         statsPanel.add(pane);
-        statsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        statsPanel.setBorder(BorderFactory.createLineBorder(MainWindow.config.getBorderColor()));
         return statsPanel;
     }
 

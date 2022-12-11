@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.*;
+
 public class AppConfigurations {
     public boolean isDarkMode;
     public boolean isOfflineMode;
@@ -13,6 +15,16 @@ public class AppConfigurations {
         this.isInstantFeedback = false;
         this.isEnterAsTab = false;
         this.isEnyeEnabled = false;
+    }
+
+    public Color getTextColor() {
+        if (isDarkMode) return Color.LIGHT_GRAY;
+        else return Color.BLACK;
+    }
+
+    public Color getBorderColor() {
+        if (isDarkMode) return Color.GRAY;
+        else return Color.BLACK;
     }
 
     public boolean isDarkMode() {

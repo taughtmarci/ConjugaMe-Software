@@ -64,7 +64,7 @@ public class VerbQuizSetup extends JPanel {
         }
 
         pronounPanel.setPreferredSize(new Dimension(getWidth(), 280));
-        pronounPanel.setBorder(BorderFactory.createLineBorder(Color.black, 1));
+        pronounPanel.setBorder(BorderFactory.createLineBorder(MainWindow.config.getBorderColor(), 1));
         return pronounPanel;
     }
 
@@ -125,7 +125,7 @@ public class VerbQuizSetup extends JPanel {
         formPanel.add(subjuntivoPanel, "align left, cell 1 2");
 
         formPanel.setPreferredSize(new Dimension(getWidth(), 280));
-        formPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        formPanel.setBorder(BorderFactory.createLineBorder(MainWindow.config.getBorderColor()));
         return formPanel;
     }
 
@@ -209,13 +209,10 @@ public class VerbQuizSetup extends JPanel {
         verbMode.add(normalModeRadio);
         verbMode.add(timedModeRadio);
 
-        // dark mode color bugfix
-        Color foregroundColor = MainWindow.config.isDarkMode() ? Color.LIGHT_GRAY : Color.BLACK;
-
         // action listener to radios
         normalModeRadio.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             // own
-            verbNumberTitle.setForeground(foregroundColor);
+            verbNumberTitle.setForeground(MainWindow.config.getTextColor());
             ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEnabled(true);
             ((JSpinner.DefaultEditor) verbNumberChooser.getEditor()).getTextField().setEditable(true);
 
@@ -231,9 +228,9 @@ public class VerbQuizSetup extends JPanel {
 
         timedModeRadio.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             // own
-            timedDurationTitle.setForeground(foregroundColor);
-            minutesLabel.setForeground(foregroundColor);
-            secondsLabel.setForeground(foregroundColor);
+            timedDurationTitle.setForeground(MainWindow.config.getTextColor());
+            minutesLabel.setForeground(MainWindow.config.getTextColor());
+            secondsLabel.setForeground(MainWindow.config.getTextColor());
             ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEnabled(true);
             ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEditable(true);
             ((JSpinner.DefaultEditor) secondsChooser.getEditor()).getTextField().setEnabled(true);
@@ -264,7 +261,7 @@ public class VerbQuizSetup extends JPanel {
         }
 
         lastPanel.setPreferredSize(new Dimension(getWidth(), 280));
-        lastPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        lastPanel.setBorder(BorderFactory.createLineBorder(MainWindow.config.getBorderColor()));
         return lastPanel;
     }
 

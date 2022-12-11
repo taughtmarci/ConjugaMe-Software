@@ -5,16 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Bugfixes, aesthetics upgrades">
+      <change afterPath="$PROJECT_DIR$/img/title/title_grey.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/local.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/Section.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/Section.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordSection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/AppConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/AppConfigurations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Scores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Scores.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Quiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Settings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,6 +112,9 @@
       <recent name="C:\Users\Marci\Desktop\ELTE\ConjugaMe\ConjugaMe\src\main\resources" />
       <recent name="C:\Users\Marci\Desktop\ELTE\ConjugaMe\ConjugaMe\src\main\java\view" />
     </key>
+    <key name="MoveMembersDialog.RECENTS_KEY">
+      <recent name="view.MainWindow" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="ConjugaMe" type="Application" factoryName="Application">
@@ -137,13 +147,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Finished basics of Quiz component">
-      <created>1666207890227</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1666207890227</updated>
     </task>
     <task id="LOCAL-00003" summary="set up online database connection">
       <created>1666519862073</created>
@@ -481,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670771198319</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Bugfixes, aesthetics upgrades">
+      <created>1670773551761</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1670773551761</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="UnknownFeatures">

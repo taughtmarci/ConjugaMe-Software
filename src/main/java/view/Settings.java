@@ -107,9 +107,9 @@ public class Settings extends JPanel {
         quizSettingsPanel.add(enterRadio, "al left, span");
 
         appSettingsPanel.setPreferredSize(new Dimension(185, getHeight()));
-        appSettingsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        appSettingsPanel.setBorder(BorderFactory.createLineBorder(MainWindow.config.getBorderColor()));
         quizSettingsPanel.setPreferredSize(new Dimension(185, getHeight()));
-        quizSettingsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        quizSettingsPanel.setBorder(BorderFactory.createLineBorder(MainWindow.config.getBorderColor()));
 
         JPanel mainSettingsPanel = new JPanel(new MigLayout("al center center"));
         mainSettingsPanel.add(appSettingsPanel, "al center center, span");

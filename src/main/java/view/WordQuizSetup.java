@@ -3,6 +3,7 @@ package view;
 import controller.GroupSelector;
 import controller.MenuButton;
 import controller.WordQuizPreferences;
+import model.AppConfigurations;
 import model.Difficulty;
 import model.WordQuizComponents;
 import net.miginfocom.swing.MigLayout;
@@ -76,7 +77,7 @@ public class WordQuizSetup extends JPanel {
         difficultyPanel.add(articlesCheckBox);
 
         difficultyPanel.setPreferredSize(new Dimension(getWidth(), 280));
-        difficultyPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        difficultyPanel.setBorder(BorderFactory.createLineBorder(MainWindow.config.getBorderColor(), 1));
         return difficultyPanel;
     }
 
@@ -160,13 +161,10 @@ public class WordQuizSetup extends JPanel {
         wordMode.add(normalModeRadio);
         wordMode.add(timedModeRadio);
 
-        // dark mode color bugfix
-        Color foregroundColor = MainWindow.config.isDarkMode() ? Color.LIGHT_GRAY : Color.BLACK;
-
         // action listener to radios
         normalModeRadio.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             // own
-            wordNumberTitle.setForeground(foregroundColor);
+            wordNumberTitle.setForeground(MainWindow.config.getTextColor());
             ((JSpinner.DefaultEditor) wordNumberChooser.getEditor()).getTextField().setEnabled(true);
             ((JSpinner.DefaultEditor) wordNumberChooser.getEditor()).getTextField().setEditable(true);
 
@@ -182,9 +180,9 @@ public class WordQuizSetup extends JPanel {
 
         timedModeRadio.addActionListener(e -> SwingUtilities.invokeLater(() -> {
             // own
-            timedDurationTitle.setForeground(foregroundColor);
-            minutesLabel.setForeground(foregroundColor);
-            secondsLabel.setForeground(foregroundColor);
+            timedDurationTitle.setForeground(MainWindow.config.getTextColor());
+            minutesLabel.setForeground(MainWindow.config.getTextColor());
+            secondsLabel.setForeground(MainWindow.config.getTextColor());
             ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEnabled(true);
             ((JSpinner.DefaultEditor) minutesChooser.getEditor()).getTextField().setEditable(true);
             ((JSpinner.DefaultEditor) secondsChooser.getEditor()).getTextField().setEnabled(true);
@@ -215,7 +213,7 @@ public class WordQuizSetup extends JPanel {
         }
 
         lastPanel.setPreferredSize(new Dimension(getWidth(), 280));
-        lastPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        lastPanel.setBorder(BorderFactory.createLineBorder(MainWindow.config.getBorderColor()));
         return lastPanel;
     }
 

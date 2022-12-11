@@ -34,8 +34,6 @@ public class WordSection extends Section {
             add(input, "align center");
             add(checkLabel, "align left, wrap");
         } else add(input, "align center, wrap");
-
-        input.requestFocusInWindow();
     }
 
     @Override

@@ -95,7 +95,7 @@ public class VerbQuizController {
                 correctConjugations.add(conj);
             }
             else {
-                mistakes.add(quiz.getPresentoSection().getInput());
+                mistakes.add(quiz.getPresentoSection().getInputText());
                 incorrectConjugations.add(conj);
             }
             outOf++;
@@ -115,7 +115,7 @@ public class VerbQuizController {
                 score++;
             }
             else {
-                mistakes.add(quiz.getPasadoSection().getInput());
+                mistakes.add(quiz.getPasadoSection().getInputText());
                 incorrectConjugations.add(conj);
             }
             outOf++;
@@ -134,7 +134,7 @@ public class VerbQuizController {
                 score++;
             }
             else {
-                mistakes.add(verbSection.getInput());
+                mistakes.add(verbSection.getInputText());
                 incorrectConjugations.add(conj);
             }
             outOf++;

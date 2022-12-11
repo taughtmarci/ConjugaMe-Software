@@ -119,7 +119,7 @@ public class VerbQuiz extends Quiz {
             verbSections.get(0).setFirst(true);
 
         // send results button
-        add(sendButton, "align right");
+        add(sendButton, "align center, span");
 
         sendButton.addActionListener(e -> {
             // evaluate sections
