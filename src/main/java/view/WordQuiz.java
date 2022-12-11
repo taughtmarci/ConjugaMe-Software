@@ -93,7 +93,7 @@ public class WordQuiz extends Quiz {
 
         sendButton.addActionListener(e -> {
             // evaluate sections
-            controller.evaluateSection();
+            controller.evaluateSection(false);
 
             // update score and iteration
             controller.setIteration(controller.getIteration() + 1);
@@ -110,7 +110,7 @@ public class WordQuiz extends Quiz {
     }
 
     public void stopCountBack() {
-        controller.evaluateSection();
+        controller.evaluateSection(true);
         countBack.setRepeats(false);
         countBack.stop();
     }

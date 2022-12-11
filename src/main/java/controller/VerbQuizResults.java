@@ -29,10 +29,8 @@ public class VerbQuizResults {
         if (comps.isNormal()) this.outOf = comps.getTotalNumberOfVerbs();
         else this.outOf = controller.getOutOf();
 
-        if (controller.getOutOf() > 0) {
-            if (score > 0) updateCorrectLevels();
-            if (outOf - score > 0) updateIncorrectLevels();
-        }
+        if (correctConjugations.size() > 0) updateCorrectLevels();
+        if (incorrectConjugations.size() > 0) updateIncorrectLevels();
     }
 
     private void updateIncorrectLevels() {

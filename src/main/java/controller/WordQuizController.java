@@ -40,6 +40,7 @@ public class WordQuizController {
 
         randomizeWordList();
         //printWords();
+
         score = 0;
         outOf = 0;
         iteration = 0;
@@ -96,16 +97,17 @@ public class WordQuizController {
         return new String(characters);
     }
 
-    public void evaluateSection() {
+    public void evaluateSection(boolean last) {
         if (quiz.getWordSection().evaluate()) {
             score++;
             correctWords.add(currentWord);
+            outOf++;
         }
-        else {
+        else if (!last) {
             mistakes.add(quiz.getWordSection().getInputText());
             incorrectWords.add(currentWord);
+            outOf++;
         }
-        outOf++;
     }
 
     public void finishQuiz() {

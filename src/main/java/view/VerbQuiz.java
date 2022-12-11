@@ -123,7 +123,7 @@ public class VerbQuiz extends Quiz {
 
         sendButton.addActionListener(e -> {
             // evaluate sections
-            controller.evaluateSections();
+            controller.evaluateSections(false);
 
             // update score and iteration
             controller.setIteration(controller.getIteration() + 1);
@@ -142,7 +142,7 @@ public class VerbQuiz extends Quiz {
     }
 
     public void stopCountBack() {
-        controller.evaluateSections();
+        controller.evaluateSections(true);
         countBack.setRepeats(false);
         countBack.stop();
     }

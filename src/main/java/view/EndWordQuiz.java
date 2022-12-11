@@ -53,22 +53,22 @@ public class EndWordQuiz extends JPanel {
         if (!results.getComps().isNormal()) {
             int resultTime = results.getController().getTime();
             JLabel timeLabel = new JLabel("Id\u0151: " + (resultTime / 60) + ":" + (resultTime % 60));
-            resultsPanel.add(timeLabel, "span");
+            resultsPanel.add(timeLabel, "al center center, span");
         }
 
         // Result/Max
         resultLabel = new JLabel("Pontsz\u00E1m: " + results.getScore() + "/" + results.getOutOf());
-        resultsPanel.add(resultLabel, "span");
+        resultsPanel.add(resultLabel, "al center center, span");
 
         // Result in percent
         float percentResult = ((float) results.getScore() / (float) results.getOutOf()) * 100;
         percentLabel = new JLabel("Sz\u00E1zal\u00E9k: " + QuizComponents.df.format(percentResult) + "%");
-        resultsPanel.add(percentLabel, "span");
+        resultsPanel.add(percentLabel, "al center center, span");
 
         percentIndicator = new JProgressBar();
         percentIndicator.setPreferredSize(new Dimension(150, 20));
         percentIndicator.setValue((int) percentResult);
-        resultsPanel.add(percentIndicator, "al center, span");
+        resultsPanel.add(percentIndicator, "al center center, span");
 
         resultsPanel.setBorder(BorderFactory.createLineBorder(MainWindow.config.getBorderColor()));
         return resultsPanel;

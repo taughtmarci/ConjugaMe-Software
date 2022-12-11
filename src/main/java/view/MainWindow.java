@@ -79,10 +79,10 @@ public class MainWindow extends JFrame {
 
     public void switchPanels(JPanel prev, JPanel next) {
         SwingUtilities.invokeLater(() -> {
-            remove(prev);
-            add(next);
-            repaint();
-            revalidate();
+            getContentPane().remove(prev);
+            getContentPane().add(next);
+            getContentPane().repaint();
+            getContentPane().revalidate();
             next.setFocusable(true);
             next.requestFocusInWindow();
         });

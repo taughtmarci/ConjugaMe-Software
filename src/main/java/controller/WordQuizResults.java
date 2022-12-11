@@ -25,10 +25,8 @@ public class WordQuizResults {
         if (comps.isNormal()) this.outOf = comps.getWordAmount();
         else this.outOf = controller.getOutOf();
 
-        if (controller.getOutOf() > 0) {
-            if (score > 0) updateCorrectLevels();
-            if (outOf - score > 0) updateIncorrectLevels();
-        }
+        if (correctWords.size() > 0) updateCorrectLevels();
+        if (incorrectWords.size() > 0) updateIncorrectLevels();
     }
 
     private void updateIncorrectLevels() {

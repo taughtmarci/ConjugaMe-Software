@@ -80,7 +80,7 @@ public class VerbQuizController {
         }
     }
 
-    public void evaluateSections() {
+    public void evaluateSections(boolean last) {
         if (comps.isParticipioPresentoSelected()) {
             Conjugation conj = new Conjugation(
                     currentVerb.getID(),
@@ -93,12 +93,13 @@ public class VerbQuizController {
             if (quiz.getPresentoSection().evaluate()) {
                 score++;
                 correctConjugations.add(conj);
+                outOf++;
             }
-            else {
+            else if (!last) {
                 mistakes.add(quiz.getPresentoSection().getInputText());
                 incorrectConjugations.add(conj);
+                outOf++;
             }
-            outOf++;
         }
 
         if (comps.isParticipioPasadoSelected()) {
@@ -111,14 +112,15 @@ public class VerbQuizController {
             );
 
             if (quiz.getPasadoSection().evaluate()) {
-                correctConjugations.add(conj);
                 score++;
+                correctConjugations.add(conj);
+                outOf++;
             }
-            else {
+            else if (!last) {
                 mistakes.add(quiz.getPasadoSection().getInputText());
                 incorrectConjugations.add(conj);
+                outOf++;
             }
-            outOf++;
         }
 
         for (VerbSection verbSection : quiz.getSections()) {
@@ -130,14 +132,15 @@ public class VerbQuizController {
                     verbSection.getPronoun()
             );
             if (verbSection.evaluate()) {
-                correctConjugations.add(conj);
                 score++;
+                correctConjugations.add(conj);
+                outOf++;
             }
-            else {
+            else if (!last) {
                 mistakes.add(verbSection.getInputText());
                 incorrectConjugations.add(conj);
+                outOf++;
             }
-            outOf++;
         }
     }
 
