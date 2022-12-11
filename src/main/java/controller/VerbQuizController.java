@@ -55,7 +55,7 @@ public class VerbQuizController {
             quiz.setCurrentVerbLabel(currentVerb.getBasic().getInfinitivo());
 
             // definitions
-            quiz.setCurrentDefinitionsLabel(currentVerb.getDefinitions());
+            quiz.setCurrentDefinitionsLabel(currentVerb.getBasic().getDefinitions());
 
             if (!comps.onlyParticipio()) {
                 currentForm = comps.getSelectedForms().get((int)

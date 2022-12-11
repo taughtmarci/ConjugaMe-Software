@@ -4,28 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Dark mode completion">
-      <change afterPath="$PROJECT_DIR$/database/resetlevels.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/updatelevels.sql" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add levels to verbs and words">
+      <change afterPath="$PROJECT_DIR$/database/verbrevisionquery.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/wordrevisionquery.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ScoresController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/CorrectVerbs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/view/Scores.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/basicverbquery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/basicverbquery.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/complexverbquery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/complexverbquery.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/local.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/local.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/wordquery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/wordquery.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SettingsPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SettingsPreferences.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/CorrectConjugations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CorrectConjugations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/CorrectWords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CorrectWords.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/IncorrectConjugations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/IncorrectConjugations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/IncorrectWords.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/IncorrectWords.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Verb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Verb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/VerbBasic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/VerbBasic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/SetupPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/SetupPane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -484,7 +477,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670679197324</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Add levels to verbs and words">
+      <created>1670763288602</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1670763288602</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -503,7 +503,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add SetupPane" />
     <MESSAGE value="Mess" />
     <MESSAGE value="Rename preferences file&#10;Add word query sql" />
     <MESSAGE value="Quiz and controller start problem" />
@@ -528,7 +527,8 @@
     <MESSAGE value="Instant feedback finish" />
     <MESSAGE value="--- STATE OF THE ART ---&#10;change ny to ñ while typing" />
     <MESSAGE value="Dark mode completion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dark mode completion" />
+    <MESSAGE value="Add levels to verbs and words" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add levels to verbs and words" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

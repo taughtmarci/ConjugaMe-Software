@@ -2,6 +2,7 @@ package view;
 
 import model.VerbQuizComponents;
 import model.WordQuizComponents;
+import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +21,9 @@ public class SetupPane extends JPanel {
         this.wordQuizSetup = new WordQuizSetup(this);
         this.tabbedPane = new JTabbedPane();
 
+        setLayout(new MigLayout("al center center"));
         SwingUtilities.invokeLater(this::initComponents);
+        setVisible(true);
     }
 
     private void initComponents() {

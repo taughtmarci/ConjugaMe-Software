@@ -13,7 +13,7 @@ import java.awt.event.KeyListener;
 import java.io.IOException;
 
 public class SettingsPreferences {
-    private Settings settings;
+    private final Settings settings;
     private AppConfigurations config;
 
     public SettingsPreferences(Settings settings) {

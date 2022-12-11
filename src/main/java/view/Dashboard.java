@@ -25,8 +25,6 @@ public class Dashboard extends JPanel {
     private final ArrayList<MenuButton> buttons;
 
     public Dashboard(MainWindow main) throws IOException {
-        ConfigIO config = new ConfigIO();
-        GroupHandler groupHandler = new GroupHandler();
         this.buttons = new ArrayList<>();
 
         // get components from main class

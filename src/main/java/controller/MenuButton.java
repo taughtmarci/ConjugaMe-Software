@@ -116,7 +116,13 @@ public class MenuButton extends JLabel {
             case 4 -> this.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
-                    System.out.println(":D");
+                    try {
+                        JPanel next = new Scores(main);
+                        main.switchPanels(current, next);
+                    } catch (IOException ex) {
+                        // todo dialogize
+                        throw new RuntimeException(ex);
+                    }
                 }
             });
             case 5 -> this.addMouseListener(new MouseAdapter() {

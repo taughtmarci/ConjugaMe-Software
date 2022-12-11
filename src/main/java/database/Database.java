@@ -24,6 +24,9 @@ abstract class Database {
     private final String UPDATE_LEVELS_PATH = "database/updatelevels.sql";
     private final String RESET_LEVELS_PATH = "database/resetlevels.sql";
 
+    private final String WORD_REVISION_PATH = "database/wordrevisionquery.sql";
+    private final String VERB_REVISION_PATH = "database/verbrevisionquery.sql";
+
     public boolean onlineFlag;
     protected String username;
     protected String password;
@@ -123,6 +126,27 @@ abstract class Database {
         return result;
     }
 
+    public ArrayList<VerbBasic> buildBasicVerbQuery(String query) {
+        ArrayList<VerbBasic> result = new ArrayList<>();
+        if (connected) {
+            try (Statement statement = connection.createStatement()) {
+                ResultSet resultSet = statement.executeQuery(query);
+
+                while (resultSet.next()) {
+                    VerbBasic tempBasic = new VerbBasic(resultSet.getInt("VerbID"), resultSet.getString("Infinitivo"));
+                    for (int i = 0; i < 3; i++)
+                        tempBasic.addDefinition(resultSet.getString("Definici\uu00F3n_0" + (i + 1)));
+                    result.add(tempBasic);
+                }
+            } catch (SQLException e) {
+                MainWindow.dialog.showDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
+                        + (onlineFlag ? " online " : " ") + "adatb\u00E1zisb\u00F3l.\n" + e.toString(), DialogType.ERROR);
+                connected = false;
+            }
+        }
+        return result;
+    }
+
     public ArrayList<Verb> buildVerbQuery(String query, VerbQuizComponents comps) {
         ArrayList<Verb> result = new ArrayList<>();
         if (connected) {
@@ -130,13 +154,13 @@ abstract class Database {
                 ResultSet resultSet = statement.executeQuery(query);
 
                 while (resultSet.next()) {
-                    VerbBasic tempBasic = new VerbBasic(resultSet.getString("Infinitivo"));
+                    VerbBasic tempBasic = new VerbBasic(resultSet.getInt("VerbID"), resultSet.getString("Infinitivo"));
                     if (comps.isParticipioPresentoSelected()) tempBasic.setPresento(resultSet.getString("Presento"));
                     if (comps.isParticipioPasadoSelected()) tempBasic.setPasado(resultSet.getString("Pasado"));
 
-                    Verb temp = new Verb(resultSet.getInt("VerbID"), tempBasic);
+                    Verb temp = new Verb(tempBasic);
                     for (int i = 0; i < 3; i++)
-                        temp.addDefinition(resultSet.getString("Definici\uu00F3n_0" + (i + 1)));
+                        temp.getBasic().addDefinition(resultSet.getString("Definici\uu00F3n_0" + (i + 1)));
 
                     ResultSetMetaData metaData = resultSet.getMetaData();
 
@@ -203,6 +227,20 @@ abstract class Database {
             }
         }
         return result;
+    }
+
+    public ArrayList<VerbBasic> processVerbRevisionQuery(Group group) {
+        String queryDefault;
+        queryDefault = ConfigIO.readSQL(VERB_REVISION_PATH);
+        String query = queryDefault.replace("[GROUP_TABLE]", "GRUPO_" + group.name());
+        return buildBasicVerbQuery(query);
+    }
+
+    public ArrayList<Word> processWordRevisionQuery(Group group) {
+        String queryDefault;
+        queryDefault = ConfigIO.readSQL(WORD_REVISION_PATH);
+        String query = queryDefault.replace("[GROUP_TABLE]", "PALABRA_" + group.name());
+        return buildWordQuery(query);
     }
 
     public void executeUpdateQuery(String query) {
