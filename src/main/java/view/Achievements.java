@@ -47,6 +47,7 @@ public class Achievements extends JPanel {
         verbRevisionPanel = new JPanel(new MigLayout("al center center"));
         JLabel verbRevisionTitle = new JLabel("\u00C1tn\u00E9z\u00E9sre v\u00E1r\u00F3 ig\u00E9k");
         verbRevisionTitle.setFont(new Font("Verdana", Font.BOLD, 24));
+        verbRevisionPanel.add(verbRevisionTitle, "al center center, span");
 
         // init word revision list
         verbRevisionScroll = new JScrollPane(controller.updateVerbRevisionList(controller.getGroupNames()[0]));
@@ -75,6 +76,7 @@ public class Achievements extends JPanel {
         wordRevisionPanel = new JPanel(new MigLayout("al center center"));
         JLabel wordRevisionTitle = new JLabel("\u00C1tn\u00E9z\u00E9sre v\u00E1r\u00F3 ford\u00EDt\u00E1sok");
         wordRevisionTitle.setFont(new Font("Verdana", Font.BOLD, 24));
+        wordRevisionPanel.add(wordRevisionTitle, "al center center, span");
 
         // init word revision list
         wordRevisionScroll = new JScrollPane(controller.updateWordRevisionList(controller.getGroupNames()[0]));
@@ -105,7 +107,7 @@ public class Achievements extends JPanel {
         // scores label
         JLabel scoreLabel = new JLabel("Eredm\u00E9nyek");
         scoreLabel.setFont(new Font("Verdana", Font.BOLD, 24));
-        scoresPanel.add(scoreLabel, "al center center");
+        scoresPanel.add(scoreLabel, "al center center, span");
 
         // init scores list
         scoresScroll = new JScrollPane(controller.updateScoresList(isVerb, isNormal));
@@ -136,11 +138,11 @@ public class Achievements extends JPanel {
         });
 
         // add components to JPanel
-        scoresPanel.add(new JLabel("Kv\u00EDz t\u00EDpusa: "), "align left");
-        scoresPanel.add(quizTypeComboBox, "align left");
+        scoresPanel.add(new JLabel("Kv\u00EDz t\u00EDpusa: "), "span 1");
+        scoresPanel.add(quizTypeComboBox, "span 1");
 
-        scoresPanel.add(new JLabel("J\u00E1t\u00E9km\u00F3d: "), "align right");
-        scoresPanel.add(quizModeComboBox, "align right, span");
+        scoresPanel.add(new JLabel("J\u00E1t\u00E9km\u00F3d: "), "span 1");
+        scoresPanel.add(quizModeComboBox, "span");
 
         scoresPanel.add(scoresScroll, "al center center, span");
         return scoresPanel;
