@@ -16,7 +16,6 @@ import java.util.HashMap;
 abstract class Database {
     public final String VERB_TABLE = "Verbo";
     public final String WORD_TABLE = "Palabra";
-    public final String SCORE_TABLE = "Score";
 
     private final String BASIC_VERB_QUERY_PATH = "database/basicverbquery.sql";
     private final String COMPLEX_VERB_QUERY_PATH = "database/complexverbquery.sql";
@@ -27,6 +26,16 @@ abstract class Database {
 
     private final String WORD_REVISION_PATH = "database/wordrevisionquery.sql";
     private final String VERB_REVISION_PATH = "database/verbrevisionquery.sql";
+
+    public final String VERBSCORE_NORMAL_TABLE = "VERBOSCORE_Normal";
+    public final String VERBSCORE_TIMED_TABLE = "VERBOSCORE_Timed";
+    public final String NOUNSCORE_NORMAL_TABLE = "PALABRASCORE_Normal";
+    public final String NOUNSCORE_TIMED_TABLE = "PALABRASCORE_Timed";
+
+    private final String SCORE_QUERY_PATH = "database/scorequery.sql";
+    private final String INSERT_NOUNSCORE_PATH = "database/insertnounscore.sql";
+    private final String INSERT_VERBSCORE_PATH = "database/insertverbscore.sql";
+    private final String RESET_SCORES_PATH = "database/resetscores.sql";
 
     public boolean onlineFlag;
     protected String username;
@@ -156,7 +165,7 @@ abstract class Database {
 
                 while (resultSet.next()) {
                     VerbBasic tempBasic = new VerbBasic(resultSet.getInt("VerbID"), resultSet.getString("Infinitivo"));
-                    if (comps.isParticipioPresentoSelected()) tempBasic.setPresento(resultSet.getString("Presento"));
+                    if (comps.isParticipioPresenteSelected()) tempBasic.setPresento(resultSet.getString("Presento"));
                     if (comps.isParticipioPasadoSelected()) tempBasic.setPasado(resultSet.getString("Pasado"));
 
                     Verb temp = new Verb(tempBasic);
@@ -282,4 +291,88 @@ abstract class Database {
         //System.out.println(query);
         executeUpdateQuery(query);
     }
+
+    public void resetLevels(String tablename) {
+        String queryDefault = ConfigIO.readSQL(RESET_LEVELS_PATH);
+        String query = queryDefault.replace("[TABLE_NAME]", tablename);
+        executeUpdateQuery(query);
+    }
+
+    public void insertVerbScore(boolean isNormal, Score newScore) {
+        String tableName = isNormal ? VERBSCORE_NORMAL_TABLE : VERBSCORE_TIMED_TABLE;
+        String thirdColumnName = isNormal ? "OutOf" : "Duration";
+
+        String queryDefault = ConfigIO.readSQL(INSERT_VERBSCORE_PATH);
+        String query = queryDefault.replace("[TABLE_NAME]", tableName);
+        query = query.replace("[THIRD_NAME]", thirdColumnName);
+        query = query.replace("[SCORE]", Integer.toString(newScore.score()));
+        query = query.replace("[THIRD_VALUE]", Integer.toString(newScore.third()));
+        query = query.replace("[PERCENT]", String.valueOf(newScore.percent()));
+
+        // debug
+        System.out.println(query);
+        executeUpdateQuery(query);
+    }
+
+    public void insertNounScore(boolean isNormal, Score newScore) {
+        String tableName = isNormal ? NOUNSCORE_NORMAL_TABLE : NOUNSCORE_TIMED_TABLE;
+        String thirdColumnName = isNormal ? "OutOf" : "Duration";
+
+        String queryDefault = ConfigIO.readSQL(INSERT_NOUNSCORE_PATH);
+        String query = queryDefault.replace("[TABLE_NAME]", tableName);
+        query = query.replace("[THIRD_NAME]", thirdColumnName);
+        query = query.replace("[SCORE]", Integer.toString(newScore.score()));
+        query = query.replace("[THIRD_VALUE]", Integer.toString(newScore.third()));
+        query = query.replace("[PERCENT]", String.valueOf(newScore.percent()));
+        query = query.replace("[DIFFICULTY]", '\"' + newScore.difficulty() + '\"');
+
+        // debug
+        System.out.println(query);
+        executeUpdateQuery(query);
+    }
+
+    public ArrayList<Score> buildScoreQuery(boolean isVerb, boolean isNormal, String query) {
+        ArrayList<Score> result = new ArrayList<>();
+        if (connected) {
+            try (Statement statement = connection.createStatement()) {
+                ResultSet resultSet = statement.executeQuery(query);
+
+                while (resultSet.next()) {
+                    Score temp = new Score(resultSet.getInt("Score"), resultSet.getInt(isNormal ? "OutOf" : "Duration"),
+                            resultSet.getFloat("Percent"), isVerb ? "" : resultSet.getString("Difficulty"));
+
+                    // debug
+                    System.out.println(temp.toString());
+                    result.add(temp);
+                }
+            } catch (SQLException e) {
+                MainWindow.dialog.showDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
+                        + (onlineFlag ? " online " : " ") + "adatb\u00E1zisb\u00F3l.\n" + e.toString(), DialogType.ERROR);
+                connected = false;
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Score> processScoreQuery(boolean isVerb, boolean isNormal) {
+        String tableName;
+        if (isVerb) {
+            if (isNormal) tableName = VERBSCORE_NORMAL_TABLE;
+            else tableName = VERBSCORE_TIMED_TABLE;
+        } else {
+            if (isNormal) tableName = NOUNSCORE_NORMAL_TABLE;
+            else tableName = NOUNSCORE_TIMED_TABLE;
+        }
+
+        String queryDefault = ConfigIO.readSQL(SCORE_QUERY_PATH);
+        String query = queryDefault.replace("[TABLE_NAME]", tableName);
+        return buildScoreQuery(isVerb, isNormal, query);
+    }
+
+    public void resetScores(String tablename) {
+        String queryDefault = ConfigIO.readSQL(RESET_SCORES_PATH);
+        String query = queryDefault.replace("[TABLE_NAME]", tablename);
+        executeUpdateQuery(query);
+    }
+
 }

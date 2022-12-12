@@ -70,7 +70,7 @@ public class VerbQuizController {
                 }
             }
 
-            if (comps.isParticipioPresentoSelected())
+            if (comps.isParticipioPresenteSelected())
                 quiz.setPresentoSectionSolution(currentVerb.getBasic().getPresento());
 
             if (comps.isParticipioPasadoSelected())
@@ -81,7 +81,7 @@ public class VerbQuizController {
     }
 
     public void evaluateSections(boolean last) {
-        if (comps.isParticipioPresentoSelected()) {
+        if (comps.isParticipioPresenteSelected()) {
             Conjugation conj = new Conjugation(
                     currentVerb.getID(),
                     currentVerb.getBasic().getInfinitivo(),

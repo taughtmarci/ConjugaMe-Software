@@ -2,23 +2,23 @@ package controller;
 
 import model.*;
 import view.MainWindow;
-import view.Scores;
+import view.Achievements;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ScoresController {
-    private final Scores scores;
+public class AchievementsController {
+    private final Achievements achievements;
     private final GroupHandler handler;
 
     private String[] groupNames;
 
     private final JTable emptyListDefault;
 
-    public ScoresController(Scores scores) throws IOException {
-        this.scores = scores;
+    public AchievementsController(Achievements achievements) throws IOException {
+        this.achievements = achievements;
         this.handler = new GroupHandler();
 
         this.groupNames = new String[handler.getGroupNames().size()];

@@ -1,6 +1,6 @@
 package view;
 
-import controller.ScoresController;
+import controller.AchievementsController;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -8,9 +8,9 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.io.IOException;
 
-public class Scores extends JPanel {
+public class Achievements extends JPanel {
     private final MainWindow main;
-    private ScoresController controller;
+    private AchievementsController controller;
     private JTabbedPane tabbedPane;
 
 
@@ -22,14 +22,17 @@ public class Scores extends JPanel {
     private JComboBox<String> verbRevisionComboBox;
     private JScrollPane verbRevisionScroll;
 
-
+    private JPanel scoresPanel;
+    private JComboBox<String> quizTypeComboBox;
+    private JComboBox<String> quizModeComboBox;
+    private JScrollPane scoresScroll;
 
     private JButton dashboardButton;
     private JPanel next;
 
-    public Scores(MainWindow main) throws IOException {
+    public Achievements(MainWindow main) throws IOException {
         this.main = main;
-        this.controller = new ScoresController(this);
+        this.controller = new AchievementsController(this);
         this.tabbedPane = new JTabbedPane();
 
         setLayout(new MigLayout("al center center"));
@@ -91,6 +94,35 @@ public class Scores extends JPanel {
         wordRevisionPanel.add(wordRevisionScroll, "al center center, span");
 
         return wordRevisionPanel;
+    }
+
+    private JPanel initScorePanel() {
+        scoresPanel = new JPanel(new MigLayout("al center center"));
+
+        // scores label
+        JLabel scoreLabel = new JLabel("Eredm\u00E9nyek");
+        scoreLabel.setFont(new Font("Verdana", Font.BOLD, 24));
+        scoresPanel.add(scoreLabel, "al center center");
+
+        // init scores list
+        scoresScroll = new JScrollPane();
+
+        // init combo boxes
+        quizTypeComboBox = new JComboBox<>(new String[]{"Igeragoz\u00E1s", "Sz\u00F3ford\u00EDt\u00E1s"});
+        quizTypeComboBox.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                String groupName = String.valueOf(e.getItem());
+                wordRevisionPanel.remove(wordRevisionScroll);
+                wordRevisionScroll = new JScrollPane(controller.updateWordRevisionList(groupName));
+                wordRevisionPanel.add(wordRevisionScroll, "al center center, span");
+                this.revalidate();
+                this.repaint();
+            }
+        });
+
+        quizModeComboBox = new JComboBox<>(new String[]{"Norm\u00E1l", "Id\u0151z\u00EDtett"});
+
+        return scoresPanel;
     }
 
 

@@ -63,7 +63,7 @@ public class VerbQuiz extends Quiz {
         // out of or timer label
         if (comps.isNormal()) {
             outOfLabel = new JLabel(controller.getIteration() + 1 + "/" + comps.getWordAmount());
-            add(outOfLabel, "align left, span 1");
+            add(outOfLabel, "align center, span 1");
         } else {
             currentTime = comps.getDuration();
             JLabel timeLabel = new JLabel((currentTime / 60) + ":" + (currentTime % 60));
@@ -74,7 +74,8 @@ public class VerbQuiz extends Quiz {
             countBack = new Timer(1000, event -> {
                 currentTime--;
                 timeLabel.setText((currentTime / 60) + ":" + (currentTime % 60));
-                if (currentTime == 15) timeLabel.setForeground(Color.RED.darker());
+                if (currentTime == 15) timeLabel.setForeground(MainWindow.config.isDarkMode() ?
+                        Color.RED.brighter() : Color.RED.darker());
                 if (currentTime == 0) {
                     controller.finishQuiz();
                 }
@@ -96,13 +97,13 @@ public class VerbQuiz extends Quiz {
         add(currentDefinitionsLabel, "span, align center");
 
         // add sections panel
-        if (comps.isParticipioPresentoSelected()) {
-            presentoVerbSection = new VerbSection("Participio presento", resultImage, true);
+        if (comps.isParticipioPresenteSelected()) {
+            presentoVerbSection = new VerbSection("Participio presente", resultImage, true);
             add(presentoVerbSection, "span, align center");
         }
 
         if (comps.isParticipioPasadoSelected()) {
-            pasadoVerbSection = new VerbSection("Participio pasado", resultImage, !comps.isParticipioPresentoSelected());
+            pasadoVerbSection = new VerbSection("Participio pasado", resultImage, !comps.isParticipioPresenteSelected());
             add(pasadoVerbSection, "span, align center");
         }
 
@@ -115,7 +116,7 @@ public class VerbQuiz extends Quiz {
             }
         }
 
-        if (!comps.isParticipioPresentoSelected() && !comps.isParticipioPasadoSelected())
+        if (!comps.isParticipioPresenteSelected() && !comps.isParticipioPasadoSelected())
             verbSections.get(0).setFirst(true);
 
         // send results button
@@ -148,7 +149,7 @@ public class VerbQuiz extends Quiz {
     }
 
     protected void refreshAllSections() {
-        if (comps.isParticipioPresentoSelected())
+        if (comps.isParticipioPresenteSelected())
             presentoVerbSection.refreshSection();
 
         if (comps.isParticipioPasadoSelected())

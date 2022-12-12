@@ -101,8 +101,8 @@ public class ConfigIO {
                     case "Form" -> {
                         i++;
                         while (!lines.get(i).trim().equals("END")) {
-                            if (lines.get(i).trim().equals("Participio Presento"))
-                                inputComps.setParticipioPresentoSelected(true);
+                            if (lines.get(i).trim().equals("Participio Presente"))
+                                inputComps.setParticipioPresenteSelected(true);
                             else if (lines.get(i).trim().equals("Participio Pasado"))
                                 inputComps.setParticipioPasadoSelected(true);
                             else inputComps.addForm(lines.get(i).trim());
@@ -173,8 +173,8 @@ public class ConfigIO {
 
         // add forms
         writer.write("Form\n");
-        if (outputComps.isParticipioPresentoSelected())
-            writer.write("Participio Presento\n");
+        if (outputComps.isParticipioPresenteSelected())
+            writer.write("Participio Presente\n");
         if (outputComps.isParticipioPasadoSelected())
             writer.write("Participio Pasado\n");
         for (Form f : outputComps.getSelectedForms())
@@ -295,7 +295,7 @@ public class ConfigIO {
         defaultComps.setWordAmount(25);
         defaultComps.setDurationMin(5);
         defaultComps.setDurationSec(0);
-        defaultComps.setParticipioPresentoSelected(true);
+        defaultComps.setParticipioPresenteSelected(true);
         defaultComps.setParticipioPasadoSelected(true);
 
         ArrayList<Group> defaultGroups = new ArrayList<>();

@@ -31,7 +31,7 @@ public class VerbQuizPreferences extends QuizPreferences {
         for (JCheckBox cb : setup.getFormCheckBoxes()) {
             if (cb.isSelected()) {
                 switch (cb.getText()) {
-                    case "Participio Presento" -> comps.setParticipioPresentoSelected(true);
+                    case "Participio Presente" -> comps.setParticipioPresenteSelected(true);
                     case "Participio Pasado" -> comps.setParticipioPasadoSelected(true);
                     default -> comps.addForm(cb.getText());
                 }
@@ -56,7 +56,7 @@ public class VerbQuizPreferences extends QuizPreferences {
         String error = "";
         comps.printStats();;
 
-        if (!comps.isParticipioPasadoSelected() && !comps.isParticipioPresentoSelected()
+        if (!comps.isParticipioPasadoSelected() && !comps.isParticipioPresenteSelected()
                 && comps.getSelectedForms().size() == 0)
             error = "Legal\u00E1bb egy igeid\u0151/m\u00F3d kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
         else if (comps.getSelectedForms().size() > 0 && comps.getSelectedPronouns().size() == 0)

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class VerbQuizComponents extends QuizComponents {
 
-    private boolean participioPresentoSelected;
+    private boolean participioPresenteSelected;
     private boolean participioPasadoSelected;
 
     private ArrayList<Pronoun> selectedPronouns;
@@ -20,7 +20,7 @@ public class VerbQuizComponents extends QuizComponents {
 
     @Override
     public boolean isWorkingCorrectly() {
-        if (onlyParticipio() && (!participioPresentoSelected && !participioPasadoSelected))
+        if (onlyParticipio() && (!participioPresenteSelected && !participioPasadoSelected))
             return false;
         else if (!onlyParticipio() && (selectedPronouns.size() == 0 || selectedForms.size() == 0))
             return false;
@@ -35,7 +35,7 @@ public class VerbQuizComponents extends QuizComponents {
     public void printStats() {
         System.out.println("Pronouns: " + getSelectedPronouns().toString() + "\n"
                 + "Forms: " + getSelectedForms().toString() + "\n"
-                + "P.Presento: " + participioPresentoSelected + ", P.Pasado: " + participioPasadoSelected + "\n"
+                + "P.Presento: " + participioPresenteSelected + ", P.Pasado: " + participioPasadoSelected + "\n"
                 + "Groups: " + getSelectedGroups().toString() + "\n"
                 + "Number of verbs: " + getWordAmount() + "\n"
                 + "Duration min: " + getDurationMin() + ", sec: " + getDurationSec() + "\n");
@@ -58,15 +58,15 @@ public class VerbQuizComponents extends QuizComponents {
     }
 
     public boolean onlyParticipio() {
-        return (participioPresentoSelected || participioPasadoSelected) && selectedForms.size() == 0;
+        return (participioPresenteSelected || participioPasadoSelected) && selectedForms.size() == 0;
     }
 
-    public boolean isParticipioPresentoSelected() {
-        return participioPresentoSelected;
+    public boolean isParticipioPresenteSelected() {
+        return participioPresenteSelected;
     }
 
-    public void setParticipioPresentoSelected(boolean participioPresentoSelected) {
-        this.participioPresentoSelected = participioPresentoSelected;
+    public void setParticipioPresenteSelected(boolean participioPresenteSelected) {
+        this.participioPresenteSelected = participioPresenteSelected;
     }
 
     public boolean isParticipioPasadoSelected() {
@@ -83,7 +83,7 @@ public class VerbQuizComponents extends QuizComponents {
         if (!onlyParticipio())
             result = wordAmount * getSelectedPronouns().size();
 
-        if (participioPresentoSelected) result += wordAmount;
+        if (participioPresenteSelected) result += wordAmount;
         if (participioPasadoSelected) result += wordAmount;
 
         return result;

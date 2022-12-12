@@ -65,13 +65,12 @@ public class EndVerbQuiz extends JPanel {
         resultsPanel.add(resultLabel, "al center center, span");
 
         // Result in percent
-        float percentResult = ((float) results.getScore() / (float) results.getOutOf()) * 100;
-        percentLabel = new JLabel("Sz\u00E1zal\u00E9k: " + QuizComponents.df.format(percentResult) + "%");
+        percentLabel = new JLabel("Sz\u00E1zal\u00E9k: " + results.getPercentText());
         resultsPanel.add(percentLabel, "al center center, span");
 
         percentIndicator = new JProgressBar();
         percentIndicator.setPreferredSize(new Dimension(150, 20));
-        percentIndicator.setValue((int) percentResult);
+        percentIndicator.setValue((int) results.getPercentage());
         resultsPanel.add(percentIndicator, "al center center, span");
 
         resultsPanel.setBorder(BorderFactory.createLineBorder(MainWindow.config.getBorderColor()));

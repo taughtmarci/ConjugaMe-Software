@@ -103,7 +103,7 @@ public class VerbQuizSetup extends JPanel {
         // verb forms checkboxes
         formCheckBoxes = new ArrayList<>();
 
-        formCheckBoxes.add(new JCheckBox("Participio Presento", comps.isParticipioPresentoSelected()));
+        formCheckBoxes.add(new JCheckBox("Participio Presente", comps.isParticipioPresenteSelected()));
         formCheckBoxes.add(new JCheckBox("Participio Pasado", comps.isParticipioPasadoSelected()));
         participioPanel.add(formCheckBoxes.get(0), "wrap");
         participioPanel.add(formCheckBoxes.get(1), "wrap");

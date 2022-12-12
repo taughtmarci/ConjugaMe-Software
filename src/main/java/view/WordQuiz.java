@@ -64,7 +64,8 @@ public class WordQuiz extends Quiz {
             countBack = new Timer(1000, event -> {
                 currentTime--;
                 timeLabel.setText((currentTime / 60) + ":" + (currentTime % 60));
-                if (currentTime == 15) timeLabel.setForeground(Color.RED.darker());
+                if (currentTime == 15) timeLabel.setForeground(MainWindow.config.isDarkMode() ?
+                        Color.RED.brighter() : Color.RED.darker());
                 if (currentTime == 0) {
                     controller.finishQuiz();
                 }

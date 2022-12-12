@@ -8,11 +8,14 @@ import java.util.ArrayList;
 public class WordQuizResults {
     private final int score;
     private final int outOf;
+    private final float percentage;
     private final WordQuizController controller;
     private final WordQuizComponents comps;
 
     private final CorrectWords correctWords;
     private final IncorrectWords incorrectWords;
+
+    private final String percentText;
 
     public WordQuizResults(WordQuizController controller) {
         this.controller = controller;
@@ -25,8 +28,21 @@ public class WordQuizResults {
         if (comps.isNormal()) this.outOf = comps.getWordAmount();
         else this.outOf = controller.getOutOf();
 
-        if (correctWords.size() > 0) updateCorrectLevels();
+        this.percentage = ((float) getScore() / (float) getOutOf()) * 100;
+        this.percentText = QuizComponents.df.format(this.percentage) + "%";
+
+        if (correctWords.size() > 0) {
+            updateCorrectLevels();
+            insertScore();
+        }
         if (incorrectWords.size() > 0) updateIncorrectLevels();
+    }
+
+    private void insertScore() {
+        Score newScore = new Score(getScore(),
+                comps.isNormal() ? getOutOf() : comps.getDuration(),
+                getPercentage(), comps.getDifficulty().toString());
+        MainWindow.local.insertNounScore(comps.isNormal(), newScore);
     }
 
     private void updateIncorrectLevels() {
@@ -55,6 +71,14 @@ public class WordQuizResults {
 
     public int getOutOf() {
         return outOf;
+    }
+
+    public float getPercentage() {
+        return percentage;
+    }
+
+    public String getPercentText() {
+        return percentText;
     }
 
     public CorrectWords getCorrectWords() {

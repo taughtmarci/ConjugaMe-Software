@@ -6,8 +6,6 @@ import view.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -117,7 +115,7 @@ public class MenuButton extends JLabel {
                 @Override
                 public void mousePressed(MouseEvent e) {
                     try {
-                        JPanel next = new Scores(main);
+                        JPanel next = new Achievements(main);
                         main.switchPanels(current, next);
                     } catch (IOException ex) {
                         // todo dialogize
