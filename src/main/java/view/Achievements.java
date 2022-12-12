@@ -27,6 +27,9 @@ public class Achievements extends JPanel {
     private JComboBox<String> quizModeComboBox;
     private JScrollPane scoresScroll;
 
+    private boolean isVerb = true;
+    private boolean isNormal = true;
+
     private JButton dashboardButton;
     private JPanel next;
 
@@ -105,23 +108,41 @@ public class Achievements extends JPanel {
         scoresPanel.add(scoreLabel, "al center center");
 
         // init scores list
-        scoresScroll = new JScrollPane();
+        scoresScroll = new JScrollPane(controller.updateScoresList(isVerb, isNormal));
 
         // init combo boxes
         quizTypeComboBox = new JComboBox<>(new String[]{"Igeragoz\u00E1s", "Sz\u00F3ford\u00EDt\u00E1s"});
         quizTypeComboBox.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                String groupName = String.valueOf(e.getItem());
-                wordRevisionPanel.remove(wordRevisionScroll);
-                wordRevisionScroll = new JScrollPane(controller.updateWordRevisionList(groupName));
-                wordRevisionPanel.add(wordRevisionScroll, "al center center, span");
+                isVerb = String.valueOf(e.getItem()).equals("Igeragoz\u00E1s");
+                scoresPanel.remove(scoresScroll);
+                scoresScroll = new JScrollPane(controller.updateScoresList(isVerb, isNormal));
+                scoresPanel.add(scoresScroll, "al center center, span");
                 this.revalidate();
                 this.repaint();
             }
         });
 
         quizModeComboBox = new JComboBox<>(new String[]{"Norm\u00E1l", "Id\u0151z\u00EDtett"});
+        quizModeComboBox.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                isNormal = String.valueOf(e.getItem()).equals("Norm\u00E1l");
+                scoresPanel.remove(scoresScroll);
+                scoresScroll = new JScrollPane(controller.updateScoresList(isVerb, isNormal));
+                scoresPanel.add(scoresScroll, "al center center, span");
+                this.revalidate();
+                this.repaint();
+            }
+        });
 
+        // add components to JPanel
+        scoresPanel.add(new JLabel("Kv\u00EDz t\u00EDpusa: "), "align left");
+        scoresPanel.add(quizTypeComboBox, "align left");
+
+        scoresPanel.add(new JLabel("J\u00E1t\u00E9km\u00F3d: "), "align right");
+        scoresPanel.add(quizModeComboBox, "align right, span");
+
+        scoresPanel.add(scoresScroll, "al center center, span");
         return scoresPanel;
     }
 
@@ -129,6 +150,7 @@ public class Achievements extends JPanel {
     private void initComponents() {
         tabbedPane.add("Ford\u00EDt\u00E1sok \u00E1tn\u00E9z\u00E9sre", initWordRevisionPanel());
         tabbedPane.add("Ig\u00E9k \u00E1tn\u00E9z\u00E9sre", initVerbRevisionPanel());
+        tabbedPane.add("Eredm\u00E9nyek", initScorePanel());
         add(tabbedPane, "al center center, span");
 
         // Back to dashboard button

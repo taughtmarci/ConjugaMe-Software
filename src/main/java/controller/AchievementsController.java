@@ -16,6 +16,7 @@ public class AchievementsController {
     private String[] groupNames;
 
     private final JTable emptyListDefault;
+    private final JTable emptyScoresList;
 
     public AchievementsController(Achievements achievements) throws IOException {
         this.achievements = achievements;
@@ -24,6 +25,7 @@ public class AchievementsController {
         this.groupNames = new String[handler.getGroupNames().size()];
         this.groupNames = handler.getGroupNames().toArray(groupNames);
 
+        // default JTable for revision lists
         DefaultTableModel emptyListModel = new DefaultTableModel(new String[]{"J\u00F3 h\u00EDr!"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -32,6 +34,16 @@ public class AchievementsController {
         };
         emptyListModel.addRow(new String[]{"Hurr\u00E1, ebben a csoportban egyel\u0151re nincs mit \u00E1tn\u00E9zned!"});
         this.emptyListDefault = new JTable(emptyListModel);
+
+        // default JTable for scores
+        DefaultTableModel emptyScoresModel = new DefaultTableModel(new String[]{"\u00DCres eredm\u00E9nylista!"}, 0) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        emptyScoresModel.addRow(new String[]{"M\u00E9g nincsenek mentett kv\u00EDz eredm\u00E9nyeid."});
+        this.emptyScoresList = new JTable(emptyScoresModel);
     }
 
     private ArrayList<Word> getWordRevisionList(String groupName) {
@@ -62,6 +74,7 @@ public class AchievementsController {
                     return false;
                 }
             };
+            wordsRevisionList.setAutoCreateRowSorter(true);
             wordsRevisionList.setModel(revisionModel);
 
             return wordsRevisionList;
@@ -96,10 +109,32 @@ public class AchievementsController {
                     return false;
                 }
             };
+            verbsRevisionList.setAutoCreateRowSorter(true);
             verbsRevisionList.setModel(revisionModel);
 
             return verbsRevisionList;
         } else return emptyListDefault;
+    }
+
+    public JTable updateScoresList(boolean isVerb, boolean isNormal) {
+        ArrayList<Score> scores = MainWindow.local.processScoreQuery(isVerb, isNormal);
+
+        if (scores.size() > 0) {
+            ScoresList scoresList = new ScoresList(isNormal, isVerb, scores);
+            JTable scoresTable = new JTable(scoresList.getData(), scoresList.getColumnNames());
+
+            // set model
+            DefaultTableModel scoresModel = new DefaultTableModel(scoresList.getData(), scoresList.getColumnNames()) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            scoresTable.setAutoCreateRowSorter(true);
+            scoresTable.setModel(scoresModel);
+
+            return scoresTable;
+        } else return emptyScoresList;
     }
 
     public String[] getGroupNames() {

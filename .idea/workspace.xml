@@ -9,35 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Remove unnecessary files">
-      <change afterPath="$PROJECT_DIR$/database/insertnounscore.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/insertverbscore.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/resetscores.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/scorequery.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Score.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Scores table under progress">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/ScoresList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/local.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/resetlevels.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/resetlevels.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ScoresController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/VerbQuizComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/VerbQuizComponents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Scores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Achievements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/scorequery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/scorequery.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Achievements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Achievements.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,8 +54,8 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -205,13 +182,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Blank button placeholder">
-      <created>1668519086209</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1668519086209</updated>
     </task>
     <task id="LOCAL-00010" summary="Blank button placeholder">
       <created>1668562036320</created>
@@ -549,7 +519,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670791132805</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Scores table under progress">
+      <created>1670852911911</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1670852911911</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -568,7 +545,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Quiz can be started from dashboard" />
     <MESSAGE value="Fix issue with feedback gifs in wordquiz" />
     <MESSAGE value="Add Section abstract class" />
     <MESSAGE value="Add Quiz abstract class" />
@@ -593,7 +569,8 @@
     <MESSAGE value="Deploy" />
     <MESSAGE value="Dialog handling bugfix" />
     <MESSAGE value="Remove unnecessary files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unnecessary files" />
+    <MESSAGE value="Scores table under progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scores table under progress" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
