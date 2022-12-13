@@ -1,5 +1,6 @@
 package controller;
 
+import model.DialogType;
 import model.Difficulty;
 import model.WordQuizComponents;
 import view.MainWindow;
@@ -77,8 +78,8 @@ public class WordQuizPreferences extends QuizPreferences {
             try {
                 current = new WordQuiz(setup.getSetupPane().getMain());
             } catch (IOException e) {
-                // todo dialogize
-                throw new RuntimeException(e);
+                MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                        "K\u00E9rj\u00FCk, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
             }
             setup.setVisible(false);
             setup.getSetupPane().getMain().switchPanels(setup.getSetupPane(), current);

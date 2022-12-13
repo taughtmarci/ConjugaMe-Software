@@ -44,7 +44,9 @@ public class ConfigIO {
                 }
             }
         } else {
-            // todo dialog?
+            MainWindow.dialog.showDialog("Konfigur\u00E1ci\u00F3 beolvas\u00E1si hiba", "A be\u00E1ll\u00EDt\u00E1sokat" +
+                    "tartalmaz\u00F3 konfigur\u00E1ci\u00F3s f\u00E1jl megs\u00E9r\u00FClt, vagy t\u00F6r\u00F6lve lett.\n" +
+                    "A program bet\u00F6lti az alap\u00E9rtelmezett be\u00E1ll\u00EDt\u00E1sokat", DialogType.WARNING);
             file.createNewFile();
             inputConfig = new AppConfigurations();
         }
@@ -76,8 +78,8 @@ public class ConfigIO {
         try (Stream<String> stream = Files.lines(Paths.get(fileName), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s).append("\n"));
         } catch (IOException e) {
-            // todo dialogize
-            throw new RuntimeException(e);
+            MainWindow.dialog.showExceptionDialog("SQL beolvas\u00E1si hiba", "Az alkalmaz\u00E1s konfigur\u00E1ci\u00F3s f\u00E1jljai megs\u00E9r\u00FClhettek.\n" +
+                    "K\u00E9rj\u00FCk, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
         }
         return contentBuilder.toString();
     }
@@ -134,13 +136,17 @@ public class ConfigIO {
                 }
             }
         } else {
-            // todo dialog?
+            MainWindow.dialog.showDialog("Igeragoz\u00E1s kv\u00EDz preferenci\u00E1k beolvas\u00E1si hiba",
+                    "Az igeragoz\u00E1si kv\u00EDz preferenci\u00E1it tartalmaz\u00F3 konfigur\u00E1ci\u00F3s f\u00E1jl megs\u00E9r\u00FClt, vagy t\u00F6r\u00F6lve lett.\n" +
+                    "A program bet\u00F6lti az alap\u00E9rtelmezett preferenciákat", DialogType.WARNING);
             file.createNewFile();
             inputComps = getDefaultVerbComps();
         }
 
-        // todo dialog?
         if (!inputComps.isWorkingCorrectly()) {
+            MainWindow.dialog.showDialog("Igeragoz\u00E1s kv\u00EDz preferenci\u00E1k beolvas\u00E1si hiba",
+                    "Az igeragoz\u00E1si kv\u00EDz preferenci\u00E1it tartalmaz\u00F3 konfigur\u00E1ci\u00F3s f\u00E1jl megs\u00E9r\u00FClt, vagy t\u00F6r\u00F6lve lett.\n" +
+                            "A program bet\u00F6lti az alap\u00E9rtelmezett preferenciákat", DialogType.WARNING);
             inputComps = getDefaultVerbComps();
         }
 
@@ -153,7 +159,7 @@ public class ConfigIO {
         //outputComps.printStats();
 
         if (!outputComps.isWorkingCorrectly()) {
-            MainWindow.dialog.showDialog("Preferencia ment\u00E9s hiba", "Nem siker\u00FClt menteni a megadott adatokat," +
+            MainWindow.dialog.showExceptionDialog("Preferencia ment\u00E9s hiba", "Nem siker\u00FClt menteni a megadott adatokat," +
                     "a preferenci\u00E1kat tartalmaz\u00F3 f\u00E1jl az alap\u00E9rtelmezett \u00E1llapot\u00E1ba lett helyezve.", DialogType.WARNING);
             outputComps = getDefaultVerbComps();
         }
@@ -237,13 +243,17 @@ public class ConfigIO {
                 }
             }
         } else {
-            // todo dialog?
+            MainWindow.dialog.showDialog("Sz\u00F3ford\u00EDt\u00E1si kv\u00EDz preferenci\u00E1k beolvas\u00E1si hiba",
+                    "Az sz\u00F3ford\u00EDt\u00E1si kv\u00EDz preferenci\u00E1it tartalmaz\u00F3 konfigur\u00E1ci\u00F3s f\u00E1jl megs\u00E9r\u00FClt, vagy t\u00F6r\u00F6lve lett.\n" +
+                            "A program bet\u00F6lti és menti az alap\u00E9rtelmezett preferenciákat", DialogType.WARNING);
             file.createNewFile();
             inputComps = getDefaultWordComps();
         }
 
-        // todo dialog?
         if (!inputComps.isWorkingCorrectly()) {
+            MainWindow.dialog.showDialog("Sz\u00F3ford\u00EDt\u00E1si kv\u00EDz preferenci\u00E1k beolvas\u00E1si hiba",
+                    "Az sz\u00F3ford\u00EDt\u00E1si kv\u00EDz preferenci\u00E1it tartalmaz\u00F3 konfigur\u00E1ci\u00F3s f\u00E1jl megs\u00E9r\u00FClt, vagy t\u00F6r\u00F6lve lett.\n" +
+                            "A program bet\u00F6lti és menti az alap\u00E9rtelmezett preferenciákat", DialogType.WARNING);
             inputComps = getDefaultWordComps();
         }
 
@@ -256,7 +266,7 @@ public class ConfigIO {
         //outputComps.printStats();
 
         if (!outputComps.isWorkingCorrectly()) {
-            MainWindow.dialog.showDialog("Preferencia ment\u00E9s hiba", "Nem siker\u00FClt menteni a megadott adatokat," +
+            MainWindow.dialog.showExceptionDialog("Preferencia ment\u00E9s hiba", "Nem siker\u00FClt menteni a megadott adatokat," +
                     "a preferenci\u00E1kat tartalmaz\u00F3 f\u00E1jl az alap\u00E9rtelmezett \u00E1llapot\u00E1ba lett helyezve.", DialogType.WARNING);
             outputComps = getDefaultWordComps();
         }

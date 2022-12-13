@@ -35,6 +35,12 @@ public class Dialog extends JFrame implements ActionListener {
         JOptionPane.showMessageDialog(this, message, title, paneType);
     }
 
+    public void showExceptionDialog(String title, String message, DialogType type) {
+        int paneType = setPaneType(type);
+        JOptionPane.showMessageDialog(this, message, title, paneType);
+        System.exit(1);
+    }
+
     public void showYesNoDialog(String title, String message, DialogType type, Runnable yesCommand, Runnable noCommand) {
         int paneType = setPaneType(type);
         int result = JOptionPane.showConfirmDialog(this, message, title, JOptionPane.YES_NO_OPTION, paneType);

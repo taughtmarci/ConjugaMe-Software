@@ -83,7 +83,7 @@ abstract class Database {
                         K\u00E9rj\u00FCk telep\u00EDtsd \u00FAjra a programot.
                         """;
                 String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
-                MainWindow.dialog.showDialog(errorTitle, errorMessage, DialogType.ERROR);
+                MainWindow.dialog.showExceptionDialog(errorTitle, errorMessage, DialogType.ERROR);
                 System.exit(0);
             }
         }
@@ -149,7 +149,7 @@ abstract class Database {
                     result.add(tempBasic);
                 }
             } catch (SQLException e) {
-                MainWindow.dialog.showDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
+                MainWindow.dialog.showExceptionDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
                         + (onlineFlag ? " online " : " ") + "adatb\u00E1zisb\u00F3l.\n" + e.toString(), DialogType.ERROR);
                 connected = false;
             }
@@ -189,7 +189,7 @@ abstract class Database {
                     result.add(temp);
                 }
             } catch (SQLException e) {
-                MainWindow.dialog.showDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
+                MainWindow.dialog.showExceptionDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
                         + (onlineFlag ? " online " : " ") + "adatb\u00E1zisb\u00F3l.\n" + e.toString(), DialogType.ERROR);
                 connected = false;
             }
@@ -231,7 +231,7 @@ abstract class Database {
                     result.add(temp);
                 }
             } catch (SQLException e) {
-                MainWindow.dialog.showDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
+                MainWindow.dialog.showExceptionDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
                         + (onlineFlag ? " online " : " ") + "adatb\u00E1zisb\u00F3l.\n" + e.toString(), DialogType.ERROR);
                 connected = false;
             }
@@ -260,7 +260,7 @@ abstract class Database {
                 // debug
                 //System.out.println(result);
             } catch (SQLException e) {
-                    MainWindow.dialog.showDialog("Adatb\u00E1zis friss\u00EDt\u00E9si hiba", "Sikertelen t\u00E1blafriss\u00EDt\u00E9s az"
+                    MainWindow.dialog.showExceptionDialog("Adatb\u00E1zis friss\u00EDt\u00E9si hiba", "Sikertelen t\u00E1blafriss\u00EDt\u00E9s az"
                             + (onlineFlag ? " online " : " ") + "adatb\u00E1zisban.\n" + e.toString(), DialogType.ERROR);
                     connected = false;
                 }
@@ -346,7 +346,7 @@ abstract class Database {
                     result.add(temp);
                 }
             } catch (SQLException e) {
-                MainWindow.dialog.showDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
+                MainWindow.dialog.showExceptionDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
                         + (onlineFlag ? " online " : " ") + "adatb\u00E1zisb\u00F3l.\n" + e.toString(), DialogType.ERROR);
                 connected = false;
             }

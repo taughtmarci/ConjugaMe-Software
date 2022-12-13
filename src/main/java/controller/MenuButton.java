@@ -1,5 +1,6 @@
 package controller;
 
+import model.DialogType;
 import model.IconVariation;
 import model.QuizComponents;
 import view.*;
@@ -13,7 +14,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class MenuButton extends JLabel {
-    private final String panel;
     private final int number;
 
     private final ImageIcon normalIcon;
@@ -25,7 +25,6 @@ public class MenuButton extends JLabel {
 
     public MenuButton(String panel, int number) throws IOException {
         super();
-        this.panel = panel;
         this.number = number;
         this.isDarkMode = MainWindow.config.isDarkMode();
 
@@ -82,8 +81,8 @@ public class MenuButton extends JLabel {
                         JPanel next = new VerbQuiz(main);
                         main.switchPanels(current, next);
                     } catch (IOException ex) {
-                        // todo dialogize
-                        throw new RuntimeException(ex);
+                        MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                                "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra, vagy ha a probl\u00E9ma kor\u00E1bbr\u00F3l is fenn\u00E1ll, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
                     }
                 }
             });
@@ -94,8 +93,8 @@ public class MenuButton extends JLabel {
                         JPanel next = new WordQuiz(main);
                         main.switchPanels(current, next);
                     } catch (IOException ex) {
-                        // todo dialogize
-                        throw new RuntimeException(ex);
+                        MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                                "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra, vagy ha a probl\u00E9ma kor\u00E1bbr\u00F3l is fenn\u00E1ll, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
                     }
                 }
             });
@@ -106,8 +105,8 @@ public class MenuButton extends JLabel {
                         JPanel next = new SetupPane(main);
                         main.switchPanels(current, next);
                     } catch (IOException ex) {
-                        // todo dialogize
-                        throw new RuntimeException(ex);
+                        MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                                "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra, vagy ha a probl\u00E9ma kor\u00E1bbr\u00F3l is fenn\u00E1ll, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
                     }
                 }
             });
@@ -118,8 +117,8 @@ public class MenuButton extends JLabel {
                         JPanel next = new Achievements(main);
                         main.switchPanels(current, next);
                     } catch (IOException ex) {
-                        // todo dialogize
-                        throw new RuntimeException(ex);
+                        MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                                "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra, vagy ha a probl\u00E9ma kor\u00E1bbr\u00F3l is fenn\u00E1ll, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
                     }
                 }
             });
@@ -136,8 +135,8 @@ public class MenuButton extends JLabel {
                     System.exit(0);
                 }
             });
-            default -> throw new RuntimeException();
-            // TODO dialog
+            default -> MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                    "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra az alkalmaz\u00E1st!", DialogType.ERROR);
         }
     }
 
@@ -149,8 +148,8 @@ public class MenuButton extends JLabel {
                     try {
                         current.getPrefs().savePrefs();
                     } catch (UnsupportedLookAndFeelException | IOException ex) {
-                        // todo dialogize
-                        throw new RuntimeException(ex);
+                        MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                                "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra, vagy ha a probl\u00E9ma kor\u00E1bbr\u00F3l is fenn\u00E1ll, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
                     }
                 }
             });
@@ -161,13 +160,13 @@ public class MenuButton extends JLabel {
                         JPanel next = new Dashboard(main);
                         main.switchPanels(current, next);
                     } catch (IOException ex) {
-                        // todo dialogize
-                        throw new RuntimeException(ex);
+                        MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                                "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra, vagy ha a probl\u00E9ma kor\u00E1bbr\u00F3l is fenn\u00E1ll, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
                     }
                 }
             });
-            default -> throw new RuntimeException();
-            // TODO dialog
+            default -> MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                    "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra az alkalmaz\u00E1st!", DialogType.ERROR);
         }
     }
 
@@ -193,13 +192,13 @@ public class MenuButton extends JLabel {
                             JPanel next = new Dashboard(main);
                             main.switchPanels(current, next);
                         } catch (IOException ex) {
-                            // todo dialogize
-                            throw new RuntimeException(ex);
+                            MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                                    "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra, vagy ha a probl\u00E9ma kor\u00E1bbr\u00F3l is fenn\u00E1ll, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
                         }
                     }
                 });
-                default -> throw new RuntimeException();
-                // TODO dialog
+                default -> MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                        "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra az alkalmaz\u00E1st!", DialogType.ERROR);
             }
         } else {
             switch (number) {
@@ -222,13 +221,13 @@ public class MenuButton extends JLabel {
                             JPanel next = new Dashboard(main);
                             main.switchPanels(current, next);
                         } catch (IOException ex) {
-                            // todo dialogize
-                            throw new RuntimeException(ex);
+                            MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                                    "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra, vagy ha a probl\u00E9ma kor\u00E1bbr\u00F3l is fenn\u00E1ll, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
                         }
                     }
                 });
-                default -> throw new RuntimeException();
-                // TODO dialog
+                default -> MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                        "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra az alkalmaz\u00E1st!", DialogType.ERROR);
             }
         }
     }

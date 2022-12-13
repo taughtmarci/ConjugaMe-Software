@@ -134,8 +134,8 @@ public class EndWordQuiz extends JPanel {
             try {
                 next = new WordQuiz(main);
             } catch (IOException ex) {
-                // todo dialogize
-                throw new RuntimeException(ex);
+                MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                        "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra, vagy ha a probl\u00E9ma kor\u00E1bbr\u00F3l is fenn\u00E1ll, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
             }
             main.switchPanels(this, next);
         });
@@ -150,8 +150,8 @@ public class EndWordQuiz extends JPanel {
                 next = new Dashboard(main);
                 main.switchPanels(this, next);
             } catch (IOException ex) {
-                // todo dialogize
-                throw new RuntimeException(ex);
+                MainWindow.dialog.showExceptionDialog("Ismeretlen hiba", "V\u00E1ratlan fut\u00E1s k\u00F6zbeni hiba l\u00E9pett fel.\n" +
+                        "K\u00E9rj\u00FCk, ind\u00EDtsd \u00FAjra, vagy ha a probl\u00E9ma kor\u00E1bbr\u00F3l is fenn\u00E1ll, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
             }
         });
 

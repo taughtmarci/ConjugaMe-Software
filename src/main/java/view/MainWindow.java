@@ -35,11 +35,11 @@ public class MainWindow extends JFrame {
         try {
             initComponents();
         } catch (UnsupportedLookAndFeelException e) {
-            MainWindow.dialog.showDialog("Megjelen\u00E9si hiba", e.toString(), DialogType.ERROR);
+            MainWindow.dialog.showExceptionDialog("Megjelen\u00E9si hiba", e.toString(), DialogType.ERROR);
             System.exit(2);
         } catch (IOException e) {
-            MainWindow.dialog.showDialog("F\u00E1jlkezel\u00E9si hiba", "Az alkalmaz\u00E1s konfigur\u00E1ci\u00F3s f\u00E1jljai megs\u00E9r\u00FClhettek.\n" +
-                    "K\u00E9rj\u00FCk, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\n" + e.toString(), DialogType.ERROR);
+            MainWindow.dialog.showExceptionDialog("F\u00E1jlkezel\u00E9si hiba", "Az alkalmaz\u00E1s konfigur\u00E1ci\u00F3s f\u00E1jljai megs\u00E9r\u00FClhettek.\n" +
+                    "K\u00E9rj\u00FCk, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
             System.exit(1);
         }
         setVisible(true);
@@ -60,7 +60,7 @@ public class MainWindow extends JFrame {
         verbComps = ConfigIO.readVerbComponents(VERB_FILE_PATH);
         wordComps = ConfigIO.readWordComponents(WORD_FILE_PATH);
 
-        // TODO Connect to databases
+        // Connect to databases
         local = new Local("database/mainDB.db");
         if (!config.isOfflineMode()) online = new Online("conjugame.cxpxjtc5b29j.eu-central-1.rds.amazonaws.com", "3306", "Dictionary");
 

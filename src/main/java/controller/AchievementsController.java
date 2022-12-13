@@ -55,8 +55,8 @@ public class AchievementsController {
         if (handler.groupValidated(group))
             result = MainWindow.local.processWordRevisionQuery(group);
         else {
-            // todo dialogize
-            throw new RuntimeException();
+            MainWindow.dialog.showExceptionDialog("Sz\u00F3t\u00E1r beolvas\u00E1si/valid\u00E1l\u00E1si hiba", "A sz\u00F3t\u00E1rral kapcsolatos konfigur\u00E1ci\u00F3s f\u00E1jlok megs\u00E9r\u00FClhettek.\n" +
+                    "Indítsd \u00FAjra az alkalmaz\u00E1st! Ha a probl\u00E9ma tov\u00E1bbra is fenn\u00E1l, k\u00E9rj\u00FCk, pr\u0151b\u00E1ld meg az \u00FAjratelep\u00EDt\u00E9st.", DialogType.ERROR);
         }
 
         return result;
@@ -90,8 +90,8 @@ public class AchievementsController {
         if (handler.groupValidated(group))
             result = MainWindow.local.processVerbRevisionQuery(group);
         else {
-            // todo dialogize
-            throw new RuntimeException();
+            MainWindow.dialog.showExceptionDialog("Sz\u00F3t\u00E1r beolvas\u00E1si/valid\u00E1l\u00E1si hiba", "A sz\u00F3t\u00E1rral kapcsolatos konfigur\u00E1ci\u00F3s f\u00E1jlok megs\u00E9r\u00FClhettek.\n" +
+                    "Indítsd \u00FAjra az alkalmaz\u00E1st! Ha a probl\u00E9ma tov\u00E1bbra is fenn\u00E1l, k\u00E9rj\u00FCk, pr\u0151b\u00E1ld meg az \u00FAjratelep\u00EDt\u00E9st.", DialogType.ERROR);
         }
 
         return result;
