@@ -49,10 +49,10 @@ public class Achievements extends JPanel {
         verbRevisionTitle.setFont(new Font("Verdana", Font.BOLD, 24));
         verbRevisionPanel.add(verbRevisionTitle, "al center center, span");
 
-        // init word revision list
+        // init verb revision list
         verbRevisionScroll = new JScrollPane(controller.updateVerbRevisionList(controller.getGroupNames()[0]));
 
-        // init word revision combo box
+        // init verb revision combo box
         verbRevisionComboBox = new JComboBox<>(controller.getGroupNames());
         verbRevisionComboBox.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
@@ -150,9 +150,9 @@ public class Achievements extends JPanel {
 
 
     private void initComponents() {
-        tabbedPane.add("Ford\u00EDt\u00E1sok \u00E1tn\u00E9z\u00E9sre", initWordRevisionPanel());
-        tabbedPane.add("Ig\u00E9k \u00E1tn\u00E9z\u00E9sre", initVerbRevisionPanel());
         tabbedPane.add("Eredm\u00E9nyek", initScorePanel());
+        tabbedPane.add("Ig\u00E9k \u00E1tn\u00E9z\u00E9sre", initVerbRevisionPanel());
+        tabbedPane.add("Ford\u00EDt\u00E1sok \u00E1tn\u00E9z\u00E9sre", initWordRevisionPanel());
         add(tabbedPane, "al center center, span");
 
         // Back to dashboard button

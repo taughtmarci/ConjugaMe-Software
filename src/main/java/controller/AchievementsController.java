@@ -15,7 +15,8 @@ public class AchievementsController {
 
     private String[] groupNames;
 
-    private final JTable emptyListDefault;
+    private final JTable emptyVerbListDefault;
+    private final JTable emptyWordListDefault;
     private final JTable emptyScoresList;
 
     public AchievementsController(Achievements achievements) throws IOException {
@@ -33,7 +34,8 @@ public class AchievementsController {
             }
         };
         emptyListModel.addRow(new String[]{"Hurr\u00E1, ebben a csoportban egyel\u0151re nincs mit \u00E1tn\u00E9zned!"});
-        this.emptyListDefault = new JTable(emptyListModel);
+        this.emptyVerbListDefault = new JTable(emptyListModel);
+        this.emptyWordListDefault = new JTable(emptyListModel);
 
         // default JTable for scores
         DefaultTableModel emptyScoresModel = new DefaultTableModel(new String[]{"\u00DCres eredm\u00E9nylista!"}, 0) {
@@ -78,7 +80,7 @@ public class AchievementsController {
             wordsRevisionList.setModel(revisionModel);
 
             return wordsRevisionList;
-        } else return emptyListDefault;
+        } else return emptyWordListDefault;
     }
 
     private ArrayList<VerbBasic> getVerbRevisionList(String groupName) {
@@ -113,7 +115,7 @@ public class AchievementsController {
             verbsRevisionList.setModel(revisionModel);
 
             return verbsRevisionList;
-        } else return emptyListDefault;
+        } else return emptyVerbListDefault;
     }
 
     public JTable updateScoresList(boolean isVerb, boolean isNormal) {

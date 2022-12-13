@@ -292,9 +292,9 @@ abstract class Database {
         executeUpdateQuery(query);
     }
 
-    public void resetLevels(String tablename) {
+    public void resetLevels(String tableName) {
         String queryDefault = ConfigIO.readSQL(RESET_LEVELS_PATH);
-        String query = queryDefault.replace("[TABLE_NAME]", tablename);
+        String query = queryDefault.replace("[TABLE_NAME]", tableName);
         executeUpdateQuery(query);
     }
 
@@ -369,10 +369,13 @@ abstract class Database {
         return buildScoreQuery(isVerb, isNormal, query);
     }
 
-    public void resetScores(String tablename) {
-        String queryDefault = ConfigIO.readSQL(RESET_SCORES_PATH);
-        String query = queryDefault.replace("[TABLE_NAME]", tablename);
-        executeUpdateQuery(query);
+    public void resetScores() {
+        String[] scoresTables = new String[]{VERBSCORE_NORMAL_TABLE, VERBSCORE_TIMED_TABLE, NOUNSCORE_NORMAL_TABLE, NOUNSCORE_TIMED_TABLE};
+        for (String tableName : scoresTables) {
+            String queryDefault = ConfigIO.readSQL(RESET_SCORES_PATH);
+            String query = queryDefault.replace("[TABLE_NAME]", tableName);
+            executeUpdateQuery(query);
+        }
     }
 
 }
