@@ -1,20 +1,13 @@
-plugins {
-    id 'java'
-}
+apply plugin: 'java'
+apply plugin: 'application'
 
-group 'org.example'
+mainClassName = 'view.MainWindow'
+
+group 'org.rookielab'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-}
-
-jar {
-    manifest {
-        attributes(
-                'Main-Class': 'view.MainWindow'
-        )
-    }
 }
 
 dependencies {

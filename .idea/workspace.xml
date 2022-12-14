@@ -2,30 +2,33 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="ConjugaMe:jar" />
+      <artifact name="ConjugaMe.main:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Resets in settings, bugfixes">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Set dialogs">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ConjugaMe_main_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ConjugaMe.main.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ConjugaMe_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/insertnounscore.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/insertnounscore.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/insertverbscore.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/insertverbscore.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/ResultImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ResultImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Achievements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Achievements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/QuizComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/QuizComponents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ScoresList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ScoresList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +100,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marci/Desktop/ConjugaMe/out/artifacts/ConjugaMe_jar/ConjugaMe.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marci/Desktop/ConjugaMe/config&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -135,7 +138,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -144,21 +147,11 @@
             <option value="jar" />
           </list>
         </option>
-        <option name="vmOptions" />
+        <option name="vmOptions" value="-Dsun.java2d.uiScale=1" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Jar run" type="JarApplication">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/ConjugaMe_jar/ConjugaMe.jar" />
-      <option name="VM_PARAMETERS" value="-Dsun.java2d.uiScale=1" />
-      <option name="PROGRAM_PARAMETERS" value="-cp view.MainWindow" />
-      <option name="WORKING_DIRECTORY" value="C:\Users\Marci\Desktop\ConjugaMe" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="17" />
-      <module name="ConjugaMe.main" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType">
@@ -177,7 +170,6 @@
     <list>
       <item itemvalue="Application.ConjugaMe" />
       <item itemvalue="Gradle.ConjugaMe [jar]" />
-      <item itemvalue="JAR Application.Jar run" />
     </list>
     <recent_temporary>
       <list>
@@ -193,13 +185,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Main dashboard completed&#10;Need fixes with the pngs">
-      <created>1668797132648</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1668797132648</updated>
     </task>
     <task id="LOCAL-00014" summary="Button icon fixes">
       <created>1668891574223</created>
@@ -537,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670930065368</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Set dialogs">
+      <created>1670932512278</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1670932512278</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -556,7 +548,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Setup spinner and saving issues fix" />
     <MESSAGE value="Add articles needed boolean to word quiz" />
     <MESSAGE value="Separate verb and word group tables" />
     <MESSAGE value="ID added to queries" />
@@ -581,7 +572,8 @@
     <MESSAGE value="Finish scores table" />
     <MESSAGE value="Scores bugfixes" />
     <MESSAGE value="Resets in settings, bugfixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Resets in settings, bugfixes" />
+    <MESSAGE value="Set dialogs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Set dialogs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

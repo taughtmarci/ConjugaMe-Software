@@ -1,6 +1,7 @@
 package model;
 
 import java.text.DecimalFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public abstract class QuizComponents {
@@ -12,6 +13,7 @@ public abstract class QuizComponents {
 
     protected ArrayList<Group> selectedGroups;
     public static final DecimalFormat df = new DecimalFormat("0.00");
+    public static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
     public QuizComponents() {
         this.isNormal = true;

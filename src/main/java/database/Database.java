@@ -67,21 +67,24 @@ abstract class Database {
                 String errorMessage = """
                         Kapcsol\u00F3d\u00E1s az online adatb\u00E1zishoz sikertelen.
                         Szeretn\u00E9d elind\u00EDtani az alkalmaz\u00E1st offline m\u00F3dban?
-                        """;
+                        Részletek:
+                        """ + e.toString();
                 String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
                 MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.QUESTION, new DoNothingCommand(), new ExitCommand());
                 connected = false;
             }
         } else {
-            try{
+            try {
+                Class.forName("org.sqlite.JDBC");
                 SQLiteConfig config = new SQLiteConfig();
                 config.resetOpenMode(SQLiteOpenMode.CREATE);
                 connection = DriverManager.getConnection(location, config.toProperties());
-            } catch (SQLException e) {
+            } catch (SQLException | ClassNotFoundException e) {
                 String errorMessage = """
                         Kapcsol\u00F3d\u00E1s a lok\u00E1lis adatb\u00E1zishoz sikertelen.
                         K\u00E9rj\u00FCk telep\u00EDtsd \u00FAjra a programot.
-                        """;
+                        Részletek:
+                        """ + e.toString();
                 String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
                 MainWindow.dialog.showExceptionDialog(errorTitle, errorMessage, DialogType.ERROR);
                 System.exit(0);
@@ -339,7 +342,8 @@ abstract class Database {
 
                 while (resultSet.next()) {
                     Score temp = new Score(resultSet.getInt("Score"), resultSet.getInt(isNormal ? "OutOf" : "Duration"),
-                            resultSet.getFloat("Percent"), isVerb ? "" : resultSet.getString("Difficulty"));
+                            resultSet.getFloat("Percent"), isVerb ? "" : resultSet.getString("Difficulty"),
+                            resultSet.getString("Timestamp"));
 
                     // debug
                     System.out.println(temp.toString());

@@ -15,11 +15,11 @@ public class ScoresList {
         this.isVerb = isVerb;
 
         if (isVerb) {
-            if (isNormal) columnNames = new String[]{"Pontsz\u00E1m", "Ennyib\u0151l", "Sz\u00E1zal\u00E9k"};
-            else columnNames = new String[]{"Pontsz\u00E1m", "Id\u0151tartam", "Sz\u00E1zal\u00E9k"};
+            if (isNormal) columnNames = new String[]{"Pontsz\u00E1m", "Ennyib\u0151l", "Sz\u00E1zal\u00E9k", "Id\u0151pont"};
+            else columnNames = new String[]{"Pontsz\u00E1m", "Id\u0151tartam", "Sz\u00E1zal\u00E9k", "Id\u0151pont"};
         } else {
-            if (isNormal) columnNames = new String[]{"Pontsz\u00E1m", "Ennyib\u0151l", "Sz\u00E1zal\u00E9k", "Neh\u00E9zs\u00E9g"};
-            else columnNames = new String[]{"Pontsz\u00E1m", "Id\u0151tartam", "Sz\u00E1zal\u00E9k", "Neh\u00E9zs\u00E9g"};
+            if (isNormal) columnNames = new String[]{"Pontsz\u00E1m", "Ennyib\u0151l", "Sz\u00E1zal\u00E9k", "Neh\u00E9zs\u00E9g", "Id\u0151pont"};
+            else columnNames = new String[]{"Pontsz\u00E1m", "Id\u0151tartam", "Sz\u00E1zal\u00E9k", "Neh\u00E9zs\u00E9g", "Id\u0151pont"};
         }
     }
 
@@ -31,12 +31,13 @@ public class ScoresList {
         String[][] result = new String[this.size()][columnNames.length];
 
         for (int i = 0; i < this.size(); i++) {
-            if (columnNames.length == 3) {
+            if (columnNames.length == 4) {
                 String[] temp = {
                         Integer.toString(scores.get(i).score()),
                         isNormal ? Integer.toString(scores.get(i).third()) :
                                 ((scores.get(i).third() / 60) + ":" + (scores.get(i).third() % 60)),
-                        QuizComponents.df.format(scores.get(i).percent()) + "%"
+                        QuizComponents.df.format(scores.get(i).percent()) + "%",
+                        scores.get(i).timestamp()
                 };
                 result[i] = temp;
             } else {
@@ -45,7 +46,8 @@ public class ScoresList {
                         isNormal ? Integer.toString(scores.get(i).third()) :
                                 ((scores.get(i).third() / 60) + ":" + (scores.get(i).third() % 60)),
                         QuizComponents.df.format(scores.get(i).percent()) + "%",
-                        scores.get(i).difficulty()
+                        scores.get(i).difficulty(),
+                        scores.get(i).timestamp()
                 };
                 result[i] = temp;
             }

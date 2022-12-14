@@ -90,7 +90,7 @@ public class WordQuiz extends Quiz {
         add(wordSection, "span, align center");
 
         // send results button
-        add(sendButton, "align right");
+        add(sendButton, "span, align center");
 
         sendButton.addActionListener(e -> {
             // evaluate sections

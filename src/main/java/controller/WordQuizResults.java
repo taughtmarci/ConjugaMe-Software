@@ -3,6 +3,7 @@ package controller;
 import model.*;
 import view.MainWindow;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class WordQuizResults {
@@ -41,7 +42,7 @@ public class WordQuizResults {
     private void insertScore() {
         Score newScore = new Score(getScore(),
                 comps.isNormal() ? getOutOf() : comps.getDuration(),
-                getPercentage(), comps.getDifficulty().toString());
+                getPercentage(), comps.getDifficulty().toString(), QuizComponents.dtf.format(LocalDateTime.now()));
         MainWindow.local.insertNounScore(comps.isNormal(), newScore);
     }
 

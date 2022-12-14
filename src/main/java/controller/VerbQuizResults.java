@@ -3,6 +3,7 @@ package controller;
 import model.*;
 import view.MainWindow;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class VerbQuizResults {
@@ -40,7 +41,8 @@ public class VerbQuizResults {
     }
 
     private void insertScore() {
-        Score newScore = new Score(getScore(), comps.isNormal() ? getOutOf() : comps.getDuration(), getPercentage(), "");
+        Score newScore = new Score(getScore(), comps.isNormal() ? getOutOf() : comps.getDuration(),
+                getPercentage(), "", QuizComponents.dtf.format(LocalDateTime.now()));
         MainWindow.local.insertVerbScore(comps.isNormal(), newScore);
     }
 
