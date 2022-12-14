@@ -1,6 +1,5 @@
 SELECT * FROM
 [TABLE_NAME]
 ORDER BY
-Score DESC,
-Percent DESC
+Timestamp DESC
 LIMIT 100;

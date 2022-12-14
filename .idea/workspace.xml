@@ -9,26 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Set dialogs">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Added timestamp">
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/ConjugaMe_main_jar.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ConjugaMe.main.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/ConjugaMe_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/insertnounscore.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/insertnounscore.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/insertverbscore.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/insertverbscore.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/QuizComponents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/QuizComponents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/ScoresList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ScoresList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/scorequery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/scorequery.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Button icon fixes">
-      <created>1668891574223</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1668891574223</updated>
     </task>
     <task id="LOCAL-00015" summary="Time duration added to setup">
       <created>1668894051580</created>
@@ -529,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670932512278</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Added timestamp">
+      <created>1671049232022</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1671049232023</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -548,7 +542,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add articles needed boolean to word quiz" />
     <MESSAGE value="Separate verb and word group tables" />
     <MESSAGE value="ID added to queries" />
     <MESSAGE value="Word quiz evaluation logics fix" />
@@ -573,7 +566,8 @@
     <MESSAGE value="Scores bugfixes" />
     <MESSAGE value="Resets in settings, bugfixes" />
     <MESSAGE value="Set dialogs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set dialogs" />
+    <MESSAGE value="Added timestamp" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added timestamp" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

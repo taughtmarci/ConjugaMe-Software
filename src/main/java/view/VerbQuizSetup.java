@@ -149,7 +149,7 @@ public class VerbQuizSetup extends JPanel {
         lastPanel.add(verbNumberTitle, "span");
 
         // number of verbs spinner
-        SpinnerNumberModel verbNumberModel = new SpinnerNumberModel(comps.getWordAmount(), 5, 500, 5);
+        SpinnerNumberModel verbNumberModel = new SpinnerNumberModel(comps.getWordAmount(), 1, 100, 5);
         verbNumberChooser = new JSpinner(verbNumberModel);
         JFormattedTextField verbNumberField = (JFormattedTextField) verbNumberChooser.getEditor().getComponent(0);
         DefaultFormatter verbNumberFormatter = (DefaultFormatter) verbNumberField.getFormatter();
@@ -165,7 +165,7 @@ public class VerbQuizSetup extends JPanel {
         lastPanel.add(timedDurationTitle, "span");
 
         // minutes spinner and label
-        SpinnerNumberModel minutesModel = new SpinnerNumberModel(comps.getDurationMin(), 1, 30, 1);
+        SpinnerNumberModel minutesModel = new SpinnerNumberModel(comps.getDurationMin(), 1, 5, 1);
         minutesChooser = new JSpinner(minutesModel);
         minutesChooser.setUI(new BasicSpinnerUI() {
             protected Component createNextButton() {

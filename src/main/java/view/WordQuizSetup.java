@@ -101,7 +101,7 @@ public class WordQuizSetup extends JPanel {
         lastPanel.add(wordNumberTitle, "span");
 
         // number of words spinner
-        SpinnerNumberModel wordNumberModel = new SpinnerNumberModel(comps.getWordAmount(), 5, 500, 5);
+        SpinnerNumberModel wordNumberModel = new SpinnerNumberModel(comps.getWordAmount(), 1, 250, 5);
         wordNumberChooser = new JSpinner(wordNumberModel);
         JFormattedTextField wordNumberField = (JFormattedTextField) wordNumberChooser.getEditor().getComponent(0);
         DefaultFormatter wordNumberFormatter = (DefaultFormatter) wordNumberField.getFormatter();
@@ -117,7 +117,7 @@ public class WordQuizSetup extends JPanel {
         lastPanel.add(timedDurationTitle, "span");
 
         // minutes spinner and label
-        SpinnerNumberModel minutesModel = new SpinnerNumberModel(comps.getDurationMin(), 1, 30, 1);
+        SpinnerNumberModel minutesModel = new SpinnerNumberModel(comps.getDurationMin(), 1, 5, 1);
         minutesChooser = new JSpinner(minutesModel);
         minutesChooser.setUI(new BasicSpinnerUI() {
             protected Component createNextButton() {

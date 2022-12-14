@@ -64,12 +64,12 @@ public class VerbQuizPreferences extends QuizPreferences {
             error = "Legal\u00E1bb egy n\u00E9vm\u00E1s kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
         else if (comps.getSelectedGroups().size() == 0)
             error = "Legal\u00E1bb egy csoport kiv\u00E1laszt\u00E1sa sz\u00FCks\u00E9ges!";
-        else if (comps.getWordAmount() < 5 || comps.getWordAmount() > 500)
-            error = "Az ig\u00E9k sz\u00E1ma 5 \u00E9s 500 k\u00F6z\u00F6tt kell, hogy legyen!";
-        else if (comps.getDurationMin() < 1 || comps.getDurationMin() > 30)
-            error = "A megadott perc 1 \u00E9s 30 k\u00F6z\u00F6tt kell, hogy legyen!";
+        else if (comps.getWordAmount() < 1 || comps.getWordAmount() > 100)
+            error = "Az ig\u00E9k sz\u00E1ma 1 \u00E9s 100 k\u00F6z\u00F6tt kell, hogy legyen!";
+        else if (comps.getDurationMin() < 1 || comps.getDurationMin() > 5)
+            error = "A megadott perc 1 \u00E9s 5 k\u00F6z\u00F6tt kell, hogy legyen!";
         else if (comps.getDurationSec() < 0 || comps.getDurationSec() > 59)
-            error = "A megadott m\u00E1sodperc 0 \u00E9s 30 k\u00F6z\u00F6tt kell, hogy legyen!";
+            error = "A megadott m\u00E1sodperc 0 \u00E9s 59 k\u00F6z\u00F6tt kell, hogy legyen!";
 
         return error;
     }
