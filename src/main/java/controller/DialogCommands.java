@@ -19,6 +19,7 @@ public class DialogCommands {
         @Override
         public void run() {
             MainWindow.local.resetScores();
+            ConfigIO.resetFile("config/badges.cfg");
         }
     }
 

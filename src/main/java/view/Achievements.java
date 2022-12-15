@@ -153,23 +153,31 @@ public class Achievements extends JPanel {
 
     private JPanel initMedalPanel() {
         JPanel medalPanel = new JPanel(new MigLayout("al center top"));
-        JPanel medalHolderPanel = new JPanel (new MigLayout("al center center"));
-        medalHolderPanel.setBackground(MainWindow.config.isDarkMode() ? Color.gray : Color.white);
 
         JLabel wordRevisionTitle = new JLabel("B\u00E9lyegek");
         wordRevisionTitle.setFont(new Font("Verdana", Font.BOLD, 24));
         medalPanel.add(wordRevisionTitle, "al center center, span");
 
-        ArrayList<JLabel> badgeLabel = new ArrayList<>();
-        int iterator = 1;
-        for (Badge badge : controller.getBadges()) {
-            String spanner = iterator % 4 == 0 ? ", span" : "";
-            badgeLabel.add(badge);
-            medalHolderPanel.add(badgeLabel.get(badgeLabel.size() - 1), "al center center" + spanner);
-            iterator++;
+        if (controller.getBadges().size() > 0) {
+            JPanel medalHolderPanel = new JPanel (new MigLayout("al center center"));
+            medalHolderPanel.setBackground(MainWindow.config.isDarkMode() ? Color.gray : Color.white);
+
+            ArrayList<JLabel> badgeLabel = new ArrayList<>();
+            int iterator = 1;
+
+            for (Badge badge : controller.getBadges()) {
+                String spanner = iterator % 4 == 0 ? ", span" : "";
+                badgeLabel.add(badge);
+                medalHolderPanel.add(badgeLabel.get(badgeLabel.size() - 1), "al center center" + spanner);
+                iterator++;
+            }
+            medalPanel.add(medalHolderPanel, "al center center");
+        } else {
+            JLabel noBadgesLabel = new JLabel("M\u00E9g nincsenek \u00F6sszegy\u0171jt\u00F6tt b\u00E9lyegeid. " +
+                    "Ind\u00EDts egy \u00Fajabb kv\u00EDzt, hogy szerezhess egyet!");
+            medalPanel.add(noBadgesLabel);
         }
 
-        medalPanel.add(medalHolderPanel, "al center center");
         return medalPanel;
     }
 

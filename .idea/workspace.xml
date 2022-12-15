@@ -9,34 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Verb quiz label update">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/ConjugaMe_main_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ConjugaMe.main.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/badges.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/bronze_avanzado.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/bronze_conejito.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/bronze_experto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/bronze_intermedio.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/bronze_principiante.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/gold_avanzado.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/gold_conejito.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/gold_experto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/gold_intermedio.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/gold_principiante.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/silver_avanzado.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/silver_conejito.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/silver_experto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/silver_intermedio.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/badges/silver_princpiante.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Badge.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Storing medals">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/badges.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/badges.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/resetlevels.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/resetlevels.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DialogCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DialogCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Achievements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Achievements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Settings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Add configuration saving basics">
-      <created>1668944306639</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1668944306639</updated>
     </task>
     <task id="LOCAL-00018" summary="Relocated images">
       <created>1668944326145</created>
@@ -537,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671101803050</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Storing medals">
+      <created>1671107454140</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1671107454140</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -556,7 +542,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Word quiz evaluation logics fix" />
     <MESSAGE value="Now with verb hints!" />
     <MESSAGE value="Percent indicator made better" />
     <MESSAGE value="Word quiz with result statistics" />
@@ -581,7 +566,8 @@
     <MESSAGE value="Added timestamp" />
     <MESSAGE value="Add new words, quick bugfixes, limitations on verb and quiz preferences" />
     <MESSAGE value="Verb quiz label update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verb quiz label update" />
+    <MESSAGE value="Storing medals" />
+    <option name="LAST_COMMIT_MESSAGE" value="Storing medals" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

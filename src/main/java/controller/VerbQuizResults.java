@@ -3,6 +3,7 @@ package controller;
 import model.*;
 import view.MainWindow;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -38,6 +39,8 @@ public class VerbQuizResults {
             insertScore();
         }
         if (incorrectConjugations.size() > 0) updateIncorrectLevels();
+
+        checkForBadges();
     }
 
     private void insertScore() {
@@ -64,6 +67,31 @@ public class VerbQuizResults {
         }
 
         MainWindow.local.updateLevels(MainWindow.local.VERB_TABLE, false, ids);
+    }
+
+    private void checkForBadges() {
+        for (Group group: comps.getSelectedGroups()) {
+            int totalAmount = MainWindow.local.buildCountQuery("SELECT COUNT(ID) FROM GRUPO_" + group.name(), "COUNT(ID)");
+            int currentAmount = MainWindow.local.processVerbCountQuery(group.name());
+            validateBadge(group.name(), (float) currentAmount / totalAmount);
+        }
+    }
+
+    private void validateBadge(String groupName, float percentage) {
+        System.out.println(percentage);
+        try {
+            if (percentage >= 0.5) {
+                ConfigIO.updateBadgeFile("config/badges.cfg", "bronze_" + groupName);
+            } else if (percentage >= 0.8) {
+                ConfigIO.updateBadgeFile("config/badges.cfg", "silver_" + groupName);
+            } else if (percentage == 1) {
+                ConfigIO.updateBadgeFile("config/badges.cfg", "gold_" + groupName);
+            }
+        } catch (IOException e) {
+            MainWindow.dialog.showExceptionDialog("B\u00E1lyeg beolvas\u00E1si hiba", "Az alkalmaz\u00E1s konfigur\u00E1ci\u00F3s f\u00E1jljai megs\u00E9r\u00FClhettek.\n" +
+                    "K\u00E9rj\u00FCk, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
+            throw new RuntimeException(e);
+        }
     }
 
     public int getScore() {

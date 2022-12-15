@@ -45,8 +45,10 @@ public class VerbQuizController {
         outOf = 0;
         iteration = 0;
 
-        currentForm = comps.getSelectedForms().get((int)
-                (Math.random() * comps.getSelectedForms().size()));
+        if (!comps.onlyParticipio()) {
+            currentForm = comps.getSelectedForms().get((int)
+                    (Math.random() * comps.getSelectedForms().size()));
+        }
     }
 
     public void nextRound(boolean isFirst) {

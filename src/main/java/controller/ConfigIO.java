@@ -272,6 +272,7 @@ public class ConfigIO {
         }
 
         OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
+
         // clear file data
         if (file.exists() && file.isFile()) {
             file.delete();
@@ -362,6 +363,36 @@ public class ConfigIO {
         }
 
         return lines;
+    }
+
+    public static void updateBadgeFile(String fileName, String badgeType) throws IOException {
+        File file = new File(fileName);
+
+        if (file.exists() && file.isFile()) {
+            ArrayList<String> lines = readLines(file);
+            if (!lines.contains(badgeType)) {
+                OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
+                writer.write(badgeType);
+                writer.close();
+                MainWindow.dialog.showDialog("Sz\u00E9p munka!", "\u00DAj b\u00E9lyeget szerezt\u00E9l a" +
+                        "gy\u0171jtem\u00E9nyedbe!\n " + "Megtekintheted az Eredm\u00E9nyek men\u00FCponton bel\u00FCl.", DialogType.INFORMATION);
+            }
+        }
+    }
+
+    public static void resetFile(String fileName) {
+        File file = new File(fileName);
+
+        try {
+            if (file.exists() && file.isFile()) {
+                file.delete();
+                file.createNewFile();
+            }
+        } catch (IOException e) {
+            MainWindow.dialog.showExceptionDialog("F\u00E1jlkezel\u00E9si hiba", "Az alkalmaz\u00E1s konfigur\u00E1ci\u00F3s f\u00E1jljai megs\u00E9r\u00FClhettek.\n" +
+                    "K\u00E9rj\u00FCk, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
+            throw new RuntimeException(e);
+        }
     }
 
     public void writeVerifiedGroups(String fileName) throws IOException {

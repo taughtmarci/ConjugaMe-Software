@@ -1,2 +1,2 @@
 UPDATE [TABLE_NAME]
-SET Level = 0;
+SET Level = 1;

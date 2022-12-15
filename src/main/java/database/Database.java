@@ -37,6 +37,8 @@ abstract class Database {
     private final String INSERT_VERBSCORE_PATH = "database/insertverbscore.sql";
     private final String RESET_SCORES_PATH = "database/resetscores.sql";
 
+    private final String BADGE_VERB_PATH = "database/badgeverbgroupquery.sql";
+
     public boolean onlineFlag;
     protected String username;
     protected String password;
@@ -91,6 +93,26 @@ abstract class Database {
             }
         }
         connected = true;
+    }
+
+    public int buildCountQuery(String query, String columnLabel) {
+        if (connected) {
+            try (Statement statement = connection.createStatement()) {
+                ResultSet resultSet = statement.executeQuery(query);
+                return resultSet.getInt(columnLabel);
+            } catch (SQLException e) {
+                MainWindow.dialog.showExceptionDialog("Adatb\u00E1zis lek\u00E9rdez\u00E9si hiba", "Sikertelen lek\u00E9rdez\u00E9s az"
+                        + (onlineFlag ? " online " : " ") + "adatb\u00E1zisb\u00F3l.\n" + e.toString(), DialogType.ERROR);
+                connected = false;
+            }
+        }
+        return -1;
+    }
+
+    public int processVerbCountQuery(String tableName) {
+        String queryDefault = ConfigIO.readSQL(BADGE_VERB_PATH);
+        String query = queryDefault.replace("[GROUP_TABLE]", "GRUPO_" + tableName);
+        return buildCountQuery(query, "COUNT(VerbID)");
     }
 
     public ArrayList<Verb> processVerbQueries(VerbQuizComponents comps) {

@@ -83,8 +83,8 @@ public class Settings extends JPanel {
         JButton scoresReset = new JButton("Eredm\u00E9nyek");
         scoresReset.addActionListener(e-> {
             String errorMessage = """
-                        Az eredm\u00E9nyek vissza\u00E1ll\u00EDt\u00E1sa eset\u00E9n az eddigi \u00F6sszes eredm\u00E9nyed elv\u00E9sz.
-                        Biztos vagy benne?
+                        Az eredm\u00E9nyek vissza\u00E1ll\u00EDt\u00E1sa eset\u00E9naz eddigi \u00F6sszes
+                        eredm\u00E9nyed \u00E9s megszerzett med\u00E1lod elv\u00E9sz. Biztos vagy benne?
                         """;
             String errorTitle = "Meger\u0151s\u00Edt\u00E9s";
             MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.WARNING, new DialogCommands.ResetScoresCommand(), new DialogCommands.DoNothingCommand());
@@ -94,8 +94,8 @@ public class Settings extends JPanel {
         JButton verbLevelReset = new JButton("Hib\u00E1s ig\u00E9k");
         verbLevelReset.addActionListener(e-> {
             String errorMessage = """
-                        Ezzel a teljes \u00E1tn\u00E9z\u00E9sre v\u00E1r\u00F3 ig\u00E9id list\u00E1ja elv\u00E9sz.
-                        Biztos vagy benne?
+                        Ezzel a teljes \u00E1tn\u00E9z\u00E9sre v\u00E1r\u00F3 ig\u00E9id list\u00E1ja
+                        alaphelyzetbe \u00E1ll. Biztos vagy benne?
                         """;
             String errorTitle = "Meger\u0151s\u00Edt\u00E9s";
             MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.WARNING, new DialogCommands.ResetVerbLevelsCommand(), new DialogCommands.DoNothingCommand());
@@ -105,8 +105,8 @@ public class Settings extends JPanel {
         JButton nounLevelReset = new JButton("Hib\u00E1s ford\u00EDt\u00E1sok");
         nounLevelReset.addActionListener(e-> {
             String errorMessage = """
-                        Ezzel a teljes \u00E1tn\u00E9z\u00E9sre v\u00E1r\u00F3 ford\u00EDt\u00E1said list\u00E1ja elv\u00E9sz.
-                        Biztos vagy benne?
+                        Ezzel a teljes \u00E1tn\u00E9z\u00E9sre v\u00E1r\u00F3 ford\u00EDt\u00E1said list\u00E1ja
+                         alaphelyzetbe \u00E1ll. Biztos vagy benne?
                         """;
             String errorTitle = "Meger\u0151s\u00Edt\u00E9s";
             MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.WARNING, new DialogCommands.ResetNounLevelsCommand(), new DialogCommands.DoNothingCommand());
