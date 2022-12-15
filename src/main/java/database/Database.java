@@ -69,7 +69,7 @@ abstract class Database {
                 String errorMessage = """
                         Kapcsol\u00F3d\u00E1s az online adatb\u00E1zishoz sikertelen.
                         Szeretn\u00E9d elind\u00EDtani az alkalmaz\u00E1st offline m\u00F3dban?
-                        Részletek:
+                        R\u00E9szletek:
                         """ + e.toString();
                 String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
                 MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.QUESTION, new DoNothingCommand(), new ExitCommand());
@@ -85,7 +85,7 @@ abstract class Database {
                 String errorMessage = """
                         Kapcsol\u00F3d\u00E1s a lok\u00E1lis adatb\u00E1zishoz sikertelen.
                         K\u00E9rj\u00FCk telep\u00EDtsd \u00FAjra a programot.
-                        Részletek:
+                        R\u00E9szletek:
                         """ + e.toString();
                 String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
                 MainWindow.dialog.showExceptionDialog(errorTitle, errorMessage, DialogType.ERROR);

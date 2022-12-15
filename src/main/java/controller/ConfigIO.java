@@ -44,9 +44,9 @@ public class ConfigIO {
                 }
             }
         } else {
-            MainWindow.dialog.showDialog("Konfigur\u00E1ci\u00F3 beolvas\u00E1si hiba", "A be\u00E1ll\u00EDt\u00E1sokat" +
+            MainWindow.dialog.showDialog("Konfigur\u00E1ci\u00F3 beolvas\u00E1si hiba", "A be\u00E1ll\u00EDt\u00E1sokat " +
                     "tartalmaz\u00F3 konfigur\u00E1ci\u00F3s f\u00E1jl megs\u00E9r\u00FClt, vagy t\u00F6r\u00F6lve lett.\n" +
-                    "A program bet\u00F6lti az alap\u00E9rtelmezett be\u00E1ll\u00EDt\u00E1sokat", DialogType.WARNING);
+                    "A program megpr\u00F3b\u00E1lja bet\u00F6lteni az alap\u00E9rtelmezett be\u00E1ll\u00EDt\u00E1sokat.", DialogType.WARNING);
             file.createNewFile();
             inputConfig = new AppConfigurations();
         }
@@ -371,11 +371,11 @@ public class ConfigIO {
         if (file.exists() && file.isFile()) {
             ArrayList<String> lines = readLines(file);
             if (!lines.contains(badgeType)) {
-                OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
-                writer.write(badgeType);
+                OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file, true), StandardCharsets.UTF_8);
+                writer.write(badgeType + "\n");
                 writer.close();
                 MainWindow.dialog.showDialog("Sz\u00E9p munka!", "\u00DAj b\u00E9lyeget szerezt\u00E9l a" +
-                        "gy\u0171jtem\u00E9nyedbe!\n " + "Megtekintheted az Eredm\u00E9nyek men\u00FCponton bel\u00FCl.", DialogType.INFORMATION);
+                        "gy\u0171jtem\u00E9nyedbe!\n" + "Megtekintheted az Eredm\u00E9nyek men\u00FCponton bel\u00FCl.", DialogType.INFORMATION);
             }
         }
     }

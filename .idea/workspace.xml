@@ -9,20 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Storing medals">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add badges, bugfixes, etc.">
+      <change afterPath="$PROJECT_DIR$/img/badges/silver_principiante.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/badges.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/badges.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/resetlevels.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/resetlevels.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/verbrevisionquery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/verbrevisionquery.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/wordrevisionquery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/wordrevisionquery.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/badges/silver_princpiante.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DialogCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DialogCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/Achievements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Achievements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Settings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Relocated images">
-      <created>1668944326145</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1668944326145</updated>
     </task>
     <task id="LOCAL-00019" summary="Mamí sube algo, dame contenido">
       <created>1668991667007</created>
@@ -523,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671107454140</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Add badges, bugfixes, etc.">
+      <created>1671111433185</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1671111433185</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -542,7 +542,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Now with verb hints!" />
     <MESSAGE value="Percent indicator made better" />
     <MESSAGE value="Word quiz with result statistics" />
     <MESSAGE value="Verb quiz with result statistics" />
@@ -567,7 +566,8 @@
     <MESSAGE value="Add new words, quick bugfixes, limitations on verb and quiz preferences" />
     <MESSAGE value="Verb quiz label update" />
     <MESSAGE value="Storing medals" />
-    <option name="LAST_COMMIT_MESSAGE" value="Storing medals" />
+    <MESSAGE value="Add badges, bugfixes, etc." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add badges, bugfixes, etc." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

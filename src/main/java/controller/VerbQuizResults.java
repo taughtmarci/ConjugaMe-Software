@@ -80,13 +80,12 @@ public class VerbQuizResults {
     private void validateBadge(String groupName, float percentage) {
         System.out.println(percentage);
         try {
-            if (percentage >= 0.5) {
+            if (percentage >= 0.5)
                 ConfigIO.updateBadgeFile("config/badges.cfg", "bronze_" + groupName);
-            } else if (percentage >= 0.8) {
+            if (percentage >= 0.8)
                 ConfigIO.updateBadgeFile("config/badges.cfg", "silver_" + groupName);
-            } else if (percentage == 1) {
+            if (percentage == 1)
                 ConfigIO.updateBadgeFile("config/badges.cfg", "gold_" + groupName);
-            }
         } catch (IOException e) {
             MainWindow.dialog.showExceptionDialog("B\u00E1lyeg beolvas\u00E1si hiba", "Az alkalmaz\u00E1s konfigur\u00E1ci\u00F3s f\u00E1jljai megs\u00E9r\u00FClhettek.\n" +
                     "K\u00E9rj\u00FCk, telep\u00EDtsd \u00FAjra az alkalmaz\u00E1st!\nR\u00E9szletek: " + e.toString(), DialogType.ERROR);
