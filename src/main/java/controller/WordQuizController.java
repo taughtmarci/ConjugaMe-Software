@@ -27,7 +27,7 @@ public class WordQuizController {
 
     private EndWordQuiz next;
 
-    public WordQuizController(WordQuiz quiz) throws IOException {
+    public WordQuizController(WordQuiz quiz) {
         this.quiz = quiz;
         this.comps = quiz.getComps();
 

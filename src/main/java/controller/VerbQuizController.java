@@ -27,7 +27,7 @@ public class VerbQuizController {
     private ArrayList<Conjugation> incorrectConjugations;
     private EndVerbQuiz next;
 
-    public VerbQuizController(VerbQuiz quiz) throws IOException {
+    public VerbQuizController(VerbQuiz quiz) {
         this.quiz = quiz;
         this.comps = quiz.getComps();
 
@@ -44,13 +44,15 @@ public class VerbQuizController {
         score = 0;
         outOf = 0;
         iteration = 0;
+
+        currentForm = comps.getSelectedForms().get((int)
+                (Math.random() * comps.getSelectedForms().size()));
     }
 
-    public void nextRound() {
+    public void nextRound(boolean isFirst) {
         if (iteration == comps.getWordAmount()) {
             finishQuiz();
-        }
-        else {
+        } else {
             currentVerb = verbs.get(iteration);
             quiz.setCurrentVerbLabel(currentVerb.getBasic().getInfinitivo());
 
@@ -58,7 +60,7 @@ public class VerbQuizController {
             quiz.setCurrentDefinitionsLabel(currentVerb.getBasic().getDefinitions());
 
             if (!comps.onlyParticipio()) {
-                currentForm = comps.getSelectedForms().get((int)
+                if (!isFirst) currentForm = comps.getSelectedForms().get((int)
                         (Math.random() * comps.getSelectedForms().size()));
                 quiz.setCurrentFormLabel(currentForm.toString());
 

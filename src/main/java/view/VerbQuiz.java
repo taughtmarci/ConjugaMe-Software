@@ -49,7 +49,7 @@ public class VerbQuiz extends Quiz {
         setLayout(new MigLayout("al center center"));
         initComponents();
 
-        controller.nextRound();
+        controller.nextRound(true);
         setVisible(true);
     }
 
@@ -98,12 +98,13 @@ public class VerbQuiz extends Quiz {
 
         // add sections panel
         if (comps.isParticipioPresenteSelected()) {
-            presentoVerbSection = new VerbSection("Participio presente", resultImage, true);
+            presentoVerbSection = new VerbSection(controller.currentForm, "Participio presente", resultImage, true);
             add(presentoVerbSection, "span, align center");
         }
 
         if (comps.isParticipioPasadoSelected()) {
-            pasadoVerbSection = new VerbSection("Participio pasado", resultImage, !comps.isParticipioPresenteSelected());
+            pasadoVerbSection = new VerbSection(controller.currentForm, "Participio pasado",
+                    resultImage, !comps.isParticipioPresenteSelected());
             add(pasadoVerbSection, "span, align center");
         }
 
@@ -111,7 +112,7 @@ public class VerbQuiz extends Quiz {
         if (!comps.onlyParticipio()) {
             add(currentFormLabel, "span, align center");
             for (Pronoun p : comps.getSelectedPronouns()) {
-                verbSections.add(new VerbSection(p.toString(), resultImage));
+                verbSections.add(new VerbSection(controller.currentForm, p.toString(), resultImage));
                 add(verbSections.get(verbSections.size() - 1), "span, align center");
             }
         }
@@ -131,9 +132,9 @@ public class VerbQuiz extends Quiz {
             if (this.isInstantFeedback) scoreLabel.setText((controller.getScore() + " pont"));
             if (comps.isNormal()) outOfLabel.setText(controller.getIteration() + 1 + "/" + comps.getWordAmount());
 
-            // refresh the sections and next round
+            // next round, refresh section
+            controller.nextRound(false);
             refreshAllSections();
-            controller.nextRound();
             this.updateUI();
         });
 
@@ -150,13 +151,13 @@ public class VerbQuiz extends Quiz {
 
     protected void refreshAllSections() {
         if (comps.isParticipioPresenteSelected())
-            presentoVerbSection.refreshSection();
+            presentoVerbSection.refreshSection(controller.currentForm);
 
         if (comps.isParticipioPasadoSelected())
-            pasadoVerbSection.refreshSection();
+            pasadoVerbSection.refreshSection(controller.currentForm);
 
         for (VerbSection verbSection : verbSections)
-            verbSection.refreshSection();
+            verbSection.refreshSection(controller.currentForm);
     }
 
     private static class EnterKeyListener implements AWTEventListener {

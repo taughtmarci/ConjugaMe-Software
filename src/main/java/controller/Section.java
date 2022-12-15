@@ -1,5 +1,6 @@
 package controller;
 
+import model.Form;
 import model.ResultImage;
 import net.miginfocom.swing.MigLayout;
 import view.MainWindow;
@@ -93,6 +94,11 @@ public abstract class Section extends JPanel {
     public abstract boolean evaluate();
 
     public void refreshSection() {
+        input.setText("");
+        input.requestFocusInWindow();
+    }
+
+    public void refreshSection(Form form) {
         input.setText("");
         input.requestFocusInWindow();
     }

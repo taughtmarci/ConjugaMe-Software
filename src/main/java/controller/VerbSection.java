@@ -1,5 +1,6 @@
 package controller;
 
+import model.Form;
 import model.ResultImage;
 import view.MainWindow;
 
@@ -12,25 +13,29 @@ public class VerbSection extends Section {
     private boolean isFirst = false;
     private final boolean isInstantFeedback;
 
-    public VerbSection(String pronoun, ResultImage resultImage) {
+    public VerbSection(Form form, String pronoun, ResultImage resultImage) {
         super(resultImage);
         this.pronoun = pronoun;
+        this.pronounLabel = new JLabel(pronoun, SwingConstants.RIGHT);
         this.isInstantFeedback = MainWindow.config.isInstantFeedback();
 
+        this.refreshSection(form);
         initComponents();
     }
 
-    public VerbSection(String pronoun, ResultImage resultImage, boolean isFirst) {
+    public VerbSection(Form form, String pronoun, ResultImage resultImage, boolean isFirst) {
         super(resultImage);
         this.pronoun = pronoun;
+        this.pronounLabel = new JLabel(pronoun, SwingConstants.RIGHT);
+
         this.isFirst = isFirst;
         this.isInstantFeedback = MainWindow.config.isInstantFeedback();
 
         initComponents();
+        this.refreshSection(form);
     }
 
     private void initComponents() {
-        pronounLabel = new JLabel(pronoun, SwingConstants.RIGHT);
 
         if (this.isInstantFeedback) {
             checkLabel.setIcon(resultImage.blankImage());
@@ -67,6 +72,20 @@ public class VerbSection extends Section {
     @Override
     public void refreshSection() {
         input.setText("");
+        if (isFirst) input.requestFocusInWindow();
+    }
+
+    @Override
+    public void refreshSection(Form form) {
+        input.setText("");
+        if (!getPronoun().equals("Participio presente") && !getPronoun().equals("Participio pasado")) {
+            switch (form) {
+                case IndicativoImperfecto -> pronounLabel.setText("Antes " + pronoun.toLowerCase());
+                case ImperativoNegativo -> pronounLabel.setText(pronoun + " no");
+                case SubjuntivoPresente -> pronounLabel.setText("Que " + pronoun.toLowerCase());
+                default -> pronounLabel.setText(pronoun);
+            }
+        }
         if (isFirst) input.requestFocusInWindow();
     }
 
