@@ -1,6 +1,7 @@
 package view;
 
 import controller.AchievementsController;
+import model.Badge;
 import model.DialogType;
 import net.miginfocom.swing.MigLayout;
 
@@ -8,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Achievements extends JPanel {
     private final MainWindow main;
@@ -48,7 +50,7 @@ public class Achievements extends JPanel {
         verbRevisionPanel = new JPanel(new MigLayout("al center center"));
         JLabel verbRevisionTitle = new JLabel("\u00C1tn\u00E9z\u00E9sre v\u00E1r\u00F3 ig\u00E9k");
         verbRevisionTitle.setFont(new Font("Verdana", Font.BOLD, 24));
-        verbRevisionPanel.add(verbRevisionTitle, "al center center, span");
+        verbRevisionPanel.add(verbRevisionTitle, "al center top, span");
 
         // init verb revision list
         verbRevisionScroll = new JScrollPane(controller.updateVerbRevisionList(controller.getGroupNames()[0]));
@@ -77,7 +79,7 @@ public class Achievements extends JPanel {
         wordRevisionPanel = new JPanel(new MigLayout("al center center"));
         JLabel wordRevisionTitle = new JLabel("\u00C1tn\u00E9z\u00E9sre v\u00E1r\u00F3 ford\u00EDt\u00E1sok");
         wordRevisionTitle.setFont(new Font("Verdana", Font.BOLD, 24));
-        wordRevisionPanel.add(wordRevisionTitle, "al center center, span");
+        wordRevisionPanel.add(wordRevisionTitle, "al center top, span");
 
         // init word revision list
         wordRevisionScroll = new JScrollPane(controller.updateWordRevisionList(controller.getGroupNames()[0]));
@@ -108,7 +110,7 @@ public class Achievements extends JPanel {
         // scores label
         JLabel scoreLabel = new JLabel("Eredm\u00E9nyek");
         scoreLabel.setFont(new Font("Verdana", Font.BOLD, 24));
-        scoresPanel.add(scoreLabel, "al center center, span");
+        scoresPanel.add(scoreLabel, "al center top, span");
 
         // init scores list
         scoresScroll = new JScrollPane(controller.updateScoresList(isVerb, isNormal));
@@ -149,11 +151,33 @@ public class Achievements extends JPanel {
         return scoresPanel;
     }
 
+    private JPanel initMedalPanel() {
+        JPanel medalPanel = new JPanel(new MigLayout("al center top"));
+        JPanel medalHolderPanel = new JPanel (new MigLayout("al center center"));
+        medalHolderPanel.setBackground(MainWindow.config.isDarkMode() ? Color.gray : Color.white);
+
+        JLabel wordRevisionTitle = new JLabel("B\u00E9lyegek");
+        wordRevisionTitle.setFont(new Font("Verdana", Font.BOLD, 24));
+        medalPanel.add(wordRevisionTitle, "al center center, span");
+
+        ArrayList<JLabel> badgeLabel = new ArrayList<>();
+        int iterator = 1;
+        for (Badge badge : controller.getBadges()) {
+            String spanner = iterator % 4 == 0 ? ", span" : "";
+            badgeLabel.add(badge);
+            medalHolderPanel.add(badgeLabel.get(badgeLabel.size() - 1), "al center center" + spanner);
+            iterator++;
+        }
+
+        medalPanel.add(medalHolderPanel, "al center center");
+        return medalPanel;
+    }
 
     private void initComponents() {
         tabbedPane.add("Eredm\u00E9nyek", initScorePanel());
         tabbedPane.add("Ig\u00E9k \u00E1tn\u00E9z\u00E9sre", initVerbRevisionPanel());
         tabbedPane.add("Ford\u00EDt\u00E1sok \u00E1tn\u00E9z\u00E9sre", initWordRevisionPanel());
+        tabbedPane.add("B\u00E9lyegek", initMedalPanel());
         add(tabbedPane, "al center center, span");
 
         // Back to dashboard button

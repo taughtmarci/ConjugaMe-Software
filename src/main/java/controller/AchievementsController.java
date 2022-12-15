@@ -6,6 +6,7 @@ import view.Achievements;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -18,6 +19,10 @@ public class AchievementsController {
     private final JTable emptyVerbListDefault;
     private final JTable emptyWordListDefault;
     private final JTable emptyScoresList;
+
+    // Badge list and its path
+    private final String BADGES_FILE_PATH = "config/badges.cfg";
+    public ArrayList<Badge> badges = new ArrayList<>();
 
     public AchievementsController(Achievements achievements) throws IOException {
         this.achievements = achievements;
@@ -46,6 +51,11 @@ public class AchievementsController {
         };
         emptyScoresModel.addRow(new String[]{"M\u00E9g nincsenek mentett kv\u00EDz eredm\u00E9nyeid."});
         this.emptyScoresList = new JTable(emptyScoresModel);
+
+        // load badges
+        // Load badges
+        for (String badgeName : ConfigIO.readLines(new File(BADGES_FILE_PATH)))
+            badges.add(new Badge(badgeName));
     }
 
     private ArrayList<Word> getWordRevisionList(String groupName) {
@@ -141,5 +151,9 @@ public class AchievementsController {
 
     public String[] getGroupNames() {
         return groupNames;
+    }
+
+    public ArrayList<Badge> getBadges() {
+        return badges;
     }
 }

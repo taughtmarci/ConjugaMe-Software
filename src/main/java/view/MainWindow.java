@@ -5,10 +5,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import controller.ConfigIO;
 import database.Local;
 import database.Online;
-import model.AppConfigurations;
-import model.DialogType;
-import model.VerbQuizComponents;
-import model.WordQuizComponents;
+import model.*;
 
 import javax.swing.*;
 import java.io.IOException;
