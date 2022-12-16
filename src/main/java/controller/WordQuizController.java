@@ -66,7 +66,7 @@ public class WordQuizController {
                     case Hard -> currentHint = createHint(currentHint, 0.75);
                 }
             }
-            quiz.setCurrentWordLabel(currentHint);
+            quiz.setCurrentWordLabel((comps.isArticlesNeeded() ? "__ " : "") + currentHint);
 
             // definitions
             quiz.setCurrentDefinitionsLabel(currentWord.getDefinitions());

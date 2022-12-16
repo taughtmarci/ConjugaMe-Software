@@ -9,20 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add badges, bugfixes, etc.">
-      <change afterPath="$PROJECT_DIR$/img/badges/silver_principiante.png" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Minor bugfixes, typos">
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/database/DatabaseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/view/MainWindowTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ConjugaMe_main_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/ConjugaMe_main_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/badges.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/badges.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/verbrevisionquery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/verbrevisionquery.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/wordrevisionquery.sql" beforeDir="false" afterPath="$PROJECT_DIR$/database/wordrevisionquery.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/badges/silver_princpiante.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Achievements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Achievements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +63,7 @@
         <option value="Enum" />
         <option value="Record" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -88,19 +88,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marci/Desktop/ConjugaMe/config&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/Marci/Desktop/ConjugaMe/config",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model" />
@@ -115,6 +117,14 @@
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="view.MainWindow" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="view" />
+      <recent name="database" />
+      <recent name="controller" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.ConjugaMe">
     <configuration name="ConjugaMe" type="Application" factoryName="Application">
@@ -122,7 +132,6 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="view.MainWindow" />
       <module name="ConjugaMe.main" />
-      <option name="VM_PARAMETERS" value="-Dsun.java2d.uiScale=1" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -148,6 +157,29 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="WordQuizTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;view.WordQuizTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="ConjugaMe-Software" />
       <method v="2">
@@ -163,10 +195,12 @@
     </configuration>
     <list>
       <item itemvalue="Application.ConjugaMe" />
+      <item itemvalue="Gradle.WordQuizTest" />
       <item itemvalue="Gradle.ConjugaMe [jar]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.WordQuizTest" />
         <item itemvalue="Gradle.ConjugaMe [jar]" />
       </list>
     </recent_temporary>
@@ -179,13 +213,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Mamí sube algo, dame contenido">
-      <created>1668991667007</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1668991667007</updated>
     </task>
     <task id="LOCAL-00020" summary="New buttons">
       <created>1669036297624</created>
@@ -523,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671111433185</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Minor bugfixes, typos">
+      <created>1671136793748</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1671136793749</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -542,7 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Percent indicator made better" />
     <MESSAGE value="Word quiz with result statistics" />
     <MESSAGE value="Verb quiz with result statistics" />
     <MESSAGE value="Init Settings panel" />
@@ -567,7 +600,8 @@
     <MESSAGE value="Verb quiz label update" />
     <MESSAGE value="Storing medals" />
     <MESSAGE value="Add badges, bugfixes, etc." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add badges, bugfixes, etc." />
+    <MESSAGE value="Minor bugfixes, typos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor bugfixes, typos" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

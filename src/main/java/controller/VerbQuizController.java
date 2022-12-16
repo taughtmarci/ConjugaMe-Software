@@ -5,13 +5,12 @@ import view.EndVerbQuiz;
 import view.MainWindow;
 import view.VerbQuiz;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class VerbQuizController {
     private final VerbQuiz quiz;
-    private ArrayList<Verb> verbs;
+    private final ArrayList<Verb> verbs;
     private final VerbQuizComponents comps;
 
     public int score;
@@ -22,10 +21,9 @@ public class VerbQuizController {
     public Verb currentVerb;
     public Form currentForm;
 
-    private ArrayList<String> mistakes;
-    private ArrayList<Conjugation> correctConjugations;
-    private ArrayList<Conjugation> incorrectConjugations;
-    private EndVerbQuiz next;
+    private final ArrayList<String> mistakes;
+    private final ArrayList<Conjugation> correctConjugations;
+    private final ArrayList<Conjugation> incorrectConjugations;
 
     public VerbQuizController(VerbQuiz quiz) {
         this.quiz = quiz;
@@ -157,7 +155,7 @@ public class VerbQuizController {
         VerbQuizResults results = new VerbQuizResults(this);
         quiz.setVisible(false);
 
-        next = new EndVerbQuiz(quiz.getMain(), results);
+        EndVerbQuiz next = new EndVerbQuiz(quiz.getMain(), results);
         quiz.getMain().switchPanels(quiz, next);
     }
 
