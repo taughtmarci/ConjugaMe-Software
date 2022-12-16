@@ -10,12 +10,10 @@ public enum Pronoun {
     Ustedes ("Ellas/ellos");
 
     private final String name;
-    private Pronoun(String s) {
+    Pronoun(String s) {
         name = s;
     }
-    public boolean equalsName(String otherName) {
-        return name.equals(otherName);
-    }
+
     public String toString() {
         return this.name;
     }
