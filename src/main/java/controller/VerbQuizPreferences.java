@@ -83,7 +83,7 @@ public class VerbQuizPreferences extends QuizPreferences {
                 MainWindow.verbComps = getComps();
                 error = "Sikeres ment\u00E9s!";
             } catch (IOException e) {
-                error = "Nem sikerült menteni a preferenciákat.";
+                error = "Nem siker\u00FClt menteni a preferenci\u00E1kat.";
             }
         }
         if (startFlag && error.equals("Sikeres ment\u00E9s!")) {

@@ -9,18 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Minor bugfixes, typos">
-      <change afterPath="$PROJECT_DIR$/src/main/java/database/SyncHandler.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add app and database version print">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/groups.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/groups.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/SettingsPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SettingsPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/AppConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/AppConfigurations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szakdolgozat.docx" beforeDir="false" afterPath="$PROJECT_DIR$/szakdolgozat.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GroupHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GroupHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,13 +209,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00020" summary="New buttons">
-      <created>1669036297624</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1669036297624</updated>
     </task>
     <task id="LOCAL-00021" summary="Reorganize structure">
       <created>1669193765615</created>
@@ -557,7 +546,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671136793749</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Add app and database version print">
+      <created>1671367923589</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1671367923589</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -576,7 +572,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Word quiz with result statistics" />
     <MESSAGE value="Verb quiz with result statistics" />
     <MESSAGE value="Init Settings panel" />
     <MESSAGE value="Add Settings panel buttons" />
@@ -601,7 +596,8 @@
     <MESSAGE value="Storing medals" />
     <MESSAGE value="Add badges, bugfixes, etc." />
     <MESSAGE value="Minor bugfixes, typos" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor bugfixes, typos" />
+    <MESSAGE value="Add app and database version print" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add app and database version print" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
