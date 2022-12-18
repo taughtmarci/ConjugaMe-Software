@@ -9,14 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Add app and database version print">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Word quiz article print bugfix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/groups.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/groups.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/GroupHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/GroupHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndVerbQuiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/EndWordQuiz.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,13 +207,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Reorganize structure">
-      <created>1669193765615</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1669193765615</updated>
     </task>
     <task id="LOCAL-00022" summary="Add radio, complete radio">
       <created>1669200116137</created>
@@ -553,7 +544,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671367923589</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Word quiz article print bugfix">
+      <created>1671371843407</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1671371843407</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -572,7 +570,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Verb quiz with result statistics" />
     <MESSAGE value="Init Settings panel" />
     <MESSAGE value="Add Settings panel buttons" />
     <MESSAGE value="Finish settings panel" />
@@ -597,7 +594,8 @@
     <MESSAGE value="Add badges, bugfixes, etc." />
     <MESSAGE value="Minor bugfixes, typos" />
     <MESSAGE value="Add app and database version print" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add app and database version print" />
+    <MESSAGE value="Word quiz article print bugfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Word quiz article print bugfix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
