@@ -61,7 +61,6 @@ public class EndWordQuiz extends JPanel {
         resultsPanel.add(resultLabel, "al center center, span");
 
         // Result in percent
-
         percentLabel = new JLabel("Sz\u00E1zal\u00E9k: " + results.getPercentText());
         resultsPanel.add(percentLabel, "al center center, span");
 
@@ -91,10 +90,20 @@ public class EndWordQuiz extends JPanel {
                 }
             };
             incorrectsList.setModel(incorrectsModel);
-
-            JScrollPane incorrectScroll = new JScrollPane(incorrectsList);
-            incorrectPanel.add(incorrectScroll);
+        } else {
+            // default JTable for revision lists
+            DefaultTableModel emptyIncorrectListModel = new DefaultTableModel(new String[]{"J\u00F3 h\u00EDr!"}, 0) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            emptyIncorrectListModel.addRow(new String[]{"A lista \u00FCres."});
+            incorrectsList = new JTable(emptyIncorrectListModel);
         }
+        JScrollPane incorrectScroll = new JScrollPane(incorrectsList);
+        incorrectPanel.add(incorrectScroll);
+
         if (correctWords.size() > 0) {
             correctsList = new JTable(correctWords.getData(), correctWords.getColumnNames());
             // set model
@@ -105,10 +114,19 @@ public class EndWordQuiz extends JPanel {
                 }
             };
             correctsList.setModel(correctsModel);
-
-            JScrollPane correctScroll = new JScrollPane(correctsList);
-            correctPanel.add(correctScroll);
+        } else {
+            // default JTable for revision lists
+            DefaultTableModel emptyCorrectListModel = new DefaultTableModel(new String[]{"Szomor\u00FA h\u00EDr :("}, 0) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            emptyCorrectListModel.addRow(new String[]{"A lista \u00FCres."});
+            correctsList = new JTable(emptyCorrectListModel);
         }
+        JScrollPane correctScroll = new JScrollPane(correctsList);
+        correctPanel.add(correctScroll);
 
         pane.add("Hib\u00E1s v\u00E1laszok", incorrectPanel);
         pane.add("Helyes v\u00E1laszok", correctPanel);
