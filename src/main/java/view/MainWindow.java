@@ -6,8 +6,10 @@ import controller.ConfigIO;
 import database.Local;
 import database.Online;
 import model.*;
+import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 
 public class MainWindow extends JFrame {
@@ -27,6 +29,8 @@ public class MainWindow extends JFrame {
 
     // Dialog handler
     public static Dialog dialog = new Dialog();
+
+
 
     public MainWindow() {
         try {

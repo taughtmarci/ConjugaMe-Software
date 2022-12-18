@@ -24,7 +24,13 @@ public class SettingsPreferences {
     }
 
     public void setupConfig() throws UnsupportedLookAndFeelException {
+        float tempAppVersion = MainWindow.config.getAppVersion();
+        float tempDatabaseVersion = MainWindow.config.getDatabaseVersion();
         this.config = new AppConfigurations();
+
+        // version number
+        config.setAppVersion(tempAppVersion);
+        config.setDatabaseVersion(tempDatabaseVersion);
 
         // appearance
         config.setDarkMode(settings.getDarkModeRadio().isSelected());

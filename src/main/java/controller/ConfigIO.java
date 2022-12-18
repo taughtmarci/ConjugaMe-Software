@@ -21,6 +21,14 @@ public class ConfigIO {
 
             for (int i = 0; i < lines.size(); i++) {
                 switch (lines.get(i)) {
+                    case "AppVersion" -> {
+                        i++;
+                        inputConfig.setAppVersion(Float.parseFloat(lines.get(i).trim()));
+                    }
+                    case "DatabaseVersion" -> {
+                        i++;
+                        inputConfig.setDatabaseVersion(Float.parseFloat(lines.get(i).trim()));
+                    }
                     case "IsDarkMode" -> {
                         i++;
                         inputConfig.setDarkMode(Boolean.parseBoolean(lines.get(i).trim()));
@@ -64,6 +72,8 @@ public class ConfigIO {
             file.createNewFile();
         }
 
+        writer.write("AppVersion\n" + outputConfig.getAppVersion() + "\n\n");
+        writer.write("DatabaseVersion\n" + outputConfig.getDatabaseVersion() + "\n\n");
         writer.write("IsDarkMode\n" + outputConfig.isDarkMode() + "\n\n");
         writer.write("IsOfflineMode\n" + outputConfig.isOfflineMode() + "\n\n");
         writer.write("IsInstantFeedback\n" + outputConfig.isInstantFeedback() + "\n\n");

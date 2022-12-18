@@ -8,6 +8,7 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,7 +48,11 @@ public class Dashboard extends JPanel {
         logo.setIcon(logoIcon);
         add(logo, "align center, span");
 
-        add(initButtonPanel());
+        add(initButtonPanel(), "span");
+        JLabel versions = new JLabel("Verzi\u00F3: " + MainWindow.config.getAppVersion() +
+                ", db: " + MainWindow.config.getDatabaseVersion());
+        versions.setForeground(Color.LIGHT_GRAY);
+        add(versions, "align right, span");
     }
 
     private JPanel initButtonPanel() {

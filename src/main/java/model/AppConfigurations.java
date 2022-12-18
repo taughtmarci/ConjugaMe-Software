@@ -3,6 +3,9 @@ package model;
 import java.awt.*;
 
 public class AppConfigurations {
+    public float appVersion;
+    public float databaseVersion;
+
     public boolean isDarkMode;
     public boolean isOfflineMode;
     public boolean isInstantFeedback;
@@ -25,6 +28,22 @@ public class AppConfigurations {
     public Color getBorderColor() {
         if (isDarkMode) return Color.GRAY;
         else return Color.BLACK;
+    }
+
+    public float getAppVersion() {
+        return appVersion;
+    }
+
+    public void setAppVersion(float appVersion) {
+        this.appVersion = appVersion;
+    }
+
+    public float getDatabaseVersion() {
+        return databaseVersion;
+    }
+
+    public void setDatabaseVersion(float databaseVersion) {
+        this.databaseVersion = databaseVersion;
     }
 
     public boolean isDarkMode() {
