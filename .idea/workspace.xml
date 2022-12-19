@@ -9,18 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Word quiz article print bugfix&#10;End quiz panel bugfix">
-      <change afterPath="$PROJECT_DIR$/src/test/java/controller/AchievementsControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/view/VerbQuizSetupTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/~$akdolgozat.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/~WRL3005.tmp" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Test cases start">
+      <change afterPath="$PROJECT_DIR$/src/test/java/view/WordQuizSetupTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DialogCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DialogCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Online.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Online.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/SyncHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/ScoresList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ScoresList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/database/DatabaseTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/view/MainWindowTest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/szakdolgozat.docx" beforeDir="false" afterPath="$PROJECT_DIR$/szakdolgozat.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/~$akdolgozat.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/~WRL3005.tmp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,21 +92,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marci/Downloads/webswing-examples-eval-22.2.2/apps/SwingDemo&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/Marci/Downloads/webswing-examples-eval-22.2.2/apps/SwingDemo",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "Errors"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="model" />
@@ -136,7 +141,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VerbQuizSetupTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="VerbQuizSetupTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -228,7 +233,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="WordQuizTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="WordQuizSetupTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -241,7 +246,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;view.WordQuizTest&quot;" />
+            <option value="&quot;view.WordQuizSetupTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -266,19 +271,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.ConjugaMe" />
-      <item itemvalue="Gradle.VerbQuizSetupTest" />
+      <item itemvalue="Gradle.VerbQuizSetupTest (1)" />
+      <item itemvalue="Gradle.WordQuizSetupTest" />
       <item itemvalue="Gradle.VerbQuizSetupTest.setupInvalidComps" />
       <item itemvalue="Gradle.VerbQuizSetupTest.setupValidComps" />
       <item itemvalue="Gradle.VerbQuizSetupTest.testFormOptions" />
-      <item itemvalue="Gradle.WordQuizTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.VerbQuizSetupTest" />
+        <item itemvalue="Gradle.WordQuizSetupTest" />
+        <item itemvalue="Gradle.VerbQuizSetupTest (1)" />
         <item itemvalue="Gradle.VerbQuizSetupTest.setupValidComps" />
         <item itemvalue="Gradle.VerbQuizSetupTest.setupInvalidComps" />
         <item itemvalue="Gradle.VerbQuizSetupTest.testFormOptions" />
-        <item itemvalue="Gradle.WordQuizTest" />
       </list>
     </recent_temporary>
   </component>
@@ -290,13 +295,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Add SetupPane">
-      <created>1669992187257</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1669992187257</updated>
     </task>
     <task id="LOCAL-00025" summary="Mess">
       <created>1670020475396</created>
@@ -634,7 +632,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671373552966</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Test cases start">
+      <created>1671408069122</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1671408069122</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -653,7 +658,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add Settings panel buttons" />
     <MESSAGE value="Finish settings panel" />
     <MESSAGE value="Instant feedback finish" />
     <MESSAGE value="--- STATE OF THE ART ---&#10;change ny to ñ while typing" />
@@ -678,7 +682,14 @@
     <MESSAGE value="Add app and database version print" />
     <MESSAGE value="Word quiz article print bugfix" />
     <MESSAGE value="Word quiz article print bugfix&#10;End quiz panel bugfix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Word quiz article print bugfix&#10;End quiz panel bugfix" />
+    <MESSAGE value="Test cases start" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test cases start" />
+  </component>
+  <component name="XPathView.XPathProjectComponent">
+    <history />
+    <find-history>
+      <element expression="System.out.println" />
+    </find-history>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

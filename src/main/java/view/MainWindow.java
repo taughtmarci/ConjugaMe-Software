@@ -59,7 +59,7 @@ public class MainWindow extends JFrame {
 
         // Connect to databases
         local = new Local("database/mainDB.db");
-        if (!config.isOfflineMode()) online = new Online("conjugame.cxpxjtc5b29j.eu-central-1.rds.amazonaws.com", "3306", "Dictionary");
+        if (!config.isOfflineMode()) online = new Online("conjugame.cxpxjtc5b29j.eu-central-1.rds.amazonaws.com", "3306", "ConjugaMe");
 
         // Configure JFrame
         setTitle("Conj\u00FAgaMe!");

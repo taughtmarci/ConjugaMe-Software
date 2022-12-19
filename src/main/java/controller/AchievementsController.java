@@ -137,9 +137,15 @@ public class AchievementsController {
 
             // set model
             DefaultTableModel scoresModel = new DefaultTableModel(scoresList.getData(), scoresList.getColumnNames()) {
+                final Class[] types = { Integer.class, Integer.class, String.class, String.class };
                 @Override
                 public boolean isCellEditable(int row, int column) {
                     return false;
+                }
+
+                @Override
+                public Class getColumnClass(int columnIndex) {
+                    return this.types[columnIndex];
                 }
             };
             scoresTable.setAutoCreateRowSorter(true);

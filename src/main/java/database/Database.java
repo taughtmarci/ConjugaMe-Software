@@ -1,7 +1,8 @@
 package database;
 
 import controller.ConfigIO;
-import controller.DialogCommands.DoNothingCommand;
+import controller.DialogCommands;
+import controller.DialogCommands.OfflineModeCommand;
 import controller.DialogCommands.ExitCommand;
 import model.VerbQuizComponents;
 import model.*;
@@ -71,7 +72,7 @@ abstract class Database {
                         Szeretn\u00E9d elind\u00EDtani az alkalmaz\u00E1st offline m\u00F3dban?
                         """;
                 String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
-                MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.QUESTION, new DoNothingCommand(), new ExitCommand());
+                MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.QUESTION, new OfflineModeCommand(), new ExitCommand());
                 connected = false;
             }
         } else {
@@ -121,6 +122,9 @@ abstract class Database {
         if (comps.onlyParticipio()) queryDefault = ConfigIO.readSQL(BASIC_VERB_QUERY_PATH);
         else queryDefault = ConfigIO.readSQL(COMPLEX_VERB_QUERY_PATH);
 
+        int amountPerGroup = comps.getWordAmount() / comps.getSelectedGroups().size();
+        amountPerGroup = comps.getWordAmount() % 2 == 0 ? amountPerGroup : amountPerGroup + 1;
+
         for (Group g : comps.getSelectedGroups()) {
             // replace group tables
             String query = queryDefault.replace("[GROUP_TABLE]", "GRUPO_" + g.name());
@@ -151,7 +155,7 @@ abstract class Database {
             }
 
             // replace amount
-            query = query.replace("[AMOUNT]", Integer.toString(comps.getWordAmount()));
+            query = query.replace("[AMOUNT]", Integer.toString(amountPerGroup));
 
             // make query
             result.addAll(buildVerbQuery(query, comps));
@@ -226,10 +230,13 @@ abstract class Database {
 
         String queryDefault = ConfigIO.readSQL(WORD_QUERY_PATH);
 
+        int amountPerGroup = comps.getWordAmount() / comps.getSelectedGroups().size();
+        amountPerGroup = comps.getWordAmount() % 2 == 0 ? amountPerGroup : amountPerGroup + 1;
+
         for (Group g : comps.getSelectedGroups()) {
             // replace group tables and amount
             String query = queryDefault.replace("[GROUP_TABLE]", "PALABRA_" + g.name());
-            query = query.replace("[AMOUNT]", Integer.toString(comps.getWordAmount()));
+            query = query.replace("[AMOUNT]", Integer.toString(amountPerGroup));
 
             // make query
             result.addAll(buildWordQuery(query));
@@ -367,7 +374,7 @@ abstract class Database {
                             resultSet.getString("Timestamp"));
 
                     // debug
-                    System.out.println(temp.toString());
+                    //System.out.println(temp.toString());
                     result.add(temp);
                 }
             } catch (SQLException e) {
@@ -400,6 +407,34 @@ abstract class Database {
             String queryDefault = ConfigIO.readSQL(RESET_SCORES_PATH);
             String query = queryDefault.replace("[TABLE_NAME]", tableName);
             executeUpdateQuery(query);
+        }
+    }
+
+    public void doUpdates() {
+        String query = """
+                SELECT\s
+                    Infinitivo, Presento, Pasado
+                FROM
+                    ConjugaMe.Verbo
+                WHERE
+                    Status = 'New'\s
+                INTO OUTFILE 'database/downloaded.csv'\s
+                FIELDS ENCLOSED BY '"'\s
+                TERMINATED BY ';'\s
+                ESCAPED BY '"'\s
+                LINES TERMINATED BY '\\r\\n';
+                """;
+
+        try (Statement statement = connection.createStatement()) {
+            ResultSet result = statement.executeQuery(query);
+        } catch (SQLException e) {
+            String errorMessage = """
+                        Kapcsol\u00F3d\u00E1s az online adatb\u00E1zishoz sikertelen.
+                        Szeretn\u00E9d \u00E1t\u00E1ll\u00EDtani az alkalmaz\u00E1st offline m\u00F3dba?
+                        """ + e.toString();
+            String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
+            MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.QUESTION, new OfflineModeCommand(), new ExitCommand());
+            connected = false;
         }
     }
 

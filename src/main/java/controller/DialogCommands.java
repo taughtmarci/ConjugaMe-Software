@@ -10,6 +10,13 @@ public class DialogCommands {
         }
     }
 
+    public static class OfflineModeCommand implements Runnable {
+        @Override
+        public void run() {
+            MainWindow.config.setOfflineMode(true);
+        }
+    }
+
     public static class DoNothingCommand implements Runnable {
         @Override
         public void run() {}

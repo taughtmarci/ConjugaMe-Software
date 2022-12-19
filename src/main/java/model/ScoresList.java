@@ -27,23 +27,23 @@ public class ScoresList {
         return scores.size();
     }
 
-    public String[][] getData() {
-        String[][] result = new String[this.size()][columnNames.length];
+    public Object[][] getData() {
+        Object[][] result = new Object[this.size()][columnNames.length];
 
         for (int i = 0; i < this.size(); i++) {
             if (columnNames.length == 4) {
-                String[] temp = {
-                        Integer.toString(scores.get(i).score()),
-                        isNormal ? Integer.toString(scores.get(i).third()) :
+                Object[] temp = {
+                        scores.get(i).score(),
+                        isNormal ? scores.get(i).third() :
                                 ((scores.get(i).third() / 60) + ":" + (scores.get(i).third() % 60)),
                         QuizComponents.df.format(scores.get(i).percent()) + "%",
                         scores.get(i).timestamp()
                 };
                 result[i] = temp;
             } else {
-                String[] temp = {
-                        Integer.toString(scores.get(i).score()),
-                        isNormal ? Integer.toString(scores.get(i).third()) :
+                Object[] temp = {
+                        scores.get(i).score(),
+                        isNormal ? scores.get(i).third() :
                                 ((scores.get(i).third() / 60) + ":" + (scores.get(i).third() % 60)),
                         QuizComponents.df.format(scores.get(i).percent()) + "%",
                         scores.get(i).difficulty(),
