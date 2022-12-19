@@ -100,6 +100,10 @@ public class VerbQuizPreferences extends QuizPreferences {
         }
     }
 
+    public void setComps(VerbQuizComponents comps) {
+        this.comps = comps;
+    }
+
     public VerbQuizComponents getComps() {
         return comps;
     }

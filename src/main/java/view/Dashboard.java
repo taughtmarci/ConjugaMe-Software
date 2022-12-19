@@ -1,6 +1,5 @@
 package view;
 
-import model.Badge;
 import model.VerbQuizComponents;
 import controller.MenuButton;
 import model.WordQuizComponents;
