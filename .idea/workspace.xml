@@ -9,23 +9,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Test cases start">
-      <change afterPath="$PROJECT_DIR$/src/test/java/view/WordQuizSetupTest.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Bugfixes">
+      <change afterPath="$PROJECT_DIR$/src/test/java/controller/GroupHandlerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controller/VerbQuizPreferencesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controller/WordQuizPreferencesTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/appconfigurations.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/badges.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/groups.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/verbpreferences.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/wordpreferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/groups.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/groups.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DialogCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DialogCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Online.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Online.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/SyncHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/ScoresList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ScoresList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/AchievementsControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/view/VerbQuizSetupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/view/VerbQuizComponentsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/view/WordQuizSetupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/view/WordQuizComponentsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/szakdolgozat.docx" beforeDir="false" afterPath="$PROJECT_DIR$/szakdolgozat.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$akdolgozat.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/~WRL3005.tmp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,8 +68,8 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="Record" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -109,6 +111,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="controller" />
       <recent name="model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -125,12 +128,12 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="view" />
       <recent name="controller" />
+      <recent name="view" />
       <recent name="database" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ConjugaMe">
+  <component name="RunManager" selected="Gradle.Tests in 'ConjugaMe.test'">
     <configuration name="ConjugaMe" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -141,7 +144,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VerbQuizSetupTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GroupHandlerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -154,7 +157,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;view.VerbQuizSetupTest&quot;" />
+            <option value="&quot;controller.GroupHandlerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -164,7 +167,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="VerbQuizSetupTest.setupInvalidComps" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Tests in 'ConjugaMe.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -176,8 +179,6 @@
         <option name="taskNames">
           <list>
             <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;view.VerbQuizSetupTest.setupInvalidComps&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -187,7 +188,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="VerbQuizSetupTest.setupValidComps" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="VerbQuizComponentsTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -200,7 +201,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;view.VerbQuizSetupTest.setupValidComps&quot;" />
+            <option value="&quot;view.VerbQuizComponentsTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -210,7 +211,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="VerbQuizSetupTest.testFormOptions" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="VerbQuizPreferencesTest.testValidateForm" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -223,7 +224,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;view.VerbQuizSetupTest.testFormOptions&quot;" />
+            <option value="&quot;controller.VerbQuizPreferencesTest.testValidateForm&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -233,7 +234,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="WordQuizSetupTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="WordQuizPreferencesTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -246,7 +247,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;view.WordQuizSetupTest&quot;" />
+            <option value="&quot;controller.WordQuizPreferencesTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -271,19 +272,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.ConjugaMe" />
-      <item itemvalue="Gradle.VerbQuizSetupTest (1)" />
-      <item itemvalue="Gradle.WordQuizSetupTest" />
-      <item itemvalue="Gradle.VerbQuizSetupTest.setupInvalidComps" />
-      <item itemvalue="Gradle.VerbQuizSetupTest.setupValidComps" />
-      <item itemvalue="Gradle.VerbQuizSetupTest.testFormOptions" />
+      <item itemvalue="Gradle.GroupHandlerTest" />
+      <item itemvalue="Gradle.Tests in 'ConjugaMe.test'" />
+      <item itemvalue="Gradle.VerbQuizComponentsTest" />
+      <item itemvalue="Gradle.VerbQuizPreferencesTest.testValidateForm" />
+      <item itemvalue="Gradle.WordQuizPreferencesTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.WordQuizSetupTest" />
-        <item itemvalue="Gradle.VerbQuizSetupTest (1)" />
-        <item itemvalue="Gradle.VerbQuizSetupTest.setupValidComps" />
-        <item itemvalue="Gradle.VerbQuizSetupTest.setupInvalidComps" />
-        <item itemvalue="Gradle.VerbQuizSetupTest.testFormOptions" />
+        <item itemvalue="Gradle.Tests in 'ConjugaMe.test'" />
+        <item itemvalue="Gradle.WordQuizPreferencesTest" />
+        <item itemvalue="Gradle.VerbQuizComponentsTest" />
+        <item itemvalue="Gradle.GroupHandlerTest" />
+        <item itemvalue="Gradle.VerbQuizPreferencesTest.testValidateForm" />
       </list>
     </recent_temporary>
   </component>
@@ -295,13 +296,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Mess">
-      <created>1670020475396</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1670020475396</updated>
     </task>
     <task id="LOCAL-00026" summary="Rename preferences file&#10;Add word query sql">
       <created>1670020518405</created>
@@ -639,7 +633,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671408069122</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Bugfixes">
+      <created>1671426984152</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1671426984158</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -658,7 +659,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Finish settings panel" />
     <MESSAGE value="Instant feedback finish" />
     <MESSAGE value="--- STATE OF THE ART ---&#10;change ny to ñ while typing" />
     <MESSAGE value="Dark mode completion" />
@@ -683,7 +683,8 @@
     <MESSAGE value="Word quiz article print bugfix" />
     <MESSAGE value="Word quiz article print bugfix&#10;End quiz panel bugfix" />
     <MESSAGE value="Test cases start" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test cases start" />
+    <MESSAGE value="Bugfixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfixes" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />

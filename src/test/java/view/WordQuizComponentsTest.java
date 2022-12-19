@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WordQuizSetupTest {
+class WordQuizComponentsTest {
     WordQuizComponents setupValidComps() {
         /*
         Instantiates a WordQuizComponents, fills up with valid data
