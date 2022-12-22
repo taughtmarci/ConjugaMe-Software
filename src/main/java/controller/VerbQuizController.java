@@ -29,7 +29,6 @@ public class VerbQuizController {
         this.quiz = quiz;
         this.comps = quiz.getComps();
 
-        if (!comps.isNormal()) comps.setWordAmount(comps.getDuration());
         this.verbs = MainWindow.local.processVerbQueries(comps);
 
         this.mistakes = new ArrayList<>();
@@ -50,9 +49,9 @@ public class VerbQuizController {
     }
 
     public void nextRound(boolean isFirst) {
-        if (iteration == comps.getWordAmount()) {
+        if (comps.isNormal() && iteration == comps.getWordAmount())
             finishQuiz();
-        } else {
+        else {
             currentVerb = verbs.get(iteration);
             quiz.setCurrentVerbLabel(currentVerb.getBasic().getInfinitivo());
 

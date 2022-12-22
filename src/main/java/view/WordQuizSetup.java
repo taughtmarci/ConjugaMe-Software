@@ -1,5 +1,6 @@
 package view;
 
+import controller.ConfigIO;
 import controller.GroupSelector;
 import controller.MenuButton;
 import controller.WordQuizPreferences;
@@ -40,7 +41,7 @@ public class WordQuizSetup extends JPanel {
 
     public WordQuizSetup(SetupPane setupPane) throws IOException {
         this.setupPane = setupPane;
-        this.comps = MainWindow.wordComps;
+        this.comps = MainWindow.wordComps.isWorkingCorrectly() ? MainWindow.wordComps : ConfigIO.getDefaultWordComps();
         this.prefs = new WordQuizPreferences(this);
         this.buttons = new ArrayList<>();
 

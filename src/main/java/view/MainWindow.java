@@ -55,6 +55,7 @@ public class MainWindow extends JFrame {
 
         // Load quiz preferences
         verbComps = ConfigIO.readVerbComponents(VERB_FILE_PATH);
+        verbComps.printStats();
         wordComps = ConfigIO.readWordComponents(WORD_FILE_PATH);
 
         // Connect to databases

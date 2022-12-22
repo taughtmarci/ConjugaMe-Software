@@ -62,10 +62,14 @@ abstract class Database {
         }
     }
 
-    public void connect() {
+    public boolean connect() {
+        boolean result = false;
+        DriverManager.setLoginTimeout(10);
+
         if (onlineFlag) {
             try {
                 connection = DriverManager.getConnection(location, username, password);
+                result = true;
             } catch (SQLException e) {
                 String errorMessage = """
                         Kapcsol\u00F3d\u00E1s az online adatb\u00E1zishoz sikertelen.
@@ -73,7 +77,7 @@ abstract class Database {
                         """;
                 String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
                 MainWindow.dialog.showYesNoDialog(errorTitle, errorMessage, DialogType.QUESTION, new OfflineModeCommand(), new ExitCommand());
-                connected = false;
+                result = false;
             }
         } else {
             try {
@@ -81,6 +85,7 @@ abstract class Database {
                 SQLiteConfig config = new SQLiteConfig();
                 config.resetOpenMode(SQLiteOpenMode.CREATE);
                 connection = DriverManager.getConnection(location, config.toProperties());
+                result = true;
             } catch (SQLException | ClassNotFoundException e) {
                 String errorMessage = """
                         Kapcsol\u00F3d\u00E1s a lok\u00E1lis adatb\u00E1zishoz sikertelen.
@@ -89,10 +94,10 @@ abstract class Database {
                         """ + e.toString();
                 String errorTitle = "Kapcsol\u00F3d\u00E1si hiba";
                 MainWindow.dialog.showExceptionDialog(errorTitle, errorMessage, DialogType.ERROR);
-                System.exit(0);
+                System.exit(3);
             }
         }
-        connected = true;
+        return result;
     }
 
     public int buildCountQuery(String query, String columnLabel) {
@@ -122,8 +127,11 @@ abstract class Database {
         if (comps.onlyParticipio()) queryDefault = ConfigIO.readSQL(BASIC_VERB_QUERY_PATH);
         else queryDefault = ConfigIO.readSQL(COMPLEX_VERB_QUERY_PATH);
 
-        int amountPerGroup = comps.getWordAmount() / comps.getSelectedGroups().size();
-        amountPerGroup = comps.getWordAmount() % 2 == 0 ? amountPerGroup : amountPerGroup + 1;
+        int amountPerGroup;
+        if (comps.isNormal()) {
+            amountPerGroup = comps.getWordAmount() / comps.getSelectedGroups().size();
+            amountPerGroup = comps.getWordAmount() % 2 == 0 ? amountPerGroup : amountPerGroup + 1;
+        } else amountPerGroup = comps.getDuration();
 
         for (Group g : comps.getSelectedGroups()) {
             // replace group tables
@@ -230,8 +238,11 @@ abstract class Database {
 
         String queryDefault = ConfigIO.readSQL(WORD_QUERY_PATH);
 
-        int amountPerGroup = comps.getWordAmount() / comps.getSelectedGroups().size();
-        amountPerGroup = comps.getWordAmount() % 2 == 0 ? amountPerGroup : amountPerGroup + 1;
+        int amountPerGroup;
+        if (comps.isNormal()) {
+            amountPerGroup = comps.getWordAmount() / comps.getSelectedGroups().size();
+            amountPerGroup = comps.getWordAmount() % 2 == 0 ? amountPerGroup : amountPerGroup + 1;
+        } else amountPerGroup = comps.getDuration();
 
         for (Group g : comps.getSelectedGroups()) {
             // replace group tables and amount
@@ -438,4 +449,11 @@ abstract class Database {
         }
     }
 
+    public boolean isConnected() {
+        return connected;
+    }
+
+    public void setConnected(boolean connected) {
+        this.connected = connected;
+    }
 }

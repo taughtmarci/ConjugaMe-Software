@@ -9,25 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Bugfixes">
-      <change afterPath="$PROJECT_DIR$/src/test/java/controller/GroupHandlerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/controller/VerbQuizPreferencesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/controller/WordQuizPreferencesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/appconfigurations.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/badges.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/groups.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/verbpreferences.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/wordpreferences.cfg" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Deploy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/groups.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/groups.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controller/AchievementsControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/view/VerbQuizSetupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/view/VerbQuizComponentsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/view/WordQuizSetupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/view/WordQuizComponentsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szakdolgozat.docx" beforeDir="false" afterPath="$PROJECT_DIR$/szakdolgozat.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ConfigIO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Local.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Local.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/database/Online.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Online.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/VerbQuizSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/WordQuizSetup.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,21 +90,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/Marci/Downloads/webswing-examples-eval-22.2.2/apps/SwingDemo",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "Errors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marci/Downloads/webswing-examples-eval-22.2.2/apps/SwingDemo&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="controller" />
@@ -133,7 +129,7 @@
       <recent name="database" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Tests in 'ConjugaMe.test'">
+  <component name="RunManager" selected="Application.ConjugaMe">
     <configuration name="ConjugaMe" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -296,13 +292,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Rename preferences file&#10;Add word query sql">
-      <created>1670020518405</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1670020518405</updated>
     </task>
     <task id="LOCAL-00027" summary="Quiz and controller start problem">
       <created>1670027140486</created>
@@ -640,7 +629,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671426984158</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Deploy">
+      <created>1671454159726</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1671454159727</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -665,7 +661,6 @@
     <MESSAGE value="Add levels to verbs and words" />
     <MESSAGE value="Add words and verbs revision" />
     <MESSAGE value="Bugfixes, aesthetics upgrades" />
-    <MESSAGE value="Deploy" />
     <MESSAGE value="Dialog handling bugfix" />
     <MESSAGE value="Remove unnecessary files" />
     <MESSAGE value="Scores table under progress" />
@@ -684,7 +679,8 @@
     <MESSAGE value="Word quiz article print bugfix&#10;End quiz panel bugfix" />
     <MESSAGE value="Test cases start" />
     <MESSAGE value="Bugfixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugfixes" />
+    <MESSAGE value="Deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deploy" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />

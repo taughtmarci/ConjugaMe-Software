@@ -311,7 +311,7 @@ public class ConfigIO {
         writer.close();
     }
 
-    private static VerbQuizComponents getDefaultVerbComps() {
+    public static VerbQuizComponents getDefaultVerbComps() {
         VerbQuizComponents defaultComps = new VerbQuizComponents();
         defaultComps.setWordAmount(25);
         defaultComps.setDurationMin(5);
@@ -327,7 +327,7 @@ public class ConfigIO {
         return defaultComps;
     }
 
-    private static WordQuizComponents getDefaultWordComps() {
+    public static WordQuizComponents getDefaultWordComps() {
         WordQuizComponents defaultComps = new WordQuizComponents();
         defaultComps.setWordAmount(25);
         defaultComps.setDurationMin(5);

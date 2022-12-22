@@ -15,7 +15,8 @@ public class Online extends Database {
         super(true, "jdbc:mysql://" + ip + ":" + port + "/" + schema);
         setCredentials("admin", "ManchaT3!");
         this.randomKeyword = "RAND()";
-        connect();
+        this.connected = connect();
+
         boolean updatesAvailable = getUpdates();
         if (updatesAvailable) System.out.println("Updates are available");
     }
@@ -86,5 +87,7 @@ public class Online extends Database {
             connected = false;
         }
     }
+
+
 
 }

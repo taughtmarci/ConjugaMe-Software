@@ -31,7 +31,6 @@ public class WordQuizController {
         this.quiz = quiz;
         this.comps = quiz.getComps();
 
-        if (!comps.isNormal()) comps.setWordAmount(comps.getDuration());
         this.words = MainWindow.local.processWordQueries(comps);
 
         this.mistakes = new ArrayList<>();
@@ -47,9 +46,8 @@ public class WordQuizController {
     }
 
     public void nextRound() {
-        if (iteration == comps.getWordAmount()) {
+        if (comps.isNormal() && iteration == comps.getWordAmount())
             finishQuiz();
-        }
         else {
             currentWord = words.get(iteration);
 

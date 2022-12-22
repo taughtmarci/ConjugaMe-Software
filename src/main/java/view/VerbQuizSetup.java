@@ -38,7 +38,7 @@ public class VerbQuizSetup extends JPanel {
 
     public VerbQuizSetup(SetupPane setupPane) throws IOException {
         this.setupPane = setupPane;
-        this.comps = MainWindow.verbComps;
+        this.comps = MainWindow.verbComps.isWorkingCorrectly() ? MainWindow.verbComps : ConfigIO.getDefaultVerbComps();
         this.prefs = new VerbQuizPreferences(this);
         this.buttons = new ArrayList<>();
 
