@@ -7,10 +7,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -28,7 +24,7 @@ class NormalVerbQuizTest {
     }
 
      @Test
-     void testVerbQuizSetup() throws InterruptedException, IOException, AWTException {
+     void testVerbQuizSetup() throws InterruptedException, IOException {
         main.switchPanels(main.dashboard, setupPane);
         VerbQuizSetup setup = setupPane.getVerbQuizSetup();
 
@@ -49,6 +45,7 @@ class NormalVerbQuizTest {
         // check for valid error handling
         setup.getVerbNumberChooser().setValue(32498623);
         setup.getPrefs().savePrefs(false);
+        setup.updateUI();
         assertNotEquals("", setup.getErrorLabel().getText());
 
         Thread.sleep(3000);
