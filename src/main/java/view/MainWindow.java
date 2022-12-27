@@ -28,6 +28,9 @@ public class MainWindow extends JFrame {
     // Dialog handler
     public static Dialog dialog = new Dialog();
 
+    // EXPLICITLY for JUNIT to reference the first JPanel
+    public Dashboard dashboard;
+
     public MainWindow() {
         try {
             initComponents();
@@ -69,7 +72,7 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        JPanel dashboard = new Dashboard(this);
+        dashboard = new Dashboard(this);
         add(dashboard);
     }
 

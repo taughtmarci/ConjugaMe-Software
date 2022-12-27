@@ -1,4 +1,4 @@
-package view;
+package model;
 
 import model.*;
 import org.junit.jupiter.api.Test;

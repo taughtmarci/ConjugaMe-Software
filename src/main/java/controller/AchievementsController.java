@@ -135,9 +135,11 @@ public class AchievementsController {
             ScoresList scoresList = new ScoresList(isNormal, isVerb, scores);
             JTable scoresTable = new JTable(scoresList.getData(), scoresList.getColumnNames());
 
+            final boolean verbFlag = isVerb;
             // set model
             DefaultTableModel scoresModel = new DefaultTableModel(scoresList.getData(), scoresList.getColumnNames()) {
-                final Class[] types = { Integer.class, Integer.class, String.class, String.class };
+                final Class[] typesVerb = { Integer.class, Integer.class, String.class, String.class };
+                final Class[] typesNoun = { Integer.class, Integer.class, String.class, String.class, String.class };
                 @Override
                 public boolean isCellEditable(int row, int column) {
                     return false;
@@ -145,7 +147,9 @@ public class AchievementsController {
 
                 @Override
                 public Class getColumnClass(int columnIndex) {
-                    return this.types[columnIndex];
+                    if (verbFlag)
+                        return this.typesVerb[columnIndex];
+                    else return this.typesNoun[columnIndex];
                 }
             };
             scoresTable.setAutoCreateRowSorter(true);

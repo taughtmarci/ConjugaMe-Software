@@ -1,4 +1,4 @@
-package view;
+package model;
 
 import model.Form;
 import model.Group;
