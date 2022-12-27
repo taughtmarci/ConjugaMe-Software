@@ -173,6 +173,10 @@ public class VerbQuiz extends Quiz {
 
     }
 
+    public VerbQuizController getController() {
+        return controller;
+    }
+
     public VerbQuizComponents getComps() {
         return comps;
     }

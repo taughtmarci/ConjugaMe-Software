@@ -22,4 +22,7 @@ public abstract class Quiz extends JPanel {
         return main;
     }
 
+    public JButton getSendButton() {
+        return sendButton;
+    }
 }

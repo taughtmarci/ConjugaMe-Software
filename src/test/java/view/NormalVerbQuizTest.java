@@ -1,11 +1,16 @@
 package view;
 
 import controller.ConfigIO;
+import controller.Section;
 import model.Group;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -23,7 +28,7 @@ class NormalVerbQuizTest {
     }
 
      @Test
-     void testVerbQuizSetup() throws InterruptedException {
+     void testVerbQuizSetup() throws InterruptedException, IOException, AWTException {
         main.switchPanels(main.dashboard, setupPane);
         VerbQuizSetup setup = setupPane.getVerbQuizSetup();
 
@@ -59,9 +64,40 @@ class NormalVerbQuizTest {
         Thread.sleep(3000);
 
         // start quiz
-        setup.getPrefs().savePrefs(true);
+        setup.getPrefs().savePrefs(false);
+        VerbQuiz quiz = new VerbQuiz(main);
+        main.switchPanels(setupPane, quiz);
 
         Thread.sleep(3000);
+
+        // simulate a quiz
+        // good answers only
+        quiz.getPresentoSection().getInput().setText(quiz.getPresentoSection().getSolution());
+        for (Section section : quiz.getSections()) {
+            section.getInput().setText(section.getSolution());
+        }
+        Thread.sleep(3000);
+
+        quiz.getSendButton().doClick();
+        assertEquals(4, quiz.getController().getScore());
+        Thread.sleep(3000);
+
+        // bad answers only
+        quiz.getSendButton().doClick();
+        assertEquals(4, quiz.getController().getScore());
+        Thread.sleep(3000);
+
+        // good and bad answers
+        quiz.getPresentoSection().getInput().setText(quiz.getPresentoSection().getSolution());
+        for (Section section : quiz.getSections()) {
+            section.getInput().setText("blablabla");
+        }
+        Thread.sleep(3000);
+
+        quiz.getSendButton().doClick();
+        assertEquals(5, quiz.getController().getScore());
+        Thread.sleep(3000);
+
      }
 
     @AfterEach

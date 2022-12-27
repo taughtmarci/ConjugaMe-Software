@@ -116,6 +116,10 @@ public class WordQuiz extends Quiz {
         countBack.stop();
     }
 
+    public WordQuizController getController() {
+        return controller;
+    }
+
     public WordQuizComponents getComps() {
         return comps;
     }
