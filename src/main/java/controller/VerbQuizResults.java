@@ -44,7 +44,7 @@ public class VerbQuizResults {
     }
 
     private void insertScore() {
-        Score newScore = new Score(getScore(), comps.isNormal() ? getOutOf() : comps.getDuration(),
+        Score newScore = new Score(getScore(), comps.isNormal() ? getOutOf() : controller.getTime(),
                 getPercentage(), "", QuizComponents.dtf.format(LocalDateTime.now()));
         MainWindow.local.insertVerbScore(comps.isNormal(), newScore);
     }

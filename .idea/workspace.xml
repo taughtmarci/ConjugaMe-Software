@@ -9,17 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Bugfixes">
-      <change afterPath="$PROJECT_DIR$/src/test/java/view/NormalVerbQuizTest.java" afterDir="false" />
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Result show bugfix, Add GUI tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AchievementsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizPreferences.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/view/VerbQuizComponentsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/VerbQuizComponentsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/view/WordQuizComponentsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/WordQuizComponentsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szakdolgozat.docx" beforeDir="false" afterPath="$PROJECT_DIR$/szakdolgozat.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/VerbQuizResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/WordQuizResults.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,13 +280,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00028" summary="WordQuiz improvement">
-      <created>1670062565369</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1670062565369</updated>
     </task>
     <task id="LOCAL-00029" summary="Animated feedback on quizes&#10;Fix on quiz feedback issue">
       <created>1670100670596</created>
@@ -631,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671706553124</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Result show bugfix, Add GUI tests">
+      <created>1672167961989</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1672167961994</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -650,7 +643,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Instant feedback finish" />
     <MESSAGE value="--- STATE OF THE ART ---&#10;change ny to ñ while typing" />
     <MESSAGE value="Dark mode completion" />
     <MESSAGE value="Add levels to verbs and words" />
@@ -675,7 +667,8 @@
     <MESSAGE value="Test cases start" />
     <MESSAGE value="Deploy" />
     <MESSAGE value="Bugfixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugfixes" />
+    <MESSAGE value="Result show bugfix, Add GUI tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Result show bugfix, Add GUI tests" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />

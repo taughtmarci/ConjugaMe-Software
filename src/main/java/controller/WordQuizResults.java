@@ -41,7 +41,7 @@ public class WordQuizResults {
 
     private void insertScore() {
         Score newScore = new Score(getScore(),
-                comps.isNormal() ? getOutOf() : comps.getDuration(),
+                comps.isNormal() ? getOutOf() : controller.getTime(),
                 getPercentage(), comps.getDifficulty().toString(), QuizComponents.dtf.format(LocalDateTime.now()));
         MainWindow.local.insertNounScore(comps.isNormal(), newScore);
     }
