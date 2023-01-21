@@ -130,7 +130,7 @@ abstract class Database {
         int amountPerGroup;
         if (comps.isNormal()) {
             amountPerGroup = comps.getWordAmount() / comps.getSelectedGroups().size();
-            amountPerGroup = comps.getWordAmount() % 2 == 0 ? amountPerGroup : amountPerGroup + 1;
+            amountPerGroup = comps.getSelectedGroups().size() % 2 == 0 ? amountPerGroup : amountPerGroup + 1;
         } else amountPerGroup = comps.getDuration();
 
         for (Group g : comps.getSelectedGroups()) {
@@ -220,8 +220,6 @@ abstract class Database {
                         temp.appendVerbForm(f, tempContent);
                     }
 
-                    // debug
-                    temp.printVerb();
                     result.add(temp);
                 }
             } catch (SQLException e) {
@@ -241,7 +239,7 @@ abstract class Database {
         int amountPerGroup;
         if (comps.isNormal()) {
             amountPerGroup = comps.getWordAmount() / comps.getSelectedGroups().size();
-            amountPerGroup = comps.getWordAmount() % 2 == 0 ? amountPerGroup : amountPerGroup + 1;
+            amountPerGroup = comps.getSelectedGroups().size() % 2 == 0 ? amountPerGroup : amountPerGroup + 1;
         } else amountPerGroup = comps.getDuration();
 
         for (Group g : comps.getSelectedGroups()) {
@@ -251,6 +249,7 @@ abstract class Database {
 
             // make query
             result.addAll(buildWordQuery(query));
+            System.out.println(query);
         }
 
         return result;
