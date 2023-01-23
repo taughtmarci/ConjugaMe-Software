@@ -9,17 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Rollout">
+    <list default="true" id="c1f7fa37-847d-45d1-b08f-74952daa04ad" name="Changes" comment="Fix odd number word amount issue">
+      <change afterPath="$PROJECT_DIR$/src/test/java/view/TimedWordQuizTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/appconfigurations.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/appconfigurations.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/verbpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/verbpreferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/wordpreferences.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/config/wordpreferences.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/mainDB.db" beforeDir="false" afterPath="$PROJECT_DIR$/database/mainDB.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/Online.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/Online.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/szakdolgozat.docx" beforeDir="false" afterPath="$PROJECT_DIR$/szakdolgozat.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$akdolgozat.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/~WRL2869.tmp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,8 +55,8 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="Record" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -125,7 +120,7 @@
       <recent name="database" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ConjugaMe">
+  <component name="RunManager" selected="Gradle.TimedWordQuizTest">
     <configuration name="ConjugaMe" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -135,7 +130,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NormalVerbQuizTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="NormalVerbQuizTest" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -170,6 +165,29 @@
         <option name="taskNames">
           <list>
             <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="TimedWordQuizTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;view.TimedWordQuizTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -264,6 +282,7 @@
     <list>
       <item itemvalue="Application.ConjugaMe" />
       <item itemvalue="Gradle.NormalVerbQuizTest" />
+      <item itemvalue="Gradle.TimedWordQuizTest" />
       <item itemvalue="Gradle.VerbQuizTest" />
       <item itemvalue="Gradle.Tests in 'ConjugaMe.test'" />
       <item itemvalue="Gradle.VerbQuizComponentsTest" />
@@ -271,7 +290,7 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.NormalVerbQuizTest" />
+        <item itemvalue="Gradle.TimedWordQuizTest" />
         <item itemvalue="Gradle.VerbQuizTest" />
         <item itemvalue="Gradle.Tests in 'ConjugaMe.test'" />
         <item itemvalue="Gradle.WordQuizPreferencesTest" />
@@ -287,13 +306,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1663263484002</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Add Section abstract class">
-      <created>1670248724826</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1670248724826</updated>
     </task>
     <task id="LOCAL-00033" summary="Add Quiz abstract class">
       <created>1670249600511</created>
@@ -631,7 +643,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672173209031</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Fix odd number word amount issue">
+      <created>1674307538243</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1674307538243</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -650,7 +669,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add words and verbs revision" />
     <MESSAGE value="Bugfixes, aesthetics upgrades" />
     <MESSAGE value="Dialog handling bugfix" />
     <MESSAGE value="Remove unnecessary files" />
@@ -675,7 +693,8 @@
     <MESSAGE value="Save timed results correctly bugfix" />
     <MESSAGE value="Normal Verb Quiz test" />
     <MESSAGE value="Rollout" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rollout" />
+    <MESSAGE value="Fix odd number word amount issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix odd number word amount issue" />
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />
